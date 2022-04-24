@@ -1,11 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/material.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/about_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/games_database_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/general_configurations_section.dart';
-import 'package:xbox_launcher/pages/home_page/widgets/system_button.dart';
-import 'package:xbox_launcher/pages/home_page/widgets/xbox_user_info.dart';
-import 'package:xbox_launcher/shared/app_text_style.dart';
 
 class ConfigurationsPage extends StatefulWidget {
   const ConfigurationsPage({Key? key}) : super(key: key);

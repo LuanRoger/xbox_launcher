@@ -30,13 +30,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  fluent_ui: ^3.8.0
+  fluent_ui: ^3.11.0
   webview_windows: ^0.1.6
   provider: ^6.0.2
+  xinput_gamepad: ^0.0.8
 
 dev_dependencies:
   flutter_test:
@@ -62,7 +59,6 @@ flutter:
 
   assets:
   - assets/games_cover/HitmanTriology.png
-  - assets/game_pass_logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -70,22 +66,19 @@ flutter:
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+    - family: Bahnschrift
+      fonts:
+        - asset: assets/fonts/Bahnschrift/Bahnschrift.ttf
+    - family: Segoe
+      fonts:
+        - asset: assets/fonts/Segoe/SegoeUI.ttf
+        - asset: assets/fonts/Segoe/SegoeUIItalic.ttf
+          style: italic
+        - asset: assets/fonts/Segoe/SegoeUIBold.ttf
+          weight: 700
+        - asset: assets/fonts/Segoe/SegoeUIBoldItalic.ttf
+          weight: 700
+          style: italic
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

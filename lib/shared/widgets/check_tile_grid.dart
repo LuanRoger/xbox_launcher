@@ -66,8 +66,8 @@ class _Triangle extends CustomPainter {
       ..style = PaintingStyle.fill;
     canvas.drawPath(
         Path()
-          ..moveTo(0, 0)
-          ..lineTo(size.width, size.height)
+          ..moveTo(-10, 0)
+          ..lineTo(size.width, size.height + 10)
           ..lineTo(size.width, 0),
         paint);
   }
