@@ -1,8 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/pages/configurations_page/widgets/configuration_menu.dart';
-import 'package:xbox_launcher/pages/home_page/widgets/system_button.dart';
 import 'package:xbox_launcher/shared/widgets/check_tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/menu_dialog_overlay.dart';
+import 'package:xbox_launcher/shared/widgets/system_button.dart';
 
 class PersonalizationConfigurationPage extends ConfigurationMenu {
   PersonalizationConfigurationPage(BuildContext context, {Key? key})

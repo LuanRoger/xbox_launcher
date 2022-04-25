@@ -4,7 +4,7 @@ import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/tile_title_bar.dart';
 
-class TileBase extends StatelessWidget {
+class TileBase extends StatefulWidget {
   String title;
   TileSize tileSize;
   Color? color;
@@ -17,6 +17,7 @@ class TileBase extends StatelessWidget {
 
   late Widget tileCover;
 
+  //TODO: Separate by lenght in factory
   TileBase(this.title, this.tileSize,
       {Key? key,
       this.color = Colors.transparent,
@@ -70,22 +71,47 @@ class TileBase extends StatelessWidget {
   }
 
   @override
+  State<TileBase> createState() => _TileBaseState();
+}
+
+class _TileBaseState extends State<TileBase> {
+  final focusNode = FocusNode();
+  late bool getFocused;
+  TileTitleBar? titleBar;
+
+  @override
+  void initState() {
+    super.initState();
+
+    focusNode.addListener(() {
+      setState(() {
+        titleBar = focusNode.hasFocus ? TileTitleBar(widget.title) : null;
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      color: color,
-      width: _tileWidth,
-      height: _tileHeight,
-      child: Button(
-        style: ButtonStyle(
-            backgroundColor: ButtonState.all(Colors.transparent),
-            elevation: ButtonState.all(0),
-            padding: ButtonState.all(EdgeInsets.zero)),
-        onPressed: () => onPressed!(context),
-        child: Stack(
-          children: [
-            tileCover,
-            Align(alignment: Alignment.bottomLeft, child: TileTitleBar(title))
-          ],
+      color: widget.color,
+      width: widget._tileWidth,
+      height: widget._tileHeight,
+      child: Focus(
+        focusNode: focusNode,
+        child: Button(
+          style: ButtonStyle(
+              backgroundColor: ButtonState.all(Colors.transparent),
+              elevation: ButtonState.all(0),
+              padding: ButtonState.all(EdgeInsets.zero)),
+          onPressed: () => widget.onPressed!(context),
+          child: Stack(
+            children: [
+              widget.tileCover,
+              Align(
+                  alignment: Alignment.bottomLeft,
+                  child: titleBar ?? const SizedBox())
+            ],
+          ),
         ),
       ),
     );

@@ -1,12 +1,11 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/services.dart';
 import 'package:xbox_launcher/models/game_model.dart';
 import 'package:xbox_launcher/pages/configurations_page/configurations_page.dart';
-import 'package:xbox_launcher/pages/home_page/widgets/game_tile.dart';
-import 'package:xbox_launcher/pages/home_page/widgets/system_banner_button.dart';
-import 'package:xbox_launcher/pages/home_page/widgets/xbox_user_info.dart';
+import 'package:xbox_launcher/shared/widgets/system_banner_button.dart';
+import 'package:xbox_launcher/shared/widgets/xbox_user_info.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
+import 'package:xbox_launcher/shared/widgets/game_tile.dart';
 import 'package:xbox_launcher/shared/widgets/system_tile.dart';
 
 class BackNavigation extends Intent {}
