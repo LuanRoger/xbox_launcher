@@ -5,11 +5,15 @@ import 'package:xbox_launcher/pages/home_page/home_page.dart';
 import 'package:xbox_launcher/shared/app_theme_data.dart';
 
 void main() {
-  XinputController xinputController = XinputController();
-  xinputController.init();
-
-  runApp(FluentApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppThemeData.defaultTheme,
-      home: const HomePage()));
+  runApp(MultiProvider(
+    providers: [
+      Provider<XinputController>(
+        create: (_) => XinputController(),
+      )
+    ],
+    child: FluentApp(
+        debugShowCheckedModeBanner: false,
+        theme: AppThemeData.defaultTheme,
+        home: HomePage()),
+  ));
 }

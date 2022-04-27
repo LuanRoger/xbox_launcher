@@ -1,27 +1,35 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/services.dart';
+import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/about_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/games_database_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/general_configurations_section.dart';
+import 'package:xbox_launcher/pages/models/xbox_page_stateful.dart';
+import 'package:xinput_gamepad/xinput_gamepad.dart';
 
-class ConfigurationsPage extends StatefulWidget {
-  const ConfigurationsPage({Key? key}) : super(key: key);
+class ConfigurationsPage extends XboxPageStateful {
+  ConfigurationsPage({Key? key})
+      : super(keyAction: {
+          ControllerKeyboardPair(
+                  LogicalKeyboardKey.escape, ControllerButton.BACK):
+              ((context) => Navigator.pop(context))
+        }, key: key);
 
   @override
-  State<ConfigurationsPage> createState() => _ConfigurationsPageState();
+  State<StatefulWidget> vitualCreateState() => _ConfigurationsPageState();
 }
 
-class _ConfigurationsPageState extends State<ConfigurationsPage> {
+class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
   late int sectionIndex;
 
   @override
   void initState() {
     sectionIndex = 0;
-
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget virtualBuild(BuildContext context) {
     return NavigationView(
         pane: NavigationPane(
             selected: sectionIndex,

@@ -33,7 +33,7 @@ dependencies:
   fluent_ui: ^3.11.0
   webview_windows: ^0.1.6
   provider: ^6.0.2
-  xinput_gamepad: ^0.0.8
+  xinput_gamepad: ^1.0.0
 
 dev_dependencies:
   flutter_test:

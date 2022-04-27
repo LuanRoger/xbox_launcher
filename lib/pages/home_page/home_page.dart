@@ -1,36 +1,24 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/services.dart';
+import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/game_model.dart';
 import 'package:xbox_launcher/pages/configurations_page/configurations_page.dart';
+import 'package:xbox_launcher/pages/models/xbox_page.dart';
 import 'package:xbox_launcher/shared/widgets/system_banner_button.dart';
 import 'package:xbox_launcher/shared/widgets/xbox_user_info.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/game_tile.dart';
 import 'package:xbox_launcher/shared/widgets/system_tile.dart';
+import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class BackNavigation extends Intent {}
 
-class LoggingShortcutManager extends ShortcutManager {
-  @override
-  KeyEventResult handleKeypress(BuildContext context, RawKeyEvent event) {
-    final KeyEventResult result = super.handleKeypress(context, event);
-    if (result == KeyEventResult.handled) {
-      print('Handled shortcut $event in $context');
-    }
-    return result;
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends XboxPage {
+  HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget virtualBuild(BuildContext context) {
     return Container(
       color: AppColors.DARK_BG,
       child: Padding(
@@ -74,8 +62,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             FluentPageRoute(
-                                builder: (context) =>
-                                    const ConfigurationsPage()));
+                                builder: (context) => ConfigurationsPage()));
                       },
                     ),
                   ),
