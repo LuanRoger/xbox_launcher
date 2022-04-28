@@ -1,20 +1,24 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/configurations_page/widgets/configuration_menu_section.dart';
+import 'package:xbox_launcher/pages/models/xbox_page.dart';
 import 'package:xbox_launcher/shared/widgets/system_button.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 
-abstract class ConfigurationMenu extends StatelessWidget {
+abstract class ConfigurationMenu extends XboxPage {
   String routeName;
   String menuTitle;
   Map<String?, List<SystemButton>> buttons;
 
   ConfigurationMenu(this.routeName, this.menuTitle,
-      {Key? key, required this.buttons})
-      : super(key: key);
+      {Key? key,
+      Map<ControllerKeyboardPair, void Function(BuildContext)>? keyAction,
+      required this.buttons})
+      : super(key: key, keyAction: keyAction);
 
   @override
-  Widget build(BuildContext context) {
+  Widget virtualBuild(BuildContext context) {
     return Container(
       color: AppColors.DARK_BG,
       child: Padding(

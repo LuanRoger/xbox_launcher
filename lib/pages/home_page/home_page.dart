@@ -1,16 +1,16 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/services.dart';
-import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
+import 'package:provider/provider.dart';
+import 'package:xbox_launcher/controllers/xinput_controller.dart';
 import 'package:xbox_launcher/models/game_model.dart';
 import 'package:xbox_launcher/pages/configurations_page/configurations_page.dart';
 import 'package:xbox_launcher/pages/models/xbox_page.dart';
+import 'package:xbox_launcher/shared/widgets/clock_time.dart';
 import 'package:xbox_launcher/shared/widgets/system_banner_button.dart';
 import 'package:xbox_launcher/shared/widgets/xbox_user_info.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/game_tile.dart';
 import 'package:xbox_launcher/shared/widgets/system_tile.dart';
-import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class BackNavigation extends Intent {}
 
@@ -31,10 +31,7 @@ class HomePage extends XboxPage {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  XboxUserInfo(),
-                  Text("00:00") //TODO: Create a clock
-                ],
+                children: const [XboxUserInfo(), ClockTimer()],
               ),
             ),
             const Spacer(),

@@ -24,7 +24,6 @@ class XinputController {
       ControllerButton.DPAD_RIGHT: () =>
           VirtualKeyboard.press(KeyboardKey.RIGHT_ARROW),
     };
-
     controller.lister();
   }
 }

@@ -9,11 +9,9 @@ class VoidActionIntent extends Intent {}
 abstract class XboxPage extends StatelessWidget {
   late XinputController _controller;
   late Map<ShortcutActivator, void Function()> _keyboardBinding;
-  Map<ControllerKeyboardPair, VoidCallback>? keyAction;
+  Map<ControllerKeyboardPair, void Function(BuildContext context)>? keyAction;
 
-  XboxPage({Key? key, this.keyAction}) : super(key: key) {
-    _mapKeyboardShortcuts();
-  }
+  XboxPage({Key? key, this.keyAction}) : super(key: key);
 
   void _mapControllerShortcuts(BuildContext context) {
     if (keyAction == null) return;
@@ -23,20 +21,19 @@ abstract class XboxPage extends StatelessWidget {
         <ControllerButton, void Function()>{};
 
     keyAction!.forEach((key, value) {
-      controllerBindings[key.controllerButton] = value;
+      _controller.controller.buttonsMapping![key.controllerButton] =
+          () => value(context);
     });
-
-    _controller.controller.buttonsMapping = controllerBindings;
   }
 
-  void _mapKeyboardShortcuts() {
+  void _mapKeyboardShortcuts(BuildContext context) {
     if (keyAction == null) return;
 
     Map<ShortcutActivator, void Function()> binding =
         <ShortcutActivator, void Function()>{};
 
     keyAction!.forEach((key, value) {
-      binding[SingleActivator(key.keyboardkey)] = value;
+      binding[SingleActivator(key.keyboardkey)] = () => value(context);
     });
 
     _keyboardBinding = binding;
@@ -47,6 +44,8 @@ abstract class XboxPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _mapControllerShortcuts(context);
+    _mapKeyboardShortcuts(context);
+
     return keyAction != null
         ? CallbackShortcuts(
             bindings: _keyboardBinding, child: virtualBuild(context))

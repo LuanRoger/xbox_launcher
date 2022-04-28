@@ -21,7 +21,7 @@ abstract class XboxPageStateful extends StatefulWidget {
         <ControllerButton, void Function()>{};
 
     keyAction!.forEach((key, value) {
-      controllerBindings[key.controllerButton] = (() => value(context));
+      controllerBindings[key.controllerButton] = () => value(context);
     });
 
     _controller.controller.buttonsMapping = controllerBindings;
@@ -34,7 +34,7 @@ abstract class XboxPageStateful extends StatefulWidget {
         <ShortcutActivator, void Function()>{};
 
     keyAction!.forEach((key, value) {
-      binding[SingleActivator(key.keyboardkey)] = (() => value(context));
+      binding[SingleActivator(key.keyboardkey)] = () => value(context);
     });
 
     _keyboardBinding = binding;
