@@ -1,11 +1,38 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:xbox_launcher/shared/widgets/tile_base.dart';
 
-class CheckTileGrid extends StatelessWidget {
-  const CheckTileGrid({Key? key}) : super(key: key);
+class TileGrid extends StatelessWidget {
+  late int? selectedTile;
+  TileBase Function(BuildContext, int)? itemBuilder;
+  List<TileBase>? tiles;
+  int? itemCount;
+
+  TileGrid({Key? key, this.itemBuilder, this.tiles, this.itemCount})
+      : super(key: key);
+
+  factory TileGrid.build(
+      {Key? key,
+      required TileBase Function(BuildContext, int)? itemBuilder,
+      required int itemCount}) {
+    return TileGrid(itemBuilder: itemBuilder);
+  }
+  factory TileGrid.count({Key? key, required List<TileBase> tiles}) {
+    return TileGrid(tiles: tiles);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 2),
+      shrinkWrap: true,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: itemBuilder ??
+          (context, index) {
+            return tiles![index];
+          },
+      itemCount: itemCount,
+    );
   }
 }
 
@@ -23,11 +50,8 @@ class CheckTile extends StatefulWidget {
 
 class _CheckTileState extends State<CheckTile> {
   late bool _checked;
-
-  @override
-  void initState() {
-    _checked = false;
-    super.initState();
+  set setCheck(bool check) {
+    _checked = check;
   }
 
   @override

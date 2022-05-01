@@ -9,13 +9,13 @@ import 'package:xbox_launcher/shared/app_text_style.dart';
 abstract class ConfigurationMenu extends XboxPage {
   String routeName;
   String menuTitle;
-  Map<String?, List<SystemButton>> buttons;
 
   ConfigurationMenu(this.routeName, this.menuTitle,
       {Key? key,
-      Map<ControllerKeyboardPair, void Function(BuildContext)>? keyAction,
-      required this.buttons})
+      Map<ControllerKeyboardPair, void Function(BuildContext)>? keyAction})
       : super(key: key, keyAction: keyAction);
+
+  Map<String?, List<SystemButton>> buttonsBuilder(BuildContext context);
 
   @override
   Widget virtualBuild(BuildContext context) {
@@ -50,7 +50,7 @@ abstract class ConfigurationMenu extends XboxPage {
           Flexible(
               flex: 10,
               child: _ConfigurationMenuButtonsSet(
-                buttons: buttons,
+                buttons: buttonsBuilder(context),
               ))
         ]),
       ),

@@ -9,7 +9,7 @@ import 'package:xbox_launcher/shared/widgets/system_banner_button.dart';
 import 'package:xbox_launcher/shared/widgets/xbox_user_info.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
-import 'package:xbox_launcher/shared/widgets/game_tile.dart';
+import 'package:xbox_launcher/shared/widgets/game_button_tile.dart';
 import 'package:xbox_launcher/shared/widgets/system_tile.dart';
 
 class BackNavigation extends Intent {}
@@ -43,18 +43,32 @@ class HomePage extends XboxPage {
                 children: [
                   Flexible(
                     flex: 0,
-                    child: GameTile(GameModel("Hitman Tryology",
-                        "https://www.xbox.com/pt-BR/play/launch/hitman-trilogy/9NN82NH949D5",
-                        imageUrl:
-                            "https://maroonersrock.com/wp-content/uploads/2021/01/Hitman-3-Cover-Art.jpg")),
+                    child: GameButtonTile(
+                      GameModel(
+                          "Hitman Tryology",
+                          "https://www.xbox.com/pt-BR/play/launch/hitman-trilogy/9NN82NH949D5",
+                          "https://maroonersrock.com/wp-content/uploads/2021/01/Hitman-3-Cover-Art.jpg"),
+                      tileSize: TileSize.BIG,
+                    ),
+                  ),
+                  const Spacer(),
+                  Flexible(
+                    flex: 0,
+                    child: GameButtonTile(
+                      GameModel(
+                          "Forza Horizon 5",
+                          "https://www.xbox.com/pt-BR/play/launch/forza-horizon-5-standard-edition/9NKX70BBCDRN",
+                          "https://store-images.s-microsoft.com/image/apps.33953.13718773309227929.bebdcc0e-1ed5-4778-8732-f4ef65a2f445.9428b75f-2c08-4e70-9f95-281741b15341?w=1920&h=1080"),
+                      tileSize: TileSize.MEDIUM,
+                    ),
                   ),
                   const Spacer(),
                   Flexible(
                     flex: 30,
-                    child: SystemTile(
+                    child: AppTile(
                       "Configurações",
-                      FluentIcons.settings,
-                      TileSize.MEDIUM,
+                      icon: FluentIcons.settings,
+                      tileSize: TileSize.MEDIUM,
                       onClick: (context) {
                         Navigator.push(
                             context,

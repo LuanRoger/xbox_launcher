@@ -20,4 +20,22 @@ class AppColors {
   static const Color ORANGE = Color.fromRGBO(232, 74, 14, 1);
   static const Color YELOW = Color.fromRGBO(229, 135, 11, 1);
   static const Color BROWN = Color.fromRGBO(114, 81, 48, 1);
+
+  static const List<Color> COLORS_LIST = [
+    DARK_GREEN,
+    GREEN,
+    LIGHT_GREEN,
+    DARK_BLUE,
+    CYAN,
+    LIGHT_BLUE,
+    PURPLE,
+    LIGHT_PURPLE,
+    ROSE,
+    VIOLET,
+    DARK_RED,
+    RED,
+    ORANGE,
+    YELOW,
+    BROWN
+  ];
 }

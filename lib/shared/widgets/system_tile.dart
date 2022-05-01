@@ -1,14 +1,18 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
-import 'package:xbox_launcher/shared/widgets/tile_base.dart';
+import 'package:xbox_launcher/shared/widgets/button_tile.dart';
 
-class SystemTile extends TileBase {
-  String title;
-  IconData iconData;
-  TileSize tileSize;
-  void Function(BuildContext) onClick;
-
-  SystemTile(this.title, this.iconData, this.tileSize, {Key? key, required this.onClick})
-      : super(title, tileSize, key: key, icon: iconData, onPressed: onClick, color: AppColors.GREEN);
+class AppTile extends ButtonTile {
+  AppTile(String title,
+      {Key? key,
+      required IconData icon,
+      required TileSize tileSize,
+      required void Function(BuildContext)? onClick})
+      : super(title, true,
+            tileSize: tileSize,
+            key: key,
+            icon: icon,
+            onPressed: onClick,
+            color: AppColors.GREEN);
 }

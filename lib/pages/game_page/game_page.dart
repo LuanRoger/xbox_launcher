@@ -5,7 +5,7 @@ final navigatorKey = GlobalKey<NavigatorState>();
 
 class GamePage extends StatefulWidget {
   String gameUrl;
-  Widget gameCover;
+  ImageProvider gameCover;
 
   GamePage(this.gameUrl, this.gameCover, {Key? key}) : super(key: key);
 
@@ -105,11 +105,10 @@ class _GamePageState extends State<GamePage>
                           });
                         },
                         child: Center(
-                            child: widget.gameCover is Image
-                                ? Image(
-                                    image: (widget.gameCover as Image).image,
-                                    fit: BoxFit.cover)
-                                : widget.gameCover)),
+                            child: Image(
+                          image: widget.gameCover,
+                          fit: BoxFit.cover,
+                        ))),
                   )
                 ],
               ),
