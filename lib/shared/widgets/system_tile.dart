@@ -1,5 +1,4 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/button_tile.dart';
 
@@ -10,9 +9,5 @@ class AppTile extends ButtonTile {
       required TileSize tileSize,
       required void Function(BuildContext)? onClick})
       : super(title, true,
-            tileSize: tileSize,
-            key: key,
-            icon: icon,
-            onPressed: onClick,
-            color: AppColors.GREEN);
+            tileSize: tileSize, key: key, icon: icon, onPressed: onClick);
 }

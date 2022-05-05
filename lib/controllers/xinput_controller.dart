@@ -1,17 +1,13 @@
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
-class XinputController {
-  late Controller controller;
-
-  XinputController() {
-    init();
-  }
+class XInputController {
+  late Controller _controller;
 
   void init() {
     XInputManager.enableXInput();
 
-    controller = Controller(index: 0);
-    controller.buttonsMapping = {
+    _controller = Controller(index: 0);
+    _controller.buttonsMapping = {
       ControllerButton.A_BUTTON: () => VirtualKeyboard.press(KeyboardKey.ENTER),
       ControllerButton.B_BUTTON: () =>
           VirtualKeyboard.press(KeyboardKey.ESCAPE),
@@ -24,6 +20,6 @@ class XinputController {
       ControllerButton.DPAD_RIGHT: () =>
           VirtualKeyboard.press(KeyboardKey.RIGHT_ARROW),
     };
-    controller.lister();
+    _controller.lister();
   }
 }

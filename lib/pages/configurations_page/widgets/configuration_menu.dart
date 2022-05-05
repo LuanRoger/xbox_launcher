@@ -6,7 +6,7 @@ import 'package:xbox_launcher/shared/widgets/system_button.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 
-abstract class ConfigurationMenu extends XboxPage {
+abstract class ConfigurationMenu extends XboxPageStateless {
   String routeName;
   String menuTitle;
 
@@ -15,7 +15,7 @@ abstract class ConfigurationMenu extends XboxPage {
       Map<ControllerKeyboardPair, void Function(BuildContext)>? keyAction})
       : super(key: key, keyAction: keyAction);
 
-  Map<String?, List<SystemButton>> buttonsBuilder(BuildContext context);
+  Map<String, List<SystemButton>> buttonsBuilder(BuildContext context);
 
   @override
   Widget virtualBuild(BuildContext context) {
@@ -59,16 +59,18 @@ abstract class ConfigurationMenu extends XboxPage {
 }
 
 class _ConfigurationMenuButtonsSet extends StatelessWidget {
-  Map<String?, List<SystemButton>> buttons;
+  Map<String, List<SystemButton>> buttons;
 
   _ConfigurationMenuButtonsSet({required this.buttons, Key? key})
       : super(key: key);
 
-  List<ConfigurationMenuSection> generateSet() {
-    List<ConfigurationMenuSection> sections = List.empty(growable: true);
+  List<Widget> generateSet() {
+    List<Widget> sections = List.empty(growable: true);
 
     buttons.forEach((key, value) {
-      sections.add(ConfigurationMenuSection(title: key, buttons: value));
+      sections.add(Flexible(
+          flex: 10, child: ConfigurationMenuSection(key, buttons: value)));
+      sections.add(const Spacer());
     });
 
     return sections;

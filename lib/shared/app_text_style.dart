@@ -12,10 +12,13 @@ class AppTextStyle {
       TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 36);
   static const TextStyle ABOUT_SECTION_TEXT =
       TextStyle(color: Colors.white, fontStyle: FontStyle.italic, fontSize: 16);
-  static const TextStyle CONFIGURATION_MENU_SECTION_TITLE = TextStyle(fontSize: 20);
+  static const TextStyle CONFIGURATION_MENU_SECTION_TITLE =
+      TextStyle(fontSize: 20);
 
   static const SYSTEM_TILE = TextStyle(color: Colors.white, fontSize: 18);
   static const SYSTEM_BUTTON_TEXT = TextStyle(fontSize: 15);
+
+  static const CLOCK_TEXT = TextStyle(fontSize: 18);
 
   static const CONFIGURATION_PAGES_ROUTE_TITLE =
       TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 26);

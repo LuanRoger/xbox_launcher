@@ -1,5 +1,6 @@
 import 'package:clock/clock.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:xbox_launcher/shared/app_text_style.dart';
 
 class ClockTimer extends StatefulWidget {
   const ClockTimer({Key? key}) : super(key: key);
@@ -27,6 +28,8 @@ class _ClockTimerState extends State<ClockTimer> {
     });
 
     return Text(
-        "${timeNow.hour}:${timeNow.minute < 10 ? "0${timeNow.minute}" : timeNow.minute}");
+      "${timeNow.hour}:${timeNow.minute < 10 ? "0${timeNow.minute}" : timeNow.minute}",
+      style: AppTextStyle.CLOCK_TEXT,
+    );
   }
 }

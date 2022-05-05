@@ -14,8 +14,12 @@ class TileGrid extends StatelessWidget {
       {Key? key,
       required TileBase Function(BuildContext, int)? itemBuilder,
       required int itemCount}) {
-    return TileGrid(itemBuilder: itemBuilder);
+    return TileGrid(
+      itemBuilder: itemBuilder,
+      itemCount: itemCount,
+    );
   }
+
   factory TileGrid.count({Key? key, required List<TileBase> tiles}) {
     return TileGrid(tiles: tiles);
   }

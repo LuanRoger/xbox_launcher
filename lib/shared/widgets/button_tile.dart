@@ -1,6 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/shared/app_colors.dart';
-import 'package:xbox_launcher/shared/app_text_style.dart';
+import 'package:provider/provider.dart';
+import 'package:xbox_launcher/providers/theme_data_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/tile_base_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/tile_title_bar.dart';
@@ -13,7 +13,7 @@ class ButtonTile extends TileBaseStateful {
   void Function(BuildContext)? onPressed;
 
   @override
-  Color color;
+  Color? color;
   @override
   late double height;
   @override
@@ -26,7 +26,7 @@ class ButtonTile extends TileBaseStateful {
   ButtonTile(this.title, this.interactive,
       {Key? key,
       required TileSize tileSize,
-      this.color = Colors.transparent,
+      this.color,
       this.onPressed,
       this.icon,
       this.image})
@@ -50,11 +50,9 @@ class ButtonTile extends TileBaseStateful {
         height = 100;
         break;
     }
-
-    _generateCover();
   }
 
-  void _generateCover() {
+  Widget _generateCover(Color colorByGenerator) {
     if (image != null) {
       _tileCover = Image(
         image: image!,
@@ -63,18 +61,22 @@ class ButtonTile extends TileBaseStateful {
         fit: BoxFit.cover,
       );
     } else if (icon != null) {
-      _tileCover = Align(
-        alignment: Alignment.center,
-        child: Icon(
-          icon,
-          color: Colors.white,
-          size: 35,
+      _tileCover = Container(
+        color: color ?? colorByGenerator,
+        child: Align(
+          alignment: Alignment.center,
+          child: Icon(
+            icon,
+            color: Colors.white,
+            size: 35,
+          ),
         ),
       );
     } else {
-      color = color == Colors.transparent ? AppColors.GREEN : color;
-      _tileCover = Container(color: color);
+      _tileCover = Container(color: color ?? colorByGenerator);
     }
+
+    return _tileCover;
   }
 
   @override
@@ -109,7 +111,9 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
       onPressed: () => widget.onPressed!(context),
       child: Stack(
         children: [
-          widget._tileCover,
+          Consumer<ThemeDataProvider>(
+              builder: (_, value, __) =>
+                  widget._generateCover(value.accentColor)),
           Align(
               alignment: Alignment.bottomLeft,
               child: titleBar ?? const SizedBox())

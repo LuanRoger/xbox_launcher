@@ -1,6 +1,4 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:provider/provider.dart';
-import 'package:xbox_launcher/controllers/xinput_controller.dart';
 import 'package:xbox_launcher/models/game_model.dart';
 import 'package:xbox_launcher/pages/configurations_page/configurations_page.dart';
 import 'package:xbox_launcher/pages/models/xbox_page.dart';
@@ -11,10 +9,7 @@ import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/game_button_tile.dart';
 import 'package:xbox_launcher/shared/widgets/system_tile.dart';
-
-class BackNavigation extends Intent {}
-
-class HomePage extends XboxPage {
+class HomePage extends XboxPageStateless {
   HomePage({Key? key}) : super(key: key);
 
   @override
@@ -22,16 +17,26 @@ class HomePage extends XboxPage {
     return Container(
       color: AppColors.DARK_BG,
       child: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Flexible(
               flex: 0,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [XboxUserInfo(), ClockTimer()],
+                children: [
+                  const Flexible(child: XboxUserInfo()),
+                  Flexible(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Flexible(flex: 20, child: Icon(FluentIcons.mic_off)),
+                        const Spacer(),
+                        Flexible(flex: 0, child: ClockTimer()),
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
             const Spacer(),
