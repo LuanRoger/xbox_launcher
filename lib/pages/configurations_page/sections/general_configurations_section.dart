@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/configuration_section.dart';
 import 'package:xbox_launcher/shared/widgets/system_button.dart';
-import 'package:xbox_launcher/pages/personalization_configuration_page/personalization_configuration_page.dart';
+import 'package:xbox_launcher/pages/personalization_configuration_page.dart';
 
 class GenralConfigurationSection extends ConfigurationSection {
   const GenralConfigurationSection({Key? key}) : super("General", key: key);

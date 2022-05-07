@@ -1,7 +1,9 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
+import 'package:xbox_launcher/pages/background_select_page.dart';
 import 'package:xbox_launcher/pages/configurations_page/widgets/configuration_menu.dart';
 import 'package:xbox_launcher/providers/theme_data_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
@@ -35,7 +37,7 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
                   itemCount: AppColors.COLORS_LIST.length - 1,
                   itemBuilder: (context, index) {
                     return ButtonTile(
-                      "Color",
+                      "",
                       false,
                       tileSize: TileSize.MEDIUM,
                       color: AppColors.COLORS_LIST[index],
@@ -49,11 +51,16 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
         ),
       ],
       "My Background": [
-         SystemButton("Solid color",
-            width: 170, height: 70, onPressed: () {}),
-             SystemButton("Custom image",
-            width: 170, height: 70, onPressed: () {}),
-             SystemButton("Reset background",
+        SystemButton("Solid color", width: 170, height: 70, onPressed: () {
+          Navigator.push(
+              context,
+              FluentPageRoute(
+                  builder: (_) => BackgroundSelectPage(
+                        availableColors: AppColors.COLORS_LIST,
+                      )));
+        }),
+        SystemButton("Custom image", width: 170, height: 70, onPressed: () {}),
+        SystemButton("Reset background",
             width: 170, height: 70, onPressed: () {})
       ]
     };
