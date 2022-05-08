@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:xbox_launcher/controllers/external_file_picker.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/background_select_page.dart';
 import 'package:xbox_launcher/pages/configurations_page/widgets/configuration_menu.dart';
+import 'package:xbox_launcher/providers/main_background_image_provider.dart';
 import 'package:xbox_launcher/providers/theme_data_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
@@ -23,6 +27,17 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
                   ((context) => Navigator.pop(context))
             },
             key: key);
+
+  void setCustomImage(BuildContext context) async {
+    ExternalFilePicker filePicker = ExternalFilePicker();
+    var backgroundProvider = context.read<MainBackgroundImageProvider>();
+
+    String? imagePath = await filePicker.getImagePath();
+    if (imagePath == null) return;
+
+    backgroundProvider.imageBackgroundPath = imagePath;
+    backgroundProvider.preferenceByImage = true;
+  }
 
   @override
   Map<String, List<SystemButton>> buttonsBuilder(BuildContext context) {
@@ -59,9 +74,14 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
                         availableColors: AppColors.COLORS_LIST,
                       )));
         }),
-        SystemButton("Custom image", width: 170, height: 70, onPressed: () {}),
+        SystemButton("Custom image",
+            width: 170, height: 70, onPressed: () => setCustomImage(context)),
         SystemButton("Reset background",
-            width: 170, height: 70, onPressed: () {})
+            width: 170,
+            height: 70,
+            onPressed: () =>
+                Provider.of<MainBackgroundImageProvider>(context, listen: false)
+                    .reset())
       ]
     };
   }

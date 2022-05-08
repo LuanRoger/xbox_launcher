@@ -13,10 +13,11 @@ class MainBackgroundImageProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  ImageProvider? _imageBackground;
-  ImageProvider? get imageBackground => _imageBackground;
-  set imageBackground(ImageProvider? image) {
-    _imageBackground = image;
+  late String _imageBackgroundPath;
+  String get imageBackgroundPath => _imageBackgroundPath;
+  set imageBackgroundPath(String imagePath) {
+    _imageBackgroundPath = imagePath;
+    backgroundSharedPreferences.setString("imageBackgroundPath", imagePath);
     notifyListeners();
   }
 
@@ -36,16 +37,24 @@ class MainBackgroundImageProvider extends ChangeNotifier {
 
   void resetBackground() {
     colorIndex = 0;
-    imageBackground = null;
+    imageBackgroundPath = "";
     notifyListeners();
   }
 
   Future init() async {
     backgroundSharedPreferences = await SharedPreferences.getInstance();
 
-    _colorIndex =
+    colorIndex =
         backgroundSharedPreferences.getInt("solidColorBackground") ?? 0;
     preferenceByImage =
         backgroundSharedPreferences.getBool("preferenceByImage") ?? false;
+    imageBackgroundPath =
+        backgroundSharedPreferences.getString("imageBackgroundPath") ?? "";
+  }
+
+  void reset() {
+    colorIndex = 0;
+    preferenceByImage = false;
+    imageBackgroundPath = "";
   }
 }

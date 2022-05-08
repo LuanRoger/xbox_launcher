@@ -8,12 +8,13 @@ import 'package:xbox_launcher/pages/models/xbox_page.dart';
 import 'package:xbox_launcher/providers/main_background_image_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/button_tile.dart';
+import 'package:xbox_launcher/shared/widgets/vignette.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class BackgroundSelectPage extends XboxPageStateless {
   List<Color>? availableColors;
   List<ImageProvider>? availableImages;
-
+  //TODO: Made only for colors
   bool get _isColor =>
       availableColors != null ? availableColors!.isNotEmpty : false;
 
@@ -33,17 +34,10 @@ class BackgroundSelectPage extends XboxPageStateless {
       children: [
         _BackgroundView(isColorPreview: availableColors != null),
         Align(
-          alignment: Alignment.bottomCenter,
-          //TODO: Create a separeted widget
-          child: Container(
-            height: 200,
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    colors: [Colors.black, Colors.transparent])),
-          ),
-        ),
+            alignment: Alignment.bottomCenter,
+            child: Vignette(
+              height: 200,
+            )),
         Padding(
           padding: const EdgeInsets.all(50),
           child: Align(
@@ -68,8 +62,6 @@ class BackgroundSelectPage extends XboxPageStateless {
                       if (_isColor) {
                         state.colorIndex = index;
                         state.preferenceByImage = false;
-                      } else {
-                        state.imageBackground = availableImages![index];
                       }
                     },
                   );
@@ -97,12 +89,7 @@ class _BackgroundView extends StatelessWidget {
       builder: (context, value, child) {
         return AnimatedSwitcher(
             duration: const Duration(seconds: 1),
-            child: isColorPreview
-                ? Container(color: value.solidColorBackground)
-                : Image(
-                    image: value.imageBackground!,
-                    fit: BoxFit.cover,
-                  ));
+            child: Container(color: value.solidColorBackground));
       },
     );
   }

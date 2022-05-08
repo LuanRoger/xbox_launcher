@@ -17,7 +17,7 @@ class HomePage extends XboxPageStateless {
   Widget virtualBuild(BuildContext context) {
     return Stack(
       children: [
-        const Background(),
+        Container(height: double.infinity, width: double.infinity, child: const Background()),
         Padding(
           padding: const EdgeInsets.all(50),
           child: Column(
