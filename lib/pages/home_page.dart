@@ -2,6 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/models/game_model.dart';
 import 'package:xbox_launcher/pages/configurations_page/configurations_page.dart';
 import 'package:xbox_launcher/pages/models/xbox_page.dart';
+import 'package:xbox_launcher/pages/my_games_page/my_games_page.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
 import 'package:xbox_launcher/shared/widgets/clock_time.dart';
 import 'package:xbox_launcher/shared/widgets/system_banner_button.dart';
@@ -17,7 +18,10 @@ class HomePage extends XboxPageStateless {
   Widget virtualBuild(BuildContext context) {
     return Stack(
       children: [
-        Container(height: double.infinity, width: double.infinity, child: const Background()),
+        const SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: Background()),
         Padding(
           padding: const EdgeInsets.all(50),
           child: Column(
@@ -31,9 +35,7 @@ class HomePage extends XboxPageStateless {
                     Flexible(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Flexible(flex: 20, child: Icon(FluentIcons.mic_off)),
-                          const Spacer(),
+                        children: const [
                           Flexible(flex: 0, child: ClockTimer()),
                         ],
                       ),
@@ -53,6 +55,7 @@ class HomePage extends XboxPageStateless {
                       child: GameButtonTile(
                         GameModel(
                             "Hitman Tryology",
+                            "IO Interactive",
                             "https://www.xbox.com/pt-BR/play/launch/hitman-trilogy/9NN82NH949D5",
                             "https://store-images.s-microsoft.com/image/apps.10042.14144194933273826.3ced5741-3e78-4437-9d89-92e9ac9b74fc.0f724e5e-5cff-424d-9920-a7b0de11eec6?w=300&h=300",
                             "https://store-images.s-microsoft.com/image/apps.8424.14144194933273826.3ced5741-3e78-4437-9d89-92e9ac9b74fc.731d758a-5b00-4082-887f-693b179a41b2?w=1920&h=1080"),
@@ -65,6 +68,7 @@ class HomePage extends XboxPageStateless {
                       child: GameButtonTile(
                         GameModel(
                             "Forza Horizon 5",
+                            "Microsoft",
                             "https://www.xbox.com/pt-BR/play/launch/forza-horizon-5-standard-edition/9NKX70BBCDRN",
                             "https://store-images.s-microsoft.com/image/apps.18975.13718773309227929.bebdcc0e-1ed5-4778-8732-f4ef65a2f445.125d6b3b-492f-4e5f-8037-7ade230c8224?w=300&h=300",
                             "https://store-images.s-microsoft.com/image/apps.33953.13718773309227929.bebdcc0e-1ed5-4778-8732-f4ef65a2f445.9428b75f-2c08-4e70-9f95-281741b15341?w=1920&h=1080"),
@@ -97,7 +101,8 @@ class HomePage extends XboxPageStateless {
                     Flexible(
                       child: SystemBannerButton(
                         "My games",
-                        onClick: () {},
+                        onClick: () => Navigator.push(context,
+                            FluentPageRoute(builder: (_) => MyGamesPage())),
                         icon: FluentIcons.library,
                       ),
                     ),

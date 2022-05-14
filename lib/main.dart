@@ -5,6 +5,7 @@ import 'package:xbox_launcher/pages/home_page.dart';
 import 'package:xbox_launcher/controllers/xinput_controller.dart';
 import 'package:xbox_launcher/providers/main_background_image_provider.dart';
 import 'package:xbox_launcher/providers/theme_data_provider.dart';
+import 'package:xbox_launcher/providers/xcloud_game_database_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,16 +24,22 @@ void main() async {
 
   ThemeDataProvider preferencesProvider = ThemeDataProvider();
   await preferencesProvider.init();
+
   MainBackgroundImageProvider mainBackgroundImageProvider =
       MainBackgroundImageProvider();
   await mainBackgroundImageProvider.init();
+  XcloudGameDatabaseProvider xcloudGameDatabaseProvider =
+      XcloudGameDatabaseProvider();
+  await xcloudGameDatabaseProvider.init();
 
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider<ThemeDataProvider>(
-        create: ((_) => preferencesProvider)),
+        create: (_) => preferencesProvider),
     ChangeNotifierProvider<MainBackgroundImageProvider>(
       create: (_) => mainBackgroundImageProvider,
-    )
+    ),
+    Provider<XcloudGameDatabaseProvider>(
+        create: (_) => xcloudGameDatabaseProvider)
   ], child: const FlutterAppMain()));
 }
 

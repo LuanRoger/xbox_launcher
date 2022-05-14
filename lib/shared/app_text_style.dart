@@ -2,29 +2,30 @@ import 'package:fluent_ui/fluent_ui.dart';
 
 class AppTextStyle {
   static const TextStyle XBOX_GAME_BUTTON_TITLE =
-      TextStyle(color: Colors.white, fontWeight: FontWeight.w300);
+      TextStyle(fontWeight: FontWeight.w300);
   static const TextStyle TILE_PLACEHOLDER =
-      TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 36);
+      TextStyle(fontWeight: FontWeight.bold, fontSize: 36);
 
   static const TextStyle CONFIGURATION_TITLE =
-      TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 30);
+      TextStyle(fontWeight: FontWeight.w500, fontSize: 30);
   static const TextStyle ABOUT_SECTION_TITLE_CONFIGURATION =
-      TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 36);
+      TextStyle(fontWeight: FontWeight.bold, fontSize: 36);
   static const TextStyle ABOUT_SECTION_TEXT =
-      TextStyle(color: Colors.white, fontStyle: FontStyle.italic, fontSize: 16);
+      TextStyle(fontStyle: FontStyle.italic, fontSize: 16);
   static const TextStyle CONFIGURATION_MENU_SECTION_TITLE =
       TextStyle(fontSize: 20);
 
-  static const SYSTEM_TILE = TextStyle(color: Colors.white, fontSize: 18);
+  static const SYSTEM_TILE = TextStyle(fontSize: 18);
   static const SYSTEM_BUTTON_TEXT = TextStyle(fontSize: 15);
 
   static const CLOCK_TEXT = TextStyle(fontSize: 18);
 
   static const CONFIGURATION_PAGES_ROUTE_TITLE =
-      TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 26);
-  static const CONFIGURATION_PAGES_TITLE =
-      TextStyle(color: Colors.white, fontSize: 26);
+      TextStyle(fontWeight: FontWeight.bold, fontSize: 26);
+  static const CONFIGURATION_PAGES_TITLE = TextStyle(fontSize: 26);
+
+  static const MY_GAMES_SECTIONS_TILE = TextStyle(fontSize: 30);
 
   static const MENU_DIALOG_TITLE =
-      TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24);
+      TextStyle(fontWeight: FontWeight.bold, fontSize: 24);
 }

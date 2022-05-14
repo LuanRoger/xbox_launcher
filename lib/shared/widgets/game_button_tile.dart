@@ -12,7 +12,7 @@ class GameButtonTile extends ButtonTile {
           gameModel.gameTitle,
           true,
           tileSize: tileSize,
-          image: NetworkImage(gameModel.tileImageUrl),
+          image: NetworkImage(gameModel.tileGameImageUrl),
           onPressed: (context) {
             Navigator.push(
               context,

@@ -20,11 +20,11 @@ class ConfigurationsPage extends XboxPageStateful {
 }
 
 class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
-  late int sectionIndex;
+  late int selectedTab;
 
   @override
   void initState() {
-    sectionIndex = 0;
+    selectedTab = 0;
     super.initState();
   }
 
@@ -32,9 +32,9 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
   Widget virtualBuild(BuildContext context) {
     return NavigationView(
         pane: NavigationPane(
-            selected: sectionIndex,
+            selected: selectedTab,
             displayMode: PaneDisplayMode.open,
-            onChanged: (index) => setState(() => sectionIndex = index),
+            onChanged: (index) => setState(() => selectedTab = index),
             items: [
               PaneItem(
                   title: const Text("General"),
@@ -47,7 +47,7 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
                   icon: const Icon(FluentIcons.info)),
             ]),
         content: NavigationBody(
-          index: sectionIndex,
+          index: selectedTab,
           children: [
             const GenralConfigurationSection(),
             GamesDatabaseConfigurationSection(),

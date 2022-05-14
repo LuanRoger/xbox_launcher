@@ -49,20 +49,26 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
           height: 70,
           onPressed: () => MenuDialogOverlay("Colors",
               content: TileGrid.build(
-                  itemCount: AppColors.COLORS_LIST.length - 1,
-                  itemBuilder: (context, index) {
-                    return ButtonTile(
-                      "",
-                      false,
-                      tileSize: TileSize.MEDIUM,
-                      color: AppColors.COLORS_LIST[index],
-                      onPressed: (context) {
-                        Provider.of<ThemeDataProvider>(context, listen: false)
-                            .preferedColorIndex = index;
-                        Navigator.pop(context);
-                      },
-                    );
-                  })).show(context),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    crossAxisCount: 2),
+                itemCount: AppColors.COLORS_LIST.length - 1,
+                itemBuilder: (context, index) {
+                  return ButtonTile(
+                    "",
+                    false,
+                    tileSize: TileSize.MEDIUM,
+                    color: AppColors.COLORS_LIST[index],
+                    onPressed: (context) {
+                      Provider.of<ThemeDataProvider>(context, listen: false)
+                          .preferedColorIndex = index;
+                      Navigator.pop(context);
+                    },
+                  );
+                },
+                scrollDirection: Axis.horizontal,
+              )).show(context),
         ),
       ],
       "My Background": [

@@ -1,21 +1,18 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'game_model.g.dart';
+
+@JsonSerializable(includeIfNull: false)
 class GameModel {
   String gameTitle;
+  String gamePublisher;
   String xcloudUrl;
-  String tileImageUrl;
+  String tileGameImageUrl;
   String gameImageUrl;
 
-  GameModel(
-      this.gameTitle, this.xcloudUrl, this.tileImageUrl, this.gameImageUrl);
-  GameModel.fromJson(Map<int, dynamic> jsonObject)
-      : gameTitle = jsonObject["gameTitle"],
-        xcloudUrl = jsonObject["xcloudUrl"],
-        tileImageUrl = jsonObject["tileImageUrl"],
-        gameImageUrl = jsonObject["gameImageUrl"];
+  GameModel(this.gameTitle, this.gamePublisher, this.xcloudUrl,
+      this.tileGameImageUrl, this.gameImageUrl);
 
-  Map<String, dynamic> toJson() => {
-        "gameTitle": gameTitle,
-        "xcloudUrl": xcloudUrl,
-        "tileImageUrl": tileImageUrl,
-        "gameImageUrl": gameImageUrl
-      };
+  factory GameModel.fromJson(Map<String, dynamic> json) =>
+      _$GameModelFromJson(json);
 }

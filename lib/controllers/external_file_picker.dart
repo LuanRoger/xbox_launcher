@@ -7,4 +7,16 @@ class ExternalFilePicker {
 
     return result?.files.single.path;
   }
+
+  Future<String?> getJsonPath({String dialogTitle = "Select JSON File"}) async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+        allowMultiple: false,
+        allowCompression: true,
+        withReadStream: true,
+        allowedExtensions: [".json"],
+        type: FileType.custom,
+        dialogTitle: dialogTitle);
+
+    return result?.files.single.path;
+  }
 }
