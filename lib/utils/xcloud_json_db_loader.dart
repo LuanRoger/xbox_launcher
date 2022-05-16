@@ -1,11 +1,15 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:xbox_launcher/models/game_model.dart';
+import 'package:xbox_launcher/utils/string_formatter.dart';
 
 class XcloudJsonDbLoader {
   late String jsonFilePath;
   String? _jsonText;
+  int tileImageWidth = 300;
+  int tileImageHeight = 300;
+  int gameImageWidth = 1920;
+  int gameImageHeight = 1080;
 
   Future readJsonFile() async {
     File jsonFile = File(jsonFilePath);
@@ -17,6 +21,11 @@ class XcloudJsonDbLoader {
     var jsonResult = json.decode(_jsonText!);
     List<GameModel> gamesFromJson = List.empty(growable: true);
     for (var element in jsonResult) {
+      element["tileGameImageUrl"] = StringFormatter.format(
+          element["tileGameImageUrl"], [tileImageWidth, tileImageHeight]);
+      element["gameImageUrl"] = StringFormatter.format(
+          element["gameImageUrl"], [gameImageWidth, gameImageHeight]);
+
       gamesFromJson.add(GameModel.fromJson(element));
     }
 

@@ -35,7 +35,6 @@ class _GamePageState extends State<GamePage>
   Future<void> initPlatformState() async {
     await _controller.initialize();
     _controller.url.listen((url) {
-      print(url);
       if (url == "https://www.xbox.com/en-US/play") {
         Navigator.pop(context);
       }

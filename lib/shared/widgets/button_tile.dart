@@ -56,8 +56,6 @@ class ButtonTile extends TileBaseStateful {
     if (image != null) {
       _tileCover = Image(
         image: image!,
-        width: width,
-        height: height,
         fit: BoxFit.cover,
       );
     } else if (icon != null) {

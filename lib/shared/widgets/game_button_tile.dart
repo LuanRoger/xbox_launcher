@@ -7,10 +7,11 @@ import 'package:xbox_launcher/shared/widgets/button_tile.dart';
 class GameButtonTile extends ButtonTile {
   GameModel gameModel;
 
-  GameButtonTile(this.gameModel, {required TileSize tileSize})
+  GameButtonTile(this.gameModel, {Key? key, required TileSize tileSize})
       : super(
           gameModel.gameTitle,
           true,
+          key: key,
           tileSize: tileSize,
           image: NetworkImage(gameModel.tileGameImageUrl),
           onPressed: (context) {

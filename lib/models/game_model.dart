@@ -1,7 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'game_model.g.dart';
-
 @JsonSerializable(includeIfNull: false)
 class GameModel {
   String gameTitle;
@@ -13,6 +11,11 @@ class GameModel {
   GameModel(this.gameTitle, this.gamePublisher, this.xcloudUrl,
       this.tileGameImageUrl, this.gameImageUrl);
 
-  factory GameModel.fromJson(Map<String, dynamic> json) =>
-      _$GameModelFromJson(json);
+  factory GameModel.fromJson(Map<String, dynamic> json) => GameModel(
+        json['gameTitle'] as String,
+        json['gamePublisher'] as String,
+        json['xcloudUrl'] as String,
+        json['tileGameImageUrl'] as String,
+        json['gameImageUrl'] as String,
+      );
 }

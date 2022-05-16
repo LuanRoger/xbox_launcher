@@ -39,6 +39,7 @@ dependencies:
   shared_preferences: ^2.0.13
   file_picker: ^4.5.1
   json_annotation: ^4.5.0
+  sprintf: ^6.0.0
 
 dev_dependencies:
   flutter_test:
