@@ -4,7 +4,7 @@ import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/about_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/games_database_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/general_configurations_section.dart';
-import 'package:xbox_launcher/pages/models/xbox_page_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class ConfigurationsPage extends XboxPageStateful {

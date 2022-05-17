@@ -1,14 +1,20 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:xbox_launcher/models/app_model.dart';
+import 'package:xbox_launcher/shared/enums/app_type.dart';
 
 @JsonSerializable(includeIfNull: false)
-class GameModel {
-  String gameTitle;
+class GameModel implements AppModel {
+  @override
+  String name; //gameTitle
+  @override
+  AppType appType = AppType.GAME;
+
   String gamePublisher;
   String xcloudUrl;
   String tileGameImageUrl;
   String gameImageUrl;
 
-  GameModel(this.gameTitle, this.gamePublisher, this.xcloudUrl,
+  GameModel(this.name, this.gamePublisher, this.xcloudUrl,
       this.tileGameImageUrl, this.gameImageUrl);
 
   factory GameModel.fromJson(Map<String, dynamic> json) => GameModel(
@@ -18,4 +24,12 @@ class GameModel {
         json['tileGameImageUrl'] as String,
         json['gameImageUrl'] as String,
       );
+  Map<String, dynamic> toJson() => {
+        "gameTitle": name,
+        "appType": appType,
+        "gamePublisher": gamePublisher,
+        "xcloudUrl": xcloudUrl,
+        "tileGameImageUrl": tileGameImageUrl,
+        "gameImageUrl": gameImageUrl
+      };
 }

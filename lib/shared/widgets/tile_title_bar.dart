@@ -13,7 +13,7 @@ class TileTitleBar extends StatefulWidget {
 
 class _TileTitleBarState extends State<TileTitleBar> {
   final double maxHeight = 25;
-  final Duration animationDuration = const Duration(seconds: 1);
+  final Duration animationDuration = const Duration(milliseconds: 500);
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,7 @@ class _TileTitleBarState extends State<TileTitleBar> {
           width: double.infinity,
           height: height,
           child: Align(
-              alignment:
-                  height == maxHeight/2 ? Alignment.bottomLeft : Alignment.centerLeft,
+              alignment: Alignment.bottomLeft,
               child: Text(widget.title,
                   style: AppTextStyle.XBOX_GAME_BUTTON_TITLE)),
         );

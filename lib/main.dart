@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:xbox_launcher/controllers/apps_history.dart';
 import 'package:xbox_launcher/pages/home_page.dart';
 import 'package:xbox_launcher/controllers/xinput_controller.dart';
 import 'package:xbox_launcher/providers/main_background_image_provider.dart';
@@ -38,8 +39,9 @@ void main() async {
     ChangeNotifierProvider<MainBackgroundImageProvider>(
       create: (_) => mainBackgroundImageProvider,
     ),
+    ChangeNotifierProvider<AppsHistory>(create: (_) => AppsHistory()),
     Provider<XcloudGameDatabaseProvider>(
-        create: (_) => xcloudGameDatabaseProvider)
+        create: (_) => xcloudGameDatabaseProvider),
   ], child: const FlutterAppMain()));
 }
 
