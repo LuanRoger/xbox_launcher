@@ -26,7 +26,7 @@ class XcloudJsonDbLoader {
       element["gameImageUrl"] = StringFormatter.format(
           element["gameImageUrl"], [gameImageWidth, gameImageHeight]);
 
-      gamesFromJson.add(GameModel.fromJson(element));
+      gamesFromJson.add(GameModel().fromJson(element));
     }
 
     return gamesFromJson;

@@ -1,8 +1,9 @@
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 
 abstract class AppModel {
-  String name;
-  AppType appType;
+  late String name;
+  late AppType appType;
 
-  AppModel(this.name, this.appType);
+  AppModel fromJson(Map<String, dynamic> json);
+  Map<String, dynamic> toJson();
 }

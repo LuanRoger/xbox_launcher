@@ -10,8 +10,8 @@ class IOUtils {
     return file.readAsString();
   }
 
-  static Future writeFile(String text, String path) {
+  static Future writeFile(String text, String path) async {
     File file = File(path);
-    return file.writeAsString(text);
+    return file.writeAsString(text, mode: FileMode.write);
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:xbox_launcher/models/app_model.dart';
 import 'package:xbox_launcher/models/game_model.dart';
-import 'package:xbox_launcher/models/system_app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/utils/models/tile_generator_option.dart';
@@ -20,12 +19,6 @@ class TileTypeGenerate {
         case AppType.GAME:
           tile = GameButtonTile(model as GameModel,
               tileSize: tiles.length >= option.sizes.length
-                  ? option.sizes.last
-                  : option.sizes[tiles.length]);
-          break;
-        case AppType.SYSTEM_APP:
-          tile = SystemAppButtonTile(model as SystemAppModel,
-              tileSize: tiles.length > option.sizes.length
                   ? option.sizes.last
                   : option.sizes[tiles.length]);
           break;

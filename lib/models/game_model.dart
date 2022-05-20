@@ -1,32 +1,33 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:xbox_launcher/models/app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 
-@JsonSerializable(includeIfNull: false)
 class GameModel implements AppModel {
   @override
-  String name; //gameTitle
+  late String name; //gameTitle
   @override
   AppType appType = AppType.GAME;
 
-  String gamePublisher;
-  String xcloudUrl;
-  String tileGameImageUrl;
-  String gameImageUrl;
+  late String gamePublisher;
+  late String xcloudUrl;
+  late String tileGameImageUrl;
+  late String gameImageUrl;
 
-  GameModel(this.name, this.gamePublisher, this.xcloudUrl,
-      this.tileGameImageUrl, this.gameImageUrl);
+  @override
+  GameModel fromJson(Map<String, dynamic> json) {
+    GameModel gameModel = GameModel();
+    gameModel.name = json['gameTitle'] as String;
+    gameModel.gamePublisher = json['gamePublisher'] as String;
+    gameModel.xcloudUrl = json['xcloudUrl'] as String;
+    gameModel.tileGameImageUrl = json['tileGameImageUrl'] as String;
+    gameModel.gameImageUrl = json['gameImageUrl'] as String;
 
-  factory GameModel.fromJson(Map<String, dynamic> json) => GameModel(
-        json['gameTitle'] as String,
-        json['gamePublisher'] as String,
-        json['xcloudUrl'] as String,
-        json['tileGameImageUrl'] as String,
-        json['gameImageUrl'] as String,
-      );
+    return gameModel;
+  }
+
+  @override
   Map<String, dynamic> toJson() => {
         "gameTitle": name,
-        "appType": appType,
+        "type": appType.index,
         "gamePublisher": gamePublisher,
         "xcloudUrl": xcloudUrl,
         "tileGameImageUrl": tileGameImageUrl,

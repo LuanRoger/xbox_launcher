@@ -32,6 +32,8 @@ void main() async {
   XcloudGameDatabaseProvider xcloudGameDatabaseProvider =
       XcloudGameDatabaseProvider();
   await xcloudGameDatabaseProvider.init();
+  AppsHistory appsHistory = AppsHistory();
+  appsHistory.loadHistoric();
 
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider<ThemeDataProvider>(
@@ -39,7 +41,7 @@ void main() async {
     ChangeNotifierProvider<MainBackgroundImageProvider>(
       create: (_) => mainBackgroundImageProvider,
     ),
-    ChangeNotifierProvider<AppsHistory>(create: (_) => AppsHistory()),
+    ChangeNotifierProvider<AppsHistory>(create: (_) => appsHistory),
     Provider<XcloudGameDatabaseProvider>(
         create: (_) => xcloudGameDatabaseProvider),
   ], child: const FlutterAppMain()));
