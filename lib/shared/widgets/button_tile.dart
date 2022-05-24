@@ -52,6 +52,7 @@ class ButtonTile extends TileBaseStateful {
     }
   }
 
+  //TODO: Create generators
   Widget _generateCover(Color colorByGenerator) {
     if (image != null) {
       _tileCover = Image(

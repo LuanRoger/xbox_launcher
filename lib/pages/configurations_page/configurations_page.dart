@@ -30,6 +30,7 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
 
   @override
   Widget virtualBuild(BuildContext context) {
+    //TODO: Replace by NavigationBars
     return NavigationView(
         pane: NavigationPane(
             selected: selectedTab,
@@ -38,7 +39,8 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
             items: [
               PaneItem(
                   title: const Text("General"),
-                  icon: const Icon(FluentIcons.settings)),
+                  icon: const Icon(FluentIcons.settings),
+                  tileColor: ButtonState.all(Colors.yellow)),
               PaneItem(
                   title: const Text("Games database"),
                   icon: const Icon(FluentIcons.database)),

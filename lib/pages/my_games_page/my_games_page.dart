@@ -2,7 +2,9 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/my_games_page/sections/all_games_section.dart';
+import 'package:xbox_launcher/shared/widgets/models/navigation_item.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/navigation_bar.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class MyGamesPage extends XboxPageStateful {
@@ -28,23 +30,9 @@ class _MyGamesPageState extends XboxPageState<MyGamesPage> {
 
   @override
   Widget virtualBuild(BuildContext context) {
-    return NavigationView(
-      pane: NavigationPane(
-          selected: selectedTab,
-          displayMode: PaneDisplayMode.open,
-          items: [
-            PaneItem(
-                title: const Text("Games"), icon: const Icon(FluentIcons.game)),
-            PaneItem(
-                title: const Text("Apps"),
-                icon: const Icon(FluentIcons.app_icon_default))
-          ],
-          onChanged: (newIndexTab) =>
-              setState(() => selectedTab = newIndexTab)),
-      content: NavigationBody(
-        index: selectedTab,
-        children: [AllGamesSection()],
-      ),
-    );
+    return NavigationBar(
+        icon: FluentIcons.library,
+        paneItems: [NavigationItem("Games"), NavigationItem("Apps")],
+        bodyItems: [AllGamesSection()]);
   }
 }

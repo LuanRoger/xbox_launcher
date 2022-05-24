@@ -5,7 +5,7 @@ import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/providers/main_background_image_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/button_tile.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/vignette.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
