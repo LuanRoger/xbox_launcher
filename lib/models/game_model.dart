@@ -3,7 +3,7 @@ import 'package:xbox_launcher/shared/enums/app_type.dart';
 
 class GameModel implements AppModel {
   @override
-  late String name; //gameTitle
+  late String? name; //gameTitle
   @override
   AppType appType = AppType.GAME;
 
@@ -11,6 +11,8 @@ class GameModel implements AppModel {
   late String xcloudUrl;
   late String tileGameImageUrl;
   late String gameImageUrl;
+
+  //TODO: Create a constructor with named paramenters
 
   @override
   GameModel fromJson(Map<String, dynamic> json) {

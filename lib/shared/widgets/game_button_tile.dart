@@ -11,7 +11,7 @@ class GameButtonTile extends ButtonTile {
 
   GameButtonTile(this.gameModel, {Key? key, required TileSize tileSize})
       : super(
-          gameModel.name,
+          gameModel.name!,
           true,
           key: key,
           tileSize: tileSize,

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/models/app_model.dart';
 import 'package:xbox_launcher/models/game_model.dart';
+import 'package:xbox_launcher/models/system_app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 import 'package:xbox_launcher/utils/io_utils.dart';
 
@@ -14,7 +15,7 @@ class AppsHistory extends ChangeNotifier {
     AppModel repeatedApp = lastApps.firstWhere(
         (element) => element.name == app.name,
         orElse: () => GameModel()..name = "");
-    if (repeatedApp.name.isNotEmpty) {
+    if (repeatedApp.name!.isNotEmpty) {
       lastApps.remove(repeatedApp);
     }
 
@@ -26,12 +27,15 @@ class AppsHistory extends ChangeNotifier {
   void loadHistoric() async {
     String jsonText = await IOUtils.readFile(_APPS_HISTORIC_PATH);
     List<dynamic> jsonDynamicList = json.decode(jsonText);
-    lastApps = List<AppModel>.from(jsonDynamicList.map((game) {
+    lastApps = List<AppModel>.from(jsonDynamicList.map((appModel) {
       AppModel? app;
       switch (AppType.values
-          .firstWhere((element) => element.index == game["type"] as int)) {
+          .firstWhere((element) => element.index == appModel["type"] as int)) {
         case AppType.GAME:
-          app = GameModel().fromJson(game);
+          app = GameModel().fromJson(appModel);
+          break;
+        case AppType.SYSTEM_APP:
+          app = SystemAppModel().fromJson(appModel);
           break;
         default:
           app = null;

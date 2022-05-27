@@ -25,6 +25,7 @@ class AppTextStyle {
   static const CONFIGURATION_PAGES_TITLE = TextStyle(fontSize: 26);
 
   static const MY_GAMES_SECTIONS_TILE = TextStyle(fontSize: 30);
+  static const MY_APPS_SECTIONS_TILE = TextStyle(fontSize: 30);
 
   static const MENU_DIALOG_TITLE =
       TextStyle(fontWeight: FontWeight.bold, fontSize: 24);

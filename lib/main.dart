@@ -5,6 +5,7 @@ import 'package:xbox_launcher/controllers/apps_history.dart';
 import 'package:xbox_launcher/pages/home_page.dart';
 import 'package:xbox_launcher/controllers/xinput_controller.dart';
 import 'package:xbox_launcher/providers/main_background_image_provider.dart';
+import 'package:xbox_launcher/controllers/system_app_controller.dart';
 import 'package:xbox_launcher/providers/theme_data_provider.dart';
 import 'package:xbox_launcher/providers/xcloud_game_database_provider.dart';
 

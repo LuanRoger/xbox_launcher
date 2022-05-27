@@ -6,8 +6,8 @@ import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/game_button_tile.dart';
 import 'package:xbox_launcher/shared/widgets/tile_grid.dart';
 
-class AllGamesSection extends StatelessWidget {
-  AllGamesSection({Key? key}) : super(key: key);
+class MyGamesSection extends StatelessWidget {
+  const MyGamesSection({Key? key}) : super(key: key);
 
   List<GameButtonTile>? generateTilesFromProvider(BuildContext context) {
     List<GameButtonTile> gamesTile = List.empty(growable: true);
@@ -33,21 +33,21 @@ class AllGamesSection extends StatelessWidget {
         children: [
           const Flexible(
               child: Text(
-                "Games",
-                style: AppTextStyle.MY_GAMES_SECTIONS_TILE,
-              )),
+            "Games",
+            style: AppTextStyle.MY_GAMES_SECTIONS_TILE,
+          )),
           const Spacer(),
           Expanded(
-            flex: 7,
+              flex: 7,
               child: TileGrid.count(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 5,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-            ),
-            tiles: generateTilesFromProvider(context)!,
-            scrollDirection: Axis.vertical,
-          )),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 5,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                ),
+                tiles: generateTilesFromProvider(context)!,
+                scrollDirection: Axis.vertical,
+              )),
         ],
       ),
     );

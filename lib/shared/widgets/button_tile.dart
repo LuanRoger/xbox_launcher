@@ -4,6 +4,7 @@ import 'package:xbox_launcher/providers/theme_data_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/tile_base_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/tile_title_bar.dart';
+import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 
 class ButtonTile extends TileBaseStateful {
   String title;
@@ -21,7 +22,6 @@ class ButtonTile extends TileBaseStateful {
 
   late TileSize _tileSize;
   TileSize get tileSize => _tileSize;
-  late Widget _tileCover;
 
   ButtonTile(this.title, this.interactive,
       {Key? key,
@@ -50,32 +50,6 @@ class ButtonTile extends TileBaseStateful {
         height = 100;
         break;
     }
-  }
-
-  //TODO: Create generators
-  Widget _generateCover(Color colorByGenerator) {
-    if (image != null) {
-      _tileCover = Image(
-        image: image!,
-        fit: BoxFit.cover,
-      );
-    } else if (icon != null) {
-      _tileCover = Container(
-        color: color ?? colorByGenerator,
-        child: Align(
-          alignment: Alignment.center,
-          child: Icon(
-            icon,
-            color: Colors.white,
-            size: 35,
-          ),
-        ),
-      );
-    } else {
-      _tileCover = Container(color: color ?? colorByGenerator);
-    }
-
-    return _tileCover;
   }
 
   @override
@@ -111,8 +85,11 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
       child: Stack(
         children: [
           Consumer<ThemeDataProvider>(
-              builder: (_, value, __) =>
-                  widget._generateCover(value.accentColor)),
+              builder: (_, value, __) => WidgetGen.generateTileCover(
+                  colorByGenerator: value.accentColor,
+                  color: widget.color,
+                  icon: widget.icon,
+                  image: widget.image)),
           Align(
               alignment: Alignment.bottomLeft,
               child: titleBar ?? const SizedBox())

@@ -40,6 +40,7 @@ class TileGrid extends StatelessWidget {
     return TileGrid(
       tiles: tiles,
       gridDelegate: gridDelegate,
+      itemCount: tiles.length,
       scrollDirection: scrollDirection,
     );
   }

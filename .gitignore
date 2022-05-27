@@ -47,3 +47,6 @@ app.*.map.json
 
 # Python
 __pycache__/
+
+#Project releated
+apps_historic.json

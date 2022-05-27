@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/theme_data_provider.dart';
 import 'package:xbox_launcher/shared/widgets/models/navigation_item.dart';
 import 'package:xbox_launcher/shared/widgets/navigation_bar_profile_info.dart';
+import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 
 class NavigationBar extends StatefulWidget {
   int selectedTab;
@@ -25,16 +26,6 @@ class NavigationBar extends StatefulWidget {
 class _NavigationBarState extends State<NavigationBar> {
   late int selectedTab;
 
-  //TODO: Create generators
-  List<NavigationPaneItem> _generateItems() {
-    List<NavigationPaneItem> barItems = List.empty(growable: true);
-    for (NavigationItem item in widget.paneItems) {
-      barItems.add(PaneItem(icon: const SizedBox(), title: Text(item.text)));
-    }
-
-    return barItems;
-  }
-
   @override
   void initState() {
     super.initState();
@@ -55,7 +46,7 @@ class _NavigationBarState extends State<NavigationBar> {
           ),
           displayMode: PaneDisplayMode.open,
           onChanged: (index) => setState(() => selectedTab = index),
-          items: _generateItems()),
+          items: WidgetGen.generatePaneItems(widget.paneItems)),
       content: NavigationBody(index: selectedTab, children: widget.bodyItems),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/apps_history.dart';
-import 'package:xbox_launcher/pages/my_games_page/my_games_page.dart';
+import 'package:xbox_launcher/pages/my_library_page/my_library_page.dart';
 import 'package:xbox_launcher/shared/widgets/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/models/tile_type_generate.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
@@ -53,7 +53,8 @@ class HomePage extends XboxPageStateless {
                           tiles: TileTypeGenerate.generateByModel(
                               value.lastApps,
                               TileGeneratorOption(
-                                  [TileSize.BIG, TileSize.MEDIUM])));
+                                  [TileSize.BIG, TileSize.MEDIUM],
+                                  context: context)));
                     },
                   )),
               const Spacer(),
@@ -65,7 +66,7 @@ class HomePage extends XboxPageStateless {
                       child: SystemBannerButton(
                         "My games",
                         onClick: () => Navigator.push(context,
-                            FluentPageRoute(builder: (_) => MyGamesPage())),
+                            FluentPageRoute(builder: (_) => MyLibraryPage())),
                         icon: FluentIcons.library,
                       ),
                     ),
