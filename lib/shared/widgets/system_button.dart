@@ -9,8 +9,14 @@ class SystemButton extends Button {
   double? height;
   double? width;
 
+  //TODO: Made a default size (width, height)
   SystemButton(this.title,
-      {Key? key, required void Function() onPressed, this.icon, this.subtitle, this.height, this.width})
+      {Key? key,
+      required void Function() onPressed,
+      this.icon,
+      this.subtitle,
+      this.height,
+      this.width})
       : super(
           key: key,
           onPressed: onPressed,

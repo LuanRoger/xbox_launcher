@@ -5,7 +5,11 @@ class IOUtils {
     return File(path).exists();
   }
 
-  static Future<String> readFile(String path) {
+  ///Read and return the content of an file.
+  ///If the file not exist, will return null.
+  static Future<String?> readFile(String path) async {
+    if (!(await checkFile(path))) return null;
+
     File file = File(path);
     return file.readAsString();
   }

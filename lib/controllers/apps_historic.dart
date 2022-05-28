@@ -7,7 +7,7 @@ import 'package:xbox_launcher/models/system_app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 import 'package:xbox_launcher/utils/io_utils.dart';
 
-class AppsHistory extends ChangeNotifier {
+class AppsHistoric extends ChangeNotifier {
   String _APPS_HISTORIC_PATH = ".\\apps_historic.json";
   List<AppModel> lastApps = List.empty(growable: true);
 
@@ -25,7 +25,9 @@ class AppsHistory extends ChangeNotifier {
   }
 
   void loadHistoric() async {
-    String jsonText = await IOUtils.readFile(_APPS_HISTORIC_PATH);
+    String? jsonText = await IOUtils.readFile(_APPS_HISTORIC_PATH);
+    if (jsonText == null) return;
+
     List<dynamic> jsonDynamicList = json.decode(jsonText);
     lastApps = List<AppModel>.from(jsonDynamicList.map((appModel) {
       AppModel? app;

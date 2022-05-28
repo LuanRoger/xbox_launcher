@@ -1,6 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/controllers/apps_history.dart';
+import 'package:xbox_launcher/controllers/apps_historic.dart';
 import 'package:xbox_launcher/pages/my_library_page/my_library_page.dart';
 import 'package:xbox_launcher/shared/widgets/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/models/tile_type_generate.dart';
@@ -47,7 +47,7 @@ class HomePage extends XboxPageStateless {
               const Spacer(),
               Flexible(
                   flex: 10,
-                  child: Consumer<AppsHistory>(
+                  child: Consumer<AppsHistoric>(
                     builder: (_, value, __) {
                       return TileRow(
                           tiles: TileTypeGenerate.generateByModel(
