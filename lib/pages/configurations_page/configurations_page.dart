@@ -2,7 +2,8 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/about_configuration_section.dart';
-import 'package:xbox_launcher/pages/configurations_page/sections/games_database_configuration_section.dart';
+import 'package:xbox_launcher/pages/configurations_page/sections/account_configuration_section.dart';
+import 'package:xbox_launcher/pages/configurations_page/sections/cloud_gaming_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/general_configurations_section.dart';
 import 'package:xbox_launcher/shared/widgets/models/navigation_item.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
@@ -37,12 +38,14 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
       selectedTab: selectedTab,
       paneItems: [
         NavigationItem("General"),
-        NavigationItem("Games database"),
+        NavigationItem("Account"),
+        NavigationItem("Cloud gaming"),
         NavigationItem("About")
       ],
       bodyItems: [
         const GenralConfigurationSection(),
-        GamesDatabaseConfigurationSection(),
+        const AccountConfigurationSection(),
+        CloudGamingConfigurationSection(),
         const AboutConfigurationSection()
       ],
     );

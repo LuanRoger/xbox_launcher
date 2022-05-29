@@ -15,7 +15,7 @@ import 'package:xbox_launcher/shared/widgets/button_tile.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class PersonalizationConfigurationPage extends ConfigurationMenu {
-  PersonalizationConfigurationPage(BuildContext context, {Key? key})
+  PersonalizationConfigurationPage({Key? key})
       : super("General", "Personalization",
             keyAction: {
               ControllerKeyboardPair(

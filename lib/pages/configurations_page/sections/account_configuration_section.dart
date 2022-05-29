@@ -1,10 +1,9 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/configuration_section.dart';
 import 'package:xbox_launcher/shared/widgets/system_button.dart';
-import 'package:xbox_launcher/pages/personalization_configuration_page.dart';
 
-class GenralConfigurationSection extends ConfigurationSection {
-  const GenralConfigurationSection({Key? key}) : super("General", key: key);
+class AccountConfigurationSection extends ConfigurationSection {
+  const AccountConfigurationSection({Key? key}) : super("Account", key: key);
 
   @override
   Widget virtualBuild(BuildContext context) {
@@ -17,15 +16,9 @@ class GenralConfigurationSection extends ConfigurationSection {
               Expanded(
                 flex: 25,
                 child: SystemButton(
-                  "Personalizations",
-                  icon: FluentIcons.personalize,
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        FluentPageRoute(
-                            builder: (context) =>
-                                PersonalizationConfigurationPage()));
-                  },
+                  "Add accounts",
+                  icon: FluentIcons.add_friend,
+                  onPressed: () {},
                   height: 75,
                 ),
               ),
@@ -33,8 +26,8 @@ class GenralConfigurationSection extends ConfigurationSection {
               Expanded(
                 flex: 25,
                 child: SystemButton(
-                  "Video",
-                  icon: FluentIcons.t_v_monitor,
+                  "Remove accounts",
+                  icon: FluentIcons.user_remove,
                   onPressed: () {},
                   height: 75,
                 ),
@@ -50,8 +43,8 @@ class GenralConfigurationSection extends ConfigurationSection {
               Expanded(
                 flex: 25,
                 child: SystemButton(
-                  "Contributors",
-                  icon: FluentIcons.group,
+                  "Manage account",
+                  icon: FluentIcons.account_management,
                   onPressed: () {},
                   height: 75,
                 ),
@@ -60,8 +53,8 @@ class GenralConfigurationSection extends ConfigurationSection {
               Expanded(
                 flex: 25,
                 child: SystemButton(
-                  "License",
-                  icon: FluentIcons.entitlement_policy,
+                  "Change account",
+                  icon: FluentIcons.follow_user,
                   onPressed: () {},
                   height: 75,
                 ),
