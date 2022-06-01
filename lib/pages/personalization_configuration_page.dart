@@ -4,8 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/configurations_page/widgets/configuration_menu.dart';
-import 'package:xbox_launcher/providers/main_background_image_provider.dart';
-import 'package:xbox_launcher/providers/theme_data_provider.dart';
+import 'package:xbox_launcher/providers/background_profile_preferences.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
+import 'package:xbox_launcher/providers/theme_data_profile.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/tile_grid.dart';
@@ -26,7 +27,7 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
 
   void setCustomImage(BuildContext context) async {
     ExternalFilePicker filePicker = ExternalFilePicker();
-    var backgroundProvider = context.read<MainBackgroundImageProvider>();
+    var backgroundProvider = context.read<ProfileProvider>();
 
     String? imagePath = await filePicker.getImagePath();
     if (imagePath == null) return;
@@ -48,7 +49,7 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
               tileSize: TileSize.MEDIUM,
               color: AppColors.COLORS_LIST[index],
               onPressed: (context) {
-                Provider.of<ThemeDataProvider>(context, listen: false)
+                Provider.of<ProfileProvider>(context, listen: false)
                     .preferedColorIndex = index;
                 Navigator.pop(context);
               },
@@ -71,8 +72,8 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
               tileSize: TileSize.MEDIUM,
               color: AppColors.COLORS_LIST[index],
               onPressed: (context) {
-                var state = context.read<MainBackgroundImageProvider>();
-                state.colorIndex = index;
+                var state = context.read<ProfileProvider>();
+                state.backgroundColorIndex = index;
                 state.preferenceByImage = false;
 
                 Navigator.pop(context);
@@ -101,8 +102,8 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
             width: 170,
             height: 70,
             onPressed: () =>
-                Provider.of<MainBackgroundImageProvider>(context, listen: false)
-                    .reset())
+                Provider.of<ProfileProvider>(context, listen: false)
+                    .resetBackground())
       ]
     };
   }

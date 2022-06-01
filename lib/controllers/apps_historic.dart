@@ -4,11 +4,11 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/models/app_model.dart';
 import 'package:xbox_launcher/models/game_model.dart';
 import 'package:xbox_launcher/models/system_app_model.dart';
+import 'package:xbox_launcher/shared/app_data_files.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 import 'package:xbox_launcher/utils/io_utils.dart';
 
 class AppsHistoric extends ChangeNotifier {
-  String _APPS_HISTORIC_PATH = ".\\apps_historic.json";
   List<AppModel> lastApps = List.empty(growable: true);
 
   void addApp(AppModel app) {
@@ -25,7 +25,8 @@ class AppsHistoric extends ChangeNotifier {
   }
 
   void loadHistoric() async {
-    String? jsonText = await IOUtils.readFile(_APPS_HISTORIC_PATH);
+    String? jsonText =
+        await IOUtils.readFile(AppDataFiles.APP_HISTORIC_JSON_FILE_PATH);
     if (jsonText == null) return;
 
     List<dynamic> jsonDynamicList = json.decode(jsonText);
@@ -61,6 +62,6 @@ class AppsHistoric extends ChangeNotifier {
     String jsonText =
         encoder.convert(lastApps.map((app) => app.toJson()).toList());
 
-    await IOUtils.writeFile(jsonText, _APPS_HISTORIC_PATH);
+    await IOUtils.writeFile(jsonText, AppDataFiles.APP_HISTORIC_JSON_FILE_PATH);
   }
 }

@@ -6,10 +6,10 @@ import 'package:xbox_launcher/utils/string_formatter.dart';
 class XcloudJsonDbLoader {
   late String jsonFilePath;
   String? _jsonText;
-  int tileImageWidth = 300;
-  int tileImageHeight = 300;
-  int gameImageWidth = 1920;
-  int gameImageHeight = 1080;
+  final int tileImageWidth = 300;
+  final int tileImageHeight = 300;
+  final int gameImageWidth = 1920;
+  final int gameImageHeight = 1080;
 
   Future readJsonFile() async {
     File jsonFile = File(jsonFilePath);

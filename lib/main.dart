@@ -4,9 +4,8 @@ import 'package:window_manager/window_manager.dart';
 import 'package:xbox_launcher/controllers/apps_historic.dart';
 import 'package:xbox_launcher/pages/home_page.dart';
 import 'package:xbox_launcher/controllers/xinput_controller.dart';
-import 'package:xbox_launcher/providers/main_background_image_provider.dart';
-import 'package:xbox_launcher/controllers/system_app_controller.dart';
-import 'package:xbox_launcher/providers/theme_data_provider.dart';
+import 'package:xbox_launcher/providers/background_profile_preferences.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/providers/xcloud_game_database_provider.dart';
 
 void main() async {
@@ -24,12 +23,9 @@ void main() async {
   XInputController xInputController = XInputController();
   xInputController.init();
 
-  ThemeDataProvider preferencesProvider = ThemeDataProvider();
-  await preferencesProvider.init();
+  ProfileProvider profileProvider = ProfileProvider();
+  await profileProvider.loadProfile();
 
-  MainBackgroundImageProvider mainBackgroundImageProvider =
-      MainBackgroundImageProvider();
-  await mainBackgroundImageProvider.init();
   XcloudGameDatabaseProvider xcloudGameDatabaseProvider =
       XcloudGameDatabaseProvider();
   await xcloudGameDatabaseProvider.init();
@@ -37,10 +33,8 @@ void main() async {
   appsHistory.loadHistoric();
 
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider<ThemeDataProvider>(
-        create: (_) => preferencesProvider),
-    ChangeNotifierProvider<MainBackgroundImageProvider>(
-      create: (_) => mainBackgroundImageProvider,
+    ChangeNotifierProvider<ProfileProvider>(
+      create: (_) => profileProvider,
     ),
     ChangeNotifierProvider<AppsHistoric>(create: (_) => appsHistory),
     Provider<XcloudGameDatabaseProvider>(
@@ -53,7 +47,7 @@ class FlutterAppMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ThemeDataProvider>(
+    return Consumer<ProfileProvider>(
       builder: ((_, value, __) {
         return FluentApp(
             debugShowCheckedModeBanner: false,
