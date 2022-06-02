@@ -2,8 +2,8 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/configuration_section.dart';
 import 'package:xbox_launcher/shared/widgets/system_button.dart';
 
-class AccountConfigurationSection extends ConfigurationSection {
-  const AccountConfigurationSection({Key? key}) : super("Account", key: key);
+class ProfileConfigurationSection extends ConfigurationSection {
+  const ProfileConfigurationSection({Key? key}) : super("Account", key: key);
 
   @override
   Widget virtualBuild(BuildContext context) {
@@ -16,7 +16,7 @@ class AccountConfigurationSection extends ConfigurationSection {
               Expanded(
                 flex: 25,
                 child: SystemButton(
-                  "Add accounts",
+                  "Add profiles",
                   icon: FluentIcons.add_friend,
                   onPressed: () {},
                   height: 75,
@@ -26,7 +26,7 @@ class AccountConfigurationSection extends ConfigurationSection {
               Expanded(
                 flex: 25,
                 child: SystemButton(
-                  "Remove accounts",
+                  "Remove profiles",
                   icon: FluentIcons.user_remove,
                   onPressed: () {},
                   height: 75,
@@ -43,7 +43,7 @@ class AccountConfigurationSection extends ConfigurationSection {
               Expanded(
                 flex: 25,
                 child: SystemButton(
-                  "Manage account",
+                  "Manage profile",
                   icon: FluentIcons.account_management,
                   onPressed: () {},
                   height: 75,
@@ -53,7 +53,7 @@ class AccountConfigurationSection extends ConfigurationSection {
               Expanded(
                 flex: 25,
                 child: SystemButton(
-                  "Change account",
+                  "Change profile",
                   icon: FluentIcons.follow_user,
                   onPressed: () {},
                   height: 75,

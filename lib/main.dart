@@ -4,7 +4,6 @@ import 'package:window_manager/window_manager.dart';
 import 'package:xbox_launcher/controllers/apps_historic.dart';
 import 'package:xbox_launcher/pages/home_page.dart';
 import 'package:xbox_launcher/controllers/xinput_controller.dart';
-import 'package:xbox_launcher/providers/background_profile_preferences.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/providers/xcloud_game_database_provider.dart';
 
@@ -24,7 +23,7 @@ void main() async {
   xInputController.init();
 
   ProfileProvider profileProvider = ProfileProvider();
-  await profileProvider.loadProfile();
+  await profileProvider.init();
 
   XcloudGameDatabaseProvider xcloudGameDatabaseProvider =
       XcloudGameDatabaseProvider();

@@ -8,7 +8,8 @@ class ProfileModel {
   late BackgroundProfilePreferences backgroundPreferences;
   late ThemeProfilePreferences themePreferences;
 
-  ProfileModel fromJson(Map<String, dynamic> json) {
+  ProfileModel();
+  factory ProfileModel.fromJson(Map<String, dynamic> json) {
     ProfileModel profileModel = ProfileModel();
     profileModel.name = json["name"];
     profileModel.preferedServer = json["preferedServer"];

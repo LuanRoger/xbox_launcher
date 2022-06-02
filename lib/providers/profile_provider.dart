@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/providers/background_profile_preferences.dart';
 import 'package:xbox_launcher/providers/theme_data_profile.dart';
@@ -8,13 +9,26 @@ import 'package:xbox_launcher/shared/app_data_files.dart';
 import 'package:xbox_launcher/utils/io_utils.dart';
 
 class ProfileProvider extends ChangeNotifier {
+  static const DEFAULT_USERNAME = "Default";
+
+  late SharedPreferences profilePreferences;
+  List<ProfileModel>? _profileBuffer;
   late ProfileModel _currentProfile;
+
+  Future init() async {
+    profilePreferences = await SharedPreferences.getInstance();
+    await loadProfiles();
+    _setCurrentByName(
+        profilePreferences.getString("lastCurrentProfile") ?? DEFAULT_USERNAME);
+  }
 
   int get preferedColorIndex =>
       _currentProfile.themePreferences.preferedColorIndex;
   set preferedColorIndex(int preferedColorIndex) {
     _currentProfile.themePreferences.preferedColorIndex = preferedColorIndex;
+
     notifyListeners();
+    saveCurrentProfile();
   }
 
   int get backgroundColorIndex =>
@@ -22,7 +36,9 @@ class ProfileProvider extends ChangeNotifier {
   set backgroundColorIndex(int backgroundColorIndex) {
     _currentProfile.backgroundPreferences.backgroundColorIndex =
         backgroundColorIndex;
+
     notifyListeners();
+    saveCurrentProfile();
   }
 
   String? get imageBackgroundPath =>
@@ -30,14 +46,18 @@ class ProfileProvider extends ChangeNotifier {
   set imageBackgroundPath(String? imageBackgroundPath) {
     _currentProfile.backgroundPreferences.imageBackgroundPath =
         imageBackgroundPath;
+
     notifyListeners();
+    saveCurrentProfile();
   }
 
   bool get preferenceByImage =>
       _currentProfile.backgroundPreferences.preferenceByImage;
   set preferenceByImage(bool preferenceByImage) {
     _currentProfile.backgroundPreferences.preferenceByImage = preferenceByImage;
+
     notifyListeners();
+    saveCurrentProfile();
   }
 
   Brightness get brightness => _currentProfile.themePreferences.brightness;
@@ -50,23 +70,50 @@ class ProfileProvider extends ChangeNotifier {
 
   void resetBackground() => _currentProfile.backgroundPreferences.reset();
 
-  Future saveProfile() async {
-    String jsonProfileText = json.encode(_currentProfile.toJson());
-    await IOUtils.writeFile(
-        jsonProfileText, AppDataFiles.PROFILES_JSON_FILE_PATH);
+  void saveCurrentProfile() async {
+    await loadProfiles();
+    _profileBuffer!
+        .removeWhere((element) => element.name == _currentProfile.name);
+    _profileBuffer!.add(_currentProfile);
+
+    await saveProfiles();
   }
 
-  Future loadProfile() async {
-    String? jsonProfileText =
+  Future saveProfiles() async {
+    JsonEncoder encoder = JsonEncoder.withIndent(' ' * 4);
+    String jsonText =
+        encoder.convert(_profileBuffer!.map((app) => app.toJson()).toList());
+
+    await IOUtils.writeFile(jsonText, AppDataFiles.PROFILES_JSON_FILE_PATH);
+  }
+
+  Future loadProfiles({String? name}) async {
+    String? profilesText =
         await IOUtils.readFile(AppDataFiles.PROFILES_JSON_FILE_PATH);
-    if (jsonProfileText == null) {
+    if (profilesText == null) {
       _createDefault();
-      saveProfile();
+      _profileBuffer = [_currentProfile];
+      saveProfiles();
 
       return;
     }
 
-    _currentProfile = json.decode(jsonProfileText);
+    List<dynamic> tempProfileList = json.decode(profilesText);
+    _profileBuffer = List<ProfileModel>.from(
+        tempProfileList.map((profile) => ProfileModel.fromJson(profile)));
+
+    if (name != null) _setCurrentByName(name);
+  }
+
+  void _setCurrentByName(String name) {
+    ProfileModel profileModel =
+        _profileBuffer!.firstWhere((element) => element.name == name);
+    _currentProfile = profileModel;
+
+    profilePreferences.setString("lastCurrentProfile", _currentProfile.name);
+
+    _profileBuffer = null;
+    notifyListeners();
   }
 
   void _createDefault() {
