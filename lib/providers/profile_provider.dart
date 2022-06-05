@@ -22,6 +22,29 @@ class ProfileProvider extends ChangeNotifier {
         profilePreferences.getString("lastCurrentProfile") ?? DEFAULT_USERNAME);
   }
 
+  String get name => _currentProfile.name;
+  set name(String name) {
+    _currentProfile.name = name;
+
+    notifyListeners();
+    saveCurrentProfile();
+  }
+
+  String get preferedServer => _currentProfile.preferedServer;
+  set preferedServer(String preferedServer) {
+    _currentProfile.preferedServer = preferedServer;
+
+    saveCurrentProfile();
+  }
+
+  String? get profileImagePath => _currentProfile.profileImagePath;
+  set profileImagePath(String? profileImagePath) {
+    _currentProfile.profileImagePath = profileImagePath;
+
+    notifyListeners();
+    saveCurrentProfile();
+  }
+
   int get preferedColorIndex =>
       _currentProfile.themePreferences.preferedColorIndex;
   set preferedColorIndex(int preferedColorIndex) {
@@ -118,7 +141,7 @@ class ProfileProvider extends ChangeNotifier {
 
   void _createDefault() {
     ProfileModel defaultProfile = ProfileModel();
-    defaultProfile.name = "Default";
+    defaultProfile.name = DEFAULT_USERNAME;
     defaultProfile.preferedServer = "en_US";
 
     defaultProfile.backgroundPreferences =

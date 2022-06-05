@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:fluent_ui/fluent_ui.dart';
 
 class AppTextStyle {
@@ -19,6 +21,8 @@ class AppTextStyle {
   static const SYSTEM_BUTTON_TEXT = TextStyle(fontSize: 15);
 
   static const CLOCK_TEXT = TextStyle(fontSize: 18);
+
+  static const PROFILE_INFO_USER_NAME_TEXT = TextStyle(fontSize: 16);
 
   static const CONFIGURATION_PAGES_ROUTE_TITLE =
       TextStyle(fontWeight: FontWeight.bold, fontSize: 26);

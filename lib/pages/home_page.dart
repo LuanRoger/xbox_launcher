@@ -9,7 +9,7 @@ import 'package:xbox_launcher/shared/widgets/clock_time.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/system_banner_button.dart';
 import 'package:xbox_launcher/shared/widgets/tile_row.dart';
-import 'package:xbox_launcher/shared/widgets/xbox_user_info.dart';
+import 'package:xbox_launcher/shared/widgets/profile_info.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 
 class HomePage extends XboxPageStateless {
@@ -32,7 +32,7 @@ class HomePage extends XboxPageStateless {
                 flex: 0,
                 child: Row(
                   children: [
-                    const Flexible(child: XboxUserInfo()),
+                    const Flexible(child: ProfileInfo()),
                     Flexible(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
