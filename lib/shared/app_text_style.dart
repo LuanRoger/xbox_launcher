@@ -28,6 +28,10 @@ class AppTextStyle {
       TextStyle(fontWeight: FontWeight.bold, fontSize: 26);
   static const CONFIGURATION_PAGES_TITLE = TextStyle(fontSize: 26);
 
+  static const PROFILE_SELECTION_TITLE =
+      TextStyle(fontSize: 36, fontWeight: FontWeight.bold);
+  static const PROFILE_NAME_SELECTION_ITEM = TextStyle(fontSize: 30);
+
   static const MY_GAMES_SECTIONS_TILE = TextStyle(fontSize: 30);
   static const MY_APPS_SECTIONS_TILE = TextStyle(fontSize: 30);
 

@@ -3,7 +3,7 @@ import 'package:xbox_launcher/pages/configurations_page/sections/configuration_s
 import 'package:xbox_launcher/shared/widgets/system_button.dart';
 
 class ProfileConfigurationSection extends ConfigurationSection {
-  const ProfileConfigurationSection({Key? key}) : super("Account", key: key);
+  const ProfileConfigurationSection({Key? key}) : super("Profile", key: key);
 
   @override
   Widget virtualBuild(BuildContext context) {

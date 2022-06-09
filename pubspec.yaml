@@ -40,6 +40,7 @@ dependencies:
   file_picker: 4.6.0
   json_annotation: 4.5.0
   sprintf: 6.0.0
+  carousel_slider: ^4.1.1
 
 dev_dependencies:
   flutter_test:

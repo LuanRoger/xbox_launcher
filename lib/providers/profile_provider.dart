@@ -22,6 +22,8 @@ class ProfileProvider extends ChangeNotifier {
         profilePreferences.getString("lastCurrentProfile") ?? DEFAULT_USERNAME);
   }
 
+  List<ProfileModel>? get profilesList => _profileBuffer;
+
   String get name => _currentProfile.name;
   set name(String name) {
     _currentProfile.name = name;
@@ -127,6 +129,8 @@ class ProfileProvider extends ChangeNotifier {
 
     if (name != null) _setCurrentByName(name);
   }
+
+  void releaseProfiles() => _profileBuffer = null;
 
   void _setCurrentByName(String name) {
     ProfileModel profileModel =

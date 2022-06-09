@@ -9,7 +9,7 @@ abstract class XboxPageStateful extends StatefulWidget {
 
   XboxPageStateful({Key? key, this.keyAction}) : super(key: key);
 
-  void _mapKeyboardShortcuts(BuildContext context) {
+  void mapKeyboardShortcuts(BuildContext context) {
     if (keyAction == null) return;
 
     Map<ShortcutActivator, void Function()> binding =
@@ -33,7 +33,7 @@ abstract class XboxPageState<T extends XboxPageStateful> extends State<T> {
 
   @override
   Widget build(BuildContext context) {
-    widget._mapKeyboardShortcuts(context);
+    widget.mapKeyboardShortcuts(context);
 
     return widget.keyAction != null
         ? CallbackShortcuts(
