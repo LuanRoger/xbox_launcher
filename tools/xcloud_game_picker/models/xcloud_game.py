@@ -1,7 +1,3 @@
-import json
-from turtle import title
-
-
 class XcloudGame:
     gameTitle: str
     gamePublisher: str

@@ -1,14 +1,16 @@
-from dataclasses import replace
 from time import sleep
 from typing import Any, List
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from models.xcloud_game import XcloudGame
-import json
+from consts import XCLOUD_URL
+from json_writer import *
 
 driver = webdriver.Edge()
-driver.get("https://www.xbox.com/en-US/play/gallery/all-games")
+driver.get(XCLOUD_URL)
 games_grid = driver.find_element(by=By.CLASS_NAME, value="GameItemGrid-module__postitionRelative___1SLzN")
 done: bool = False
 
@@ -37,19 +39,21 @@ page_height = driver.execute_script("return document.body.scrollHeight")
 games_list: List[XcloudGame] = []
 while not done:
     for game in getGamesInGrid(games_grid):
-        game_label: str = game.get_attribute("aria-label")
-        game_title = game_label.split(',')[0].strip()
-        game_publisher = game_label.split(',')[1].strip()
-
         game_url = game.get_attribute("href")
 
         game_image_element = game.find_element(by=By.TAG_NAME, value="img")
         tile_image_url = formatWidthHeight(game_image_element.get_attribute("src"))
 
-        # Get hero image
         driver.execute_script("window.open()")
         driver.switch_to.window(driver.window_handles[1])
         driver.get(game_url)
+
+        finder = WebDriverWait(driver, 30).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "GameItemContainer-module__titleText___3qvVD"))
+        )
+
+        game_title = driver.find_element(by=By.CLASS_NAME, value="GameItemContainer-module__titleText___3qvVD").text
+        game_publisher = driver.find_element(by=By.CLASS_NAME, value="GameItemContainer-module__subtitleText___2c69Z").text
 
         hero_image = driver.find_element(by=By.CLASS_NAME, value="HeroBackgroundImage-module__heroImage___2JqG_")
         game_image_url = formatWidthHeight(hero_image.get_attribute("src"))
@@ -59,15 +63,10 @@ while not done:
 
         games_list.append(XcloudGame(game_title, game_publisher, game_url, tile_image_url, game_image_url))
 
-    page_scroll_point += 1500
+    page_scroll_point += 1600
     driver.execute_script(f"window.scrollTo(0, {page_scroll_point})")
-    sleep(0.5)
     done = page_scroll_point >= page_height
+    sleep(0.5)
 
 driver.close()
-
-json_str = json.dumps([ob.__dict__ for ob in games_list], indent=4)
-
-outfile = open('xcloud_games_database.json', 'w+')
-outfile.write(json_str)
-outfile.close()
+flush_game_list(games_list)
