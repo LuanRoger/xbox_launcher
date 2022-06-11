@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/apps_historic.dart';
 import 'package:xbox_launcher/models/game_model.dart';
 import 'package:xbox_launcher/pages/game_page.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/button_tile.dart';
 
@@ -24,7 +25,8 @@ class GameButtonTile extends ButtonTile {
                     gameModel.xcloudUrl, NetworkImage(gameModel.gameImageUrl)),
               ),
             );
-            Provider.of<AppsHistoric>(context, listen: false).addApp(gameModel);
+            Provider.of<ProfileProvider>(context, listen: false)
+                .addApp(gameModel);
           },
         );
 }

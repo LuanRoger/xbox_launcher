@@ -1,7 +1,10 @@
+// ignore_for_file: constant_identifier_names
 import 'dart:convert';
 
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:xbox_launcher/controllers/apps_historic.dart';
+import 'package:xbox_launcher/models/app_model.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/providers/background_profile_preferences.dart';
 import 'package:xbox_launcher/providers/theme_data_profile.dart';
@@ -39,9 +42,24 @@ class ProfileProvider extends ChangeNotifier {
     saveCurrentProfile();
   }
 
+  String? get xcloudGamesJsonPath => _currentProfile.xcloudGamesJsonPath;
+  set xcloudGamesJsonPath(String? xcloudGamesJsonPath) {
+    _currentProfile.xcloudGamesJsonPath = xcloudGamesJsonPath;
+
+    saveCurrentProfile();
+  }
+
   String? get profileImagePath => _currentProfile.profileImagePath;
   set profileImagePath(String? profileImagePath) {
     _currentProfile.profileImagePath = profileImagePath;
+
+    notifyListeners();
+    saveCurrentProfile();
+  }
+
+  List<AppModel> get lastApps => _currentProfile.appsHistoric.lastApps;
+  void addApp(AppModel appModel) {
+    _currentProfile.appsHistoric.addApp(appModel);
 
     notifyListeners();
     saveCurrentProfile();
@@ -107,7 +125,7 @@ class ProfileProvider extends ChangeNotifier {
   Future saveProfiles() async {
     JsonEncoder encoder = JsonEncoder.withIndent(' ' * 4);
     String jsonText =
-        encoder.convert(_profileBuffer!.map((app) => app.toJson()).toList());
+        encoder.convert(_profileBuffer!.map((profile) => profile.toJson()).toList());
 
     await IOUtils.writeFile(jsonText, AppDataFiles.PROFILES_JSON_FILE_PATH);
   }
@@ -148,6 +166,7 @@ class ProfileProvider extends ChangeNotifier {
     defaultProfile.name = DEFAULT_USERNAME;
     defaultProfile.preferedServer = "en_US";
 
+    defaultProfile.appsHistoric = AppsHistoric();
     defaultProfile.backgroundPreferences =
         BackgroundProfilePreferences(0, null);
     defaultProfile.themePreferences = ThemeProfilePreferences(0);

@@ -34,6 +34,6 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
     return NavigationBar(
         icon: FluentIcons.library,
         paneItems: [NavigationItem("Games"), NavigationItem("Apps")],
-        bodyItems: const [MyGamesSection(), MyAppsSection()]);
+        bodyItems: [MyGamesSection(), const MyAppsSection()]);
   }
 }

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:xbox_launcher/models/game_model.dart';
 import 'package:xbox_launcher/utils/string_formatter.dart';
 
-class XcloudJsonDbLoader {
+class XCloudJsonDbLoader {
   late String jsonFilePath;
   String? _jsonText;
   final int tileImageWidth = 300;
