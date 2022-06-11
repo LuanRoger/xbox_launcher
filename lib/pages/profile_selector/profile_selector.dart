@@ -71,9 +71,9 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Expanded(
+              const Expanded(
                 flex: 0,
-                child: const Text(
+                child: Text(
                   "Select the profile",
                   style: AppTextStyle.PROFILE_SELECTION_TITLE,
                 ),

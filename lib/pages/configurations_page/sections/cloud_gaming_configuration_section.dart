@@ -32,20 +32,25 @@ class CloudGamingConfigurationSection extends ConfigurationSection {
         const Spacer(),
         InfoLabel(
           label: "XCloud server:",
-          child: Combobox<String>(
-            isExpanded: true,
-            placeholder: const Text("Select the server"),
-            items: AppConsts.xcloudSupportedServers
-                .map((item) => ComboboxItem(
-                      child: Text(item),
-                      value: item,
-                    ))
-                .toList(),
-            value: AppConsts.xcloudSupportedServers.firstWhere((element) =>
-                element ==
-                Provider.of<ProfileProvider>(context, listen: false)
-                    .preferedServer),
-            onChanged: (newValue) => selectedServer = newValue,
+          child: StatefulBuilder(
+            builder: ((_, setState) => Consumer<ProfileProvider>(
+                  builder: (_, value, __) => Combobox<String>(
+                    isExpanded: true,
+                    placeholder: const Text("Select the server"),
+                    items: AppConsts.XCLOUD_SUPPORTED_SERVERS
+                        .map((item) => ComboboxItem(
+                              child: Text(item),
+                              value: item,
+                            ))
+                        .toList(),
+                    value: AppConsts.XCLOUD_SUPPORTED_SERVERS.firstWhere(
+                        (element) => element == value.preferedServer),
+                    onChanged: (newValue) {
+                      value.preferedServer = newValue!;
+                      setState(() {});
+                    },
+                  ),
+                )),
           ),
         ),
         const Spacer(),
@@ -54,10 +59,6 @@ class CloudGamingConfigurationSection extends ConfigurationSection {
           child: SystemButton("Confirm", width: 170, height: 70, onPressed: () {
             context.read<ProfileProvider>().xcloudGamesJsonPath =
                 jsonUrlTextController.text;
-
-            if (selectedServer != null) {
-              context.read<ProfileProvider>().preferedServer = selectedServer!;
-            }
           }),
         )
       ],

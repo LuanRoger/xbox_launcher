@@ -8,6 +8,7 @@ import 'package:xbox_launcher/models/app_model.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/providers/background_profile_preferences.dart';
 import 'package:xbox_launcher/providers/theme_data_profile.dart';
+import 'package:xbox_launcher/shared/app_consts.dart';
 import 'package:xbox_launcher/shared/app_data_files.dart';
 import 'package:xbox_launcher/utils/io_utils.dart';
 
@@ -124,8 +125,8 @@ class ProfileProvider extends ChangeNotifier {
 
   Future saveProfiles() async {
     JsonEncoder encoder = JsonEncoder.withIndent(' ' * 4);
-    String jsonText =
-        encoder.convert(_profileBuffer!.map((profile) => profile.toJson()).toList());
+    String jsonText = encoder
+        .convert(_profileBuffer!.map((profile) => profile.toJson()).toList());
 
     await IOUtils.writeFile(jsonText, AppDataFiles.PROFILES_JSON_FILE_PATH);
   }
@@ -164,7 +165,7 @@ class ProfileProvider extends ChangeNotifier {
   void _createDefault() {
     ProfileModel defaultProfile = ProfileModel();
     defaultProfile.name = DEFAULT_USERNAME;
-    defaultProfile.preferedServer = "en_US";
+    defaultProfile.preferedServer = AppConsts.XCLOUD_SUPPORTED_SERVERS[0];
 
     defaultProfile.appsHistoric = AppsHistoric();
     defaultProfile.backgroundPreferences =

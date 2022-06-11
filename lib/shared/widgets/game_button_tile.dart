@@ -22,7 +22,10 @@ class GameButtonTile extends ButtonTile {
               context,
               FluentPageRoute(
                 builder: (context) => GamePage(
-                    gameModel.xcloudUrl, NetworkImage(gameModel.gameImageUrl)),
+                  gameModel.xcloudUrl,
+                  NetworkImage(gameModel.gameImageUrl),
+                  server: context.read<ProfileProvider>().preferedServer,
+                ),
               ),
             );
             Provider.of<ProfileProvider>(context, listen: false)
