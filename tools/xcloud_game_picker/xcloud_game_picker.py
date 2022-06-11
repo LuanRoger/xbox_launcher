@@ -1,3 +1,4 @@
+from asyncio import base_events
 from time import sleep
 from typing import Any, List
 from selenium import webdriver
@@ -17,7 +18,11 @@ done: bool = False
 def getGamesInGrid(grid) -> Any:
     return grid.find_elements(by=By.TAG_NAME, value="a")
 
-def formatWidthHeight(url: str) -> str:
+def add_formater_game_url_server(url: str) -> str:
+    base_url = "https://www.xbox.com/"
+    return base_url + "%s/" + url[len(base_url):]
+
+def add_formater_width_height(url: str) -> str:
     if(url is None): return None
 
     argument_start = url.find('?')
@@ -42,7 +47,7 @@ while not done:
         game_url = game.get_attribute("href")
 
         game_image_element = game.find_element(by=By.TAG_NAME, value="img")
-        tile_image_url = formatWidthHeight(game_image_element.get_attribute("src"))
+        tile_image_url = add_formater_width_height(game_image_element.get_attribute("src"))
 
         driver.execute_script("window.open()")
         driver.switch_to.window(driver.window_handles[1])
@@ -56,12 +61,12 @@ while not done:
         game_publisher = driver.find_element(by=By.CLASS_NAME, value="GameItemContainer-module__subtitleText___2c69Z").text
 
         hero_image = driver.find_element(by=By.CLASS_NAME, value="HeroBackgroundImage-module__heroImage___2JqG_")
-        game_image_url = formatWidthHeight(hero_image.get_attribute("src"))
+        game_image_url = add_formater_width_height(hero_image.get_attribute("src"))
 
         driver.execute_script("window.close()")
         driver.switch_to.window(driver.window_handles[0])
 
-        games_list.append(XcloudGame(game_title, game_publisher, game_url, tile_image_url, game_image_url))
+        games_list.append(XcloudGame(game_title, game_publisher, add_formater_game_url_server(game_url), tile_image_url, game_image_url))
 
     page_scroll_point += 1600
     driver.execute_script(f"window.scrollTo(0, {page_scroll_point})")
