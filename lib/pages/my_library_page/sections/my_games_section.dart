@@ -5,6 +5,7 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/game_button_tile.dart';
+import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable.dart';
 import 'package:xbox_launcher/shared/widgets/tile_grid.dart';
 import 'package:xbox_launcher/utils/loaders/xcloud_json_db_loader.dart';
 
@@ -13,6 +14,15 @@ class MyGamesSection extends StatelessWidget {
 
   MyGamesSection({Key? key}) : super(key: key) {
     gamesLoader = XCloudJsonDbLoader();
+  }
+
+  Future<bool> readXCloudGames(BuildContext context) async {
+    ProfileProvider profileProvider = context.read<ProfileProvider>();
+    if (profileProvider.xcloudGamesJsonPath == null) return false;
+
+    gamesLoader.jsonFilePath = profileProvider.xcloudGamesJsonPath!;
+    await gamesLoader.readJsonFile();
+    return true;
   }
 
   List<GameButtonTile> generateTilesFromProvider(List<GameModel> gamesList) {
@@ -26,9 +36,6 @@ class MyGamesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var profileProvider = context.read<ProfileProvider>();
-    gamesLoader.jsonFilePath = profileProvider.xcloudGamesJsonPath!;
-
     return Padding(
       padding: const EdgeInsets.fromLTRB(50, 50, 50, 0),
       child: Column(
@@ -41,8 +48,8 @@ class MyGamesSection extends StatelessWidget {
             style: AppTextStyle.MY_GAMES_SECTIONS_TILE,
           )),
           const Spacer(),
-          FutureBuilder(
-              future: gamesLoader.readJsonFile(),
+          FutureBuilder<bool>(
+              future: readXCloudGames(context),
               builder: (_, snapshot) {
                 switch (snapshot.connectionState) {
                   case ConnectionState.waiting:
@@ -50,17 +57,19 @@ class MyGamesSection extends StatelessWidget {
                   default:
                     return Expanded(
                         flex: 7,
-                        child: TileGrid.count(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 5,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                          ),
-                          tiles: generateTilesFromProvider(
-                              gamesLoader.deserializeAllJson()),
-                          scrollDirection: Axis.vertical,
-                        ));
+                        child: snapshot.hasData && snapshot.data!
+                            ? TileGrid.count(
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 5,
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 10,
+                                ),
+                                tiles: generateTilesFromProvider(
+                                    gamesLoader.deserializeAllJson()),
+                                scrollDirection: Axis.vertical,
+                              )
+                            : const XCloudFileUnavailable());
                 }
               }),
         ],

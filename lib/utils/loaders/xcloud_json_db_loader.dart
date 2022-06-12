@@ -5,7 +5,7 @@ import 'package:xbox_launcher/utils/string_formatter.dart';
 
 class XCloudJsonDbLoader {
   late String jsonFilePath;
-  String? _jsonText;
+  late String _jsonText;
   final int tileImageWidth = 300;
   final int tileImageHeight = 300;
   final int gameImageWidth = 1920;
@@ -18,7 +18,7 @@ class XCloudJsonDbLoader {
   }
 
   List<GameModel> deserializeAllJson() {
-    var jsonResult = json.decode(_jsonText!);
+    var jsonResult = json.decode(_jsonText);
     List<GameModel> gamesFromJson = List.empty(growable: true);
     for (var element in jsonResult) {
       element["tileGameImageUrl"] = StringFormatter.format(

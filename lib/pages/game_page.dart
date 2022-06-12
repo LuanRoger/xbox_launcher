@@ -28,8 +28,7 @@ class _GamePageState extends State<GamePage> {
   void formatUrlToServer() {
     xcloudBaseUrl =
         StringFormatter.format(AppConsts.XCLOUD_PLAY_BASE_URL, [widget.server]);
-    gameUrl = StringFormatter.format(widget.gameUrl, [widget.server])
-        .replaceFirst("games", "launch");
+    gameUrl = StringFormatter.format(widget.gameUrl, [widget.server]);
   }
 
   @override

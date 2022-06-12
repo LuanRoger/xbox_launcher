@@ -4,9 +4,13 @@ import 'package:fluent_ui/fluent_ui.dart';
 
 class AppTextStyle {
   static const TextStyle XBOX_GAME_BUTTON_TITLE =
-      TextStyle(fontWeight: FontWeight.w300);
+      TextStyle(fontWeight: FontWeight.bold);
   static const TextStyle TILE_PLACEHOLDER =
       TextStyle(fontWeight: FontWeight.bold, fontSize: 36);
+
+  static const TextStyle PLACEHOLDER_MESSAGE_TITLE =
+      TextStyle(fontWeight: FontWeight.bold, fontSize: 46);
+  static const TextStyle PLACEHOLDER_SUBMESSAGE_TEXT = TextStyle(fontSize: 24);
 
   static const TextStyle CONFIGURATION_TITLE =
       TextStyle(fontWeight: FontWeight.w500, fontSize: 30);

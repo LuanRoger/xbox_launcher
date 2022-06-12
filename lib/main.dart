@@ -1,7 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:xbox_launcher/controllers/apps_historic.dart';
 import 'package:xbox_launcher/pages/home_page.dart';
 import 'package:xbox_launcher/controllers/xinput_controller.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
@@ -15,7 +14,7 @@ void main() async {
   windowManager.waitUntilReadyToShow(windowOptions, () async {
     await windowManager.show();
     await windowManager.focus();
-    //await windowManager.setFullScreen(true);
+    await windowManager.setFullScreen(true);
   });
 
   XInputController xInputController = XInputController();

@@ -19,6 +19,7 @@ class ProfileModel {
     profileModel.preferedServer = json["preferedServer"];
     profileModel.xcloudGamesJsonPath = json["xcloudGamesJsonPath"];
     profileModel.profileImagePath = json["profileImagePath"];
+    profileModel.appsHistoric = AppsHistoric.fromJson(json["appsHistoric"]);
     profileModel.backgroundPreferences =
         BackgroundProfilePreferences.fromJson(json["backgroundPreferences"]);
     profileModel.themePreferences =
