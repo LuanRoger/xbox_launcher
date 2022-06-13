@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/configurations_page/widgets/configuration_menu.dart';
-import 'package:xbox_launcher/providers/background_profile_preferences.dart';
+import 'package:xbox_launcher/models/background_profile_preferences.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
-import 'package:xbox_launcher/providers/theme_data_profile.dart';
+import 'package:xbox_launcher/models/theme_data_profile.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/tile_grid.dart';
@@ -27,13 +27,13 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
 
   void setCustomImage(BuildContext context) async {
     ExternalFilePicker filePicker = ExternalFilePicker();
-    var backgroundProvider = context.read<ProfileProvider>();
+    var profileProvider = context.read<ProfileProvider>();
 
     String? imagePath = await filePicker.getImagePath();
     if (imagePath == null) return;
 
-    backgroundProvider.imageBackgroundPath = imagePath;
-    backgroundProvider.preferenceByImage = true;
+    profileProvider.imageBackgroundPath = imagePath;
+    profileProvider.preferenceByImage = true;
   }
 
   void setMainColor(BuildContext context) {

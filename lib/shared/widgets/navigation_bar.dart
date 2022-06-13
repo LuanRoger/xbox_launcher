@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
-import 'package:xbox_launcher/providers/theme_data_profile.dart';
+import 'package:xbox_launcher/models/theme_data_profile.dart';
 import 'package:xbox_launcher/shared/widgets/models/navigation_item.dart';
 import 'package:xbox_launcher/shared/widgets/navigation_bar_profile_info.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';

@@ -1,11 +1,10 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:webview_windows/webview_windows.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/utils/string_formatter.dart';
 
-final navigatorKey = GlobalKey<NavigatorState>();
-
-class GamePage extends StatefulWidget {
+class GamePage extends XboxPageStateful {
   String gameUrl;
   ImageProvider gameCover;
   String server;
@@ -14,11 +13,13 @@ class GamePage extends StatefulWidget {
       : super(key: key);
 
   @override
-  _GamePageState createState() => _GamePageState();
+  State<StatefulWidget> vitualCreateState() => _GamePageState();
 }
 
-class _GamePageState extends State<GamePage> {
+class _GamePageState extends XboxPageState<GamePage> {
   final _controller = WebviewController();
+  final navigatorKey = GlobalKey<NavigatorState>();
+  late FocusNode webViewFocus;
   late String xcloudBaseUrl;
   late String gameUrl;
 
@@ -33,16 +34,18 @@ class _GamePageState extends State<GamePage> {
 
   @override
   void initState() {
+    super.initState();
+
     _loadReady = false;
+    webViewFocus = FocusNode();
     formatUrlToServer();
     initPlatformState();
-
-    super.initState();
   }
 
   @override
   dispose() {
     _controller.dispose();
+    webViewFocus.dispose();
 
     super.dispose();
   }
@@ -90,14 +93,17 @@ class _GamePageState extends State<GamePage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget virtualBuild(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       fit: StackFit.expand,
       children: [
-        Webview(
-          _controller,
-          permissionRequested: _onPermissionRequested,
+        Focus(
+          focusNode: webViewFocus,
+          child: Webview(
+            _controller,
+            permissionRequested: _onPermissionRequested,
+          ),
         ),
         Visibility(
           visible: _entranceAnimationDone,
@@ -106,6 +112,7 @@ class _GamePageState extends State<GamePage> {
               duration: const Duration(milliseconds: 200),
               onEnd: () {
                 setState(() => _entranceAnimationDone = false);
+                webViewFocus.requestFocus();
               },
               child: SizedBox(
                 width: double.infinity,

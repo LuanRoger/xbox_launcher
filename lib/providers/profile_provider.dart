@@ -1,53 +1,56 @@
-// ignore_for_file: constant_identifier_names
-import 'dart:convert';
-
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:xbox_launcher/controllers/apps_historic.dart';
+import 'package:xbox_launcher/models/apps_historic.dart';
 import 'package:xbox_launcher/models/app_model.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
-import 'package:xbox_launcher/providers/background_profile_preferences.dart';
-import 'package:xbox_launcher/providers/theme_data_profile.dart';
+import 'package:xbox_launcher/models/background_profile_preferences.dart';
+import 'package:xbox_launcher/models/theme_data_profile.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
-import 'package:xbox_launcher/shared/app_data_files.dart';
-import 'package:xbox_launcher/utils/io_utils.dart';
+import 'package:xbox_launcher/utils/loaders/profile_loader.dart';
 
 class ProfileProvider extends ChangeNotifier {
-  static const DEFAULT_USERNAME = "Default";
-
   late SharedPreferences profilePreferences;
-  List<ProfileModel>? _profileBuffer;
   late ProfileModel _currentProfile;
+  late ProfileLoader profileLoader;
 
   Future init() async {
     profilePreferences = await SharedPreferences.getInstance();
-    await loadProfiles();
-    _setCurrentByName(
-        profilePreferences.getString("lastCurrentProfile") ?? DEFAULT_USERNAME);
+    profileLoader = ProfileLoader();
+
+    if (!(await profileLoader.loadProfiles())) {
+      profileLoader.createDefaultProfile(_createDefault());
+    }
+
+    _setCurrentByName(profilePreferences.getString("lastCurrentProfile") ??
+        AppConsts.DEFAULT_USERNAME);
   }
 
-  List<ProfileModel>? get profilesList => _profileBuffer;
+  List<ProfileModel>? get profilesList {
+    if (profileLoader.profileBuffer == null) return List<ProfileModel>.empty();
+
+    return [...(profileLoader.profileBuffer)!];
+  }
 
   String get name => _currentProfile.name;
   set name(String name) {
     _currentProfile.name = name;
 
     notifyListeners();
-    saveCurrentProfile();
+    saveProfile();
   }
 
   String get preferedServer => _currentProfile.preferedServer;
   set preferedServer(String preferedServer) {
     _currentProfile.preferedServer = preferedServer;
 
-    saveCurrentProfile();
+    saveProfile();
   }
 
   String? get xcloudGamesJsonPath => _currentProfile.xcloudGamesJsonPath;
   set xcloudGamesJsonPath(String? xcloudGamesJsonPath) {
     _currentProfile.xcloudGamesJsonPath = xcloudGamesJsonPath;
 
-    saveCurrentProfile();
+    saveProfile();
   }
 
   String? get profileImagePath => _currentProfile.profileImagePath;
@@ -55,7 +58,7 @@ class ProfileProvider extends ChangeNotifier {
     _currentProfile.profileImagePath = profileImagePath;
 
     notifyListeners();
-    saveCurrentProfile();
+    saveProfile();
   }
 
   List<AppModel> get lastApps => _currentProfile.appsHistoric.lastApps;
@@ -63,7 +66,7 @@ class ProfileProvider extends ChangeNotifier {
     _currentProfile.appsHistoric.addApp(appModel);
 
     notifyListeners();
-    saveCurrentProfile();
+    saveProfile();
   }
 
   int get preferedColorIndex =>
@@ -72,7 +75,7 @@ class ProfileProvider extends ChangeNotifier {
     _currentProfile.themePreferences.preferedColorIndex = preferedColorIndex;
 
     notifyListeners();
-    saveCurrentProfile();
+    saveProfile();
   }
 
   int get backgroundColorIndex =>
@@ -82,7 +85,7 @@ class ProfileProvider extends ChangeNotifier {
         backgroundColorIndex;
 
     notifyListeners();
-    saveCurrentProfile();
+    saveProfile();
   }
 
   String? get imageBackgroundPath =>
@@ -92,7 +95,7 @@ class ProfileProvider extends ChangeNotifier {
         imageBackgroundPath;
 
     notifyListeners();
-    saveCurrentProfile();
+    saveProfile();
   }
 
   bool get preferenceByImage =>
@@ -101,7 +104,7 @@ class ProfileProvider extends ChangeNotifier {
     _currentProfile.backgroundPreferences.preferenceByImage = preferenceByImage;
 
     notifyListeners();
-    saveCurrentProfile();
+    saveProfile();
   }
 
   Brightness get brightness => _currentProfile.themePreferences.brightness;
@@ -114,57 +117,22 @@ class ProfileProvider extends ChangeNotifier {
 
   void resetBackground() => _currentProfile.backgroundPreferences.reset();
 
-  void saveCurrentProfile() async {
-    await loadProfiles();
-    _profileBuffer!
-        .removeWhere((element) => element.name == _currentProfile.name);
-    _profileBuffer!.add(_currentProfile);
+  void saveProfile() => profileLoader.saveProfile(_currentProfile);
 
-    await saveProfiles();
-  }
-
-  Future saveProfiles() async {
-    JsonEncoder encoder = JsonEncoder.withIndent(' ' * 4);
-    String jsonText = encoder
-        .convert(_profileBuffer!.map((profile) => profile.toJson()).toList());
-
-    await IOUtils.writeFile(jsonText, AppDataFiles.PROFILES_JSON_FILE_PATH);
-  }
-
-  Future loadProfiles({String? name}) async {
-    String? profilesText =
-        await IOUtils.readFile(AppDataFiles.PROFILES_JSON_FILE_PATH);
-    if (profilesText == null) {
-      _createDefault();
-      _profileBuffer = [_currentProfile];
-      saveProfiles();
-
-      return;
-    }
-
-    List<dynamic> tempProfileList = json.decode(profilesText);
-    _profileBuffer = List<ProfileModel>.from(
-        tempProfileList.map((profile) => ProfileModel.fromJson(profile)));
-
-    if (name != null) _setCurrentByName(name);
-  }
-
-  void releaseProfiles() => _profileBuffer = null;
-
-  void _setCurrentByName(String name) {
-    ProfileModel profileModel =
-        _profileBuffer!.firstWhere((element) => element.name == name);
+  Future _setCurrentByName(String name) async {
+    ProfileModel profileModel = profileLoader.profileBuffer!
+        .firstWhere((element) => element.name == name);
     _currentProfile = profileModel;
 
-    profilePreferences.setString("lastCurrentProfile", _currentProfile.name);
+    await profilePreferences.setString(
+        "lastCurrentProfile", _currentProfile.name);
 
-    _profileBuffer = null;
     notifyListeners();
   }
 
-  void _createDefault() {
+  ProfileModel _createDefault() {
     ProfileModel defaultProfile = ProfileModel();
-    defaultProfile.name = DEFAULT_USERNAME;
+    defaultProfile.name = AppConsts.DEFAULT_USERNAME;
     defaultProfile.preferedServer = AppConsts.XCLOUD_SUPPORTED_SERVERS[0];
 
     defaultProfile.appsHistoric = AppsHistoric();
@@ -172,6 +140,6 @@ class ProfileProvider extends ChangeNotifier {
         BackgroundProfilePreferences(0, null);
     defaultProfile.themePreferences = ThemeProfilePreferences(0);
 
-    _currentProfile = defaultProfile;
+    return defaultProfile;
   }
 }

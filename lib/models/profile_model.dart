@@ -1,6 +1,6 @@
-import 'package:xbox_launcher/controllers/apps_historic.dart';
-import 'package:xbox_launcher/providers/background_profile_preferences.dart';
-import 'package:xbox_launcher/providers/theme_data_profile.dart';
+import 'package:xbox_launcher/models/apps_historic.dart';
+import 'package:xbox_launcher/models/background_profile_preferences.dart';
+import 'package:xbox_launcher/models/theme_data_profile.dart';
 
 class ProfileModel {
   late String name;

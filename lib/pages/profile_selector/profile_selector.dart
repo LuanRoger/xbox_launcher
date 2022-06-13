@@ -11,6 +11,7 @@ import 'package:xbox_launcher/shared/widgets/background.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
+//TODO: Made stateless
 class ProfileSelector extends XboxPageStateful {
   CarouselController profileSliderController = CarouselController();
 
@@ -46,15 +47,10 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
     super.initState();
   }
 
-  Future<List<ProfileModel>?> loadProfiles(BuildContext context) async {
-    var profileProvider = context.read<ProfileProvider>();
-    await profileProvider.loadProfiles();
-
-    return profileProvider.profilesList;
-  }
-
   @override
   Widget virtualBuild(BuildContext context) {
+    profilesAvailable = context.read<ProfileProvider>().profilesList;
+
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -78,42 +74,29 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
                   style: AppTextStyle.PROFILE_SELECTION_TITLE,
                 ),
               ),
-              FutureBuilder(
-                future: loadProfiles(context),
-                builder: (context, snapshot) {
-                  profilesAvailable ??= snapshot.data as List<ProfileModel>?;
-
-                  switch (snapshot.connectionState) {
-                    case ConnectionState.waiting:
-                      return const ProgressRing();
-                    default:
-                      return Expanded(
-                        child: CarouselSlider(
-                          items: profilesAvailable!.map((profile) {
-                            ProfileSelectorItem item = ProfileSelectorItem(
-                              profileModel: profile,
-                            );
-                            sliderItemsFocusNodes.add(item.focusNode);
-                            return item;
-                          }).toList(),
-                          options: CarouselOptions(
-                              autoPlay: false,
-                              disableCenter: true,
-                              viewportFraction: 0.3,
-                              enlargeCenterPage: true,
-                              enableInfiniteScroll: false,
-                              onPageChanged: (index, _) {
-                                sliderItemsFocusNodes[index].requestFocus();
-                                _updateBackground(() =>
-                                    backgroundPreview = Background(
-                                      profileModel: profilesAvailable![index],
-                                    ));
-                              }),
-                          carouselController: widget.profileSliderController,
-                        ),
-                      );
-                  }
-                },
+              Expanded(
+                child: CarouselSlider(
+                  items: profilesAvailable!.map((profile) {
+                    ProfileSelectorItem item = ProfileSelectorItem(
+                      profileModel: profile,
+                    );
+                    sliderItemsFocusNodes.add(item.focusNode);
+                    return item;
+                  }).toList(),
+                  options: CarouselOptions(
+                      autoPlay: false,
+                      disableCenter: true,
+                      viewportFraction: 0.3,
+                      enlargeCenterPage: true,
+                      enableInfiniteScroll: false,
+                      onPageChanged: (index, _) {
+                        sliderItemsFocusNodes[index].requestFocus();
+                        _updateBackground(() => backgroundPreview = Background(
+                              profileModel: profilesAvailable![index],
+                            ));
+                      }),
+                  carouselController: widget.profileSliderController,
+                ),
               ),
             ],
           ),

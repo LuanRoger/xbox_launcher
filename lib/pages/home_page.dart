@@ -1,6 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/controllers/apps_historic.dart';
+import 'package:xbox_launcher/models/apps_historic.dart';
 import 'package:xbox_launcher/pages/my_library_page/my_library_page.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
