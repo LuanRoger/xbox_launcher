@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/configuration_section.dart';
-import 'package:xbox_launcher/shared/widgets/system_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
 
 class ProfileConfigurationSection extends ConfigurationSection {
   const ProfileConfigurationSection({Key? key}) : super("Profile", key: key);
@@ -15,21 +16,19 @@ class ProfileConfigurationSection extends ConfigurationSection {
             children: [
               Expanded(
                 flex: 25,
-                child: SystemButton(
-                  "Add profiles",
+                child: IconTextButton(
+                  title: "Add profiles",
                   icon: FluentIcons.add_friend,
                   onPressed: () {},
-                  height: 75,
                 ),
               ),
               const Spacer(),
               Expanded(
                 flex: 25,
-                child: SystemButton(
-                  "Remove profiles",
+                child: IconTextButton(
+                  title: "Remove profiles",
                   icon: FluentIcons.user_remove,
                   onPressed: () {},
-                  height: 75,
                 ),
               ),
             ],
@@ -42,21 +41,19 @@ class ProfileConfigurationSection extends ConfigurationSection {
             children: [
               Expanded(
                 flex: 25,
-                child: SystemButton(
-                  "Manage profile",
+                child: IconTextButton(
+                  title: "Manage profile",
                   icon: FluentIcons.account_management,
                   onPressed: () {},
-                  height: 75,
                 ),
               ),
               const Spacer(),
               Expanded(
                 flex: 25,
-                child: SystemButton(
-                  "Change profile",
+                child: IconTextButton(
+                  title: "Change profile",
                   icon: FluentIcons.follow_user,
                   onPressed: () {},
-                  height: 75,
                 ),
               )
             ],

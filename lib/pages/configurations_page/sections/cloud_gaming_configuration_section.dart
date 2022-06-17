@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/configuration_section.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
-import 'package:xbox_launcher/shared/widgets/system_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
+    as XButtons;
 
 class CloudGamingConfigurationSection extends ConfigurationSection {
   final TextEditingController jsonUrlTextController = TextEditingController();
@@ -56,10 +58,12 @@ class CloudGamingConfigurationSection extends ConfigurationSection {
         const Spacer(),
         Flexible(
           flex: 10,
-          child: SystemButton("Confirm", width: 170, height: 70, onPressed: () {
-            context.read<ProfileProvider>().xcloudGamesJsonPath =
-                jsonUrlTextController.text;
-          }),
+          child: XButtons.TextButton(
+              title: "Confirm",
+              onPressed: () {
+                context.read<ProfileProvider>().xcloudGamesJsonPath =
+                    jsonUrlTextController.text;
+              }),
         )
       ],
     );

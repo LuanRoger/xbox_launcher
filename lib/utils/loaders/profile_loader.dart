@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:ffi';
+import 'dart:io';
 
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/shared/app_data_files.dart';
@@ -7,10 +9,13 @@ import 'package:xbox_launcher/utils/io_utils.dart';
 class ProfileLoader {
   List<ProfileModel>? _profileBuffer;
   List<ProfileModel>? get profileBuffer => _profileBuffer;
+  Future<File> get profileFile async =>
+      File(await AppDataFiles.PROFILES_JSON_FILE_PATH);
 
   Future<bool> loadProfiles() async {
-    String? profilesText =
-        await IOUtils.readFile(AppDataFiles.PROFILES_JSON_FILE_PATH);
+    File file = await profileFile;
+
+    String? profilesText = await IOUtils.readFile(file);
 
     if (profilesText == null) return false;
 
@@ -39,7 +44,7 @@ class ProfileLoader {
     String jsonText = encoder
         .convert(_profileBuffer!.map((profile) => profile.toJson()).toList());
 
-    await IOUtils.writeFile(jsonText, AppDataFiles.PROFILES_JSON_FILE_PATH);
+    await IOUtils.writeFile(jsonText, await profileFile);
   }
 
   Future createDefaultProfile(ProfileModel defaultProfile) async {

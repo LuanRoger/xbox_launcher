@@ -1,5 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/shared/widgets/system_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 
 class ConfigurationMenuSection extends StatelessWidget {

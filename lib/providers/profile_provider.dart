@@ -5,6 +5,7 @@ import 'package:xbox_launcher/models/app_model.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/models/background_profile_preferences.dart';
 import 'package:xbox_launcher/models/theme_data_profile.dart';
+import 'package:xbox_launcher/models/video_preferences.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
 import 'package:xbox_launcher/utils/loaders/profile_loader.dart';
 
@@ -21,8 +22,11 @@ class ProfileProvider extends ChangeNotifier {
       profileLoader.createDefaultProfile(_createDefault());
     }
 
-    _setCurrentByName(profilePreferences.getString("lastCurrentProfile") ??
-        AppConsts.DEFAULT_USERNAME);
+    await _setCurrentByName(
+        profilePreferences.getString("lastCurrentProfile") ??
+            AppConsts.DEFAULT_USERNAME);
+
+    await _currentProfile.videoPreferences.init();
   }
 
   List<ProfileModel>? get profilesList {
@@ -117,6 +121,14 @@ class ProfileProvider extends ChangeNotifier {
 
   void resetBackground() => _currentProfile.backgroundPreferences.reset();
 
+  bool get fullscreen => _currentProfile.videoPreferences.fullscreen;
+  set fullscreen(bool fullscreen) {
+    _currentProfile.videoPreferences.fullscreen = fullscreen;
+
+    notifyListeners();
+    saveProfile();
+  }
+
   void saveProfile() => profileLoader.saveProfile(_currentProfile);
 
   Future _setCurrentByName(String name) async {
@@ -139,6 +151,7 @@ class ProfileProvider extends ChangeNotifier {
     defaultProfile.backgroundPreferences =
         BackgroundProfilePreferences(0, null);
     defaultProfile.themePreferences = ThemeProfilePreferences(0);
+    defaultProfile.videoPreferences = VideoPreferences(true);
 
     return defaultProfile;
   }

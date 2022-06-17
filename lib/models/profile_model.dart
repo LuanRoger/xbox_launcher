@@ -1,6 +1,7 @@
 import 'package:xbox_launcher/models/apps_historic.dart';
 import 'package:xbox_launcher/models/background_profile_preferences.dart';
 import 'package:xbox_launcher/models/theme_data_profile.dart';
+import 'package:xbox_launcher/models/video_preferences.dart';
 
 class ProfileModel {
   late String name;
@@ -11,6 +12,7 @@ class ProfileModel {
   late AppsHistoric appsHistoric;
   late BackgroundProfilePreferences backgroundPreferences;
   late ThemeProfilePreferences themePreferences;
+  late VideoPreferences videoPreferences;
 
   ProfileModel();
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
@@ -24,6 +26,8 @@ class ProfileModel {
         BackgroundProfilePreferences.fromJson(json["backgroundPreferences"]);
     profileModel.themePreferences =
         ThemeProfilePreferences.fromJson(json["themePreferences"]);
+    profileModel.videoPreferences =
+        VideoPreferences.fromJson(json["videoPreferences"]);
 
     return profileModel;
   }
@@ -35,6 +39,7 @@ class ProfileModel {
         "profileImagePath": profileImagePath,
         "appsHistoric": appsHistoric.toJson(),
         "backgroundPreferences": backgroundPreferences.toJson(),
-        "themePreferences": themePreferences.toJson()
+        "themePreferences": themePreferences.toJson(),
+        "videoPreferences": videoPreferences.toJson()
       };
 }

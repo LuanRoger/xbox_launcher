@@ -4,14 +4,14 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/configurations_page/widgets/configuration_menu.dart';
-import 'package:xbox_launcher/models/background_profile_preferences.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
-import 'package:xbox_launcher/models/theme_data_profile.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
+    as XButtons;
 import 'package:xbox_launcher/shared/widgets/tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/menu_dialog_overlay.dart';
-import 'package:xbox_launcher/shared/widgets/system_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
 import 'package:xbox_launcher/shared/widgets/button_tile.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
@@ -85,26 +85,22 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
   }
 
   @override
-  Map<String, List<SystemButton>> buttonsBuilder(BuildContext context) {
-    return {
-      "Colors": [
-        SystemButton("Colors",
-            width: 170, height: 70, onPressed: () => setMainColor(context)),
-      ],
-      "My Background": [
-        SystemButton("Solid color",
-            width: 170,
-            height: 70,
-            onPressed: () => setBackgroundColor(context)),
-        SystemButton("Custom image",
-            width: 170, height: 70, onPressed: () => setCustomImage(context)),
-        SystemButton("Reset background",
-            width: 170,
-            height: 70,
-            onPressed: () =>
-                Provider.of<ProfileProvider>(context, listen: false)
-                    .resetBackground())
-      ]
-    };
-  }
+  Map<String, List<SystemButton>> buttonsBuilder(BuildContext context) => {
+        "Colors": [
+          XButtons.TextButton(
+              title: "Colors", onPressed: () => setMainColor(context)),
+        ],
+        "My Background": [
+          XButtons.TextButton(
+              title: "Solid color",
+              onPressed: () => setBackgroundColor(context)),
+          XButtons.TextButton(
+              title: "Custom image", onPressed: () => setCustomImage(context)),
+          XButtons.TextButton(
+              title: "Reset background",
+              onPressed: () =>
+                  Provider.of<ProfileProvider>(context, listen: false)
+                      .resetBackground())
+        ]
+      };
 }

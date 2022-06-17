@@ -7,15 +7,8 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await windowManager.ensureInitialized();
-
-  WindowOptions windowOptions = WindowOptions(center: true);
-
-  windowManager.waitUntilReadyToShow(windowOptions, () async {
-    await windowManager.show();
-    await windowManager.focus();
-    await windowManager.setFullScreen(true);
-  });
 
   XInputController xInputController = XInputController();
   xInputController.init();
