@@ -8,48 +8,39 @@ import 'package:xbox_launcher/pages/profile_selector/widgets/profile_selector_it
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateless.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
-//TODO: Made stateless
-class ProfileSelector extends XboxPageStateful {
-  CarouselController profileSliderController = CarouselController();
+class ProfileSelector extends XboxPageStateless {
+  void Function(BuildContext, ProfileModel) onProfileSelect;
 
-  ProfileSelector({Key? key}) : super(key: key) {
+  late List<FocusNode> _sliderItemsFocusNodes;
+  late Background _backgroundPreview;
+  List<ProfileModel>? _profilesAvailable;
+
+  late void Function(void Function()) _updateBackground;
+  final CarouselController _profileSliderController = CarouselController();
+
+  ProfileSelector({Key? key, required this.onProfileSelect}) : super(key: key) {
     keyAction = {
       ControllerKeyboardPair(
               LogicalKeyboardKey.escape, ControllerButton.B_BUTTON):
           ((context) => Navigator.pop(context)),
       ControllerKeyboardPair(
               LogicalKeyboardKey.arrowRight, ControllerButton.DPAD_RIGHT):
-          (context) => profileSliderController.nextPage(),
+          (context) => _profileSliderController.nextPage(),
       ControllerKeyboardPair(
               LogicalKeyboardKey.arrowLeft, ControllerButton.DPAD_LEFT):
-          (context) => profileSliderController.previousPage()
+          (context) => _profileSliderController.previousPage()
     };
-  }
 
-  @override
-  State<StatefulWidget> vitualCreateState() => _ProfileSelectorState();
-}
-
-class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
-  late List<FocusNode> sliderItemsFocusNodes;
-  late Background backgroundPreview;
-  List<ProfileModel>? profilesAvailable;
-
-  late void Function(void Function()) _updateBackground;
-
-  @override
-  void initState() {
-    sliderItemsFocusNodes = List.empty(growable: true);
-    backgroundPreview = Background();
-    super.initState();
+    _sliderItemsFocusNodes = List.empty(growable: true);
+    _backgroundPreview = Background();
   }
 
   @override
   Widget virtualBuild(BuildContext context) {
-    profilesAvailable = context.read<ProfileProvider>().profilesList;
+    _profilesAvailable = context.read<ProfileProvider>().profilesList;
 
     return Stack(
       fit: StackFit.expand,
@@ -61,7 +52,7 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
               child: SizedBox(
                   width: double.infinity,
                   height: double.infinity,
-                  child: backgroundPreview));
+                  child: _backgroundPreview));
         }),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -76,11 +67,15 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
               ),
               Expanded(
                 child: CarouselSlider(
-                  items: profilesAvailable!.map((profile) {
+                  items: _profilesAvailable!.map((profile) {
                     ProfileSelectorItem item = ProfileSelectorItem(
                       profileModel: profile,
+                      onSelect: () {
+                        onProfileSelect(context, profile);
+                        Navigator.pop(context);
+                      },
                     );
-                    sliderItemsFocusNodes.add(item.focusNode);
+                    _sliderItemsFocusNodes.add(item.focusNode);
                     return item;
                   }).toList(),
                   options: CarouselOptions(
@@ -90,12 +85,12 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
                       enlargeCenterPage: true,
                       enableInfiniteScroll: false,
                       onPageChanged: (index, _) {
-                        sliderItemsFocusNodes[index].requestFocus();
-                        _updateBackground(() => backgroundPreview = Background(
-                              profileModel: profilesAvailable![index],
+                        _sliderItemsFocusNodes[index].requestFocus();
+                        _updateBackground(() => _backgroundPreview = Background(
+                              profileModel: _profilesAvailable![index],
                             ));
                       }),
-                  carouselController: widget.profileSliderController,
+                  carouselController: _profileSliderController,
                 ),
               ),
             ],

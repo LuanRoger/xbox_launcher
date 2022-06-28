@@ -1,7 +1,9 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:provider/provider.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/configuration_section.dart';
+import 'package:xbox_launcher/pages/profile_selector/profile_selector.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
 
 class ProfileConfigurationSection extends ConfigurationSection {
   const ProfileConfigurationSection({Key? key}) : super("Profile", key: key);
@@ -53,7 +55,15 @@ class ProfileConfigurationSection extends ConfigurationSection {
                 child: IconTextButton(
                   title: "Change profile",
                   icon: FluentIcons.follow_user,
-                  onPressed: () {},
+                  onPressed: () => Navigator.push(
+                      context,
+                      FluentPageRoute(
+                        builder: (context) => ProfileSelector(
+                            onProfileSelect: (context, selectedProfile) {
+                          Provider.of<ProfileProvider>(context, listen: false)
+                              .setCurrentByName(selectedProfile.name);
+                        }),
+                      )),
                 ),
               )
             ],

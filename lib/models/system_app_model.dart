@@ -12,7 +12,6 @@ class SystemAppModel implements AppModel {
   Widget? appHome;
 
   SystemAppModel({this.name, this.icon, this.appHome});
-  //TODO: Create factory by name
 
   @override
   AppModel fromJson(Map<String, dynamic> json) =>

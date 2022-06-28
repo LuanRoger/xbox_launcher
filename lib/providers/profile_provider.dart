@@ -22,7 +22,7 @@ class ProfileProvider extends ChangeNotifier {
       profileLoader.createDefaultProfile(_createDefault());
     }
 
-    await _setCurrentByName(
+    await setCurrentByName(
         profilePreferences.getString("lastCurrentProfile") ??
             AppConsts.DEFAULT_USERNAME);
 
@@ -131,7 +131,7 @@ class ProfileProvider extends ChangeNotifier {
 
   void saveProfile() => profileLoader.saveProfile(_currentProfile);
 
-  Future _setCurrentByName(String name) async {
+  Future setCurrentByName(String name) async {
     ProfileModel profileModel = profileLoader.profileBuffer!
         .firstWhere((element) => element.name == name);
     _currentProfile = profileModel;

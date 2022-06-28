@@ -6,8 +6,11 @@ import 'package:xbox_launcher/shared/widgets/profile_avatar.dart';
 class ProfileSelectorItem extends StatelessWidget {
   ProfileModel profileModel;
   FocusNode focusNode = FocusNode();
+  void Function() onSelect;
 
-  ProfileSelectorItem({Key? key, required this.profileModel}) : super(key: key);
+  ProfileSelectorItem(
+      {Key? key, required this.profileModel, required this.onSelect})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,7 @@ class ProfileSelectorItem extends StatelessWidget {
                 backgroundColor: ButtonState.all(Colors.transparent),
                 padding: ButtonState.all(const EdgeInsets.all(5))),
             focusNode: focusNode,
-            onPressed: () {},
+            onPressed: onSelect,
             child: ProfileAvatar(
               accentColor: profileModel.themePreferences.accentColor,
               profileImagePath: profileModel.profileImagePath,

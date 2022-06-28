@@ -12,8 +12,6 @@ class GameModel implements AppModel {
   late String tileGameImageUrl;
   late String gameImageUrl;
 
-  //TODO: Create a constructor with named paramenters
-
   @override
   GameModel fromJson(Map<String, dynamic> json) {
     GameModel gameModel = GameModel();
