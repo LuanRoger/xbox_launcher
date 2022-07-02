@@ -19,12 +19,11 @@ class ProfileProvider extends ChangeNotifier {
     profileLoader = ProfileLoader();
 
     if (!(await profileLoader.loadProfiles())) {
-      profileLoader.createDefaultProfile(_createDefault());
+      profileLoader.createDefaultProfile(createDefault());
     }
 
-    await setCurrentByName(
-        profilePreferences.getString("lastCurrentProfile") ??
-            AppConsts.DEFAULT_USERNAME);
+    await setCurrentByName(profilePreferences.getString("lastCurrentProfile") ??
+        AppConsts.DEFAULT_USERNAME);
 
     await _currentProfile.videoPreferences.init();
   }
@@ -33,6 +32,12 @@ class ProfileProvider extends ChangeNotifier {
     if (profileLoader.profileBuffer == null) return List<ProfileModel>.empty();
 
     return [...(profileLoader.profileBuffer)!];
+  }
+
+  Future addNewProfile(ProfileModel newProfile) async {
+    profileLoader.profileBuffer!.add(newProfile);
+
+    await saveProfiles();
   }
 
   String get name => _currentProfile.name;
@@ -130,6 +135,7 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   void saveProfile() => profileLoader.saveProfile(_currentProfile);
+  Future saveProfiles() => profileLoader.saveProfiles();
 
   Future setCurrentByName(String name) async {
     ProfileModel profileModel = profileLoader.profileBuffer!
@@ -142,7 +148,7 @@ class ProfileProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  ProfileModel _createDefault() {
+  ProfileModel createDefault() {
     ProfileModel defaultProfile = ProfileModel();
     defaultProfile.name = AppConsts.DEFAULT_USERNAME;
     defaultProfile.preferedServer = AppConsts.XCLOUD_SUPPORTED_SERVERS[0];

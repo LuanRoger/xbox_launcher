@@ -26,10 +26,9 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
             key: key);
 
   void setCustomImage(BuildContext context) async {
-    ExternalFilePicker filePicker = ExternalFilePicker();
     var profileProvider = context.read<ProfileProvider>();
 
-    String? imagePath = await filePicker.getImagePath();
+    String? imagePath = await ExternalFilePicker.getImagePath();
     if (imagePath == null) return;
 
     profileProvider.imageBackgroundPath = imagePath;

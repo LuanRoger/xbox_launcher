@@ -21,6 +21,8 @@ class AppTextStyle {
   static const TextStyle CONFIGURATION_MENU_SECTION_TITLE =
       TextStyle(fontSize: 20);
 
+  static const TextStyle ADD_PROFILE_TEXT_HEADER = TextStyle(fontSize: 26);
+
   static const SYSTEM_TILE = TextStyle(fontSize: 18);
   static const SYSTEM_BUTTON_TEXT = TextStyle(fontSize: 15);
 

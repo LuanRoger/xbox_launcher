@@ -1,14 +1,16 @@
 import 'package:file_picker/file_picker.dart';
 
 class ExternalFilePicker {
-  Future<String?> getImagePath({String dialogTitle = "Select Image"}) async {
+  static Future<String?> getImagePath(
+      {String dialogTitle = "Select Image"}) async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
         allowMultiple: false, type: FileType.image, dialogTitle: dialogTitle);
 
     return result?.files.single.path;
   }
 
-  Future<String?> getJsonPath({String dialogTitle = "Select JSON File"}) async {
+  static Future<String?> getJsonPath(
+      {String dialogTitle = "Select JSON File"}) async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
         allowMultiple: false,
         allowCompression: true,

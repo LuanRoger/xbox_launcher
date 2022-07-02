@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
-import 'package:xbox_launcher/shared/widgets/profile_avatar.dart';
+import 'package:xbox_launcher/shared/widgets/profile_avatar_button.dart';
 
 class ProfileSelectorItem extends StatelessWidget {
   ProfileModel profileModel;
@@ -23,18 +23,11 @@ class ProfileSelectorItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(200),
               glowFactor: 10,
               renderOutside: true),
-          child: OutlinedButton(
-            style: ButtonStyle(
-                border: ButtonState.all(BorderSide.none),
-                backgroundColor: ButtonState.all(Colors.transparent),
-                padding: ButtonState.all(const EdgeInsets.all(5))),
-            focusNode: focusNode,
+          child: ProfileAvatarButton(
+            accentColor: profileModel.themePreferences.accentColor,
+            profileImagePath: profileModel.profileImagePath,
             onPressed: onSelect,
-            child: ProfileAvatar(
-              accentColor: profileModel.themePreferences.accentColor,
-              profileImagePath: profileModel.profileImagePath,
-              radiusSize: 100,
-            ),
+            focusNode: focusNode,
           ),
         ),
         Text(

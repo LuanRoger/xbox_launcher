@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
+import 'package:xbox_launcher/pages/add_profile_page.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/configuration_section.dart';
 import 'package:xbox_launcher/pages/profile_selector/profile_selector.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
@@ -21,7 +22,8 @@ class ProfileConfigurationSection extends ConfigurationSection {
                 child: IconTextButton(
                   title: "Add profiles",
                   icon: FluentIcons.add_friend,
-                  onPressed: () {},
+                  onPressed: () => Navigator.push(context,
+                      FluentPageRoute(builder: (context) => AddProfilePage())),
                 ),
               ),
               const Spacer(),
