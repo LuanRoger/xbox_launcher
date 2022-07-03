@@ -7,6 +7,7 @@ import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
     as xbox_button;
+import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar_button.dart';
 
@@ -35,27 +36,23 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
 
   bool _isProfileNameValid() => profileNameController.text.isNotEmpty;
   Future changeToNewProfileDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (_) => ContentDialog(
-              title: const Text("Change to new profile?"),
-              content: Text(
-                  "Do you want to change to the profile ${profileNameController.text} now?"),
-              actions: [
-                xbox_button.TextButton(
-                  title: "Yes",
-                  onPressed: () async {
-                    await Provider.of<ProfileProvider>(context, listen: false)
-                        .setCurrentByName(profileNameController.text);
+    return SystemDialog(
+        title: "Change to new profile?",
+        content:
+            "Do you want to change to the profile ${profileNameController.text} now?",
+        actions: [
+          xbox_button.TextButton(
+            title: "Yes",
+            onPressed: () async {
+              await Provider.of<ProfileProvider>(context, listen: false)
+                  .setCurrentByName(profileNameController.text);
 
-                    Navigator.pop(context);
-                  },
-                ),
-                xbox_button.TextButton(
-                    title: "No", onPressed: () => Navigator.pop(context))
-              ],
-            ));
+              Navigator.pop(context);
+            },
+          ),
+          xbox_button.TextButton(
+              title: "No", onPressed: () => Navigator.pop(context))
+        ]).show(context);
   }
 
   @override
