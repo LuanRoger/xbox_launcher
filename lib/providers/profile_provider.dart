@@ -40,6 +40,16 @@ class ProfileProvider extends ChangeNotifier {
     await saveProfiles();
   }
 
+  Future<bool> removeProfile(ProfileModel toRemove) async {
+    if (_currentProfile.hashCode == toRemove.hashCode ||
+        profilesList!.length <= 1) return false;
+
+    bool result = profileLoader.profileBuffer!.remove(toRemove);
+
+    await saveProfiles();
+    return result;
+  }
+
   String get name => _currentProfile.name;
   set name(String name) {
     _currentProfile.name = name;

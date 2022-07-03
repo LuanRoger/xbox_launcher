@@ -58,14 +58,11 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
     _backgroundTransitionKey = ValueKey(_currentProfile);
   }
 
-  void generateSelectorItems() {
+  void generateSelectorItems(BuildContext context) {
     for (ProfileModel profile in _profilesAvailable) {
       ProfileSelectorItem item = ProfileSelectorItem(
         profileModel: profile,
-        onSelect: () {
-          widget.onProfileSelect(context, profile);
-          Navigator.pop(context);
-        },
+        onSelect: () => widget.onProfileSelect(context, profile),
       );
       if (_sliderItemsFocusNodes.length != _profilesAvailable.length) {
         _sliderItemsFocusNodes.add(item.focusNode);
@@ -78,7 +75,7 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
   Widget virtualBuild(BuildContext context) {
     if (_selectorProfileItems.isEmpty || _sliderItemsFocusNodes.isEmpty) {
       _profilesAvailable = context.read<ProfileProvider>().profilesList!;
-      generateSelectorItems();
+      generateSelectorItems(context);
     }
 
     _sliderItemsFocusNodes[_currentProfile ?? 0].requestFocus();
