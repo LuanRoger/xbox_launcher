@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:xbox_launcher/models/profile_model.dart';
@@ -9,6 +8,16 @@ import 'package:xbox_launcher/utils/io_utils.dart';
 class ProfileLoader {
   List<ProfileModel>? _profileBuffer;
   List<ProfileModel>? get profileBuffer => _profileBuffer;
+  int get higherId {
+    int tempHigher = 0;
+
+    _profileBuffer?.forEach((profile) {
+      if (profile.id > tempHigher) tempHigher = profile.id;
+    });
+
+    return tempHigher;
+  }
+
   Future<File> get profileFile async =>
       File(await AppDataFiles.PROFILES_JSON_FILE_PATH);
 
@@ -28,7 +37,7 @@ class ProfileLoader {
 
   Future<bool> saveProfile(ProfileModel currentProfile) async {
     int oldProfileIndex = _profileBuffer!
-        .indexWhere((profile) => profile.name == currentProfile.name);
+        .indexWhere((profile) => profile.id == currentProfile.id);
 
     if (oldProfileIndex == -1) return false;
 

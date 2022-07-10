@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/pages/add_profile_page.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/configuration_section.dart';
+import 'package:xbox_launcher/pages/manage_profile_page.dart';
 import 'package:xbox_launcher/pages/profile_selector/profile_selector.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
@@ -100,7 +101,8 @@ class ProfileConfigurationSection extends ConfigurationSection {
                 child: IconTextButton(
                   title: "Manage profile",
                   icon: FluentIcons.account_management,
-                  onPressed: () {},
+                  onPressed: () => Navigator.push(context,
+                      FluentPageRoute(builder: (_) => ManageProfilePage())),
                 ),
               ),
               const Spacer(),

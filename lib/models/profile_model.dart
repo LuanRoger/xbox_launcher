@@ -4,6 +4,7 @@ import 'package:xbox_launcher/models/theme_data_profile.dart';
 import 'package:xbox_launcher/models/video_preferences.dart';
 
 class ProfileModel {
+  late int id;
   late String name;
   late String preferedServer;
   String? xcloudGamesJsonPath;
@@ -17,6 +18,7 @@ class ProfileModel {
   ProfileModel();
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
     ProfileModel profileModel = ProfileModel();
+    profileModel.id = json["id"];
     profileModel.name = json["name"];
     profileModel.preferedServer = json["preferedServer"];
     profileModel.xcloudGamesJsonPath = json["xcloudGamesJsonPath"];
@@ -33,6 +35,7 @@ class ProfileModel {
   }
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "name": name,
         "preferedServer": preferedServer,
         "xcloudGamesJsonPath": xcloudGamesJsonPath,

@@ -4,6 +4,7 @@ import 'package:xbox_launcher/models/apps_historic.dart';
 import 'package:xbox_launcher/models/app_model.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/models/background_profile_preferences.dart';
+import 'package:xbox_launcher/models/profile_update_info.dart';
 import 'package:xbox_launcher/models/theme_data_profile.dart';
 import 'package:xbox_launcher/models/video_preferences.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
@@ -38,6 +39,14 @@ class ProfileProvider extends ChangeNotifier {
     profileLoader.profileBuffer!.add(newProfile);
 
     await saveProfiles();
+  }
+
+  void updateCurrentProfile(ProfileUpdateInfo newProfileInfo) {
+    _currentProfile.name = newProfileInfo.name;
+    _currentProfile.profileImagePath = newProfileInfo.profileImagePath;
+
+    notifyListeners();
+    saveProfile();
   }
 
   Future<bool> removeProfile(ProfileModel toRemove) async {
@@ -160,6 +169,7 @@ class ProfileProvider extends ChangeNotifier {
 
   ProfileModel createDefault() {
     ProfileModel defaultProfile = ProfileModel();
+    defaultProfile.id = profileLoader.higherId + 1;
     defaultProfile.name = AppConsts.DEFAULT_USERNAME;
     defaultProfile.preferedServer = AppConsts.XCLOUD_SUPPORTED_SERVERS[0];
 
