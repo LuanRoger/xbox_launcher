@@ -8,7 +8,7 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
-    as XButtons;
+    as xbox_button;
 import 'package:xbox_launcher/shared/widgets/tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/menu_dialog_overlay.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
@@ -86,16 +86,16 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
   @override
   Map<String, List<SystemButton>> buttonsBuilder(BuildContext context) => {
         "Colors": [
-          XButtons.TextButton(
+          xbox_button.TextButton(
               title: "Colors", onPressed: () => setMainColor(context)),
         ],
         "My Background": [
-          XButtons.TextButton(
+          xbox_button.TextButton(
               title: "Solid color",
               onPressed: () => setBackgroundColor(context)),
-          XButtons.TextButton(
+          xbox_button.TextButton(
               title: "Custom image", onPressed: () => setCustomImage(context)),
-          XButtons.TextButton(
+          xbox_button.TextButton(
               title: "Reset background",
               onPressed: () =>
                   Provider.of<ProfileProvider>(context, listen: false)

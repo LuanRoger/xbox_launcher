@@ -1,8 +1,8 @@
-import 'dart:ffi';
-
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
+import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/profile_update_info.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
@@ -12,36 +12,43 @@ import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar_button.dart';
+import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class ManageProfilePage extends XboxPageStateful {
-  ManageProfilePage({Key? key}) : super(key: key);
+  ManageProfilePage({Key? key})
+      : super(keyAction: {
+          ControllerKeyboardPair(
+                  LogicalKeyboardKey.escape, ControllerButton.BACK):
+              ((context) => Navigator.pop(context))
+        }, key: key);
 
   @override
   State<StatefulWidget> vitualCreateState() => _ManageProfilePageState();
 }
 
-class _ManageProfilePageState extends State<ManageProfilePage> {
-  late TextEditingController textController;
+class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
+  late TextEditingController profileNameTextController;
   String? _tempProfileImagePath;
   late bool firtEntry;
+  bool _isProfileNameValid() => profileNameTextController.text.isNotEmpty;
 
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
+    profileNameTextController = TextEditingController();
     firtEntry = true;
   }
 
   @override
   void dispose() {
     super.dispose();
-    textController.dispose();
+    profileNameTextController.dispose();
   }
 
   void getProfileInfo(BuildContext context) {
     var profileProvider = context.read<ProfileProvider>();
 
-    textController.text = profileProvider.name;
+    profileNameTextController.text = profileProvider.name;
     _tempProfileImagePath = profileProvider.profileImagePath;
   }
 
@@ -71,80 +78,88 @@ class _ManageProfilePageState extends State<ManageProfilePage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget virtualBuild(BuildContext context) {
     if (firtEntry) {
       getProfileInfo(context);
       setState(() => firtEntry = false);
     }
 
-    return Container(
-      color: AppColors.DARK_BG,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 10,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Flexible(
-                        flex: 15,
-                        child: ProfileAvatarButton(
-                            accentColor: AppColors.GREEN,
-                            onPressed: () async {
-                              String? tempImagePath =
-                                  await ExternalFilePicker.getImagePath();
-                              setState(
-                                  () => _tempProfileImagePath = tempImagePath);
-                            },
-                            radiusSize: 100,
-                            profileImagePath: _tempProfileImagePath)),
-                    const Spacer(),
-                    Expanded(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Flexible(
+                child: Text(
+              "Manage profile",
+              style: AppTextStyle.ADD_UPDATE_PROFILE_PAGE_TITLE,
+            )),
+            Expanded(
+              flex: 10,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Flexible(
                       flex: 15,
-                      child: TextBox(
-                        header: "Profile name:",
-                        headerStyle: AppTextStyle.ADD_PROFILE_TEXT_HEADER,
-                        maxLength: 30,
-                        maxLines: 1,
-                        minLines: 1,
-                        controller: textController,
-                      ),
-                    )
-                  ],
-                ),
+                      child: ProfileAvatarButton(
+                          accentColor: AppColors.GREEN,
+                          onPressed: () async {
+                            String? tempImagePath =
+                                await ExternalFilePicker.getImagePath();
+                            setState(
+                                () => _tempProfileImagePath = tempImagePath);
+                          },
+                          radiusSize: 100,
+                          profileImagePath: _tempProfileImagePath)),
+                  const Spacer(),
+                  Expanded(
+                    flex: 15,
+                    child: TextBox(
+                      header: "Profile name:",
+                      headerStyle: AppTextStyle.ADD_UPDATE_PROFILE_TEXT_HEADER,
+                      maxLength: 30,
+                      maxLines: 1,
+                      minLines: 1,
+                      controller: profileNameTextController,
+                    ),
+                  )
+                ],
               ),
-              const Spacer(),
-              Expanded(
-                flex: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    xbox_button.TextButton(
-                        title: "Confirm changes",
-                        onPressed: () async {
-                          ProfileUpdateInfo profileUpdateInfo =
-                              ProfileUpdateInfo(
-                                  textController.text, _tempProfileImagePath);
+            ),
+            const Spacer(),
+            Expanded(
+              flex: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  xbox_button.TextButton(
+                      title: "Confirm changes",
+                      onPressed: () async {
+                        if (!_isProfileNameValid()) {
+                          //TODO: Made alarm system
+                          print("The name can't be empty");
+                          return;
+                        }
 
-                          bool response =
-                              await confirmChanges(context, profileUpdateInfo);
-                          if (response) Navigator.pop(context);
-                        }),
-                    xbox_button.TextButton(
-                      title: "Cancel",
-                      onPressed: () => Navigator.pop(context),
-                    )
-                  ],
-                ),
-              )
-            ]),
-      ),
+                        ProfileUpdateInfo profileUpdateInfo = ProfileUpdateInfo(
+                            profileNameTextController.text,
+                            _tempProfileImagePath);
+
+                        bool response =
+                            await confirmChanges(context, profileUpdateInfo);
+                        if (response) Navigator.pop(context);
+                      }),
+                  xbox_button.TextButton(
+                    title: "Cancel",
+                    onPressed: () => Navigator.pop(context),
+                  )
+                ],
+              ),
+            )
+          ]),
     );
   }
 }

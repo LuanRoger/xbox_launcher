@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
-import 'package:xinput_gamepad/xinput_gamepad.dart';
-
-class VoidActionIntent extends Intent {}
+import 'package:xbox_launcher/shared/app_colors.dart';
 
 abstract class XboxPageStateless extends StatelessWidget {
   late Map<ShortcutActivator, void Function()> _keyboardBinding;
@@ -13,8 +11,7 @@ abstract class XboxPageStateless extends StatelessWidget {
   void mapKeyboardShortcuts(BuildContext context) {
     if (keyAction == null) return;
 
-    Map<ShortcutActivator, void Function()> binding =
-        <ShortcutActivator, void Function()>{};
+    Map<ShortcutActivator, void Function()> binding = {};
 
     keyAction!.forEach((key, value) {
       binding[SingleActivator(key.keyboardkey)] = () => value(context);
@@ -31,7 +28,9 @@ abstract class XboxPageStateless extends StatelessWidget {
 
     return keyAction != null
         ? CallbackShortcuts(
-            bindings: _keyboardBinding, child: virtualBuild(context))
-        : virtualBuild(context);
+            bindings: _keyboardBinding,
+            child: Container(
+                color: AppColors.DARK_BG, child: virtualBuild(context)))
+        : Container(color: AppColors.DARK_BG, child: virtualBuild(context));
   }
 }
