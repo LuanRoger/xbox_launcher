@@ -1,4 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_native_view/flutter_native_view.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:xbox_launcher/pages/home_page.dart';
@@ -8,6 +9,7 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await FlutterNativeView.ensureInitialized();
   await windowManager.ensureInitialized();
 
   XInputController xInputController = XInputController();
