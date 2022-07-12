@@ -15,7 +15,7 @@ class MenuDialogOverlay {
 
     showGeneralDialog(
         context: context,
-        pageBuilder: (BuildContext buildContext, _, __) {
+        pageBuilder: (buildContext, _, __) {
           return Align(
             alignment: Alignment.center,
             child: Container(

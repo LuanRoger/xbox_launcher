@@ -3,12 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/configuration_section.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
-    as XButtons;
+    as xbox_button;
+import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
 
 class CloudGamingConfigurationSection extends ConfigurationSection {
   final TextEditingController jsonUrlTextController = TextEditingController();
+  final TextEditingController controllerTest = TextEditingController();
   String? selectedServer;
 
   CloudGamingConfigurationSection({Key? key}) : super("Cloud Gaming", key: key);
@@ -29,6 +30,14 @@ class CloudGamingConfigurationSection extends ConfigurationSection {
           child: TextBox(
             header: "JSON file path:",
             controller: jsonUrlTextController,
+          ),
+        ),
+        const Spacer(),
+        Expanded(
+          flex: 0,
+          child: KeyboardButton(
+            controller: controllerTest,
+            placeholder: "Placeholder",
           ),
         ),
         const Spacer(),
@@ -58,7 +67,7 @@ class CloudGamingConfigurationSection extends ConfigurationSection {
         const Spacer(),
         Flexible(
           flex: 10,
-          child: XButtons.TextButton(
+          child: xbox_button.TextButton(
               title: "Confirm",
               onPressed: () {
                 context.read<ProfileProvider>().xcloudGamesJsonPath =

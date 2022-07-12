@@ -3,6 +3,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 class AppColors {
   static const Color DARK_BG = Color.fromRGBO(40, 39, 41, 1);
   static const Color ELEMENT_BG = Color.fromRGBO(59, 58, 59, 1);
+  static const Color ELEMENT_DARK_BG = Color.fromRGBO(31, 31, 31, 1);
   static const Color ELEMENT_SELECTED = Color.fromRGBO(80, 79, 80, 1);
 
   static const Color DARK_GREEN = Color.fromRGBO(17, 125, 16, 1);
