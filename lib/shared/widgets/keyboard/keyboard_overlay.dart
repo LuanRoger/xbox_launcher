@@ -1,11 +1,18 @@
 // ignore_for_file: constant_identifier_names
-import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/shared/app_colors.dart';
+import 'package:fluent_ui/fluent_ui.dart' hide Overlay;
+import 'package:flutter/services.dart' hide KeyboardKey;
+import 'package:win32/win32.dart';
+import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
+import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
+import 'package:xbox_launcher/models/mapping_definition.dart';
 import 'package:xbox_launcher/shared/system_text_box.dart';
+import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_key.dart';
+import 'package:xbox_launcher/shared/widgets/models/overlay.dart';
+import 'package:xinput_gamepad/xinput_gamepad.dart' hide KeyboardKey;
 
 enum _KeyboardLayout { ALPHABET, ALPHABET_CAPS, SYMBOLS }
 
-class _KeyboardKeys {
+class _KeyboardChars {
   static List<String> getKeys(_KeyboardLayout layout) {
     switch (layout) {
       case _KeyboardLayout.ALPHABET:
@@ -101,8 +108,9 @@ class _KeyboardKeys {
   ];
 }
 
-class KeyboardOverlay {
+class KeyboardOverlay implements Overlay, MappingDefinition {
   late GridView _currentKeyboardLayout;
+
   late _KeyboardLayout _currentKeyboardType;
   void Function(void Function())? _setNewLayout;
   final FocusNode _keyboardFocus = FocusNode(canRequestFocus: false);
@@ -111,12 +119,12 @@ class KeyboardOverlay {
   String? _initialStringMemento;
 
   void Function(bool cancel)? onFinish;
+  TextEditingController controller;
 
-  KeyboardOverlay({this.onFinish});
+  KeyboardOverlay({required this.controller, this.onFinish});
 
-  void _changeKeyboardLayout(
-      _KeyboardLayout _keyboardLayout, TextEditingController toInsertChar) {
-    var characters = _KeyboardKeys.getKeys(_keyboardLayout);
+  void _changeKeyboardLayout(_KeyboardLayout _keyboardLayout) {
+    var characters = _KeyboardChars.getKeys(_keyboardLayout);
 
     _currentKeyboardLayout = GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -126,20 +134,85 @@ class KeyboardOverlay {
             childAspectRatio: 1),
         itemBuilder: (_, index) {
           String char = characters[index];
-          return _KeyboardButton(
+          return KeyboardKey(
               text: char,
-              onKeyPress: () => toInsertChar.text = toInsertChar.text + char);
+              onKeyPress: () => controller.text = controller.text + char);
         },
         itemCount: characters.length);
     _currentKeyboardType = _keyboardLayout;
   }
 
-  void show(BuildContext context, TextEditingController controller) {
+  void _switchKeyboardLayout() {
+    _setNewLayout?.call(() => _changeKeyboardLayout(
+        _currentKeyboardType == _KeyboardLayout.SYMBOLS
+            ? _KeyboardLayout.ALPHABET
+            : _KeyboardLayout.SYMBOLS));
+  }
+
+  void _switchLayoutToCaps() {
+    _setNewLayout?.call(() => _changeKeyboardLayout(
+        _currentKeyboardType != _KeyboardLayout.ALPHABET_CAPS
+            ? _KeyboardLayout.ALPHABET_CAPS
+            : _KeyboardLayout.ALPHABET));
+  }
+
+  void _switchKeyboardLocker() {
+    _keyboardFocus.canRequestFocus = !_keyboardFocus.canRequestFocus;
+    _updateKeyboardState
+        ?.call(() => _keyboardLockState = !_keyboardFocus.canRequestFocus);
+    if (!_keyboardLockState) {
+      _keyboardFocus.requestFocus();
+    }
+  }
+
+  void _backspace() {
+    controller.text =
+        controller.text.replaceRange(controller.text.length - 1, null, "");
+  }
+
+  void _space() {
+    controller.text = controller.text + " ";
+  }
+
+  void _cancel(BuildContext context) {
+    controller.text = _initialStringMemento!;
+    undefineMapping(context);
+    Navigator.pop(context);
+  }
+
+  void _finish(BuildContext context) {
+    onFinish?.call(false);
+    undefineMapping(context);
+    Navigator.pop(context);
+  }
+
+  @override
+  void defineMapping(BuildContext context) {
+    KeyboardControllerActionManipulator.saveAllDefaults(context);
+
+    KeyboardControllerActionManipulator.mapControllerActions(context, {
+      ControllerButton.LEFT_SHOULDER: (_) => _switchKeyboardLayout(),
+      ControllerButton.LEFT_THUMB: (_) => _switchLayoutToCaps(),
+      ControllerButton.RIGHT_THUMB: (_) => _switchKeyboardLocker(),
+      ControllerButton.X_BUTTON: (_) => _backspace(),
+      ControllerButton.Y_BUTTON: (_) => _space(),
+      ControllerButton.B_BUTTON: (context) => _cancel(context),
+      ControllerButton.START: (context) => _finish(context)
+    });
+  }
+
+  void undefineMapping(BuildContext context) {
+    KeyboardControllerActionManipulator.restoreAllDefaults(context);
+  }
+
+  @override
+  void show(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final double screenHeight = size.height;
     final double screenWidth = size.width;
-    _changeKeyboardLayout(_KeyboardLayout.ALPHABET, controller);
+    _changeKeyboardLayout(_KeyboardLayout.ALPHABET);
     _initialStringMemento = String.fromCharCodes(controller.text.codeUnits);
+    defineMapping(context);
 
     showGeneralDialog(
         context: context,
@@ -191,44 +264,23 @@ class KeyboardOverlay {
                           children: [
                             Flexible(
                                 flex: 4,
-                                child: StatefulBuilder(
-                                  builder: (_, updateLayoutSwitcher) {
-                                    return _KeyboardButton(
-                                      text: "Switch layout",
-                                      onKeyPress: () {
-                                        _setNewLayout?.call(() =>
-                                            _changeKeyboardLayout(
-                                                _currentKeyboardType ==
-                                                        _KeyboardLayout.SYMBOLS
-                                                    ? _KeyboardLayout.ALPHABET
-                                                    : _KeyboardLayout.SYMBOLS,
-                                                controller));
-                                      },
-                                    );
-                                  },
+                                child: KeyboardKey(
+                                  text: "Switch layout",
+                                  onKeyPress: _switchKeyboardLayout,
                                 )),
                             const SizedBox(height: 3),
                             Flexible(
                                 flex: 8,
-                                child: _KeyboardButton(
+                                child: KeyboardKey(
                                   text: "Caps",
-                                  onKeyPress: () => _setNewLayout?.call(() =>
-                                      _changeKeyboardLayout(
-                                          _currentKeyboardType !=
-                                                  _KeyboardLayout.ALPHABET_CAPS
-                                              ? _KeyboardLayout.ALPHABET_CAPS
-                                              : _KeyboardLayout.ALPHABET,
-                                          controller)),
+                                  onKeyPress: _switchLayoutToCaps,
                                 )),
                             const SizedBox(height: 3),
                             Flexible(
                                 flex: 9,
-                                child: _KeyboardButton(
+                                child: KeyboardKey(
                                     text: "Cancel",
-                                    onKeyPress: () {
-                                      controller.text = _initialStringMemento!;
-                                      Navigator.pop(context);
-                                    })),
+                                    onKeyPress: () => _cancel(context))),
                           ],
                         )),
                     const SizedBox(width: 3),
@@ -247,10 +299,8 @@ class KeyboardOverlay {
                             ),
                             const SizedBox(height: 3),
                             Expanded(
-                                child: _KeyboardButton(
-                                    text: "Space",
-                                    onKeyPress: () => controller.text =
-                                        controller.text + " "))
+                                child: KeyboardKey(
+                                    text: "Space", onKeyPress: () => _space()))
                           ],
                         )),
                     const SizedBox(width: 3),
@@ -262,37 +312,23 @@ class KeyboardOverlay {
                           children: [
                             Flexible(
                                 flex: 4,
-                                child: _KeyboardButton(
+                                child: KeyboardKey(
                                   text: "Backspace",
-                                  onKeyPress: () => controller.text =
-                                      controller.text.replaceRange(
-                                          controller.text.length - 1, null, ""),
+                                  onKeyPress: () => _backspace(),
                                 )),
                             const SizedBox(height: 3),
                             Flexible(
                                 flex: 8,
-                                child: _KeyboardButton(
+                                child: KeyboardKey(
                                   text: "Lock/Unlock",
-                                  onKeyPress: () {
-                                    _keyboardFocus.canRequestFocus =
-                                        !_keyboardFocus.canRequestFocus;
-                                    _updateKeyboardState?.call(() =>
-                                        _keyboardLockState =
-                                            !_keyboardFocus.canRequestFocus);
-                                    if (!_keyboardLockState) {
-                                      _keyboardFocus.requestFocus();
-                                    }
-                                  },
+                                  onKeyPress: () => _switchKeyboardLocker(),
                                 )),
                             const SizedBox(height: 3),
                             Flexible(
                                 flex: 9,
-                                child: _KeyboardButton(
+                                child: KeyboardKey(
                                   text: "Confirm",
-                                  onKeyPress: () {
-                                    onFinish?.call(false);
-                                    Navigator.pop(context);
-                                  },
+                                  onKeyPress: () => _finish(context),
                                 ))
                           ],
                         ))
@@ -302,25 +338,5 @@ class KeyboardOverlay {
             ],
           );
         });
-  }
-}
-
-class _KeyboardButton extends StatelessWidget {
-  String text;
-  void Function() onKeyPress;
-
-  _KeyboardButton({Key? key, required this.text, required this.onKeyPress})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Button(
-      child: Align(alignment: Alignment.center, child: Text(text)),
-      onPressed: onKeyPress,
-      style: ButtonStyle(
-          shape: ButtonState.all(
-              const RoundedRectangleBorder(borderRadius: BorderRadius.zero)),
-          backgroundColor: ButtonState.all(AppColors.ELEMENT_DARK_BG)),
-    );
   }
 }

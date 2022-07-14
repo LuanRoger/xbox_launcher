@@ -20,7 +20,8 @@ class KeyboardButton extends StatelessWidget {
           placeholder: placeholder,
           readOnly: true,
         ),
-        onPressed: () => KeyboardOverlay().show(context, controller),
+        onPressed: () =>
+            KeyboardOverlay(controller: controller).show(context),
         style: ButtonStyle(
             padding: ButtonState.all(EdgeInsets.zero),
             shape: ButtonState.all(

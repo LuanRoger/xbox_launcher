@@ -1,8 +1,9 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluent_ui/fluent_ui.dart' hide Overlay;
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
+import 'package:xbox_launcher/shared/widgets/models/overlay.dart';
 
-class MenuDialogOverlay {
+class MenuDialogOverlay implements Overlay {
   String title;
   Widget content;
   final List<Widget>? actions;
@@ -10,6 +11,7 @@ class MenuDialogOverlay {
   MenuDialogOverlay(this.title,
       {Key? key, required this.content, this.actions});
 
+  @override
   void show(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
 
