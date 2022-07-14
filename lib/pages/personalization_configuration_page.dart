@@ -2,6 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
+import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/configurations_page/widgets/configuration_menu.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
@@ -18,7 +19,7 @@ import 'package:xinput_gamepad/xinput_gamepad.dart';
 class PersonalizationConfigurationPage extends ConfigurationMenu {
   PersonalizationConfigurationPage({Key? key})
       : super("General", "Personalization",
-            keyAction: {
+            pageKeysAction: {
               ControllerKeyboardPair(
                       LogicalKeyboardKey.escape, ControllerButton.BACK):
                   ((context) => Navigator.pop(context))
@@ -102,4 +103,10 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
                       .resetBackground())
         ]
       };
+
+  @override
+  void defineMapping(BuildContext context) {
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, pageKeysAction);
+  }
 }

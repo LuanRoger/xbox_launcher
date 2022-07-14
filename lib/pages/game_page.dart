@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:webview_windows/webview_windows.dart';
+import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/utils/string_formatter.dart';
@@ -10,10 +11,10 @@ class GamePage extends XboxPageStateful {
   String server;
 
   GamePage(this.gameUrl, this.gameCover, {Key? key, required this.server})
-      : super(key: key);
+      : super(key: key, pageKeysAction: {});
 
   @override
-  State<StatefulWidget> vitualCreateState() => _GamePageState();
+  State<StatefulWidget> createState() => _GamePageState();
 }
 
 class _GamePageState extends XboxPageState<GamePage> {
@@ -48,6 +49,12 @@ class _GamePageState extends XboxPageState<GamePage> {
     webViewFocus.dispose();
 
     super.dispose();
+  }
+
+  @override
+  void defineMapping(BuildContext context) {
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, widget.pageKeysAction);
   }
 
   Future<void> initPlatformState() async {

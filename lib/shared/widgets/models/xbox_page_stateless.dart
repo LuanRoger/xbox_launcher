@@ -1,36 +1,31 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
+import 'package:xbox_launcher/models/mapping_definition.dart';
+import 'package:xbox_launcher/providers/keyboard_action_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 
-abstract class XboxPageStateless extends StatelessWidget {
-  late Map<ShortcutActivator, void Function()> _keyboardBinding;
-  Map<ControllerKeyboardPair, void Function(BuildContext context)>? keyAction;
+abstract class XboxPageStateless extends StatelessWidget
+    implements XboxPage, MappingDefinition {
+  @override
+  Map<ControllerKeyboardPair, void Function(BuildContext)> pageKeysAction;
 
-  XboxPageStateless({Key? key, this.keyAction}) : super(key: key);
-
-  void mapKeyboardShortcuts(BuildContext context) {
-    if (keyAction == null) return;
-
-    Map<ShortcutActivator, void Function()> binding = {};
-
-    keyAction!.forEach((key, value) {
-      binding[SingleActivator(key.keyboardkey)] = () => value(context);
-    });
-
-    _keyboardBinding = binding;
-  }
+  XboxPageStateless({
+    Key? key,
+    required this.pageKeysAction,
+  }) : super(key: key);
 
   Widget virtualBuild(BuildContext context);
 
   @override
   Widget build(BuildContext context) {
-    mapKeyboardShortcuts(context);
+    defineMapping(context);
 
-    return keyAction != null
-        ? CallbackShortcuts(
-            bindings: _keyboardBinding,
-            child: Container(
-                color: AppColors.DARK_BG, child: virtualBuild(context)))
-        : Container(color: AppColors.DARK_BG, child: virtualBuild(context));
+    return CallbackShortcuts(
+        bindings: Provider.of<KeyboardActionProvider>(context, listen: false)
+            .keyboardBinding,
+        child:
+            Container(color: AppColors.DARK_BG, child: virtualBuild(context)));
   }
 }

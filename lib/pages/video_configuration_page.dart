@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/check_button.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/configurations_page/widgets/configuration_menu.dart';
@@ -13,13 +14,19 @@ class VideoConfigurationPage extends ConfigurationMenu {
       : super(
           "General",
           "Video",
-          keyAction: {
+          pageKeysAction: {
             ControllerKeyboardPair(
                     LogicalKeyboardKey.escape, ControllerButton.BACK):
                 ((context) => Navigator.pop(context))
           },
           key: key,
         );
+
+  @override
+  void defineMapping(BuildContext context) {
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, pageKeysAction);
+  }
 
   @override
   Map<String, List<SystemButton>> buttonsBuilder(BuildContext context) {

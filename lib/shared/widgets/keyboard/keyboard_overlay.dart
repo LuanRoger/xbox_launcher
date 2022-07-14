@@ -105,6 +105,10 @@ class KeyboardOverlay {
   late GridView _currentKeyboardLayout;
   late _KeyboardLayout _currentKeyboardType;
   void Function(void Function())? _setNewLayout;
+  final FocusNode _keyboardFocus = FocusNode(canRequestFocus: false);
+  bool _keyboardLockState = true;
+  void Function(void Function())? _updateKeyboardState;
+  String? _initialStringMemento;
 
   void Function(bool cancel)? onFinish;
 
@@ -135,6 +139,7 @@ class KeyboardOverlay {
     final double screenHeight = size.height;
     final double screenWidth = size.width;
     _changeKeyboardLayout(_KeyboardLayout.ALPHABET, controller);
+    _initialStringMemento = String.fromCharCodes(controller.text.codeUnits);
 
     showGeneralDialog(
         context: context,
@@ -143,12 +148,33 @@ class KeyboardOverlay {
             alignment: Alignment.center,
             children: [
               SizedBox(
-                  height: 35,
-                  width: screenWidth * 0.8,
-                  child: SystemTextBox(
-                    controller: controller,
-                    focusNode: FocusNode(canRequestFocus: false),
-                  )),
+                width: screenWidth * 0.8,
+                height: 35,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: SystemTextBox(
+                        controller: controller,
+                        focusNode: _keyboardFocus,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Flexible(
+                      child: StatefulBuilder(
+                        builder: (_, setState) {
+                          _updateKeyboardState ??= setState;
+                          return Icon(_keyboardLockState
+                              ? FluentIcons.lock
+                              : FluentIcons.unlock);
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
@@ -185,13 +211,6 @@ class KeyboardOverlay {
                             Flexible(
                                 flex: 8,
                                 child: _KeyboardButton(
-                                  text: "Cursor left",
-                                  onKeyPress: () {},
-                                )),
-                            const SizedBox(height: 3),
-                            Flexible(
-                                flex: 9,
-                                child: _KeyboardButton(
                                   text: "Caps",
                                   onKeyPress: () => _setNewLayout?.call(() =>
                                       _changeKeyboardLayout(
@@ -200,7 +219,16 @@ class KeyboardOverlay {
                                               ? _KeyboardLayout.ALPHABET_CAPS
                                               : _KeyboardLayout.ALPHABET,
                                           controller)),
-                                ))
+                                )),
+                            const SizedBox(height: 3),
+                            Flexible(
+                                flex: 9,
+                                child: _KeyboardButton(
+                                    text: "Cancel",
+                                    onKeyPress: () {
+                                      controller.text = _initialStringMemento!;
+                                      Navigator.pop(context);
+                                    })),
                           ],
                         )),
                     const SizedBox(width: 3),
@@ -244,8 +272,17 @@ class KeyboardOverlay {
                             Flexible(
                                 flex: 8,
                                 child: _KeyboardButton(
-                                  text: "Cursor right",
-                                  onKeyPress: () {},
+                                  text: "Lock/Unlock",
+                                  onKeyPress: () {
+                                    _keyboardFocus.canRequestFocus =
+                                        !_keyboardFocus.canRequestFocus;
+                                    _updateKeyboardState?.call(() =>
+                                        _keyboardLockState =
+                                            !_keyboardFocus.canRequestFocus);
+                                    if (!_keyboardLockState) {
+                                      _keyboardFocus.requestFocus();
+                                    }
+                                  },
                                 )),
                             const SizedBox(height: 3),
                             Flexible(

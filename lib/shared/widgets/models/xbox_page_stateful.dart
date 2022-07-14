@@ -1,49 +1,30 @@
-// ignore_for_file: no_logic_in_create_state
-
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
+import 'package:xbox_launcher/models/mapping_definition.dart';
+import 'package:xbox_launcher/providers/keyboard_action_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 
-abstract class XboxPageStateful extends StatefulWidget {
-  Map<ControllerKeyboardPair, void Function(BuildContext context)>? keyAction;
-
-  XboxPageStateful({Key? key, this.keyAction}) : super(key: key);
-
-  State<StatefulWidget> vitualCreateState();
-
+abstract class XboxPageStateful extends StatefulWidget implements XboxPage {
   @override
-  State<StatefulWidget> createState() => vitualCreateState();
+  Map<ControllerKeyboardPair, void Function(BuildContext)> pageKeysAction;
+
+  XboxPageStateful({Key? key, required this.pageKeysAction}) : super(key: key);
 }
 
-abstract class XboxPageState<T extends XboxPageStateful> extends State<T> {
-  late Map<ShortcutActivator, void Function()> _keyboardBinding;
+abstract class XboxPageState<T extends XboxPageStateful> extends State<T>
+    implements MappingDefinition {
   Widget virtualBuild(BuildContext context);
 
   @override
-  void initState() {
-    super.initState();
-    _mapKeyboardShortcuts(context);
-  }
-
-  void _mapKeyboardShortcuts(BuildContext context) {
-    if (widget.keyAction == null) return;
-
-    Map<ShortcutActivator, void Function()> binding = {};
-
-    widget.keyAction!.forEach((key, value) {
-      binding[SingleActivator(key.keyboardkey)] = () => value(context);
-    });
-
-    _keyboardBinding = binding;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return widget.keyAction != null
-        ? CallbackShortcuts(
-            bindings: _keyboardBinding,
-            child: Container(
-                color: AppColors.DARK_BG, child: virtualBuild(context)))
-        : Container(color: AppColors.DARK_BG, child: virtualBuild(context));
+    defineMapping(context);
+
+    return CallbackShortcuts(
+        bindings: Provider.of<KeyboardActionProvider>(context, listen: false)
+            .keyboardBinding,
+        child:
+            Container(color: AppColors.DARK_BG, child: virtualBuild(context)));
   }
 }

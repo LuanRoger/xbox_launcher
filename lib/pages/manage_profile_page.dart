@@ -2,6 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
+import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/profile_update_info.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
@@ -16,14 +17,14 @@ import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class ManageProfilePage extends XboxPageStateful {
   ManageProfilePage({Key? key})
-      : super(keyAction: {
+      : super(pageKeysAction: {
           ControllerKeyboardPair(
                   LogicalKeyboardKey.escape, ControllerButton.BACK):
               ((context) => Navigator.pop(context))
         }, key: key);
 
   @override
-  State<StatefulWidget> vitualCreateState() => _ManageProfilePageState();
+  State<StatefulWidget> createState() => _ManageProfilePageState();
 }
 
 class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
@@ -43,6 +44,12 @@ class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
   void dispose() {
     super.dispose();
     profileNameTextController.dispose();
+  }
+
+  @override
+  void defineMapping(BuildContext context) {
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, widget.pageKeysAction);
   }
 
   void getProfileInfo(BuildContext context) {

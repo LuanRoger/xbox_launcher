@@ -1,9 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/models/apps_historic.dart';
+import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/pages/my_library_page/my_library_page.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
-import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/models/tile_type_generate.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
@@ -16,7 +15,13 @@ import 'package:xbox_launcher/shared/widgets/profile_info.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 
 class HomePage extends XboxPageStateless {
-  HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key, pageKeysAction: {});
+
+  @override
+  void defineMapping(BuildContext context) {
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, pageKeysAction);
+  }
 
   @override
   Widget virtualBuild(BuildContext context) {

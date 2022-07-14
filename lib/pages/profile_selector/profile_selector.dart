@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/pages/profile_selector/widgets/profile_selector_item.dart';
@@ -17,11 +18,11 @@ class ProfileSelector extends XboxPageStateful {
   void Function(BuildContext, ProfileModel) onProfileSelect;
 
   ProfileSelector({required this.onProfileSelect, this.title, Key? key})
-      : super(key: key) {
+      : super(key: key, pageKeysAction: {}) {
     const Duration profileChangeAnimationTime = Duration(milliseconds: 500);
     const Curve profileChangeAnimationCurve = Curves.easeOutQuart;
 
-    keyAction = {
+    pageKeysAction = {
       ControllerKeyboardPair(
               LogicalKeyboardKey.escape, ControllerButton.B_BUTTON):
           ((context) => Navigator.pop(context)),
@@ -39,7 +40,7 @@ class ProfileSelector extends XboxPageStateful {
   }
 
   @override
-  State<StatefulWidget> vitualCreateState() => _ProfileSelectorState();
+  State<StatefulWidget> createState() => _ProfileSelectorState();
 }
 
 class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
@@ -56,6 +57,12 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
     _sliderItemsFocusNodes = List.empty(growable: true);
     _selectorProfileItems = List.empty(growable: true);
     _backgroundTransitionKey = ValueKey(_currentProfile);
+  }
+
+  @override
+  void defineMapping(BuildContext context) {
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, widget.pageKeysAction);
   }
 
   void generateSelectorItems(BuildContext context) {
