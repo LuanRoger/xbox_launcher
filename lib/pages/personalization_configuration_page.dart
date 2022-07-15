@@ -21,7 +21,8 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
       : super("General", "Personalization",
             pageKeysAction: {
               ControllerKeyboardPair(
-                      LogicalKeyboardKey.escape, ControllerButton.B_BUTTON):
+                      const SingleActivator(LogicalKeyboardKey.escape),
+                      ControllerButton.B_BUTTON):
                   ((context) => Navigator.pop(context))
             },
             key: key);

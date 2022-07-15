@@ -1,7 +1,6 @@
 // ignore_for_file: constant_identifier_names
 import 'package:fluent_ui/fluent_ui.dart' hide Overlay;
 import 'package:flutter/services.dart' hide KeyboardKey;
-import 'package:win32/win32.dart';
 import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/mapping_definition.dart';
@@ -188,7 +187,7 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
 
   @override
   void defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.saveAllDefaults(context);
+    KeyboardControllerActionManipulator.saveAllCurrentAtMemento(context);
 
     KeyboardControllerActionManipulator.mapControllerActions(context, {
       ControllerButton.LEFT_SHOULDER: (_) => _switchKeyboardLayout(),
@@ -202,7 +201,7 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
   }
 
   void undefineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.restoreAllDefaults(context);
+    KeyboardControllerActionManipulator.applyMementoInAll(context);
   }
 
   @override

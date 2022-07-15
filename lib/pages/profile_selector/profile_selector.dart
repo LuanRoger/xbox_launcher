@@ -23,16 +23,17 @@ class ProfileSelector extends XboxPageStateful {
     const Curve profileChangeAnimationCurve = Curves.easeOutQuart;
 
     pageKeysAction = {
+      ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
+          ControllerButton.B_BUTTON): ((context) => Navigator.pop(context)),
       ControllerKeyboardPair(
-              LogicalKeyboardKey.escape, ControllerButton.B_BUTTON):
-          ((context) => Navigator.pop(context)),
-      ControllerKeyboardPair(
-              LogicalKeyboardKey.arrowRight, ControllerButton.DPAD_RIGHT):
+              const SingleActivator(LogicalKeyboardKey.arrowRight),
+              ControllerButton.DPAD_RIGHT):
           (_) => _profileSliderController.nextPage(
               curve: profileChangeAnimationCurve,
               duration: profileChangeAnimationTime),
       ControllerKeyboardPair(
-              LogicalKeyboardKey.arrowLeft, ControllerButton.DPAD_LEFT):
+              const SingleActivator(LogicalKeyboardKey.arrowLeft),
+              ControllerButton.DPAD_LEFT):
           (_) => _profileSliderController.previousPage(
               curve: profileChangeAnimationCurve,
               duration: profileChangeAnimationTime)

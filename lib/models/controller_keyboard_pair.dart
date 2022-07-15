@@ -1,8 +1,8 @@
-import 'package:flutter/services.dart';
+import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class ControllerKeyboardPair {
-  LogicalKeyboardKey keyboardkey;
+  SingleActivator keyboardkey;
   ControllerButton controllerButton;
 
   ControllerKeyboardPair(this.keyboardkey, this.controllerButton);

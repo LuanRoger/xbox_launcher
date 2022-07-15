@@ -13,8 +13,8 @@ class MyLibraryPage extends XboxPageStateful {
   MyLibraryPage({Key? key})
       : super(pageKeysAction: {
           ControllerKeyboardPair(
-                  LogicalKeyboardKey.escape, ControllerButton.B_BUTTON):
-              ((context) => Navigator.pop(context))
+              const SingleActivator(LogicalKeyboardKey.escape),
+              ControllerButton.B_BUTTON): ((context) => Navigator.pop(context))
         }, key: key);
 
   @override

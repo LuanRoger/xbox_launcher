@@ -1,6 +1,4 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:fluent_ui/generated/l10n.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/providers/controller_action_provider.dart';
@@ -22,8 +20,7 @@ class KeyboardControllerActionManipulator {
     Map<ShortcutActivator, void Function()> keyboarMapping = {};
     Map<ControllerButton, void Function()> controllerMapping = {};
     for (var action in actionEntry.entries) {
-      keyboarMapping[SingleActivator(action.key.keyboardkey)] =
-          () => action.value(context);
+      keyboarMapping[action.key.keyboardkey] = () => action.value(context);
       controllerMapping[action.key.controllerButton] =
           () => action.value(context);
     }
@@ -32,15 +29,17 @@ class KeyboardControllerActionManipulator {
   }
 
   static void mapKeyboardActions(BuildContext context,
-      Map<LogicalKeyboardKey, void Function(BuildContext context)> keyAction) {
+      Map<SingleActivator, void Function(BuildContext context)> keyAction) {
     if (keyAction.isEmpty) return;
 
     var keyboardProvider =
         Provider.of<KeyboardActionProvider>(context, listen: false);
+    Map<ShortcutActivator, void Function()> keyboardMapping = {};
     keyAction.forEach((key, value) {
-      keyboardProvider.keyboardBinding[SingleActivator(key)] =
-          () => value(context);
+      keyboardMapping[key] = () => value(context);
     });
+
+    keyboardProvider.keyboardBinding = keyboardMapping;
   }
 
   static void mapControllerActions(BuildContext context,
@@ -50,26 +49,22 @@ class KeyboardControllerActionManipulator {
         Provider.of<ControllerActionProvider>(context, listen: false);
     Map<ControllerButton, void Function()> controllerMapping = {};
     buttonAction.forEach((key, value) {
-      controllerMapping[key] = () => value;
+      controllerMapping[key] = () => value(context);
     });
     controllerProvider.controller0Binding = controllerMapping;
   }
 
-  static void saveAllDefaults(BuildContext context) {
-    var keyboardProvider =
-        Provider.of<KeyboardActionProvider>(context, listen: false)
-            .setCurrentAsDefault();
-    var controllerProvider =
-        Provider.of<ControllerActionProvider>(context, listen: false)
-            .setCurrentAsDefault();
+  static void saveAllCurrentAtMemento(BuildContext context) {
+    Provider.of<KeyboardActionProvider>(context, listen: false)
+        .addToMementoStack();
+    Provider.of<ControllerActionProvider>(context, listen: false)
+        .addToMementoStack();
   }
 
-  static void restoreAllDefaults(BuildContext context) {
-    var keyboardProvider =
-        Provider.of<KeyboardActionProvider>(context, listen: false)
-            .restoreDefault();
-    var controllerProvider =
-        Provider.of<ControllerActionProvider>(context, listen: false)
-            .restoreDefault();
+  static void applyMementoInAll(BuildContext context) {
+    Provider.of<KeyboardActionProvider>(context, listen: false)
+        .applyFromMementoStack();
+    Provider.of<ControllerActionProvider>(context, listen: false)
+        .applyFromMementoStack();
   }
 }
