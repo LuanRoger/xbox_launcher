@@ -8,18 +8,23 @@ import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 
 abstract class XboxPageStateful extends StatefulWidget implements XboxPage {
   @override
-  Map<ControllerKeyboardPair, void Function(BuildContext)> pageKeysAction;
+  Map<ControllerKeyboardPair, void Function(BuildContext)>? pageKeysAction;
 
-  XboxPageStateful({Key? key, required this.pageKeysAction}) : super(key: key);
+  XboxPageStateful({Key? key, this.pageKeysAction}) : super(key: key);
 }
 
 abstract class XboxPageState<T extends XboxPageStateful> extends State<T>
     implements MappingDefinition {
+  bool _hasBeenMappign = false;
+
   Widget virtualBuild(BuildContext context);
 
   @override
   Widget build(BuildContext context) {
-    defineMapping(context);
+    if (!_hasBeenMappign && widget.pageKeysAction != null) {
+      defineMapping(context);
+      _hasBeenMappign = true;
+    }
 
     return CallbackShortcuts(
         bindings: Provider.of<KeyboardActionProvider>(context, listen: false)

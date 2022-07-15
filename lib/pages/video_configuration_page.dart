@@ -16,7 +16,7 @@ class VideoConfigurationPage extends ConfigurationMenu {
           "Video",
           pageKeysAction: {
             ControllerKeyboardPair(
-                    LogicalKeyboardKey.escape, ControllerButton.BACK):
+                    LogicalKeyboardKey.escape, ControllerButton.B_BUTTON):
                 ((context) => Navigator.pop(context))
           },
           key: key,
@@ -25,7 +25,7 @@ class VideoConfigurationPage extends ConfigurationMenu {
   @override
   void defineMapping(BuildContext context) {
     KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, pageKeysAction);
+        context, pageKeysAction!);
   }
 
   @override

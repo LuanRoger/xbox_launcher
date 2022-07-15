@@ -62,7 +62,7 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
   @override
   void defineMapping(BuildContext context) {
     KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, widget.pageKeysAction);
+        context, widget.pageKeysAction!);
   }
 
   void generateSelectorItems(BuildContext context) {

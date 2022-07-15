@@ -4,18 +4,17 @@ import 'package:xinput_gamepad/xinput_gamepad.dart';
 class ControllerActionProvider {
   XInputController _inputController;
   Map<ControllerButton, Function>? _controllersDefaultInput;
-  Map<ControllerButton, Function> get controller0Bindings =>
+
+  Map<ControllerButton, Function> get controller0Binding =>
       _inputController.controller0.buttonsMapping!;
+  set controller0Binding(Map<ControllerButton, Function> buttonsBinding) =>
+      _inputController.controller0.buttonsMapping = buttonsBinding;
 
   ControllerActionProvider(this._inputController);
 
-  void setMappingToAll(MapEntry<ControllerButton, Function> mapping) {
-    _inputController.controller0.buttonsMapping?[mapping.key] = mapping.value;
-  }
-
   void setCurrentAsDefault() {
     _controllersDefaultInput =
-        Map<ControllerButton, Function>.from(controller0Bindings);
+        Map<ControllerButton, Function>.from(controller0Binding);
   }
 
   void restoreDefault() {

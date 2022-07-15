@@ -19,7 +19,7 @@ class ManageProfilePage extends XboxPageStateful {
   ManageProfilePage({Key? key})
       : super(pageKeysAction: {
           ControllerKeyboardPair(
-                  LogicalKeyboardKey.escape, ControllerButton.BACK):
+                  LogicalKeyboardKey.escape, ControllerButton.B_BUTTON):
               ((context) => Navigator.pop(context))
         }, key: key);
 
@@ -49,7 +49,7 @@ class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
   @override
   void defineMapping(BuildContext context) {
     KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, widget.pageKeysAction);
+        context, widget.pageKeysAction!);
   }
 
   void getProfileInfo(BuildContext context) {

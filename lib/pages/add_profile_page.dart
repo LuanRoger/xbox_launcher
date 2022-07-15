@@ -19,7 +19,7 @@ class AddProfilePage extends XboxPageStateful {
   AddProfilePage({Key? key})
       : super(pageKeysAction: {
           ControllerKeyboardPair(
-                  LogicalKeyboardKey.escape, ControllerButton.BACK):
+                  LogicalKeyboardKey.escape, ControllerButton.B_BUTTON):
               ((context) => Navigator.pop(context))
         }, key: key);
 
@@ -45,8 +45,7 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
 
   @override
   void defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, widget.pageKeysAction);
+    //This page has no mapping
   }
 
   bool _isProfileNameValid() => profileNameController.text.isNotEmpty;

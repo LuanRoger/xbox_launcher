@@ -21,10 +21,16 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
       : super("General", "Personalization",
             pageKeysAction: {
               ControllerKeyboardPair(
-                      LogicalKeyboardKey.escape, ControllerButton.BACK):
+                      LogicalKeyboardKey.escape, ControllerButton.B_BUTTON):
                   ((context) => Navigator.pop(context))
             },
             key: key);
+
+  @override
+  void defineMapping(BuildContext context) {
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, pageKeysAction!);
+  }
 
   void setCustomImage(BuildContext context) async {
     var profileProvider = context.read<ProfileProvider>();
@@ -103,10 +109,4 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
                       .resetBackground())
         ]
       };
-
-  @override
-  void defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, pageKeysAction);
-  }
 }

@@ -11,7 +11,7 @@ class GamePage extends XboxPageStateful {
   String server;
 
   GamePage(this.gameUrl, this.gameCover, {Key? key, required this.server})
-      : super(key: key, pageKeysAction: {});
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _GamePageState();
@@ -53,8 +53,7 @@ class _GamePageState extends XboxPageState<GamePage> {
 
   @override
   void defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, widget.pageKeysAction);
+    //This page has no mapping
   }
 
   Future<void> initPlatformState() async {

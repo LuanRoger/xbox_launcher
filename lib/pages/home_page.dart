@@ -15,12 +15,11 @@ import 'package:xbox_launcher/shared/widgets/profile_info.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 
 class HomePage extends XboxPageStateless {
-  HomePage({Key? key}) : super(key: key, pageKeysAction: {});
+  HomePage({Key? key}) : super(key: key);
 
   @override
   void defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, pageKeysAction);
+    //This page has no mapping
   }
 
   @override

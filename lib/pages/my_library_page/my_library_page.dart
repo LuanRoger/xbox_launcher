@@ -13,7 +13,7 @@ class MyLibraryPage extends XboxPageStateful {
   MyLibraryPage({Key? key})
       : super(pageKeysAction: {
           ControllerKeyboardPair(
-                  LogicalKeyboardKey.escape, ControllerButton.BACK):
+                  LogicalKeyboardKey.escape, ControllerButton.B_BUTTON):
               ((context) => Navigator.pop(context))
         }, key: key);
 
@@ -33,7 +33,7 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
   @override
   void defineMapping(BuildContext context) {
     KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, widget.pageKeysAction);
+        context, widget.pageKeysAction!);
   }
 
   @override
