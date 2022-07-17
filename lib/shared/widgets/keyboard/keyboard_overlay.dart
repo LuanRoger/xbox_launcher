@@ -4,7 +4,8 @@ import 'package:flutter/services.dart' hide KeyboardKey;
 import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/mapping_definition.dart';
-import 'package:xbox_launcher/shared/system_text_box.dart';
+import 'package:xbox_launcher/shared/app_images.dart';
+import 'package:xbox_launcher/shared/widgets/system_text_box.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_key.dart';
 import 'package:xbox_launcher/shared/widgets/models/overlay.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart' hide KeyboardKey;
@@ -195,7 +196,7 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
       ControllerButton.RIGHT_THUMB: (_) => _switchKeyboardLocker(),
       ControllerButton.X_BUTTON: (_) => _backspace(),
       ControllerButton.Y_BUTTON: (_) => _space(),
-      ControllerButton.B_BUTTON: (context) => _cancel(context),
+      ControllerButton.BACK: (context) => _cancel(context),
       ControllerButton.START: (context) => _finish(context)
     });
   }
@@ -264,8 +265,9 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
                             Flexible(
                                 flex: 4,
                                 child: KeyboardKey(
-                                  text: "Switch layout",
+                                  text: "Layout",
                                   onKeyPress: _switchKeyboardLayout,
+                                  buttonImage: AppImages.LEFT_SHOLDER_IMAGE,
                                 )),
                             const SizedBox(height: 3),
                             Flexible(
@@ -273,13 +275,16 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
                                 child: KeyboardKey(
                                   text: "Caps",
                                   onKeyPress: _switchLayoutToCaps,
+                                  buttonImage: AppImages.LEFT_THUMB_IMAGE,
                                 )),
                             const SizedBox(height: 3),
                             Flexible(
                                 flex: 9,
                                 child: KeyboardKey(
-                                    text: "Cancel",
-                                    onKeyPress: () => _cancel(context))),
+                                  text: "Cancel",
+                                  onKeyPress: () => _cancel(context),
+                                  buttonImage: AppImages.BACK_BUTTON_IMAGE,
+                                )),
                           ],
                         )),
                     const SizedBox(width: 3),
@@ -299,7 +304,10 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
                             const SizedBox(height: 3),
                             Expanded(
                                 child: KeyboardKey(
-                                    text: "Space", onKeyPress: () => _space()))
+                              text: "Space",
+                              onKeyPress: () => _space(),
+                              buttonImage: AppImages.Y_BUTTON_IMAGE,
+                            ))
                           ],
                         )),
                     const SizedBox(width: 3),
@@ -314,6 +322,7 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
                                 child: KeyboardKey(
                                   text: "Backspace",
                                   onKeyPress: () => _backspace(),
+                                  buttonImage: AppImages.X_BUTTON_IMAGE,
                                 )),
                             const SizedBox(height: 3),
                             Flexible(
@@ -321,6 +330,7 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
                                 child: KeyboardKey(
                                   text: "Lock/Unlock",
                                   onKeyPress: () => _switchKeyboardLocker(),
+                                  buttonImage: AppImages.RIGHT_THUMB_IMAGE,
                                 )),
                             const SizedBox(height: 3),
                             Flexible(
@@ -328,6 +338,7 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
                                 child: KeyboardKey(
                                   text: "Confirm",
                                   onKeyPress: () => _finish(context),
+                                  buttonImage: AppImages.START_BUTTON_IMAGE,
                                 ))
                           ],
                         ))

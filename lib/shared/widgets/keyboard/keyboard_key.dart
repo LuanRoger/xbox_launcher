@@ -3,15 +3,35 @@ import 'package:xbox_launcher/shared/app_colors.dart';
 
 class KeyboardKey extends StatelessWidget {
   String text;
+  ImageProvider? buttonImage;
   void Function() onKeyPress;
 
-  KeyboardKey({Key? key, required this.text, required this.onKeyPress})
+  KeyboardKey(
+      {Key? key,
+      required this.text,
+      required this.onKeyPress,
+      this.buttonImage})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Button(
-      child: Align(alignment: Alignment.center, child: Text(text)),
+      child: Align(
+        alignment: Alignment.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(text),
+            buttonImage != null
+                ? Image(
+                    image: buttonImage!,
+                    width: 25,
+                    height: 25,
+                  )
+                : const SizedBox()
+          ],
+        ),
+      ),
       onPressed: onKeyPress,
       style: ButtonStyle(
           shape: ButtonState.all(
