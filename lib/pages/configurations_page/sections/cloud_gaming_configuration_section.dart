@@ -6,6 +6,7 @@ import 'package:xbox_launcher/shared/app_consts.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
     as xbox_button;
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
+import 'package:xbox_launcher/shared/widgets/system_text_box.dart';
 
 class CloudGamingConfigurationSection extends ConfigurationSection {
   final TextEditingController jsonUrlTextController = TextEditingController();
@@ -27,17 +28,12 @@ class CloudGamingConfigurationSection extends ConfigurationSection {
       children: [
         Flexible(
           flex: 0,
-          child: TextBox(
-            header: "JSON file path:",
-            controller: jsonUrlTextController,
-          ),
-        ),
-        const Spacer(),
-        Expanded(
-          flex: 0,
-          child: KeyboardButton(
-            controller: controllerTest,
-            placeholder: "Placeholder",
+          child: InfoLabel(
+            label: "JSON file path:",
+            child: KeyboardButton(
+              placeholder: "JSON file path",
+              controller: jsonUrlTextController,
+            ),
           ),
         ),
         const Spacer(),

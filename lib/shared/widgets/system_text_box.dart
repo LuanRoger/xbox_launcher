@@ -6,6 +6,7 @@ class SystemTextBox extends StatelessWidget {
   TextEditingController? controller;
   FocusNode? focusNode;
   String? placeholder;
+  int? maxLenght;
   bool readOnly;
 
   SystemTextBox(
@@ -13,6 +14,7 @@ class SystemTextBox extends StatelessWidget {
       this.controller,
       this.focusNode,
       this.placeholder,
+      this.maxLenght,
       this.readOnly = false})
       : super(key: key);
 
@@ -24,6 +26,7 @@ class SystemTextBox extends StatelessWidget {
         focusNode: focusNode,
         placeholder: placeholder,
         maxLines: 1,
+        maxLength: maxLenght,
         readOnly: readOnly,
         enabled: !readOnly,
         textAlign: TextAlign.left,

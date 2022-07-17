@@ -11,6 +11,7 @@ import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
     as xbox_button;
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
+import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar_button.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
@@ -123,13 +124,13 @@ class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
                   const Spacer(),
                   Expanded(
                     flex: 15,
-                    child: TextBox(
-                      header: "Profile name:",
-                      headerStyle: AppTextStyle.ADD_UPDATE_PROFILE_TEXT_HEADER,
-                      maxLength: 30,
-                      maxLines: 1,
-                      minLines: 1,
-                      controller: profileNameTextController,
+                    child: InfoLabel(
+                      label: "Profile name:",
+                      child: KeyboardButton(
+                        placeholder: "Profile name",
+                        controller: profileNameTextController,
+                        maxLenght: 30,
+                      ),
                     ),
                   )
                 ],
