@@ -37,7 +37,7 @@ flutter:
   uses-material-design: true
 
   assets:
-  - assets/games_cover/HitmanTriology.png
+  - assets/buttons/
 
   fonts:
     - family: Bahnschrift
