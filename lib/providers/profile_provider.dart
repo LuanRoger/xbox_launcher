@@ -2,6 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xbox_launcher/models/apps_historic.dart';
 import 'package:xbox_launcher/models/app_model.dart';
+import 'package:xbox_launcher/models/external_games_profile_preferences.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/models/background_profile_preferences.dart';
 import 'package:xbox_launcher/models/profile_update_info.dart';
@@ -21,6 +22,7 @@ class ProfileProvider extends ChangeNotifier {
 
     if (!(await profileLoader.loadProfiles())) {
       profileLoader.createDefaultProfile(createDefault());
+      profilePreferences.remove("lastCurrentProfile");
     }
 
     await setCurrentByName(profilePreferences.getString("lastCurrentProfile") ??
@@ -90,8 +92,17 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   List<AppModel> get lastApps => _currentProfile.appsHistoric.lastApps;
-  void addApp(AppModel appModel) {
+  void addAppToHistory(AppModel appModel) {
     _currentProfile.appsHistoric.addApp(appModel);
+
+    notifyListeners();
+    saveProfile();
+  }
+
+  List<AppModel> get externalGames =>
+      _currentProfile.externalGamesPreferences.externalGames;
+  void addExternalGame(AppModel appModel) {
+    _currentProfile.externalGamesPreferences.addExternalGame(appModel);
 
     notifyListeners();
     saveProfile();
@@ -174,6 +185,7 @@ class ProfileProvider extends ChangeNotifier {
     defaultProfile.preferedServer = AppConsts.XCLOUD_SUPPORTED_SERVERS[0];
 
     defaultProfile.appsHistoric = AppsHistoric();
+    defaultProfile.externalGamesPreferences = ExternalGamesProfilePreferences();
     defaultProfile.backgroundPreferences =
         BackgroundProfilePreferences(0, null);
     defaultProfile.themePreferences = ThemeProfilePreferences(0);

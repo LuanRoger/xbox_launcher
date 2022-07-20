@@ -29,7 +29,7 @@ class GameButtonTile extends ButtonTile {
               ),
             );
             Provider.of<ProfileProvider>(context, listen: false)
-                .addApp(gameModel);
+                .addAppToHistory(gameModel);
           },
         );
 }

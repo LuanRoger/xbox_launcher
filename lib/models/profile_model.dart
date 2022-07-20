@@ -1,5 +1,6 @@
 import 'package:xbox_launcher/models/apps_historic.dart';
 import 'package:xbox_launcher/models/background_profile_preferences.dart';
+import 'package:xbox_launcher/models/external_games_profile_preferences.dart';
 import 'package:xbox_launcher/models/theme_data_profile.dart';
 import 'package:xbox_launcher/models/video_preferences.dart';
 
@@ -11,6 +12,7 @@ class ProfileModel {
   String? profileImagePath;
 
   late AppsHistoric appsHistoric;
+  late ExternalGamesProfilePreferences externalGamesPreferences;
   late BackgroundProfilePreferences backgroundPreferences;
   late ThemeProfilePreferences themePreferences;
   late VideoPreferences videoPreferences;
@@ -24,6 +26,8 @@ class ProfileModel {
     profileModel.xcloudGamesJsonPath = json["xcloudGamesJsonPath"];
     profileModel.profileImagePath = json["profileImagePath"];
     profileModel.appsHistoric = AppsHistoric.fromJson(json["appsHistoric"]);
+    profileModel.externalGamesPreferences =
+        ExternalGamesProfilePreferences.fromJson(json["externalGamesPreferences"]);
     profileModel.backgroundPreferences =
         BackgroundProfilePreferences.fromJson(json["backgroundPreferences"]);
     profileModel.themePreferences =
@@ -41,6 +45,7 @@ class ProfileModel {
         "xcloudGamesJsonPath": xcloudGamesJsonPath,
         "profileImagePath": profileImagePath,
         "appsHistoric": appsHistoric.toJson(),
+        "externalGamesPreferences": externalGamesPreferences.toJson(),
         "backgroundPreferences": backgroundPreferences.toJson(),
         "themePreferences": themePreferences.toJson(),
         "videoPreferences": videoPreferences.toJson()

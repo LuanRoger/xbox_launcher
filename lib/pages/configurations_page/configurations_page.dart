@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/about_configuration_section.dart';
+import 'package:xbox_launcher/pages/configurations_page/sections/external_games_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/profile_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/cloud_gaming_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/general_configurations_section.dart';
@@ -47,12 +48,14 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
         NavigationItem("General"),
         NavigationItem("Profile"),
         NavigationItem("Cloud gaming"),
+        NavigationItem("External games"),
         NavigationItem("About")
       ],
       bodyItems: [
         const GenralConfigurationSection(),
         const ProfileConfigurationSection(),
         CloudGamingConfigurationSection(),
+        const ExternalGamesConfigurationSection(),
         const AboutConfigurationSection()
       ],
     );

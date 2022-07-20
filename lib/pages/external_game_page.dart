@@ -5,14 +5,14 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_native_view/flutter_native_view.dart';
 import 'package:win32/win32.dart';
 
-class X360GamePage extends StatefulWidget {
-  const X360GamePage({Key? key}) : super(key: key);
+class ExternalGamePage extends StatefulWidget {
+  const ExternalGamePage({Key? key}) : super(key: key);
 
   @override
-  State<X360GamePage> createState() => _X360GamePageState();
+  State<ExternalGamePage> createState() => _ExternalGamePageState();
 }
 
-class _X360GamePageState extends State<X360GamePage> {
+class _ExternalGamePageState extends State<ExternalGamePage> {
   late final NativeViewController viewController;
 
   @override

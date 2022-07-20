@@ -16,6 +16,7 @@ class SystemAppButtonTile extends ButtonTile {
             key: key, tileSize: tileSize, icon: appModel.icon, onPressed: (_) {
           Navigator.push(
               context, FluentPageRoute(builder: (_) => appModel.appHome!));
-          Provider.of<ProfileProvider>(context, listen: false).addApp(appModel);
+          Provider.of<ProfileProvider>(context, listen: false)
+              .addAppToHistory(appModel);
         });
 }

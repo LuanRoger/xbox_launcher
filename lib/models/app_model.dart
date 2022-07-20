@@ -1,6 +1,7 @@
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 
 abstract class AppModel {
+  //TODO: Made this never null
   late String? name;
   late AppType appType;
 
