@@ -15,7 +15,6 @@ class ExternalGameModel implements AppModel {
   ExternalGameModel fromJson(Map<String, dynamic> json) {
     ExternalGameModel externalGameModel = ExternalGameModel();
     externalGameModel.name = json["name"];
-    externalGameModel.appType = json["type"];
     externalGameModel.path = json["path"];
     externalGameModel.imagePath = json["imagePath"];
     externalGameModel.iconUrl = json["iconUrl"];

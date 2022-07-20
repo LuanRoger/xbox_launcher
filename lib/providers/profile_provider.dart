@@ -102,7 +102,14 @@ class ProfileProvider extends ChangeNotifier {
   List<AppModel> get externalGames =>
       _currentProfile.externalGamesPreferences.externalGames;
   void addExternalGame(AppModel appModel) {
-    _currentProfile.externalGamesPreferences.addExternalGame(appModel);
+    _currentProfile.externalGamesPreferences.externalGames.add(appModel);
+
+    notifyListeners();
+    saveProfile();
+  }
+
+  void removeExternalGame(int index) {
+    _currentProfile.externalGamesPreferences.externalGames.removeAt(index);
 
     notifyListeners();
     saveProfile();

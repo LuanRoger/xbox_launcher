@@ -14,8 +14,4 @@ class ExternalGamesProfilePreferences {
     return externalGamesProfilePreferences;
   }
   Map<String, dynamic> toJson() => {"externalGames": externalGames};
-
-  void addExternalGame(AppModel appModel) {
-    externalGames.add(appModel);
-  }
 }
