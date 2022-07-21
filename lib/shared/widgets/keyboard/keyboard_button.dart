@@ -6,12 +6,14 @@ class KeyboardButton extends StatelessWidget {
   String placeholder;
   TextEditingController controller;
   int? maxLenght;
+  void Function(bool cancel)? onFinish;
 
   KeyboardButton(
       {Key? key,
       required this.placeholder,
       required this.controller,
-      this.maxLenght})
+      this.maxLenght,
+      this.onFinish})
       : super(key: key);
 
   @override
@@ -23,7 +25,9 @@ class KeyboardButton extends StatelessWidget {
         maxLenght: maxLenght,
         readOnly: true,
       ),
-      onPressed: () => KeyboardOverlay(controller: controller).show(context),
+      onPressed: () =>
+          KeyboardOverlay(controller: controller, onFinish: onFinish)
+              .show(context),
       style: ButtonStyle(
           padding: ButtonState.all(EdgeInsets.zero),
           shape: ButtonState.all(
