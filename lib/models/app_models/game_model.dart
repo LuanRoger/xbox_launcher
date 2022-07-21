@@ -1,9 +1,9 @@
-import 'package:xbox_launcher/models/app_model.dart';
+import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 
 class GameModel implements AppModel {
   @override
-  late String? name; //gameTitle
+  late String name; //gameTitle
   @override
   AppType appType = AppType.GAME;
 

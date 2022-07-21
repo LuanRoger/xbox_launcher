@@ -1,11 +1,11 @@
-import 'package:xbox_launcher/models/app_model.dart';
-import 'package:xbox_launcher/models/external_game_model.dart';
-import 'package:xbox_launcher/models/game_model.dart';
-import 'package:xbox_launcher/models/system_app_model.dart';
+import 'package:xbox_launcher/models/app_models/app_model.dart';
+import 'package:xbox_launcher/models/app_models/external_game_model.dart';
+import 'package:xbox_launcher/models/app_models/game_model.dart';
+import 'package:xbox_launcher/models/app_models/system_app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 
 class AppsModelLoader {
-  List<AppModel> recoganizeAppList(List<dynamic> appsList) {
+  List<AppModel> recoganizeNonConcreateApp(List<dynamic> appsList) {
     return List<AppModel>.from(appsList.map((appModel) {
       AppModel? app;
       switch (AppType.values
@@ -24,4 +24,16 @@ class AppsModelLoader {
       return app;
     }).toList());
   }
+
+  List<GameModel> recoganizeListGameModel(List<dynamic> appsList) =>
+      List<GameModel>.from(
+          appsList.map((model) => GameModel().fromJson(model)).toList());
+
+  List<SystemAppModel> recoganizeListSystemApp(List<dynamic> appList) =>
+      List<SystemAppModel>.from(
+          appList.map((model) => SystemAppModel().fromJson(model)));
+
+  List<ExternalGameModel> recoganizeListExternalGames(List<dynamic> appList) =>
+      List<ExternalGameModel>.from(
+          appList.map((model) => ExternalGameModel().fromJson(model)).toList());
 }

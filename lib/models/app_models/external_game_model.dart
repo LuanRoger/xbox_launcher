@@ -1,9 +1,9 @@
-import 'package:xbox_launcher/models/app_model.dart';
+import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 
 class ExternalGameModel implements AppModel {
   @override
-  String? name;
+  late String name;
   @override
   AppType appType = AppType.EXTERNAL_APP;
 

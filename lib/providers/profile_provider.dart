@@ -1,7 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:xbox_launcher/models/app_models/external_game_model.dart';
 import 'package:xbox_launcher/models/apps_historic.dart';
-import 'package:xbox_launcher/models/app_model.dart';
+import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/models/external_games_profile_preferences.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/models/background_profile_preferences.dart';
@@ -34,7 +35,7 @@ class ProfileProvider extends ChangeNotifier {
   List<ProfileModel>? get profilesList {
     if (profileLoader.profileBuffer == null) return List<ProfileModel>.empty();
 
-    return [...(profileLoader.profileBuffer)!];
+    return List<ProfileModel>.from(profileLoader.profileBuffer!);
   }
 
   Future addNewProfile(ProfileModel newProfile) async {
@@ -99,9 +100,9 @@ class ProfileProvider extends ChangeNotifier {
     saveProfile();
   }
 
-  List<AppModel> get externalGames =>
+  List<ExternalGameModel> get externalGames =>
       _currentProfile.externalGamesPreferences.externalGames;
-  void addExternalGame(AppModel appModel) {
+  void addExternalGame(ExternalGameModel appModel) {
     _currentProfile.externalGamesPreferences.externalGames.add(appModel);
 
     notifyListeners();

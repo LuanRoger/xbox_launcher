@@ -1,10 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/pages/my_library_page/my_library_page.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
-import 'package:xbox_launcher/shared/widgets/models/tile_generator_option.dart';
-import 'package:xbox_launcher/shared/widgets/models/tile_type_generate.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
 import 'package:xbox_launcher/shared/widgets/clock_time.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateless.dart';
@@ -13,6 +10,8 @@ import 'package:xbox_launcher/shared/widgets/system_banner_button.dart';
 import 'package:xbox_launcher/shared/widgets/tile_row.dart';
 import 'package:xbox_launcher/shared/widgets/profile_info.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
+import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
+import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 
 class HomePage extends XboxPageStateless {
   HomePage({Key? key}) : super(key: key);
@@ -59,7 +58,7 @@ class HomePage extends XboxPageStateless {
                       return value.lastApps.isEmpty
                           ? const WellcomingMessage()
                           : TileRow(
-                              tiles: TileTypeGenerate.generateByModel(
+                              tiles: WidgetGen.generateByModel(
                                   value.lastApps,
                                   TileGeneratorOption(
                                       [TileSize.BIG, TileSize.MEDIUM],

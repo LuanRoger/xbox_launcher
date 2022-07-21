@@ -1,16 +1,17 @@
-import 'package:xbox_launcher/models/app_model.dart';
-import 'package:xbox_launcher/models/game_model.dart';
+import 'package:xbox_launcher/models/app_models/app_model.dart';
+import 'package:xbox_launcher/models/app_models/game_model.dart';
+import 'package:xbox_launcher/models/app_models/system_app_model.dart';
 import 'package:xbox_launcher/utils/loaders/apps_model_loader.dart';
 
 class AppsHistoric {
-  List<AppModel> lastApps = List<AppModel>.empty(growable: true);
+  List<AppModel> lastApps = List<SystemAppModel>.empty(growable: true);
 
   AppsHistoric();
   factory AppsHistoric.fromJson(Map<String, dynamic> json) {
     AppsModelLoader loader = AppsModelLoader();
     AppsHistoric appsHistoric = AppsHistoric();
     appsHistoric.lastApps =
-        loader.recoganizeAppList(json["lastApps"] as List<dynamic>);
+        loader.recoganizeNonConcreateApp(json["lastApps"] as List<dynamic>);
 
     return appsHistoric;
   }
@@ -20,7 +21,7 @@ class AppsHistoric {
     AppModel repeatedApp = lastApps.firstWhere(
         (element) => element.name == app.name,
         orElse: () => GameModel()..name = "");
-    if (repeatedApp.name!.isNotEmpty) {
+    if (repeatedApp.name.isNotEmpty) {
       lastApps.remove(repeatedApp);
     }
 

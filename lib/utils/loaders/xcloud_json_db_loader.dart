@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:xbox_launcher/models/game_model.dart';
+import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/utils/string_formatter.dart';
 
 class XCloudJsonDbLoader {

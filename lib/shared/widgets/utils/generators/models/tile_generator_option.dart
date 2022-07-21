@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 
 class TileGeneratorOption {

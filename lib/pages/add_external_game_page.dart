@@ -3,12 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
-import 'package:xbox_launcher/models/external_game_model.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateless.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
+
+import '../models/app_models/external_game_model.dart';
 
 class AddExternalGamePage extends XboxPageStateless {
   TextEditingController gameNameController = TextEditingController();
