@@ -6,6 +6,7 @@ import 'package:xbox_launcher/pages/configurations_page/sections/configuration_s
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
+import 'package:xbox_launcher/shared/widgets/external_game_icon.dart';
 
 class ExternalGamesConfigurationSection extends ConfigurationSection {
   const ExternalGamesConfigurationSection({Key? key})
@@ -47,6 +48,9 @@ class ExternalGamesConfigurationSection extends ConfigurationSection {
                 return ListTile(
                   title: Text(externalGame.name),
                   subtitle: Text(externalGame.path),
+                  leading: ExternalGameIcon(
+                    iconUrl: externalGame.iconUrl,
+                  ),
                   trailing: IconButton(
                     icon: const Icon(FluentIcons.delete),
                     onPressed: () =>
