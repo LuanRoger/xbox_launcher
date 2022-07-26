@@ -1,3 +1,4 @@
+import 'package:virtual_keyboard/virtual_keyboard.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class XInputController {
@@ -8,17 +9,22 @@ class XInputController {
   late Controller controller3;
   late Controller controller4;
 
-  final Map<ControllerButton, void Function()> _basicControllers = {
-    ControllerButton.A_BUTTON: () => VirtualKeyboard.press(KeyboardKey.ENTER),
-    ControllerButton.B_BUTTON: () => VirtualKeyboard.press(KeyboardKey.ESCAPE),
-    ControllerButton.DPAD_UP: () => VirtualKeyboard.press(KeyboardKey.UP_ARROW),
-    ControllerButton.DPAD_DOWN: () =>
-        VirtualKeyboard.press(KeyboardKey.DOWN_ARROW),
-    ControllerButton.DPAD_LEFT: () =>
-        VirtualKeyboard.press(KeyboardKey.LEFT_ARROW),
-    ControllerButton.DPAD_RIGHT: () =>
-        VirtualKeyboard.press(KeyboardKey.RIGHT_ARROW),
-  };
+  Keyboard keyboardControllerInputs = Keyboard();
+
+  Map<ControllerButton, void Function()> get _basicControllers => {
+        ControllerButton.A_BUTTON: () =>
+            keyboardControllerInputs.press(KeyboardKey.ENTER),
+        ControllerButton.B_BUTTON: () =>
+            keyboardControllerInputs.press(KeyboardKey.ESCAPE),
+        ControllerButton.DPAD_UP: () =>
+            keyboardControllerInputs.press(KeyboardKey.UP_ARROW),
+        ControllerButton.DPAD_DOWN: () =>
+            keyboardControllerInputs.press(KeyboardKey.DOWN_ARROW),
+        ControllerButton.DPAD_LEFT: () =>
+            keyboardControllerInputs.press(KeyboardKey.LEFT_ARROW),
+        ControllerButton.DPAD_RIGHT: () =>
+            keyboardControllerInputs.press(KeyboardKey.RIGHT_ARROW),
+      };
 
   void init() {
     XInputManager.enableXInput();
