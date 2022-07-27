@@ -1,4 +1,3 @@
-from asyncio import base_events
 from time import sleep
 from typing import Any, List
 from selenium import webdriver
@@ -38,7 +37,6 @@ def add_formater_width_height(url: str) -> str:
 
     return url[:argument_start] + arguments
 
-
 page_scroll_point = 0
 page_height = driver.execute_script("return document.body.scrollHeight")
 games_list: List[XcloudGame] = []
@@ -66,7 +64,10 @@ while not done:
         driver.execute_script("window.close()")
         driver.switch_to.window(driver.window_handles[0])
 
-        games_list.append(XcloudGame(game_title, game_publisher, add_formater_game_url_server(game_url), tile_image_url, game_image_url))
+        new_game = XcloudGame(game_title, game_publisher, add_formater_game_url_server(game_url), tile_image_url, game_image_url)
+
+        if(new_game not in games_list):
+            games_list.append(new_game)
 
     page_scroll_point += 1600
     driver.execute_script(f"window.scrollTo(0, {page_scroll_point})")
