@@ -6,7 +6,6 @@ import 'package:xbox_launcher/shared/app_consts.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
     as xbox_button;
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
-import 'package:xbox_launcher/shared/widgets/system_text_box.dart';
 
 class CloudGamingConfigurationSection extends ConfigurationSection {
   final TextEditingController jsonUrlTextController = TextEditingController();
