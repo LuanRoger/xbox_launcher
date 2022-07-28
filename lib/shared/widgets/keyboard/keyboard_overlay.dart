@@ -1,117 +1,21 @@
 // ignore_for_file: constant_identifier_names
 import 'package:fluent_ui/fluent_ui.dart' hide Overlay;
-import 'package:flutter/services.dart' hide KeyboardKey;
+import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
-import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/mapping_definition.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_images.dart';
-import 'package:xbox_launcher/shared/widgets/system_text_box.dart';
+import 'package:xbox_launcher/shared/enums/keyboard_layout.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/system_text_box.dart';
+import 'package:xbox_launcher/shared/widgets/keyboard/keys_char.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_key.dart';
 import 'package:xbox_launcher/shared/widgets/models/overlay.dart';
-import 'package:xinput_gamepad/xinput_gamepad.dart' hide KeyboardKey;
-
-enum _KeyboardLayout { ALPHABET, ALPHABET_CAPS, SYMBOLS }
-
-class _KeyboardChars {
-  static List<String> getKeys(_KeyboardLayout layout) {
-    switch (layout) {
-      case _KeyboardLayout.ALPHABET:
-        return _alphabet;
-      case _KeyboardLayout.ALPHABET_CAPS:
-        return _alphabet.map((char) => char.toUpperCase()).toList();
-      case _KeyboardLayout.SYMBOLS:
-        return _symbols;
-    }
-  }
-
-  static const List<String> _alphabet = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "0",
-    "q",
-    "w",
-    "e",
-    "r",
-    "t",
-    "y",
-    "u",
-    "i",
-    "o",
-    "p",
-    "a",
-    "s",
-    "d",
-    "f",
-    "g",
-    "h",
-    "j",
-    "k",
-    "l",
-    "´",
-    "z",
-    "x",
-    "c",
-    "v",
-    "b",
-    "n",
-    "m",
-    ",",
-    ".",
-    "?"
-  ];
-  static const List<String> _symbols = [
-    "!",
-    "@",
-    "#",
-    "\$",
-    "%",
-    "&",
-    "(",
-    ")",
-    "-",
-    "_",
-    "=",
-    "+",
-    "\\",
-    ";",
-    ":",
-    "/",
-    ".",
-    "•",
-    "©",
-    "€",
-    "£",
-    "ɥ",
-    "½",
-    "<",
-    ">",
-    "[",
-    "]",
-    "{",
-    "}",
-    "|",
-    "¦",
-    "¶",
-    "°",
-    "~",
-    "^",
-    ".",
-    "'",
-    ","
-  ];
-}
+import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class KeyboardOverlay implements Overlay, MappingDefinition {
   late GridView _currentKeyboardLayout;
 
-  late _KeyboardLayout _currentKeyboardType;
+  late KeyboardLayout _currentKeyboardType;
   void Function(void Function())? _setNewLayout;
   final FocusNode _keyboardFocus = FocusNode(canRequestFocus: false);
   bool _keyboardLockState = true;
@@ -119,12 +23,13 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
   String? _initialStringMemento;
 
   void Function(bool cancel)? onFinish;
+  void Function(String value)? onChanged;
   TextEditingController controller;
 
-  KeyboardOverlay({required this.controller, this.onFinish});
+  KeyboardOverlay({required this.controller, this.onFinish, this.onChanged});
 
-  void _changeKeyboardLayout(_KeyboardLayout _keyboardLayout) {
-    var characters = _KeyboardChars.getKeys(_keyboardLayout);
+  void _changeKeyboardLayout(KeyboardLayout _keyboardLayout) {
+    var characters = KeysChar.getKeys(_keyboardLayout);
 
     _currentKeyboardLayout = GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -142,18 +47,19 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
     _currentKeyboardType = _keyboardLayout;
   }
 
+  //#region Special Keyboard Keys Calls
   void _switchKeyboardLayout() {
     _setNewLayout?.call(() => _changeKeyboardLayout(
-        _currentKeyboardType == _KeyboardLayout.SYMBOLS
-            ? _KeyboardLayout.ALPHABET
-            : _KeyboardLayout.SYMBOLS));
+        _currentKeyboardType == KeyboardLayout.SYMBOLS
+            ? KeyboardLayout.ALPHABET
+            : KeyboardLayout.SYMBOLS));
   }
 
   void _switchLayoutToCaps() {
     _setNewLayout?.call(() => _changeKeyboardLayout(
-        _currentKeyboardType != _KeyboardLayout.ALPHABET_CAPS
-            ? _KeyboardLayout.ALPHABET_CAPS
-            : _KeyboardLayout.ALPHABET));
+        _currentKeyboardType != KeyboardLayout.ALPHABET_CAPS
+            ? KeyboardLayout.ALPHABET_CAPS
+            : KeyboardLayout.ALPHABET));
   }
 
   void _switchKeyboardLocker() {
@@ -185,6 +91,7 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
     undefineMapping(context);
     Navigator.pop(context);
   }
+  //#endregion
 
   @override
   void defineMapping(BuildContext context) {
@@ -210,7 +117,8 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
     final Size size = MediaQuery.of(context).size;
     final double screenHeight = size.height;
     final double screenWidth = size.width;
-    _changeKeyboardLayout(_KeyboardLayout.ALPHABET);
+
+    _changeKeyboardLayout(KeyboardLayout.ALPHABET);
     _initialStringMemento = String.fromCharCodes(controller.text.codeUnits);
     defineMapping(context);
 
@@ -230,6 +138,10 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
                       child: SystemTextBox(
                         controller: controller,
                         focusNode: _keyboardFocus,
+                        onChanged: onChanged,
+                        color:
+                            Provider.of<ProfileProvider>(context, listen: false)
+                                .accentColor,
                       ),
                     ),
                     const SizedBox(
@@ -258,35 +170,10 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
                   child: Row(children: [
                     Flexible(
                         flex: 1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Flexible(
-                                flex: 4,
-                                child: KeyboardKey(
-                                  text: "Layout",
-                                  onKeyPress: _switchKeyboardLayout,
-                                  buttonImage: AppImages.LEFT_SHOLDER_IMAGE,
-                                )),
-                            const SizedBox(height: 3),
-                            Flexible(
-                                flex: 8,
-                                child: KeyboardKey(
-                                  text: "Caps",
-                                  onKeyPress: _switchLayoutToCaps,
-                                  buttonImage: AppImages.LEFT_THUMB_IMAGE,
-                                )),
-                            const SizedBox(height: 3),
-                            Flexible(
-                                flex: 9,
-                                child: KeyboardKey(
-                                  text: "Cancel",
-                                  onKeyPress: () => _cancel(context),
-                                  buttonImage: AppImages.BACK_BUTTON_IMAGE,
-                                )),
-                          ],
-                        )),
+                        child: _LeftButtonsSet(
+                            layoutKeyCallback: _switchKeyboardLayout,
+                            capsKeyCallback: _switchLayoutToCaps,
+                            cancelKeyCallback: _cancel)),
                     const SizedBox(width: 3),
                     Expanded(
                         flex: 5,
@@ -313,34 +200,10 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
                     const SizedBox(width: 3),
                     Flexible(
                         flex: 1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Flexible(
-                                flex: 4,
-                                child: KeyboardKey(
-                                  text: "Backspace",
-                                  onKeyPress: () => _backspace(),
-                                  buttonImage: AppImages.X_BUTTON_IMAGE,
-                                )),
-                            const SizedBox(height: 3),
-                            Flexible(
-                                flex: 8,
-                                child: KeyboardKey(
-                                  text: "Lock/Unlock",
-                                  onKeyPress: () => _switchKeyboardLocker(),
-                                  buttonImage: AppImages.RIGHT_THUMB_IMAGE,
-                                )),
-                            const SizedBox(height: 3),
-                            Flexible(
-                                flex: 9,
-                                child: KeyboardKey(
-                                  text: "Confirm",
-                                  onKeyPress: () => _finish(context),
-                                  buttonImage: AppImages.START_BUTTON_IMAGE,
-                                ))
-                          ],
+                        child: _RightButtonsSet(
+                          backspaceKeyCallback: _backspace,
+                          lockKeyCallback: _switchKeyboardLocker,
+                          confirmKeyCallback: _finish,
                         ))
                   ]),
                 ),
@@ -348,5 +211,93 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
             ],
           );
         });
+  }
+}
+
+class _LeftButtonsSet extends StatelessWidget {
+  void Function() layoutKeyCallback;
+  void Function() capsKeyCallback;
+  void Function(BuildContext context) cancelKeyCallback;
+
+  _LeftButtonsSet(
+      {required this.layoutKeyCallback,
+      required this.capsKeyCallback,
+      required this.cancelKeyCallback});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Flexible(
+            flex: 4,
+            child: KeyboardKey(
+              text: "Layout",
+              onKeyPress: layoutKeyCallback,
+              buttonImage: AppImages.LEFT_SHOLDER_IMAGE,
+            )),
+        const SizedBox(height: 3),
+        Flexible(
+            flex: 8,
+            child: KeyboardKey(
+              text: "Caps",
+              onKeyPress: capsKeyCallback,
+              buttonImage: AppImages.LEFT_THUMB_IMAGE,
+            )),
+        const SizedBox(height: 3),
+        Flexible(
+            flex: 9,
+            child: KeyboardKey(
+              text: "Cancel",
+              onKeyPress: () => cancelKeyCallback(context),
+              buttonImage: AppImages.BACK_BUTTON_IMAGE,
+            )),
+      ],
+    );
+  }
+}
+
+class _RightButtonsSet extends StatelessWidget {
+  void Function() backspaceKeyCallback;
+  void Function() lockKeyCallback;
+  void Function(BuildContext) confirmKeyCallback;
+
+  _RightButtonsSet(
+      {required this.backspaceKeyCallback,
+      required this.lockKeyCallback,
+      required this.confirmKeyCallback});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Flexible(
+            flex: 4,
+            child: KeyboardKey(
+              text: "Backspace",
+              onKeyPress: backspaceKeyCallback,
+              buttonImage: AppImages.X_BUTTON_IMAGE,
+            )),
+        const SizedBox(height: 3),
+        Flexible(
+            flex: 8,
+            child: KeyboardKey(
+              text: "Lock/Unlock",
+              onKeyPress: lockKeyCallback,
+              buttonImage: AppImages.RIGHT_THUMB_IMAGE,
+            )),
+        const SizedBox(height: 3),
+        Flexible(
+            flex: 9,
+            child: KeyboardKey(
+              text: "Confirm",
+              onKeyPress: () => confirmKeyCallback(context),
+              buttonImage: AppImages.START_BUTTON_IMAGE,
+            ))
+      ],
+    );
   }
 }
