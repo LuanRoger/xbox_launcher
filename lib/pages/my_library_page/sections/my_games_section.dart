@@ -4,6 +4,7 @@ import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/search_button.dart';
 import 'package:xbox_launcher/shared/widgets/game_button_tile.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable.dart';
 import 'package:xbox_launcher/shared/widgets/tile_grid.dart';
@@ -11,6 +12,11 @@ import 'package:xbox_launcher/utils/loaders/xcloud_json_db_loader.dart';
 
 class MyGamesSection extends StatelessWidget {
   late XCloudJsonDbLoader gamesLoader;
+  late List<GameModel> gamesList;
+  List<GameModel>? gamesSearchResult;
+  TextEditingController searchTextController = TextEditingController();
+
+  void Function(void Function())? _reloadTilesGrid;
 
   MyGamesSection({Key? key}) : super(key: key) {
     gamesLoader = XCloudJsonDbLoader();
@@ -22,16 +28,31 @@ class MyGamesSection extends StatelessWidget {
 
     gamesLoader.jsonFilePath = profileProvider.xcloudGamesJsonPath!;
     await gamesLoader.readJsonFile();
+    gamesList = gamesLoader.deserializeAllJson();
     return true;
   }
 
-  List<GameButtonTile> generateTilesFromProvider(List<GameModel> gamesList) {
+  //TODO: Move to generator class
+  List<GameButtonTile> generateTilesFromList(List<GameModel> gamesList) {
     List<GameButtonTile> gamesTile = List.empty(growable: true);
     for (var gameModel in gamesList) {
       gamesTile.add(GameButtonTile(gameModel, tileSize: TileSize.MEDIUM));
     }
 
     return gamesTile;
+  }
+
+  void searchGamesByName(String gameName) {
+    List<GameModel> searchResult = gamesList
+        .where((game) => game.name.toLowerCase().contains(gameName))
+        .toList();
+
+    if (searchResult.isEmpty) {
+      _reloadTilesGrid!.call(() => gamesSearchResult = null);
+      return;
+    }
+
+    _reloadTilesGrid!.call(() => gamesSearchResult = searchResult);
   }
 
   @override
@@ -43,21 +64,45 @@ class MyGamesSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Flexible(
+              flex: 0,
               child: Text(
-            "Games",
-            style: AppTextStyle.MY_GAMES_SECTIONS_TILE,
-          )),
+                "Games",
+                style: AppTextStyle.MY_GAMES_SECTIONS_TILE,
+              )),
           const Spacer(),
-          FutureBuilder<bool>(
-              future: readXCloudGames(context),
-              builder: (_, snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.waiting:
-                    return const ProgressRing();
-                  default:
-                    return Expanded(
-                        flex: 7,
-                        child: snapshot.hasData && snapshot.data!
+          Expanded(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SearchButton(
+                    controller: searchTextController,
+                    width: 100.0,
+                    height: 30.0,
+                    onFinish: (cancel) {
+                      if (cancel) return;
+
+                      searchGamesByName(searchTextController.text);
+                    },
+                  )
+                ],
+              )),
+          const Spacer(),
+          Expanded(
+            flex: 10,
+            child: StatefulBuilder(
+              builder: (_, setState) {
+                _reloadTilesGrid ??= setState;
+                return FutureBuilder(
+                  future: readXCloudGames(context),
+                  builder: (_, snapshot) {
+                    switch (snapshot.connectionState) {
+                      case ConnectionState.waiting:
+                        return const ProgressRing();
+                      default:
+                        return snapshot.hasData &&
+                                snapshot.data as bool &&
+                                gamesList.isNotEmpty
                             ? TileGrid.count(
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
@@ -65,13 +110,17 @@ class MyGamesSection extends StatelessWidget {
                                   crossAxisSpacing: 10,
                                   mainAxisSpacing: 10,
                                 ),
-                                tiles: generateTilesFromProvider(
-                                    gamesLoader.deserializeAllJson()),
+                                tiles: generateTilesFromList(
+                                    gamesSearchResult ?? gamesList),
                                 scrollDirection: Axis.vertical,
                               )
-                            : const XCloudFileUnavailable());
-                }
-              }),
+                            : const XCloudFileUnavailable();
+                    }
+                  },
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
