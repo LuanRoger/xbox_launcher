@@ -1,16 +1,17 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/pages/configurations_page/sections/configuration_section.dart';
 import 'package:xbox_launcher/pages/video_configuration_page.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
 import 'package:xbox_launcher/pages/personalization_configuration_page.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 
-class GenralConfigurationSection extends ConfigurationSection {
-  const GenralConfigurationSection({Key? key}) : super("General", key: key);
+class GenralConfigurationSection extends NavigationSection {
+  GenralConfigurationSection({Key? key}) : super("General", key: key);
 
   @override
-  Widget virtualBuild(BuildContext context) {
-    return Column(
-      children: [
+  List<Widget>? buildActions(BuildContext context) => null;
+
+  @override
+  List<Widget> buildColumnItems(BuildContext context) => [
         Flexible(
           flex: 0,
           child: Row(
@@ -69,7 +70,5 @@ class GenralConfigurationSection extends ConfigurationSection {
             ],
           ),
         )
-      ],
-    );
-  }
+      ];
 }

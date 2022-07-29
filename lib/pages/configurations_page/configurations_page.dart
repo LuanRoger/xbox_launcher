@@ -7,9 +7,9 @@ import 'package:xbox_launcher/pages/configurations_page/sections/external_games_
 import 'package:xbox_launcher/pages/configurations_page/sections/profile_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/cloud_gaming_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/general_configurations_section.dart';
-import 'package:xbox_launcher/shared/widgets/models/navigation_item.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
-import 'package:xbox_launcher/shared/widgets/navigation_bar.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_bar.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_item.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class ConfigurationsPage extends XboxPageStateful {
@@ -49,14 +49,15 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
         NavigationItem("Profile"),
         NavigationItem("Cloud gaming"),
         NavigationItem("External games"),
+        NavigationSeparatorItem(),
         NavigationItem("About")
       ],
       bodyItems: [
-        const GenralConfigurationSection(),
-        const ProfileConfigurationSection(),
+        GenralConfigurationSection(),
+        ProfileConfigurationSection(),
         CloudGamingConfigurationSection(),
-        const ExternalGamesConfigurationSection(),
-        const AboutConfigurationSection()
+        ExternalGamesConfigurationSection(),
+        AboutConfigurationSection()
       ],
     );
   }

@@ -1,18 +1,17 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/pages/add_profile_page.dart';
-import 'package:xbox_launcher/pages/configurations_page/sections/configuration_section.dart';
 import 'package:xbox_launcher/pages/manage_profile_page.dart';
 import 'package:xbox_launcher/pages/profile_selector/profile_selector.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
-    as xbox_button;
+import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 
-class ProfileConfigurationSection extends ConfigurationSection {
-  const ProfileConfigurationSection({Key? key}) : super("Profile", key: key);
+class ProfileConfigurationSection extends NavigationSection {
+  ProfileConfigurationSection({Key? key}) : super("Profile", key: key);
 
   Future _removeProfileFlow(ProfileModel toRemove, BuildContext context) {
     return SystemDialog(
@@ -21,7 +20,7 @@ class ProfileConfigurationSection extends ConfigurationSection {
             "You will lost all the profile info (Configurations, customizations, historic and more...).\n"
             "This action can't be undo.",
         actions: [
-          xbox_button.TextButton(
+          TextButton(
             title: "Continue",
             onPressed: () async {
               bool result =
@@ -33,7 +32,7 @@ class ProfileConfigurationSection extends ConfigurationSection {
                   title: "A error occurs",
                   content: "You can't delete a profile that is being used.",
                   actions: [
-                    xbox_button.TextButton(
+                    TextButton(
                       title: "OK",
                       onPressed: () => Navigator.pop(context),
                     )
@@ -45,7 +44,7 @@ class ProfileConfigurationSection extends ConfigurationSection {
               Navigator.pop(context);
             },
           ),
-          xbox_button.TextButton(
+          TextButton(
             title: "Cancel",
             onPressed: () => Navigator.pop(context),
           )
@@ -53,9 +52,10 @@ class ProfileConfigurationSection extends ConfigurationSection {
   }
 
   @override
-  Widget virtualBuild(BuildContext context) {
-    return Column(
-      children: [
+  List<Widget>? buildActions(BuildContext context) => null;
+
+  @override
+  List<Widget> buildColumnItems(BuildContext context) => [
         Flexible(
           flex: 0,
           child: Row(
@@ -126,7 +126,5 @@ class ProfileConfigurationSection extends ConfigurationSection {
             ],
           ),
         )
-      ],
-    );
-  }
+      ];
 }

@@ -5,22 +5,11 @@ import 'package:xbox_launcher/models/app_models/system_app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/game_button_tile.dart';
-import 'package:xbox_launcher/shared/widgets/models/navigation_item.dart';
 import 'package:xbox_launcher/shared/widgets/system_app_tile.dart';
 import 'package:xbox_launcher/shared/widgets/tile_base.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 
 class WidgetGen {
-  static List<NavigationPaneItem> generatePaneItems(
-      List<NavigationItem> paneItems) {
-    List<NavigationPaneItem> barItems = List.empty(growable: true);
-    for (NavigationItem item in paneItems) {
-      barItems.add(PaneItem(icon: const SizedBox(), title: Text(item.text)));
-    }
-
-    return barItems;
-  }
-
   static Widget generateTileCover(
       {required Color colorByGenerator,
       Color? color,

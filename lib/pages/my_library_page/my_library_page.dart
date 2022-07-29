@@ -4,9 +4,9 @@ import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/my_apps_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/my_games_section.dart';
-import 'package:xbox_launcher/shared/widgets/models/navigation_item.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
-import 'package:xbox_launcher/shared/widgets/navigation_bar.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_bar.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_item.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class MyLibraryPage extends XboxPageStateful {
@@ -41,6 +41,6 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
     return NavigationBar(
         icon: FluentIcons.library,
         paneItems: [NavigationItem("Games"), NavigationItem("Apps")],
-        bodyItems: [MyGamesSection(), const MyAppsSection()]);
+        bodyItems: [MyGamesSection(), MyAppsSection()]);
   }
 }

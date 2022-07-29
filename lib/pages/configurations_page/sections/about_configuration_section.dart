@@ -1,29 +1,28 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/pages/configurations_page/sections/configuration_section.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 
-class AboutConfigurationSection extends ConfigurationSection {
-  const AboutConfigurationSection({Key? key}) : super("About", key: key);
+class AboutConfigurationSection extends NavigationSection {
+  AboutConfigurationSection({Key? key}) : super("About", key: key);
 
   @override
-  Widget virtualBuild(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text(
-              "Xbox Launcher v0.0.1",
-              style: AppTextStyle.ABOUT_SECTION_TITLE_CONFIGURATION,
-            ),
-          ],
+  List<Widget>? buildActions(BuildContext context) => null;
+
+  @override
+  List<Widget> buildColumnItems(BuildContext context) => const [
+        Flexible(
+          flex: 5,
+          child: Text(
+            "Xbox Launcher v0.0.1",
+            style: AppTextStyle.ABOUT_SECTION_TITLE_CONFIGURATION,
+          ),
         ),
-        Text(
-          "Created by: " + "Luan Roger c 2022",
-          style: AppTextStyle.ABOUT_SECTION_TEXT,
+        Flexible(
+          flex: 5,
+          child: Text(
+            "Created by: " "Luan Roger c 2022",
+            style: AppTextStyle.ABOUT_SECTION_TEXT,
+          ),
         )
-      ],
-    );
-  }
+      ];
 }
