@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/pages/video_configuration_page.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
 import 'package:xbox_launcher/pages/personalization_configuration_page.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
@@ -13,14 +14,13 @@ class GenralConfigurationSection extends NavigationSection {
   @override
   List<Widget> buildColumnItems(BuildContext context) => [
         Flexible(
-          flex: 0,
-          child: Row(
-            children: [
-              Expanded(
-                flex: 25,
-                child: IconTextButton(
+            flex: 15,
+            child: ButtonGrid(buttons: {
+              null: [
+                IconTextButton(
                   title: "Personalizations",
                   icon: FluentIcons.personalize,
+                  width: null,
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -29,46 +29,30 @@ class GenralConfigurationSection extends NavigationSection {
                                 PersonalizationConfigurationPage()));
                   },
                 ),
-              ),
-              const Spacer(),
-              Expanded(
-                flex: 25,
-                child: IconTextButton(
+                IconTextButton(
+                  title: "Contributors",
+                  icon: FluentIcons.group,
+                  width: null,
+                  onPressed: () {},
+                ),
+              ],
+              "": [
+                IconTextButton(
                   title: "Video",
                   icon: FluentIcons.t_v_monitor,
+                  width: null,
                   onPressed: () => Navigator.push(
                       context,
                       FluentPageRoute(
                           builder: (context) => VideoConfigurationPage())),
                 ),
-              ),
-            ],
-          ),
-        ),
-        const Spacer(),
-        Flexible(
-          flex: 25,
-          child: Row(
-            children: [
-              Expanded(
-                flex: 25,
-                child: IconTextButton(
-                  title: "Contributors",
-                  icon: FluentIcons.group,
-                  onPressed: () {},
-                ),
-              ),
-              const Spacer(),
-              Expanded(
-                flex: 25,
-                child: IconTextButton(
+                IconTextButton(
                   title: "License",
                   icon: FluentIcons.entitlement_policy,
+                  width: null,
                   onPressed: () {},
                 ),
-              )
-            ],
-          ),
-        )
+              ]
+            }))
       ];
 }

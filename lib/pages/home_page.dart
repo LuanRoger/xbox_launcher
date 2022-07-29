@@ -6,7 +6,7 @@ import 'package:xbox_launcher/shared/widgets/background.dart';
 import 'package:xbox_launcher/shared/widgets/clock_time.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/wellcoming_message.dart';
-import 'package:xbox_launcher/shared/widgets/system_banner_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/system_banner_button.dart';
 import 'package:xbox_launcher/shared/widgets/tile_row.dart';
 import 'package:xbox_launcher/shared/widgets/profile_info.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';

@@ -18,8 +18,7 @@ class AppTextStyle {
       TextStyle(fontWeight: FontWeight.bold, fontSize: 36);
   static const TextStyle ABOUT_SECTION_TEXT =
       TextStyle(fontStyle: FontStyle.italic, fontSize: 16);
-  static const TextStyle CONFIGURATION_MENU_SECTION_TITLE =
-      TextStyle(fontSize: 20);
+  static const TextStyle BUTTON_GRID_COLLECTION_TITLE = TextStyle(fontSize: 20);
 
   static const TextStyle ADD_UPDATE_PROFILE_PAGE_TITLE =
       TextStyle(fontSize: 32, fontWeight: FontWeight.bold);

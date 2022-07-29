@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
-import 'package:xbox_launcher/shared/widgets/profile_avatar_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/profile_avatar_button.dart';
 
 class ProfileSelectorItem extends StatelessWidget {
   ProfileModel profileModel;
