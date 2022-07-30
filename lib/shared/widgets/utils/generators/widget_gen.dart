@@ -1,9 +1,11 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
+import 'package:xbox_launcher/models/app_models/external_game_model.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/app_models/system_app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
+import 'package:xbox_launcher/shared/widgets/external_game_button_tile.dart';
 import 'package:xbox_launcher/shared/widgets/game_button_tile.dart';
 import 'package:xbox_launcher/shared/widgets/system_app_tile.dart';
 import 'package:xbox_launcher/shared/widgets/tile_base.dart';
@@ -76,8 +78,13 @@ class WidgetGen {
             context: option.context,
           );
           break;
+        case AppType.EXTERNAL_APP:
+          tile = ExternalGameButtonTile(model as ExternalGameModel,
+              tileSize: actualTileSize);
+          break;
         default:
-          throw UnimplementedError("External Apps not implemented yet");
+          throw UnimplementedError(
+              model.runtimeType.toString() + " not implemented yet.");
       }
       tiles.add(tile);
     }
