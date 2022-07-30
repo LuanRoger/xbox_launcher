@@ -72,6 +72,7 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
   }
 
   void _backspace() {
+    if (controller.text.isEmpty) return;
     controller.text =
         controller.text.replaceRange(controller.text.length - 1, null, "");
   }

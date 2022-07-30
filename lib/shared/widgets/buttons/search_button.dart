@@ -14,8 +14,8 @@ class SearchButton extends StatelessWidget {
       required this.controller,
       this.onChanged,
       this.onFinish,
-      this.width,
-      this.height})
+      this.width = 100.0,
+      this.height = 30.0})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

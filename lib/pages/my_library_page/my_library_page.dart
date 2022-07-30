@@ -2,6 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
+import 'package:xbox_launcher/pages/my_library_page/sections/full_library_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/my_apps_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/my_games_section.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
@@ -38,9 +39,15 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
 
   @override
   Widget virtualBuild(BuildContext context) {
-    return NavigationBar(
-        icon: FluentIcons.library,
-        paneItems: [NavigationItem("Games"), NavigationItem("Apps")],
-        bodyItems: [MyGamesSection(), MyAppsSection()]);
+    return NavigationBar(icon: FluentIcons.library, paneItems: [
+      NavigationItem("Games"),
+      NavigationItem("Apps"),
+      NavigationSeparatorItem(),
+      NavigationItem("Full library")
+    ], bodyItems: [
+      MyGamesSection(),
+      MyAppsSection(),
+      FullLibrarySection()
+    ]);
   }
 }

@@ -8,6 +8,8 @@ import 'package:xbox_launcher/shared/widgets/game_button_tile.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable.dart';
 import 'package:xbox_launcher/shared/widgets/tile_grid.dart';
+import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
+import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 import 'package:xbox_launcher/utils/loaders/xcloud_json_db_loader.dart';
 
 class MyGamesSection extends NavigationSection {
@@ -32,16 +34,6 @@ class MyGamesSection extends NavigationSection {
     return true;
   }
 
-  //TODO: Move to generator class
-  List<GameButtonTile> generateTilesFromList(List<GameModel> gamesList) {
-    List<GameButtonTile> gamesTile = List.empty(growable: true);
-    for (var gameModel in gamesList) {
-      gamesTile.add(GameButtonTile(gameModel, tileSize: TileSize.MEDIUM));
-    }
-
-    return gamesTile;
-  }
-
   void searchGamesByName(String gameName) {
     List<GameModel> searchResult = gamesList
         .where((game) => game.name.toLowerCase().contains(gameName))
@@ -54,7 +46,7 @@ class MyGamesSection extends NavigationSection {
 
     _reloadTilesGrid!.call(() => gamesSearchResult = searchResult);
   }
-  
+
   @override
   List<Widget>? buildActions(BuildContext context) => [
         SearchButton(
@@ -75,7 +67,7 @@ class MyGamesSection extends NavigationSection {
           flex: 10,
           child: StatefulBuilder(
             builder: (_, setState) {
-              _reloadTilesGrid ??= setState;
+              _reloadTilesGrid = setState;
               return FutureBuilder(
                 future: readXCloudGames(context),
                 builder: (_, snapshot) {
@@ -93,8 +85,10 @@ class MyGamesSection extends NavigationSection {
                                 crossAxisSpacing: 10,
                                 mainAxisSpacing: 10,
                               ),
-                              tiles: generateTilesFromList(
-                                  gamesSearchResult ?? gamesList),
+                              tiles: WidgetGen.generateByModel(
+                                  gamesSearchResult ?? gamesList,
+                                  TileGeneratorOption([TileSize.MEDIUM],
+                                      context: context)),
                               scrollDirection: Axis.vertical,
                             )
                           : const XCloudFileUnavailable();
