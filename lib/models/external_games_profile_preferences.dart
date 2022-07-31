@@ -2,7 +2,8 @@ import 'package:xbox_launcher/models/app_models/external_game_model.dart';
 import 'package:xbox_launcher/utils/loaders/apps_model_loader.dart';
 
 class ExternalGamesProfilePreferences {
-  late List<ExternalGameModel> externalGames;
+  late List<ExternalGameModel> externalGames =
+      List<ExternalGameModel>.empty(growable: true);
 
   ExternalGamesProfilePreferences();
   factory ExternalGamesProfilePreferences.fromJson(Map<String, dynamic> json) {
