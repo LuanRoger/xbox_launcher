@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/app_models/system_app_model.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
-import 'package:xbox_launcher/shared/widgets/button_tile.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/button_tile.dart';
 
 class SystemAppButtonTile extends ButtonTile {
   SystemAppModel appModel;

@@ -1,10 +1,9 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
-import 'package:xbox_launcher/models/theme_data_profile.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
-import 'package:xbox_launcher/shared/widgets/tile_base_stateful.dart';
-import 'package:xbox_launcher/shared/widgets/tile_title_bar.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/tile_base_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/tile_title_bar.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 
 class ButtonTile extends TileBaseStateful {
@@ -20,18 +19,26 @@ class ButtonTile extends TileBaseStateful {
   late double height;
   @override
   late double width;
+  @override
+  late FocusNode? focusNode;
 
   late TileSize _tileSize;
   TileSize get tileSize => _tileSize;
+
+  @override
+  State<StatefulWidget> createState() => _ButtonTileState();
 
   ButtonTile(this.title, this.interactive,
       {Key? key,
       required TileSize tileSize,
       this.color,
+      this.focusNode,
       this.onPressed,
       this.icon,
       this.image})
       : super(key: key) {
+    focusNode ??= FocusNode();
+
     _tileSize = tileSize;
     switch (tileSize) {
       case TileSize.SMALL:
@@ -52,13 +59,9 @@ class ButtonTile extends TileBaseStateful {
         break;
     }
   }
-
-  @override
-  State<StatefulWidget> vitualCreateState() => _ButtonTileState();
 }
 
 class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
-  final focusNode = FocusNode();
   late bool getFocused;
   TileTitleBar? titleBar;
 
@@ -66,9 +69,10 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
   void initState() {
     super.initState();
     if (widget.interactive) {
-      focusNode.addListener(() {
+      widget.focusNode!.addListener(() {
         setState(() {
-          titleBar = focusNode.hasFocus ? TileTitleBar(widget.title) : null;
+          titleBar =
+              widget.focusNode!.hasFocus ? TileTitleBar(widget.title) : null;
         });
       });
     }
@@ -77,7 +81,7 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
   @override
   Widget virtualBuild(BuildContext context) {
     return Button(
-      focusNode: focusNode,
+      focusNode: widget.focusNode,
       style: ButtonStyle(
           backgroundColor: ButtonState.all(Colors.transparent),
           elevation: ButtonState.all(0),

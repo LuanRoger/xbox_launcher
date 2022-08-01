@@ -1,4 +1,4 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
@@ -8,12 +8,11 @@ import 'package:xbox_launcher/pages/page_models_base/configuration_menu.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
-    as xbox_button;
-import 'package:xbox_launcher/shared/widgets/tile_grid.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/menu_dialog_overlay.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
-import 'package:xbox_launcher/shared/widgets/button_tile.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/button_tile.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class PersonalizationConfigurationPage extends ConfigurationMenu {
@@ -94,16 +93,15 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
   @override
   Map<String, List<SystemButton>> buttonsBuilder(BuildContext context) => {
         "Colors": [
-          xbox_button.TextButton(
-              title: "Colors", onPressed: () => setMainColor(context)),
+          TextButton(title: "Colors", onPressed: () => setMainColor(context)),
         ],
         "My Background": [
-          xbox_button.TextButton(
+          TextButton(
               title: "Solid color",
               onPressed: () => setBackgroundColor(context)),
-          xbox_button.TextButton(
+          TextButton(
               title: "Custom image", onPressed: () => setCustomImage(context)),
-          xbox_button.TextButton(
+          TextButton(
               title: "Reset background",
               onPressed: () =>
                   Provider.of<ProfileProvider>(context, listen: false)

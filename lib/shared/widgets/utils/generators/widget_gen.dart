@@ -5,10 +5,10 @@ import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/app_models/system_app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
-import 'package:xbox_launcher/shared/widgets/external_game_button_tile.dart';
-import 'package:xbox_launcher/shared/widgets/game_button_tile.dart';
-import 'package:xbox_launcher/shared/widgets/system_app_tile.dart';
-import 'package:xbox_launcher/shared/widgets/tile_base.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/external_game_button_tile.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/game_button_tile.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/system_app_tile.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/tile_base.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 
 class WidgetGen {
@@ -40,21 +40,6 @@ class WidgetGen {
     }
 
     return _tileCover;
-  }
-
-  static List<SystemAppButtonTile> generateSystemAppsTiles(
-      List<SystemAppModel> apps, BuildContext context) {
-    List<SystemAppButtonTile> appsTile = List.empty(growable: true);
-
-    for (SystemAppModel app in apps) {
-      appsTile.add(SystemAppButtonTile(
-        app,
-        tileSize: TileSize.MEDIUM,
-        context: context,
-      ));
-    }
-
-    return appsTile;
   }
 
   static List<TileBase> generateByModel(

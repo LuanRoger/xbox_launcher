@@ -4,7 +4,7 @@ import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/pages/game_page.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
-import 'package:xbox_launcher/shared/widgets/button_tile.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/button_tile.dart';
 
 class GameButtonTile extends ButtonTile {
   GameModel gameModel;

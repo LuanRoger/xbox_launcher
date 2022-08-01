@@ -24,9 +24,8 @@ class _TileTitleBarState extends State<TileTitleBar> {
       return 23.0;
     else if (titleLenght > 23 && titleLenght <= 40)
       return 40.0;
-    else if (titleLenght > 40 && titleLenght <= 60)
-      return 60.0;
-    
+    else if (titleLenght > 40 && titleLenght <= 60) return 60.0;
+
     return double.infinity;
   }
 
@@ -48,7 +47,7 @@ class _TileTitleBarState extends State<TileTitleBar> {
           width: double.infinity,
           height: height,
           child: Align(
-              alignment: Alignment.bottomLeft,
+              alignment: Alignment.centerLeft,
               child: Text(widget.title,
                   style: AppTextStyle.XBOX_GAME_BUTTON_TITLE)),
         );

@@ -1,5 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/shared/widgets/tile_base.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/tile_base.dart';
 
 class TileRow extends StatelessWidget {
   List<TileBase> tiles;

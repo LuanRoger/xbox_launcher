@@ -4,6 +4,11 @@ abstract class TileBase extends Widget {
   double width;
   double height;
   Color? color;
+  FocusNode? focusNode;
 
-  TileBase({required this.width, required this.height, this.color});
+  TileBase(
+      {required this.width,
+      required this.height,
+      this.focusNode,
+      this.color});
 }
