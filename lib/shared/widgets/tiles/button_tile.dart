@@ -19,8 +19,6 @@ class ButtonTile extends TileBaseStateful {
   late double height;
   @override
   late double width;
-  @override
-  late FocusNode? focusNode;
 
   late TileSize _tileSize;
   TileSize get tileSize => _tileSize;
@@ -32,13 +30,10 @@ class ButtonTile extends TileBaseStateful {
       {Key? key,
       required TileSize tileSize,
       this.color,
-      this.focusNode,
       this.onPressed,
       this.icon,
       this.image})
       : super(key: key) {
-    focusNode ??= FocusNode();
-
     _tileSize = tileSize;
     switch (tileSize) {
       case TileSize.SMALL:
@@ -62,6 +57,7 @@ class ButtonTile extends TileBaseStateful {
 }
 
 class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
+  final FocusNode focusNode = FocusNode();
   late bool getFocused;
   TileTitleBar? titleBar;
 
@@ -69,10 +65,9 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
   void initState() {
     super.initState();
     if (widget.interactive) {
-      widget.focusNode!.addListener(() {
+      focusNode.addListener(() {
         setState(() {
-          titleBar =
-              widget.focusNode!.hasFocus ? TileTitleBar(widget.title) : null;
+          titleBar = focusNode.hasFocus ? TileTitleBar(widget.title) : null;
         });
       });
     }
@@ -81,7 +76,7 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
   @override
   Widget virtualBuild(BuildContext context) {
     return Button(
-      focusNode: widget.focusNode,
+      focusNode: focusNode,
       style: ButtonStyle(
           backgroundColor: ButtonState.all(Colors.transparent),
           elevation: ButtonState.all(0),
