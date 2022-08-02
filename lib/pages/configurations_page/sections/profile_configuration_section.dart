@@ -5,6 +5,7 @@ import 'package:xbox_launcher/pages/add_profile_page.dart';
 import 'package:xbox_launcher/pages/manage_profile_page.dart';
 import 'package:xbox_launcher/pages/profile_selector/profile_selector.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
+import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
@@ -65,15 +66,15 @@ class ProfileConfigurationSection extends NavigationSection {
                 title: "Add profiles",
                 icon: FluentIcons.add_friend,
                 width: null,
-                onPressed: () => Navigator.push(
-                    context, FluentPageRoute(builder: (_) => AddProfilePage())),
+                onPressed: () =>
+                    Navigator.pushNamed(context, AppRoutes.addProfileRoute),
               ),
               IconTextButton(
                 title: "Manage profile",
                 icon: FluentIcons.account_management,
                 width: null,
-                onPressed: () => Navigator.push(context,
-                    FluentPageRoute(builder: (_) => ManageProfilePage())),
+                onPressed: () =>
+                    Navigator.pushNamed(context, AppRoutes.manageProfileRoute),
               ),
             ],
             "": [
@@ -81,31 +82,30 @@ class ProfileConfigurationSection extends NavigationSection {
                 title: "Remove profiles",
                 icon: FluentIcons.user_remove,
                 width: null,
-                onPressed: () => Navigator.push(
-                    context,
-                    FluentPageRoute(
-                        builder: (_) => ProfileSelector(
-                            title: "Select to delete.",
-                            onProfileSelect: ((context, selectedProfile) async {
-                              await _removeProfileFlow(
-                                  selectedProfile, context);
-                              Navigator.pop(context);
-                            })))),
+                onPressed: () => Navigator.pushNamed(
+                    context, AppRoutes.selectProfileRoute,
+                    arguments: [
+                      "Select to delete.",
+                      (context, selectedProfile) async {
+                        await _removeProfileFlow(selectedProfile, context);
+                        Navigator.pop(context);
+                      }
+                    ]),
               ),
               IconTextButton(
                 title: "Change profile",
                 icon: FluentIcons.follow_user,
                 width: null,
-                onPressed: () => Navigator.push(
-                    context,
-                    FluentPageRoute(
-                      builder: (context) => ProfileSelector(
-                          onProfileSelect: (context, selectedProfile) {
+                onPressed: () => Navigator.pushNamed(
+                    context, AppRoutes.selectProfileRoute,
+                    arguments: [
+                      null,
+                      (context, selectedProfile) {
                         Provider.of<ProfileProvider>(context, listen: false)
                             .setCurrentByName(selectedProfile.name);
                         Navigator.pop(context);
-                      }),
-                    )),
+                      }
+                    ]),
               )
             ]
           }),

@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/pages/video_configuration_page.dart';
+import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
 import 'package:xbox_launcher/pages/personalization_configuration_page.dart';
@@ -22,11 +23,8 @@ class GenralConfigurationSection extends NavigationSection {
                   icon: FluentIcons.personalize,
                   width: null,
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        FluentPageRoute(
-                            builder: (context) =>
-                                PersonalizationConfigurationPage()));
+                    Navigator.pushNamed(
+                        context, AppRoutes.personalizationConfigRoute);
                   },
                 ),
                 IconTextButton(
@@ -41,10 +39,8 @@ class GenralConfigurationSection extends NavigationSection {
                   title: "Video",
                   icon: FluentIcons.t_v_monitor,
                   width: null,
-                  onPressed: () => Navigator.push(
-                      context,
-                      FluentPageRoute(
-                          builder: (context) => VideoConfigurationPage())),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, AppRoutes.videoConfigRoute),
                 ),
                 IconTextButton(
                   title: "License",

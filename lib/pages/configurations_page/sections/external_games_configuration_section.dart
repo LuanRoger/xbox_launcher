@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/app_models/external_game_model.dart';
 import 'package:xbox_launcher/pages/add_external_game_page.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
+import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_button.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
@@ -36,8 +37,7 @@ class ExternalGamesConfigurationSection extends NavigationSection {
           icon: FluentIcons.add,
           width: 100.0,
           height: 30.0,
-          onPressed: () => Navigator.push(
-              context, FluentPageRoute(builder: (_) => AddExternalGamePage())),
+          onPressed: () => Navigator.pushNamed(context, AppRoutes.addExternalGameRoute),
         ),
       ];
 

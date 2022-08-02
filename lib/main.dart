@@ -7,6 +7,8 @@ import 'package:xbox_launcher/pages/home_page.dart';
 import 'package:xbox_launcher/providers/keyboard_action_provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/providers/controller_action_provider.dart';
+import 'package:xbox_launcher/routes/app_route_driver.dart';
+import 'package:xbox_launcher/routes/app_routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,11 +41,12 @@ class FlutterAppMain extends StatelessWidget {
       builder: ((_, value, __) {
         return FluentApp(
             debugShowCheckedModeBanner: false,
+            initialRoute: AppRoutes.homePageRoute,
+            onGenerateRoute: AppRouteDriver.goToRoutes,
             theme: ThemeData(
                 brightness: value.brightness,
                 fontFamily: value.fontFamily,
-                focusTheme: value.focusThemeData),
-            home: HomePage());
+                focusTheme: value.focusThemeData));
       }),
     );
   }

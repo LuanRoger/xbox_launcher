@@ -1,17 +1,15 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:webview_windows/webview_windows.dart';
-import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
+import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/utils/string_formatter.dart';
 
 class GamePage extends XboxPageStateful {
-  String gameUrl;
-  ImageProvider gameCover;
+  GameModel gameModel;
   String server;
 
-  GamePage(this.gameUrl, this.gameCover, {Key? key, required this.server})
-      : super(key: key);
+  GamePage(this.gameModel, {Key? key, required this.server}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _GamePageState();
@@ -30,7 +28,8 @@ class _GamePageState extends XboxPageState<GamePage> {
   void formatUrlToServer() {
     xcloudBaseUrl =
         StringFormatter.format(AppConsts.XCLOUD_PLAY_BASE_URL, [widget.server]);
-    gameUrl = StringFormatter.format(widget.gameUrl, [widget.server]);
+    gameUrl =
+        StringFormatter.format(widget.gameModel.xcloudUrl, [widget.server]);
   }
 
   @override
@@ -124,7 +123,7 @@ class _GamePageState extends XboxPageState<GamePage> {
                 width: double.infinity,
                 height: double.infinity,
                 child: Image(
-                  image: widget.gameCover,
+                  image: NetworkImage(widget.gameModel.gameImageUrl),
                   fit: BoxFit.cover,
                 ),
               )),
