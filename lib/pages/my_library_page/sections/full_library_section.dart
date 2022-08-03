@@ -35,9 +35,16 @@ class FullLibrarySection extends NavigationSection {
   Future _createListFullLibrary(BuildContext context) async {
     library = List.empty(growable: true);
 
+    //Add System apps
     library.addAll(SystemAppController.systemApps);
+
+    //Add Xcloud games
     var games = await _loadXCloudGames(context);
     library.addAll(games ?? []);
+
+    //Add External games
+    library.addAll(
+        Provider.of<ProfileProvider>(context, listen: false).externalGames);
 
     library.sort((first, second) => first.name.compareTo(second.name));
   }
