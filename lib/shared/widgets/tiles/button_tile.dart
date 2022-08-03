@@ -10,6 +10,7 @@ class ButtonTile extends TileBaseStateful {
   String title;
   bool interactive;
   IconData? icon;
+  Widget? customCover;
   ImageProvider? image;
   void Function(BuildContext)? onPressed;
 
@@ -32,6 +33,7 @@ class ButtonTile extends TileBaseStateful {
       this.color,
       this.onPressed,
       this.icon,
+      this.customCover,
       this.image})
       : super(key: key) {
     _tileSize = tileSize;
@@ -89,6 +91,7 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
                   colorByGenerator: value.accentColor,
                   color: widget.color,
                   icon: widget.icon,
+                  customCover: widget.customCover,
                   image: widget.image)),
           Align(
               alignment: Alignment.bottomLeft,

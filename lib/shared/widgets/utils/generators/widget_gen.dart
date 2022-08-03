@@ -16,27 +16,33 @@ class WidgetGen {
       {required Color colorByGenerator,
       Color? color,
       ImageProvider? image,
+      Widget? customCover,
       IconData? icon}) {
     Widget _tileCover;
+    Color accentColorTile = color ?? colorByGenerator;
+
     if (image != null) {
       _tileCover = Image(
         image: image,
         fit: BoxFit.cover,
       );
+    } else if (customCover != null) {
+      _tileCover = Container(
+          alignment: Alignment.center,
+          color: accentColorTile,
+          child: customCover);
     } else if (icon != null) {
       _tileCover = Container(
-        color: color ?? colorByGenerator,
-        child: Align(
-          alignment: Alignment.center,
-          child: Icon(
-            icon,
-            color: Colors.white,
-            size: 35,
-          ),
+        alignment: Alignment.center,
+        color: accentColorTile,
+        child: Icon(
+          icon,
+          color: Colors.white,
+          size: 32,
         ),
       );
     } else {
-      _tileCover = Container(color: color ?? colorByGenerator);
+      _tileCover = Container(color: accentColorTile);
     }
 
     return _tileCover;

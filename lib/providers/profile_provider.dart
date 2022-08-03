@@ -100,6 +100,13 @@ class ProfileProvider extends ChangeNotifier {
     saveProfile();
   }
 
+  void removeAppFromHistory(AppModel appModel) {
+    _currentProfile.appsHistoric.removeApp(appModel);
+
+    notifyListeners();
+    saveProfile();
+  }
+
   List<ExternalGameModel> get externalGames =>
       _currentProfile.externalGamesPreferences.externalGames;
   void addExternalGame(ExternalGameModel appModel) {
@@ -110,10 +117,10 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   void removeExternalGame(int index) {
-    _currentProfile.externalGamesPreferences.externalGames.removeAt(index);
+    ExternalGameModel removedGame =
+        _currentProfile.externalGamesPreferences.externalGames.removeAt(index);
 
-    notifyListeners();
-    saveProfile();
+    removeAppFromHistory(removedGame);
   }
 
   int get preferedColorIndex =>

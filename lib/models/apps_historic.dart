@@ -17,17 +17,20 @@ class AppsHistoric {
   }
   Map<String, dynamic> toJson() => {"lastApps": lastApps};
 
-  void addApp(AppModel app) {
-    AppModel repeatedApp = lastApps.firstWhere(
-        (element) => element.name == app.name,
+  void addApp(AppModel appModel) {
+    AppModel? repeatedApp = lastApps.firstWhere(
+        (app) => app.name == appModel.name,
         orElse: () => GameModel()..name = "");
     if (repeatedApp.name.isNotEmpty) {
       lastApps.remove(repeatedApp);
     }
 
-    lastApps.insert(0, app);
+    lastApps.insert(0, appModel);
     _updateList();
   }
+
+  void removeApp(AppModel appModel) =>
+      lastApps.removeWhere((app) => app.name == appModel.name);
 
   void _updateList() {
     if (lastApps.length <= 7) return;
