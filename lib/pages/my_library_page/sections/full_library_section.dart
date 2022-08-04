@@ -50,6 +50,8 @@ class FullLibrarySection extends NavigationSection {
   }
 
   void searchGamesByName(String appName) {
+    appName = appName.toLowerCase();
+
     List<AppModel> queryResult = library
         .where((game) => game.name.toLowerCase().contains(appName))
         .toList();

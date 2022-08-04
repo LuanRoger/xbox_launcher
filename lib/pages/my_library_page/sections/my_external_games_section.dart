@@ -17,6 +17,8 @@ class MyExternalGamesSection extends NavigationSection {
   MyExternalGamesSection({Key? key}) : super("External games", key: key);
 
   void searchGamesByName(String gameName) {
+    gameName = gameName.toLowerCase();
+
     List<ExternalGameModel> searchResult = _externalGamesList
         .where((game) => game.name.toLowerCase().contains(gameName))
         .toList();

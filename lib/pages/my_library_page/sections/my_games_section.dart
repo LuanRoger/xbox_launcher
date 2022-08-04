@@ -34,6 +34,8 @@ class MyGamesSection extends NavigationSection {
   }
 
   void searchGamesByName(String gameName) {
+    gameName = gameName.toLowerCase();
+
     List<GameModel> searchResult = gamesList
         .where((game) => game.name.toLowerCase().contains(gameName))
         .toList();
