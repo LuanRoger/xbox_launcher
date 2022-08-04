@@ -25,9 +25,10 @@ class ButtonTile extends TileBaseStateful {
   @override
   State<StatefulWidget> createState() => _ButtonTileState();
 
-  ButtonTile(this.title, this.interactive,
+  ButtonTile(this.title,
       {Key? key,
       required TileSize tileSize,
+      this.interactive = false,
       this.color,
       this.onPressed,
       this.icon,

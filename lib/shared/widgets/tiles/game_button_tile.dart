@@ -13,8 +13,8 @@ class GameButtonTile extends ButtonTile {
   GameButtonTile(this.gameModel, {Key? key, required TileSize tileSize})
       : super(
           gameModel.name,
-          true,
           key: key,
+          interactive: true,
           tileSize: tileSize,
           image: NetworkImage(gameModel.tileGameImageUrl),
           onPressed: (context) {

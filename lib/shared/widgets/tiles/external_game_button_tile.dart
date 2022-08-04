@@ -17,8 +17,8 @@ class ExternalGameButtonTile extends ButtonTile {
   ExternalGameButtonTile(this.gameModel, {Key? key, required TileSize tileSize})
       : super(
           gameModel.name,
-          true,
           key: key,
+          interactive: true,
           tileSize: tileSize,
           image: gameModel.imagePath != null
               ? FileImage(File(gameModel.imagePath!))

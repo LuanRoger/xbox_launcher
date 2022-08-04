@@ -13,9 +13,13 @@ class SystemAppButtonTile extends ButtonTile {
       {Key? key,
       required BuildContext context, //Context to navigate
       required TileSize tileSize})
-      : super(appModel.name, true,
-            key: key, tileSize: tileSize, icon: appModel.icon, onPressed: (_) {
-          Navigator.pushNamed(context, AppRoutes.systemAppRoute, arguments: [appModel.appHome!]);
+      : super(appModel.name,
+            interactive: true,
+            key: key,
+            tileSize: tileSize,
+            icon: appModel.icon, onPressed: (_) {
+          Navigator.pushNamed(context, AppRoutes.systemAppRoute,
+              arguments: [appModel.appHome!]);
           Provider.of<ProfileProvider>(context, listen: false)
               .addAppToHistory(appModel);
         });
