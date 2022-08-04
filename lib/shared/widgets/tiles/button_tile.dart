@@ -1,10 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:provider/provider.dart';
-import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_base_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/tile_cover.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_title_bar.dart';
-import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 
 class ButtonTile extends TileBaseStateful {
   String title;
@@ -86,13 +84,12 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
       onPressed: () => widget.onPressed!(context),
       child: Stack(
         children: [
-          Consumer<ProfileProvider>(
-              builder: (_, value, __) => WidgetGen.generateTileCover(
-                  colorByGenerator: value.accentColor,
-                  color: widget.color,
-                  icon: widget.icon,
-                  customCover: widget.customCover,
-                  image: widget.image)),
+          TileCover(
+            customCover: widget.customCover,
+            icon: widget.icon,
+            image: widget.image,
+            color: widget.color,
+          ),
           Align(
               alignment: Alignment.bottomLeft,
               child: titleBar ?? const SizedBox())

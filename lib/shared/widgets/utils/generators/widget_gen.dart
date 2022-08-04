@@ -9,6 +9,7 @@ import 'package:xbox_launcher/shared/widgets/tiles/external_game_button_tile.dar
 import 'package:xbox_launcher/shared/widgets/tiles/game_button_tile.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/system_app_tile.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_base.dart';
+import 'package:xbox_launcher/shared/widgets/utils/generators/models/cover_generation_options.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 
 class WidgetGen {
@@ -17,32 +18,42 @@ class WidgetGen {
       Color? color,
       ImageProvider? image,
       Widget? customCover,
-      IconData? icon}) {
+      IconData? icon,
+      CoverGenerationOptions? generationOptions}) {
     Widget _tileCover;
     Color accentColorTile = color ?? colorByGenerator;
 
     if (image != null) {
       _tileCover = Image(
+        width: generationOptions?.width,
+        height: generationOptions?.height,
         image: image,
         fit: BoxFit.cover,
       );
     } else if (customCover != null) {
       _tileCover = Container(
+          width: generationOptions?.width,
+          height: generationOptions?.height,
           alignment: Alignment.center,
           color: accentColorTile,
           child: customCover);
     } else if (icon != null) {
       _tileCover = Container(
+        width: generationOptions?.width,
+        height: generationOptions?.height,
         alignment: Alignment.center,
         color: accentColorTile,
         child: Icon(
           icon,
           color: Colors.white,
-          size: 32,
+          size: generationOptions?.iconSize ?? 32,
         ),
       );
     } else {
-      _tileCover = Container(color: accentColorTile);
+      _tileCover = Container(
+          width: generationOptions?.width,
+          height: generationOptions?.height,
+          color: accentColorTile);
     }
 
     return _tileCover;
