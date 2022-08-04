@@ -11,7 +11,7 @@ class AppsHistoric {
     AppsModelLoader loader = AppsModelLoader();
     AppsHistoric appsHistoric = AppsHistoric();
     appsHistoric.lastApps =
-        loader.recoganizeNonConcreateApp(json["lastApps"] as List<dynamic>);
+        loader.recoganizeGenericApps(json["lastApps"] as List<dynamic>);
 
     return appsHistoric;
   }

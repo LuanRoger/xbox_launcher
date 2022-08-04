@@ -2,10 +2,13 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
-import 'package:xbox_launcher/shared/widgets/profile_avatar.dart';
+import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_image_avatar.dart';
 
 class ProfileInfo extends StatelessWidget {
-  const ProfileInfo({Key? key}) : super(key: key);
+  double? radiusSize;
+  TextStyle? textStyle;
+
+  ProfileInfo({Key? key, this.radiusSize, this.textStyle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +17,13 @@ class ProfileInfo extends StatelessWidget {
         return Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ProfileAvatar(
-              accentColor: value.accentColor,
-              profileImagePath: value.profileImagePath != null
-                  ? value.profileImagePath!
-                  : null,
+            ProfileImageAvatar(
+              radiusSize: radiusSize,
             ),
             const SizedBox(width: 5),
             Text(
               value.name,
-              style: AppTextStyle.PROFILE_INFO_USER_NAME_TEXT,
+              style: textStyle ?? AppTextStyle.PROFILE_INFO_USER_NAME_TEXT,
             )
           ],
         );

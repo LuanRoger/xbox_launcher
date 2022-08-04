@@ -1,5 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/shared/widgets/profile_avatar.dart';
+import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_avatar.dart';
 
 class ProfileAvatarButton extends StatelessWidget {
   void Function() onPressed;

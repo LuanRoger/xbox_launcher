@@ -5,7 +5,7 @@ import 'package:xbox_launcher/models/app_models/system_app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 
 class AppsModelLoader {
-  List<AppModel> recoganizeNonConcreateApp(List<dynamic> appsList) {
+  List<AppModel> recoganizeGenericApps(List<dynamic> appsList) {
     return List<AppModel>.from(appsList.map((appModel) {
       AppModel? app;
       switch (AppType.values

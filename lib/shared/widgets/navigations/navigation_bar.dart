@@ -2,11 +2,15 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/navigation_bar_profile_info.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/models/navigation_base.dart';
 
-class NavigationBar extends StatefulWidget {
+class NavigationBar extends StatefulWidget implements NavigationBase {
+  @override
   int selectedTab;
   IconData icon;
+  @override
   List<NavigationPaneItem> paneItems;
+  @override
   List<Widget> bodyItems;
 
   NavigationBar(
@@ -39,8 +43,7 @@ class _NavigationBarState extends State<NavigationBar> {
           header: NavigationBarProfile(widget.icon),
           selected: selectedTab,
           indicator: StickyNavigationIndicator(
-            color: Provider.of<ProfileProvider>(context, listen: false)
-                .accentColor,
+            color: context.read<ProfileProvider>().accentColor,
           ),
           displayMode: PaneDisplayMode.open,
           onChanged: (index) => setState(() => selectedTab = index),

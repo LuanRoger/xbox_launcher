@@ -45,4 +45,7 @@ class AppTextStyle {
 
   static const MENU_DIALOG_TITLE =
       TextStyle(fontWeight: FontWeight.bold, fontSize: 24);
+
+  static const XOVERLAY_SECTION_TITLE =
+      TextStyle(fontWeight: FontWeight.bold, fontSize: 20);
 }
