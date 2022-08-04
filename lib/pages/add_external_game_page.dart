@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
+import 'package:xbox_launcher/shared/widgets/alert_bar/alert_bar_overlay.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
@@ -144,7 +145,10 @@ class _AddExternalGamePageState extends XboxPageState<AddExternalGamePage> {
                       onPressed: () {
                         if (gameNameController.text.isEmpty ||
                             gamePathController.text.isEmpty) {
-                          //TODO: Create alert system
+                          AlertBarOverlay("Can't be empty.",
+                                  "The Game name and Game path can't be empty.",
+                                  severity: InfoBarSeverity.error)
+                              .show(context);
                           return;
                         }
 

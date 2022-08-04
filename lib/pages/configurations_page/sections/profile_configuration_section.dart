@@ -41,7 +41,6 @@ class ProfileConfigurationSection extends NavigationSection {
                   ],
                 ).show(context);
               }
-              //TODO: Else with a success notification
 
               Navigator.pop(context);
             },

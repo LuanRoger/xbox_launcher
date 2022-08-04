@@ -1,4 +1,4 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
@@ -8,8 +8,8 @@ import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
-    as xbox_button;
+import 'package:xbox_launcher/shared/widgets/alert_bar/alert_bar_overlay.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
@@ -57,7 +57,7 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
         content:
             "Do you want to change to the profile ${profileNameController.text} now?",
         actions: [
-          xbox_button.TextButton(
+          TextButton(
             title: "Yes",
             onPressed: () async {
               await Provider.of<ProfileProvider>(context, listen: false)
@@ -66,8 +66,7 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
               Navigator.pop(context);
             },
           ),
-          xbox_button.TextButton(
-              title: "No", onPressed: () => Navigator.pop(context))
+          TextButton(title: "No", onPressed: () => Navigator.pop(context))
         ]).show(context);
   }
 
@@ -123,12 +122,14 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  xbox_button.TextButton(
+                  TextButton(
                       title: "Confirm",
                       onPressed: () async {
                         if (!_isProfileNameValid()) {
-                          //TODO: Made alarm system
-                          print("The name can't be empty");
+                          AlertBarOverlay("Can't be empty.",
+                                  "The Profile name can't be empty.",
+                                  severity: InfoBarSeverity.error)
+                              .show(context);
                           return;
                         }
 
@@ -146,7 +147,7 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
                         await changeToNewProfileDialog(context);
                         Navigator.pop(context);
                       }),
-                  xbox_button.TextButton(
+                  TextButton(
                     title: "Cancel",
                     onPressed: () => Navigator.pop(context),
                   )
