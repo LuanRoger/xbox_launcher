@@ -51,7 +51,8 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
   }
 
   bool _isProfileNameValid() => profileNameController.text.isNotEmpty;
-  Future changeToNewProfileDialog(BuildContext context) async {
+  Future changeToNewProfileDialog(
+      BuildContext context, ProfileModel newProfile) async {
     await SystemDialog(
         title: "Change to new profile?",
         content:
@@ -61,7 +62,7 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
             title: "Yes",
             onPressed: () async {
               await Provider.of<ProfileProvider>(context, listen: false)
-                  .setCurrentByName(profileNameController.text);
+                  .setCurrentById(newProfile.id);
 
               Navigator.pop(context);
             },
@@ -137,14 +138,14 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
                             Provider.of<ProfileProvider>(context,
                                 listen: false);
 
-                        ProfileModel newProfileModel =
-                            profileProvider.createDefault();
-                        newProfileModel.name = profileNameController.text;
-                        newProfileModel.profileImagePath = _profileImagePath;
+                        ProfileModel newProfile =
+                            profileProvider.generateNewDumyProfile();
+                        newProfile.name = profileNameController.text;
+                        newProfile.profileImagePath = _profileImagePath;
 
-                        profileProvider.addNewProfile(newProfileModel);
+                        profileProvider.addNewProfile(newProfile);
 
-                        await changeToNewProfileDialog(context);
+                        await changeToNewProfileDialog(context, newProfile);
                         Navigator.pop(context);
                       }),
                   TextButton(

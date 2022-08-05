@@ -101,7 +101,7 @@ class ProfileConfigurationSection extends NavigationSection {
                       null,
                       (context, selectedProfile) {
                         Provider.of<ProfileProvider>(context, listen: false)
-                            .setCurrentByName(selectedProfile.name);
+                            .setCurrentById(selectedProfile.name);
                         Navigator.pop(context);
                       }
                     ]),

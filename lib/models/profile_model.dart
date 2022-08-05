@@ -3,6 +3,7 @@ import 'package:xbox_launcher/models/background_profile_preferences.dart';
 import 'package:xbox_launcher/models/external_games_profile_preferences.dart';
 import 'package:xbox_launcher/models/theme_data_profile.dart';
 import 'package:xbox_launcher/models/video_preferences.dart';
+import 'package:xbox_launcher/shared/app_consts.dart';
 
 class ProfileModel {
   late int id;
@@ -27,7 +28,8 @@ class ProfileModel {
     profileModel.profileImagePath = json["profileImagePath"];
     profileModel.appsHistoric = AppsHistoric.fromJson(json["appsHistoric"]);
     profileModel.externalGamesPreferences =
-        ExternalGamesProfilePreferences.fromJson(json["externalGamesPreferences"]);
+        ExternalGamesProfilePreferences.fromJson(
+            json["externalGamesPreferences"]);
     profileModel.backgroundPreferences =
         BackgroundProfilePreferences.fromJson(json["backgroundPreferences"]);
     profileModel.themePreferences =
@@ -36,6 +38,21 @@ class ProfileModel {
         VideoPreferences.fromJson(json["videoPreferences"]);
 
     return profileModel;
+  }
+  factory ProfileModel.createDefault() {
+    ProfileModel defaultProfile = ProfileModel();
+    defaultProfile.id = 0;
+    defaultProfile.name = AppConsts.DEFAULT_USERNAME;
+    defaultProfile.preferedServer = AppConsts.XCLOUD_SUPPORTED_SERVERS[0];
+
+    defaultProfile.appsHistoric = AppsHistoric();
+    defaultProfile.externalGamesPreferences = ExternalGamesProfilePreferences();
+    defaultProfile.backgroundPreferences =
+        BackgroundProfilePreferences(0, null);
+    defaultProfile.themePreferences = ThemeProfilePreferences(0);
+    defaultProfile.videoPreferences = VideoPreferences(true);
+
+    return defaultProfile;
   }
 
   Map<String, dynamic> toJson() => {

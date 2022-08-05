@@ -1,15 +1,9 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xbox_launcher/models/app_models/external_game_model.dart';
-import 'package:xbox_launcher/models/apps_historic.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
-import 'package:xbox_launcher/models/external_games_profile_preferences.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
-import 'package:xbox_launcher/models/background_profile_preferences.dart';
 import 'package:xbox_launcher/models/profile_update_info.dart';
-import 'package:xbox_launcher/models/theme_data_profile.dart';
-import 'package:xbox_launcher/models/video_preferences.dart';
-import 'package:xbox_launcher/shared/app_consts.dart';
 import 'package:xbox_launcher/utils/loaders/profile_loader.dart';
 
 class ProfileProvider extends ChangeNotifier {
@@ -22,24 +16,20 @@ class ProfileProvider extends ChangeNotifier {
     profileLoader = ProfileLoader();
 
     if (!(await profileLoader.loadProfiles())) {
-      profileLoader.createDefaultProfile(createDefault());
+      profileLoader.addNewProfile(ProfileModel.createDefault());
       profilePreferences.remove("lastCurrentProfile");
     }
 
-    await setCurrentByName(profilePreferences.getString("lastCurrentProfile") ??
-        AppConsts.DEFAULT_USERNAME);
+    await setCurrentById(profilePreferences.getInt("lastCurrentProfile") ?? 0);
 
     await _currentProfile.videoPreferences.init();
   }
 
-  List<ProfileModel>? get profilesList {
-    if (profileLoader.profileBuffer == null) return List<ProfileModel>.empty();
-
-    return List<ProfileModel>.from(profileLoader.profileBuffer!);
-  }
+  List<ProfileModel>? get profilesList =>
+      profileLoader.profileBuffer ?? List<ProfileModel>.empty();
 
   Future addNewProfile(ProfileModel newProfile) async {
-    profileLoader.profileBuffer!.add(newProfile);
+    profileLoader.addNewProfile(newProfile);
 
     await saveProfiles();
   }
@@ -182,30 +172,20 @@ class ProfileProvider extends ChangeNotifier {
   void saveProfile() => profileLoader.saveProfile(_currentProfile);
   Future saveProfiles() => profileLoader.saveProfiles();
 
-  Future setCurrentByName(String name) async {
-    ProfileModel profileModel = profileLoader.profileBuffer!
-        .firstWhere((element) => element.name == name);
+  Future setCurrentById(int id) async {
+    ProfileModel profileModel =
+        profileLoader.profileBuffer!.firstWhere((element) => element.id == id);
     _currentProfile = profileModel;
 
-    await profilePreferences.setString(
-        "lastCurrentProfile", _currentProfile.name);
+    await profilePreferences.setInt("lastCurrentProfile", _currentProfile.id);
 
     notifyListeners();
   }
 
-  ProfileModel createDefault() {
-    ProfileModel defaultProfile = ProfileModel();
-    defaultProfile.id = profileLoader.higherId + 1;
-    defaultProfile.name = AppConsts.DEFAULT_USERNAME;
-    defaultProfile.preferedServer = AppConsts.XCLOUD_SUPPORTED_SERVERS[0];
+  ProfileModel generateNewDumyProfile() {
+    ProfileModel profileModel = ProfileModel.createDefault();
+    profileModel.id = profileLoader.higherId + 1;
 
-    defaultProfile.appsHistoric = AppsHistoric();
-    defaultProfile.externalGamesPreferences = ExternalGamesProfilePreferences();
-    defaultProfile.backgroundPreferences =
-        BackgroundProfilePreferences(0, null);
-    defaultProfile.themePreferences = ThemeProfilePreferences(0);
-    defaultProfile.videoPreferences = VideoPreferences(true);
-
-    return defaultProfile;
+    return profileModel;
   }
 }
