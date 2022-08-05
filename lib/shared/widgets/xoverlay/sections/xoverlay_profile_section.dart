@@ -1,4 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_outlined_button.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_info.dart';
 import 'package:xbox_launcher/shared/widgets/xoverlay/widgets/xoverlay_section_base.dart';
@@ -14,7 +15,9 @@ class XOverlayProfileSection extends XOverlaySectionBase {
             content: ProfileInfo(
               radiusSize: 20,
             ),
-            onPressed: () {})
+            onPressed: () {
+              Navigator.popAndPushNamed(context, AppRoutes.manageProfileRoute);
+            })
       ],
     );
   }

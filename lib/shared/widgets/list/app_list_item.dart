@@ -6,8 +6,10 @@ import 'package:xbox_launcher/shared/widgets/utils/generators/models/cover_gener
 
 class AppListItem extends StatelessWidget {
   AppModel appModel;
+  void Function() onPressed;
 
-  AppListItem(this.appModel, {Key? key}) : super(key: key);
+  AppListItem(this.appModel, {Key? key, required this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class AppListItem extends StatelessWidget {
           generationOptions:
               CoverGenerationOptions(width: 50, height: 50, iconSize: 20)),
       text: appModel.name,
-      onPressed: () {},
+      onPressed: onPressed,
     );
   }
 }

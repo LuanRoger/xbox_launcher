@@ -29,6 +29,8 @@ class AppTextStyle {
   static const SYSTEM_BUTTON_TEXT = TextStyle(fontSize: 15);
 
   static const CLOCK_TEXT = TextStyle(fontSize: 18);
+  static const CLOCK_TEXT_BIG =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   static const PROFILE_INFO_USER_NAME_TEXT = TextStyle(fontSize: 16);
 

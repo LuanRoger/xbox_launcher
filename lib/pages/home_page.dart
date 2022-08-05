@@ -55,7 +55,7 @@ class HomePage extends XboxPageStateless {
                     Flexible(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: const [
+                        children: [
                           Flexible(flex: 0, child: ClockTimer()),
                         ],
                       ),
