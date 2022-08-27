@@ -29,9 +29,9 @@ class ManageProfilePage extends XboxPageStateful {
 }
 
 class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
-  late TextEditingController profileNameTextController;
+  late final TextEditingController profileNameTextController;
   String? _tempProfileImagePath;
-  late bool firtEntry;
+  late final bool firtEntry;
   bool _isProfileNameValid() => profileNameTextController.text.isNotEmpty;
 
   @override

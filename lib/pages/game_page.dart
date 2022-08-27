@@ -6,8 +6,8 @@ import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/utils/string_formatter.dart';
 
 class GamePage extends XboxPageStateful {
-  GameModel gameModel;
-  String server;
+  final GameModel gameModel;
+  final String server;
 
   GamePage(this.gameModel, {Key? key, required this.server}) : super(key: key);
 
@@ -18,9 +18,9 @@ class GamePage extends XboxPageStateful {
 class _GamePageState extends XboxPageState<GamePage> {
   final _controller = WebviewController();
   final navigatorKey = GlobalKey<NavigatorState>();
-  late FocusNode webViewFocus;
-  late String xcloudBaseUrl;
-  late String gameUrl;
+  late final FocusNode webViewFocus;
+  late final String xcloudBaseUrl;
+  late final String gameUrl;
 
   late bool _loadReady;
   bool _entranceAnimationDone = true;

@@ -49,7 +49,7 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
     ], bodyItems: [
       MyGamesSection(),
       MyExternalGamesSection(),
-      MyAppsSection(),
+      const MyAppsSection(),
       FullLibrarySection()
     ]);
   }

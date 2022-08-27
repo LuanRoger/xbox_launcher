@@ -27,10 +27,10 @@ class AddExternalGamePage extends XboxPageStateful {
 }
 
 class _AddExternalGamePageState extends XboxPageState<AddExternalGamePage> {
-  late TextEditingController gameNameController;
-  late TextEditingController gamePathController;
-  late TextEditingController gameImagePathController;
-  late TextEditingController gameIconUrlController;
+  late final TextEditingController gameNameController;
+  late final TextEditingController gamePathController;
+  late final TextEditingController gameImagePathController;
+  late final TextEditingController gameIconUrlController;
 
   late Image gameImagePreview;
   late Image gameIconPreview;
