@@ -9,7 +9,6 @@ import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart
 class CloudGamingConfigurationSection extends NavigationSection {
   final TextEditingController jsonUrlTextController = TextEditingController();
   final TextEditingController controllerTest = TextEditingController();
-  String? selectedServer;
 
   CloudGamingConfigurationSection({Key? key}) : super("Cloud Gaming", key: key);
 

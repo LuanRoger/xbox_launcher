@@ -3,7 +3,7 @@ import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 
 class AboutConfigurationSection extends NavigationSection {
-  AboutConfigurationSection({Key? key}) : super("About", key: key);
+  const AboutConfigurationSection({Key? key}) : super("About", key: key);
 
   @override
   List<Widget>? buildActions(BuildContext context) => null;

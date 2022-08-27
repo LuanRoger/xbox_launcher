@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/controllers/system_app_controller.dart';
-import 'package:xbox_launcher/pages/home_page.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 
 class SystemAppModel implements AppModel {

@@ -1,13 +1,11 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/pages/video_configuration_page.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
-import 'package:xbox_launcher/pages/personalization_configuration_page.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 
 class GenralConfigurationSection extends NavigationSection {
-  GenralConfigurationSection({Key? key}) : super("General", key: key);
+  const GenralConfigurationSection({Key? key}) : super("General", key: key);
 
   @override
   List<Widget>? buildActions(BuildContext context) => null;

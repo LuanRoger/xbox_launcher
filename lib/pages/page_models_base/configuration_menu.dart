@@ -6,8 +6,8 @@ import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 
 abstract class ConfigurationMenu extends XboxPageStateless {
-  String routeName;
-  String menuTitle;
+  final String routeName;
+  final String menuTitle;
 
   ConfigurationMenu(this.routeName, this.menuTitle,
       {Key? key,

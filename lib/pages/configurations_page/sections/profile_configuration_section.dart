@@ -1,9 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
-import 'package:xbox_launcher/pages/add_profile_page.dart';
-import 'package:xbox_launcher/pages/manage_profile_page.dart';
-import 'package:xbox_launcher/pages/profile_selector/profile_selector.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
@@ -13,7 +10,7 @@ import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 
 class ProfileConfigurationSection extends NavigationSection {
-  ProfileConfigurationSection({Key? key}) : super("Profile", key: key);
+  const ProfileConfigurationSection({Key? key}) : super("Profile", key: key);
 
   Future _removeProfileFlow(ProfileModel toRemove, BuildContext context) {
     return SystemDialog(
