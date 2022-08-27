@@ -5,21 +5,21 @@ import 'package:xbox_launcher/shared/widgets/tiles/tile_cover.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_title_bar.dart';
 
 class ButtonTile extends TileBaseStateful {
-  String title;
-  bool interactive;
-  IconData? icon;
-  Widget? customCover;
-  ImageProvider? image;
-  void Function(BuildContext)? onPressed;
+  final String title;
+  final bool interactive;
+  final IconData? icon;
+  final Widget? customCover;
+  final ImageProvider? image;
+  final void Function(BuildContext)? onPressed;
 
   @override
-  Color? color;
+  final Color? color;
   @override
-  late double height;
+  late final double height;
   @override
-  late double width;
+  late final double width;
 
-  late TileSize _tileSize;
+  late final TileSize _tileSize;
   TileSize get tileSize => _tileSize;
 
   @override

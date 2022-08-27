@@ -1,9 +1,9 @@
 import 'package:fluent_ui/fluent_ui.dart';
 
 class SystemOutlinedButton extends OutlinedButton {
-  Widget content;
-  double? height;
-  double? width;
+  final Widget content;
+  final double? height;
+  final double? width;
 
   SystemOutlinedButton(
       {Key? key,

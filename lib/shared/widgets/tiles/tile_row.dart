@@ -2,9 +2,9 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_base.dart';
 
 class TileRow extends StatelessWidget {
-  List<TileBase> tiles;
+  final List<TileBase> tiles;
 
-  TileRow({Key? key, required this.tiles}) : super(key: key);
+  const TileRow({Key? key, required this.tiles}) : super(key: key);
 
   List<Widget> _generateRow() {
     List<Widget> spacedRow = List.empty(growable: true);

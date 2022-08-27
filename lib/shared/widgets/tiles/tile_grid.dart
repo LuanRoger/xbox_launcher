@@ -2,14 +2,13 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_base.dart';
 
 class TileGrid extends StatelessWidget {
-  late int? selectedTile;
-  TileBase Function(BuildContext, int)? itemBuilder;
-  List<TileBase>? tiles;
-  int? itemCount;
-  Axis scrollDirection;
-  SliverGridDelegate gridDelegate;
+  final TileBase Function(BuildContext, int)? itemBuilder;
+  final List<TileBase>? tiles;
+  final int? itemCount;
+  final Axis scrollDirection;
+  final SliverGridDelegate gridDelegate;
 
-  TileGrid(
+  const TileGrid(
       {Key? key,
       required this.gridDelegate,
       this.itemBuilder,

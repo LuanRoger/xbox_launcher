@@ -2,11 +2,11 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 
 class KeyboardKey extends StatelessWidget {
-  String text;
-  ImageProvider? buttonImage;
-  void Function() onKeyPress;
+  final String text;
+  final ImageProvider? buttonImage;
+  final void Function() onKeyPress;
 
-  KeyboardKey(
+  const KeyboardKey(
       {Key? key,
       required this.text,
       required this.onKeyPress,

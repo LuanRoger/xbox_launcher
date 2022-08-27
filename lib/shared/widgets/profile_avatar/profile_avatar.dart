@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:fluent_ui/fluent_ui.dart';
 
 class ProfileAvatar extends CircleAvatar {
-  Color accentColor;
-  String? profileImagePath;
-  double? radiusSize;
+  final Color accentColor;
+  final String? profileImagePath;
+  final double? radiusSize;
 
   ProfileAvatar(
       {Key? key,

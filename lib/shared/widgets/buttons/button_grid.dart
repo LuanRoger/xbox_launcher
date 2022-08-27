@@ -3,11 +3,11 @@ import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
 
 class ButtonGrid extends StatelessWidget {
-  Map<String?, List<SystemButton>> buttons;
-  int? collectionFlex;
-  int? buttonsFlex;
+  final Map<String?, List<SystemButton>> buttons;
+  final int? collectionFlex;
+  final int? buttonsFlex;
 
-  ButtonGrid(
+  const ButtonGrid(
       {Key? key, required this.buttons, this.collectionFlex, this.buttonsFlex})
       : super(key: key);
 

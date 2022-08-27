@@ -2,13 +2,13 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_avatar.dart';
 
 class ProfileAvatarButton extends StatelessWidget {
-  void Function() onPressed;
-  Color accentColor;
-  FocusNode? focusNode;
-  String? profileImagePath;
-  double? radiusSize;
+  final void Function() onPressed;
+  final Color accentColor;
+  final FocusNode? focusNode;
+  final String? profileImagePath;
+  final double? radiusSize;
 
-  ProfileAvatarButton(
+  const ProfileAvatarButton(
       {Key? key,
       required this.onPressed,
       required this.accentColor,

@@ -3,13 +3,13 @@ import 'package:xbox_launcher/shared/widgets/buttons/icon_button.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_overlay.dart';
 
 class SearchButton extends StatelessWidget {
-  TextEditingController controller;
-  void Function(String)? onChanged;
-  void Function(bool)? onFinish;
-  double? width;
-  double? height;
+  final TextEditingController controller;
+  final void Function(String)? onChanged;
+  final void Function(bool)? onFinish;
+  final double? width;
+  final double? height;
 
-  SearchButton(
+  const SearchButton(
       {Key? key,
       required this.controller,
       this.onChanged,

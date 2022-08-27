@@ -4,10 +4,10 @@ import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
 
 class SystemDialog extends ContentDialog {
   SystemDialog(
-      {required String title,
+      {Key? key, required String title,
       required String content,
       required List<xbox_button.TextButton> actions})
-      : super(title: Text(title), content: Text(content), actions: actions);
+      : super(key: key, title: Text(title), content: Text(content), actions: actions);
 
   Future show(BuildContext context) {
     return showDialog(

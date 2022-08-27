@@ -3,7 +3,7 @@ import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
 
 class TextButton extends SystemButton {
-  String title;
+  final String title;
 
   TextButton(
       {Key? key, required this.title, required void Function() onPressed})

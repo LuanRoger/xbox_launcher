@@ -6,9 +6,9 @@ import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 
 class Background extends StatelessWidget {
-  ProfileModel? profileModel;
+  final ProfileModel? profileModel;
 
-  Background({Key? key, this.profileModel}) : super(key: key);
+  const Background({Key? key, this.profileModel}) : super(key: key);
 
   Widget _generateColorBackground(Color color) => Container(color: color);
   Widget _generateImageBackground(String imagePath) =>

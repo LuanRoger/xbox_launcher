@@ -1,4 +1,6 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: constant_identifier_names
+
+import 'package:fluent_ui/fluent_ui.dart';
 
 class AppImages {
   static const String BUTTONS_ASSETS_PATH = "assets/buttons/";
@@ -32,6 +34,8 @@ class AppImages {
       AssetImage("${BUTTONS_ASSETS_PATH}rt_trigger.png");
 
   //Central buttons
-  static const START_BUTTON_IMAGE = AssetImage("${BUTTONS_ASSETS_PATH}start_button.png");
-  static const BACK_BUTTON_IMAGE = AssetImage("${BUTTONS_ASSETS_PATH}back_button.png");
+  static const START_BUTTON_IMAGE =
+      AssetImage("${BUTTONS_ASSETS_PATH}start_button.png");
+  static const BACK_BUTTON_IMAGE =
+      AssetImage("${BUTTONS_ASSETS_PATH}back_button.png");
 }

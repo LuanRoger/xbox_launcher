@@ -5,9 +5,9 @@ import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 
 class TileTitleBar extends StatefulWidget {
-  String title;
+  final String title;
 
-  TileTitleBar(this.title, {Key? key}) : super(key: key);
+  const TileTitleBar(this.title, {Key? key}) : super(key: key);
 
   @override
   State<TileTitleBar> createState() => _TileTitleBarState();

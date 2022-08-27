@@ -5,13 +5,13 @@ import 'package:xbox_launcher/shared/widgets/navigations/models/navigation_base.
 
 class NavigationTop extends StatefulWidget implements NavigationBase {
   @override
-  int selectedTab;
+  final int selectedTab;
   @override
-  List<Widget> bodyItems;
+  final List<Widget> bodyItems;
   @override
-  List<NavigationPaneItem> paneItems;
+  final List<NavigationPaneItem> paneItems;
 
-  NavigationTop(
+  const NavigationTop(
       {Key? key,
       this.selectedTab = 0,
       required this.bodyItems,
