@@ -6,14 +6,14 @@ import 'package:xbox_launcher/shared/widgets/navigations/models/navigation_base.
 
 class NavigationBar extends StatefulWidget implements NavigationBase {
   @override
-  int selectedTab;
-  IconData icon;
+  final int selectedTab;
+  final IconData icon;
   @override
-  List<NavigationPaneItem> paneItems;
+  final List<NavigationPaneItem> paneItems;
   @override
-  List<Widget> bodyItems;
+  final List<Widget> bodyItems;
 
-  NavigationBar(
+  const NavigationBar(
       {Key? key,
       this.selectedTab = 0,
       required this.icon,

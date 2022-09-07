@@ -2,9 +2,9 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 
 abstract class NavigationSection extends StatelessWidget {
-  String sectionName;
+  final String sectionName;
 
-  NavigationSection(this.sectionName, {Key? key}) : super(key: key);
+  const NavigationSection(this.sectionName, {Key? key}) : super(key: key);
 
   List<Widget> buildColumnItems(BuildContext context);
   List<Widget>? buildActions(BuildContext context);

@@ -1,8 +1,8 @@
 import 'package:xbox_launcher/shared/widgets/commands/models/shared_command.dart';
 
 class CommandInvoker {
-  SharedCommand _command;
-  SharedCommand? onFinish;
+  final SharedCommand _command;
+  final SharedCommand? onFinish;
 
   CommandInvoker(this._command, {this.onFinish});
 

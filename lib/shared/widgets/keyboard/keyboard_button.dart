@@ -3,13 +3,13 @@ import 'package:xbox_launcher/shared/widgets/buttons/system_text_box.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_overlay.dart';
 
 class KeyboardButton extends StatelessWidget {
-  String placeholder;
-  TextEditingController controller;
-  int? maxLenght;
-  void Function(bool cancel)? onFinish;
-  void Function(String value)? onChanged;
+  final String placeholder;
+  final TextEditingController controller;
+  final int? maxLenght;
+  final void Function(bool cancel)? onFinish;
+  final void Function(String value)? onChanged;
 
-  KeyboardButton(
+  const KeyboardButton(
       {Key? key,
       required this.placeholder,
       required this.controller,

@@ -1,8 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
-import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
@@ -15,30 +12,20 @@ import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_row.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
-import 'package:xbox_launcher/shared/widgets/xoverlay/xoverlay.dart';
-import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class HomePage extends XboxPageStateless {
-  HomePage({Key? key})
-      : super(key: key, pageKeysAction: {
-          ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.home),
-              ControllerButton.START): (context) {
-            XOverlay xOverlay = XOverlay();
-            xOverlay.show(context);
-          }
-        });
+  HomePage({Key? key}) : super(key: key);
 
   @override
   void defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, pageKeysAction!);
+    //This page does have mapping
   }
 
   @override
   Widget virtualBuild(BuildContext context) {
     return Stack(
       children: [
-        SizedBox(
+        const SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: Background()),
@@ -51,11 +38,12 @@ class HomePage extends XboxPageStateless {
                 flex: 0,
                 child: Row(
                   children: [
-                    Flexible(child: ProfileInfo()),
+                    const Flexible(child: ProfileInfo()),
                     Flexible(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
+                        children: const [
+                          //TODO: Add controllers info
                           Flexible(flex: 0, child: ClockTimer()),
                         ],
                       ),

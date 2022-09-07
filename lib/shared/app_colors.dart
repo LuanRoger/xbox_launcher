@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:fluent_ui/fluent_ui.dart';
 
 class AppColors {

@@ -7,7 +7,7 @@ import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_genera
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 
 class MyAppsSection extends NavigationSection {
-  MyAppsSection({Key? key}) : super("Apps", key: key);
+  const MyAppsSection({Key? key}) : super("Apps", key: key);
 
   @override
   List<Widget>? buildActions(BuildContext context) => null;

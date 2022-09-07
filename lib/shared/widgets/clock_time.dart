@@ -3,9 +3,9 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 
 class ClockTimer extends StatefulWidget {
-  TextStyle? textStyle;
+  final TextStyle? textStyle;
 
-  ClockTimer({Key? key, this.textStyle}) : super(key: key);
+  const ClockTimer({Key? key, this.textStyle}) : super(key: key);
 
   @override
   State<ClockTimer> createState() => _ClockTimerState();

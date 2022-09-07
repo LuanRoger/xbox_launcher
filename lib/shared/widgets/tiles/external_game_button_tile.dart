@@ -9,7 +9,7 @@ import 'package:xbox_launcher/shared/widgets/external_game_icon.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/button_tile.dart';
 
 class ExternalGameButtonTile extends ButtonTile {
-  ExternalGameModel gameModel;
+  final ExternalGameModel gameModel;
 
   ExternalGameButtonTile(this.gameModel, {Key? key, required TileSize tileSize})
       : super(

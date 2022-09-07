@@ -13,15 +13,16 @@ import 'package:xbox_launcher/shared/widgets/utils/generators/models/cover_gener
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 
 class TileCover extends StatelessWidget {
-  AppModel? appModel;
-  Color? color;
-  CoverGenerationOptions? generationOptions;
-  IconData? icon;
-  Widget? customCover;
-  ImageProvider? image;
+  final AppModel? appModel;
+  final Color? color;
+  final CoverGenerationOptions? generationOptions;
+  final IconData? icon;
+  final Widget? customCover;
+  final ImageProvider? image;
 
-  TileCover(
+  const TileCover(
       {Key? key,
+      this.appModel,
       this.color,
       this.icon,
       this.customCover,

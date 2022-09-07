@@ -53,11 +53,11 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
         NavigationItem("About")
       ],
       bodyItems: [
-        GenralConfigurationSection(),
-        ProfileConfigurationSection(),
+        const GenralConfigurationSection(),
+        const ProfileConfigurationSection(),
         CloudGamingConfigurationSection(),
-        ExternalGamesConfigurationSection(),
-        AboutConfigurationSection()
+        const ExternalGamesConfigurationSection(),
+        const AboutConfigurationSection()
       ],
     );
   }

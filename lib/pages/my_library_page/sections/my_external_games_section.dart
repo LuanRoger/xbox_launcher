@@ -9,7 +9,7 @@ import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_genera
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 
 class MyExternalGamesSection extends NavigationSection {
-  late List<ExternalGameModel> _externalGamesList;
+  late final List<ExternalGameModel> _externalGamesList;
   List<ExternalGameModel>? _searchResult;
 
   void Function(void Function())? _reloadTileGrid;

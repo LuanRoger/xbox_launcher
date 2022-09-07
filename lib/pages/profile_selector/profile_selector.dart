@@ -13,9 +13,9 @@ import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class ProfileSelector extends XboxPageStateful {
-  String? title;
+  final String? title;
   final CarouselController _profileSliderController = CarouselController();
-  void Function(BuildContext, ProfileModel) onProfileSelect;
+  final void Function(BuildContext, ProfileModel) onProfileSelect;
 
   ProfileSelector({required this.onProfileSelect, this.title, Key? key})
       : super(key: key, pageKeysAction: {}) {

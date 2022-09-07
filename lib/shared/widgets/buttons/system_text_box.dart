@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 
 class SystemTextBox extends TextBox {
-  SystemTextBox(
+  const SystemTextBox(
       {Key? key,
       TextEditingController? controller,
       FocusNode? focusNode,

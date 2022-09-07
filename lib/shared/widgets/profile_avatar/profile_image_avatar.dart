@@ -4,9 +4,9 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_avatar.dart';
 
 class ProfileImageAvatar extends StatelessWidget {
-  double? radiusSize;
+  final double? radiusSize;
 
-  ProfileImageAvatar({Key? key, this.radiusSize}) : super(key: key);
+  const ProfileImageAvatar({Key? key, this.radiusSize}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

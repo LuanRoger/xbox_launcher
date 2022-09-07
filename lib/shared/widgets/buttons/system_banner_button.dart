@@ -3,20 +3,18 @@ import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
 
 class SystemBannerButton extends SystemButton {
-  String text;
-  void Function() onClick;
-  IconData? icon;
-  ImageProvider? backgroundImage;
-  double? height;
-  double? width;
+  final String text;
+  final void Function() onClick;
+  final IconData? icon;
+  final ImageProvider? backgroundImage;
 
   SystemBannerButton(this.text,
       {Key? key,
       required this.onClick,
       this.icon,
       this.backgroundImage,
-      this.height = 140,
-      this.width = 240})
+      double? height = 140,
+      double? width = 240})
       : super(
             key: key,
             width: width,

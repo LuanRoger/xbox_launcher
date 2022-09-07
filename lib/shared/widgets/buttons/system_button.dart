@@ -2,9 +2,9 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 
 abstract class SystemButton extends Button {
-  Widget content;
-  double? height;
-  double? width;
+  final Widget content;
+  final double? height;
+  final double? width;
 
   SystemButton(
       {Key? key,

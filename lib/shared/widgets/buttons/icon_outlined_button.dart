@@ -2,8 +2,8 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_outlined_button.dart';
 
 class IconOutlinedButton extends SystemOutlinedButton {
-  Widget icon;
-  String? text;
+  final Widget icon;
+  final String? text;
 
   IconOutlinedButton(
       {Key? key,

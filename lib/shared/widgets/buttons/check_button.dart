@@ -4,10 +4,10 @@ import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
 
 class CheckButton extends SystemButton {
-  String title;
-  bool checked;
-  Color? color;
-  void Function(bool)? onChange;
+  final String title;
+  final bool checked;
+  final Color? color;
+  final void Function(bool)? onChange;
 
   CheckButton(
       {Key? key,
@@ -26,8 +26,8 @@ class CheckButton extends SystemButton {
                         checkedDecoration:
                             ButtonState.all(BoxDecoration(color: color)),
                         uncheckedDecoration: ButtonState.all(BoxDecoration(
-                            border:
-                                Border.all(color: AppColors.DARK_BG, width: 10)))),
+                            border: Border.all(
+                                color: AppColors.DARK_BG, width: 10)))),
                     onChanged: (value) => onChange?.call(value!)),
                 Text(
                   title,

@@ -5,10 +5,10 @@ import 'package:xbox_launcher/shared/widgets/tiles/tile_cover.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/cover_generation_options.dart';
 
 class AppListItem extends StatelessWidget {
-  AppModel appModel;
-  void Function() onPressed;
+  final AppModel appModel;
+  final void Function() onPressed;
 
-  AppListItem(this.appModel, {Key? key, required this.onPressed})
+  const AppListItem(this.appModel, {Key? key, required this.onPressed})
       : super(key: key);
 
   @override

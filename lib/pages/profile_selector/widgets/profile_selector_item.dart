@@ -4,9 +4,9 @@ import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/profile_avatar_button.dart';
 
 class ProfileSelectorItem extends StatelessWidget {
-  ProfileModel profileModel;
-  FocusNode focusNode = FocusNode();
-  void Function() onSelect;
+  final ProfileModel profileModel;
+  final FocusNode focusNode = FocusNode();
+  final void Function() onSelect;
 
   ProfileSelectorItem(
       {Key? key, required this.profileModel, required this.onSelect})

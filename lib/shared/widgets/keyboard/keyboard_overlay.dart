@@ -216,11 +216,11 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
 }
 
 class _LeftButtonsSet extends StatelessWidget {
-  void Function() layoutKeyCallback;
-  void Function() capsKeyCallback;
-  void Function(BuildContext context) cancelKeyCallback;
+  final void Function() layoutKeyCallback;
+  final void Function() capsKeyCallback;
+  final void Function(BuildContext context) cancelKeyCallback;
 
-  _LeftButtonsSet(
+  const _LeftButtonsSet(
       {required this.layoutKeyCallback,
       required this.capsKeyCallback,
       required this.cancelKeyCallback});
@@ -260,11 +260,11 @@ class _LeftButtonsSet extends StatelessWidget {
 }
 
 class _RightButtonsSet extends StatelessWidget {
-  void Function() backspaceKeyCallback;
-  void Function() lockKeyCallback;
-  void Function(BuildContext) confirmKeyCallback;
+  final void Function() backspaceKeyCallback;
+  final void Function() lockKeyCallback;
+  final void Function(BuildContext) confirmKeyCallback;
 
-  _RightButtonsSet(
+  const _RightButtonsSet(
       {required this.backspaceKeyCallback,
       required this.lockKeyCallback,
       required this.confirmKeyCallback});

@@ -5,9 +5,9 @@ import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_image_avatar.dart';
 
 class NavigationBarProfile extends StatelessWidget {
-  IconData icon;
+  final IconData icon;
 
-  NavigationBarProfile(this.icon, {Key? key}) : super(key: key);
+  const NavigationBarProfile(this.icon, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class NavigationBarProfile extends StatelessWidget {
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         Flexible(child: Icon(icon)),
         const Spacer(),
-        Flexible(flex: 10, child: ProfileImageAvatar()),
+        const Flexible(flex: 10, child: ProfileImageAvatar()),
         const SizedBox(
           width: 5,
         ),

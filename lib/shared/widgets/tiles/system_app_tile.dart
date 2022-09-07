@@ -6,7 +6,7 @@ import 'package:xbox_launcher/shared/widgets/commands/open_app_command.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/button_tile.dart';
 
 class SystemAppButtonTile extends ButtonTile {
-  SystemAppModel appModel;
+  final SystemAppModel appModel;
 
   SystemAppButtonTile(this.appModel,
       {Key? key,
@@ -17,8 +17,8 @@ class SystemAppButtonTile extends ButtonTile {
             key: key,
             tileSize: tileSize,
             icon: appModel.icon, onPressed: (_) {
-          CommandInvoker command = CommandInvoker(
-              OpenAppCommand(appModel, context: context));
+          CommandInvoker command =
+              CommandInvoker(OpenAppCommand(appModel, context: context));
           command.execute();
         });
 }

@@ -5,10 +5,11 @@ import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_image_avatar.dart';
 
 class ProfileInfo extends StatelessWidget {
-  double? radiusSize;
-  TextStyle? textStyle;
+  final double? radiusSize;
+  final TextStyle? textStyle;
 
-  ProfileInfo({Key? key, this.radiusSize, this.textStyle}) : super(key: key);
+  const ProfileInfo({Key? key, this.radiusSize, this.textStyle})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

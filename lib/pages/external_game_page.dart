@@ -7,9 +7,9 @@ import 'package:win32/win32.dart';
 import 'package:xbox_launcher/models/app_models/external_game_model.dart';
 
 class ExternalGamePage extends StatefulWidget {
-  ExternalGameModel gameModel;
+  final ExternalGameModel gameModel;
 
-  ExternalGamePage(this.gameModel, {Key? key}) : super(key: key);
+  const ExternalGamePage(this.gameModel, {Key? key}) : super(key: key);
 
   @override
   State<ExternalGamePage> createState() => _ExternalGamePageState();

@@ -6,7 +6,7 @@ import 'package:xbox_launcher/shared/widgets/commands/open_app_command.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/button_tile.dart';
 
 class GameButtonTile extends ButtonTile {
-  GameModel gameModel;
+  final GameModel gameModel;
 
   GameButtonTile(this.gameModel, {Key? key, required TileSize tileSize})
       : super(

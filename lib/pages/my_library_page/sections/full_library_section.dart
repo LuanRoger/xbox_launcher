@@ -13,8 +13,8 @@ import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 import 'package:xbox_launcher/utils/loaders/xcloud_json_db_loader.dart';
 
 class FullLibrarySection extends NavigationSection {
-  late List<AppModel> library;
-  TextEditingController searchController = TextEditingController();
+  late final List<AppModel> library;
+  final TextEditingController searchController = TextEditingController();
   List<AppModel>? searchResult;
 
   void Function(void Function())? _reloadTilesGrid;
