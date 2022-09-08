@@ -1,6 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:xbox_launcher/models/app_models/external_game_model.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/models/profile_update_info.dart';
@@ -95,22 +94,6 @@ class ProfileProvider extends ChangeNotifier {
 
     notifyListeners();
     saveProfile();
-  }
-
-  List<ExternalGameModel> get externalGames =>
-      _currentProfile.externalGamesPreferences.externalGames;
-  void addExternalGame(ExternalGameModel appModel) {
-    _currentProfile.externalGamesPreferences.externalGames.add(appModel);
-
-    notifyListeners();
-    saveProfile();
-  }
-
-  void removeExternalGame(int index) {
-    ExternalGameModel removedGame =
-        _currentProfile.externalGamesPreferences.externalGames.removeAt(index);
-
-    removeAppFromHistory(removedGame);
   }
 
   int get preferedColorIndex =>

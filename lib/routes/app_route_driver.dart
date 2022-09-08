@@ -1,11 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/models/app_models/external_game_model.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
-import 'package:xbox_launcher/pages/add_external_game_page.dart';
 import 'package:xbox_launcher/pages/add_profile_page.dart';
 import 'package:xbox_launcher/pages/configurations_page/configurations_page.dart';
-import 'package:xbox_launcher/pages/external_game_page.dart';
 import 'package:xbox_launcher/pages/game_page.dart';
 import 'package:xbox_launcher/pages/home_page.dart';
 import 'package:xbox_launcher/pages/manage_profile_page.dart';
@@ -31,8 +28,6 @@ class AppRouteDriver {
         return personalizationConfigPageRoute;
       case AppRoutes.videoConfigRoute:
         return videoConfigPageRoute;
-      case AppRoutes.addExternalGameRoute:
-        return addExternalGamePageRoute;
       case AppRoutes.addProfileRoute:
         return addProfilePageRoute;
       case AppRoutes.manageProfileRoute:
@@ -43,8 +38,6 @@ class AppRouteDriver {
       case AppRoutes.xcloudGameRoute:
         return getXcloudGamePageRoute(
             routeArgs![0] as GameModel, routeArgs[1] as String);
-      case AppRoutes.externalGameRoute:
-        return getExternalGamePageRoute(routeArgs![0] as ExternalGameModel);
       case AppRoutes.systemAppRoute:
         return getSystemAppPageRoute(routeArgs![0] as Widget);
       default:
@@ -62,8 +55,6 @@ class AppRouteDriver {
       FluentPageRoute(builder: (_) => PersonalizationConfigurationPage());
   static FluentPageRoute get videoConfigPageRoute =>
       FluentPageRoute(builder: (_) => VideoConfigurationPage());
-  static FluentPageRoute get addExternalGamePageRoute =>
-      FluentPageRoute(builder: (_) => AddExternalGamePage());
   static FluentPageRoute get addProfilePageRoute =>
       FluentPageRoute(builder: (_) => AddProfilePage());
   static FluentPageRoute get manageProfilePageRoute =>
@@ -81,9 +72,6 @@ class AppRouteDriver {
                 gameModel,
                 server: server,
               ));
-  static FluentPageRoute getExternalGamePageRoute(
-          ExternalGameModel gameModel) =>
-      FluentPageRoute(builder: (_) => ExternalGamePage(gameModel));
   static FluentPageRoute getSystemAppPageRoute(Widget appHomePage) =>
       FluentPageRoute(builder: (_) => appHomePage);
 }

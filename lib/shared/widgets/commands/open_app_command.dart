@@ -1,7 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
-import 'package:xbox_launcher/models/app_models/external_game_model.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/app_models/system_app_model.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
@@ -24,9 +23,6 @@ class OpenAppCommand implements SharedCommand {
       case AppType.SYSTEM_APP:
         goToSystemApp();
         break;
-      case AppType.EXTERNAL_APP:
-        goToExternalGameApp();
-        break;
     }
   }
 
@@ -44,14 +40,5 @@ class OpenAppCommand implements SharedCommand {
         arguments: [gameModel, context.read<ProfileProvider>().preferedServer]);
     Provider.of<ProfileProvider>(context, listen: false)
         .addAppToHistory(gameModel);
-  }
-
-  void goToExternalGameApp() {
-    ExternalGameModel externalGameModel = appModel as ExternalGameModel;
-
-    Navigator.pushNamed(context, AppRoutes.externalGameRoute,
-        arguments: [externalGameModel]);
-    Provider.of<ProfileProvider>(context, listen: false)
-        .addAppToHistory(externalGameModel);
   }
 }
