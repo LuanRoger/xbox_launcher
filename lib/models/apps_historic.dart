@@ -1,7 +1,7 @@
 import 'package:xbox_launcher/models/app_models/app_model.dart';
-import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/app_models/system_app_model.dart';
 import 'package:xbox_launcher/utils/loaders/apps_model_loader.dart';
+import 'package:collection/collection.dart';
 
 class AppsHistoric {
   List<AppModel> lastApps = List<SystemAppModel>.empty(growable: true);
@@ -18,10 +18,9 @@ class AppsHistoric {
   Map<String, dynamic> toJson() => {"lastApps": lastApps};
 
   void addApp(AppModel appModel) {
-    AppModel? repeatedApp = lastApps.firstWhere(
-        (app) => app.name == appModel.name,
-        orElse: () => GameModel()..name = "");
-    if (repeatedApp.name.isNotEmpty) {
+    AppModel? repeatedApp =
+        lastApps.firstWhereOrNull((app) => app.name == appModel.name);
+    if (repeatedApp != null) {
       lastApps.remove(repeatedApp);
     }
 

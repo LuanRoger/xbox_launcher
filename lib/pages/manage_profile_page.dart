@@ -31,14 +31,14 @@ class ManageProfilePage extends XboxPageStateful {
 class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
   late final TextEditingController profileNameTextController;
   String? _tempProfileImagePath;
-  late final bool firtEntry;
+  late bool firstEntry;
   bool _isProfileNameValid() => profileNameTextController.text.isNotEmpty;
 
   @override
   void initState() {
     super.initState();
     profileNameTextController = TextEditingController();
-    firtEntry = true;
+    firstEntry = true;
   }
 
   @override
@@ -86,9 +86,9 @@ class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
 
   @override
   Widget virtualBuild(BuildContext context) {
-    if (firtEntry) {
+    if (firstEntry) {
       getProfileInfo(context);
-      setState(() => firtEntry = false);
+      setState(() => firstEntry = false);
     }
 
     return Padding(

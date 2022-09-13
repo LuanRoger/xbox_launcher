@@ -4,7 +4,6 @@ import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/full_library_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/my_apps_section.dart';
-import 'package:xbox_launcher/pages/my_library_page/sections/my_external_games_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/my_games_section.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_bar.dart';
@@ -42,13 +41,11 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
   Widget virtualBuild(BuildContext context) {
     return NavigationBar(icon: FluentIcons.library, paneItems: [
       NavigationItem("Games"),
-      NavigationItem("External games"),
       NavigationItem("Apps"),
       NavigationSeparatorItem(),
       NavigationItem("Full library")
     ], bodyItems: [
       MyGamesSection(),
-      MyExternalGamesSection(),
       const MyAppsSection(),
       FullLibrarySection()
     ]);

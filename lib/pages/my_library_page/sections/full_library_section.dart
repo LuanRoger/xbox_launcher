@@ -42,10 +42,6 @@ class FullLibrarySection extends NavigationSection {
     var games = await _loadXCloudGames(context);
     library.addAll(games ?? []);
 
-    //Add External games
-    library.addAll(
-        Provider.of<ProfileProvider>(context, listen: false).externalGames);
-
     library.sort((first, second) => first.name.compareTo(second.name));
   }
 

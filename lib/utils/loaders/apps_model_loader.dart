@@ -1,5 +1,4 @@
 import 'package:xbox_launcher/models/app_models/app_model.dart';
-import 'package:xbox_launcher/models/app_models/external_game_model.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/app_models/system_app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
@@ -16,9 +15,6 @@ class AppsModelLoader {
         case AppType.SYSTEM_APP:
           app = SystemAppModel().fromJson(appModel);
           break;
-        case AppType.EXTERNAL_APP:
-          app = ExternalGameModel().fromJson(appModel);
-          break;
       }
 
       return app;
@@ -32,8 +28,4 @@ class AppsModelLoader {
   List<SystemAppModel> recoganizeListSystemApp(List<dynamic> appList) =>
       List<SystemAppModel>.from(
           appList.map((model) => SystemAppModel().fromJson(model)));
-
-  List<ExternalGameModel> recoganizeListExternalGames(List<dynamic> appList) =>
-      List<ExternalGameModel>.from(
-          appList.map((model) => ExternalGameModel().fromJson(model)).toList());
 }
