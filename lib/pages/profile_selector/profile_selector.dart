@@ -96,7 +96,7 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
             duration: const Duration(milliseconds: 500),
             child: _backgroundPreview),
         Padding(
-          padding: const EdgeInsets.fromLTRB(8.0, 70.0, 8.0, 8.0),
+          padding: const EdgeInsets.fromLTRB(8.0, 55.0, 8.0, 8.0),
           child: Column(
             children: [
               Flexible(
