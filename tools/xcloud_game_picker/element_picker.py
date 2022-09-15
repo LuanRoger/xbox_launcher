@@ -18,8 +18,9 @@ def getGamesProperties(gameInfoContainer) -> GameProperties:
     supported_controller_container = gameInfoContainer.find_element(by=By.CLASS_NAME, value=SUPPORTED_INPUTS_CONTAINER)
     supported_controller_divs = supported_controller_container.find_elements(by=By.TAG_NAME, value="div")
 
-    support_controller: bool = len(supported_controller_divs) >= 1
-    touch_controller: bool = len(supported_controller_divs) >= 2
+    d = len(supported_controller_divs)
+    support_controller: bool = len(supported_controller_divs) >= 2
+    touch_controller: bool = len(supported_controller_divs) >= 4
 
     return GameProperties(is_in_gamepass, support_controller, touch_controller)
 

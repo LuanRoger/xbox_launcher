@@ -10,7 +10,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/7-days-to-die/BRL7GC0GP1BM",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.50759.69802328231064156.03ff84cc-b6b1-4226-8e6c-545d183e5fbf.6c46b7d8-06fd-4959-8342-440580385ce9?w=%i&h=%i",
@@ -44,7 +44,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/a-plague-tale-innocence/BQ2NNLQPS8RS",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.61900.68306748966338141.e6f96fac-aa67-4f59-9043-10654607aa79.7472e56d-b2da-462f-8312-d12050d56ec6?w=%i&h=%i",
@@ -96,7 +96,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/ark-ultimate-survivor-edition/9N5JRWWGMS1R",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.14842.14036931078975578.35527dd4-bd1c-43d9-90ff-3a801a47df6a.e296f313-9109-4635-a3cb-14b747fb2230?w=%i&h=%i",
@@ -114,7 +114,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/astroneer/9NBLGGH43KZB",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.64849.13510798887933723.57e43f19-4066-429e-b1a2-caea56e427b4.860c35a4-ccbf-413e-9574-1c7c8826d6c6?w=%i&h=%i",
@@ -132,7 +132,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/aliens-fireteam-elite/9PG28RXDG9GQ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.59370.14189206062547849.34667497-3c97-48d3-916d-0cd555e3aee9.2a32a391-5b37-4ec9-9fc1-7bb4159de6b9?w=%i&h=%i",
@@ -219,7 +219,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/assassin's-creed-origins/BZGJRJC1FGF3",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.24317.63657969076271726.d61cc1bb-fe99-40ef-b061-bded231757be.c17f684c-0c90-4d39-911e-8bd8c0622587?w=%i&h=%i",
@@ -270,7 +270,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/back-4-blood/BXLL06QN8HVP",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.49309.63183727176145146.d84d29ef-df3a-4a5d-96b4-f1a7d9797aec.7b42c961-b9e0-484c-b079-f461f64e1f53?w=%i&h=%i",
@@ -305,7 +305,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/banjo-kazooie-n-n-b/BVR64CDJ01FJ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.34826.71100151761088573.88824642-fc7e-4e99-9b5b-32e26f7c27b9.8a1cccf6-01d0-48c6-bd1a-0d03df399bba?w=%i&h=%i",
@@ -359,7 +359,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/bassmaster-fishing-2022/9MTTMQ6WSDP8",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.64699.13801370712672953.31e1b8c9-9ecc-4cb2-935c-21a9de3e2027.d4b695ec-a36d-4be2-b2d7-f0ff46f4de0d?w=%i&h=%i",
@@ -376,7 +376,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/batman-arkham-knight/BSLX1RNXR6H7",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.50680.69836087516172366.d802940c-fd8a-4174-8a68-e41a2475e1a1.efa1f648-fb98-4078-80cf-06f47811b1fa?w=%i&h=%i",
@@ -393,7 +393,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/battlefield-4/BP15SF17LH13",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.18274.67660042887481018.7de2bfcd-48ef-4a6c-bba4-e65d208d67ec.f299bd07-f6b3-4870-b5e6-786c0a4c3e92?w=%i&h=%i",
@@ -410,7 +410,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/battlefield-1-revolution/BPL68T0XK96W",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.39800.68596255437297164.99e6fb73-cd5e-440f-90c2-d8d2eb40a69d.5d9b9ea9-9816-4492-82df-fefa1a6c0f94?w=%i&h=%i",
@@ -427,7 +427,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/battlefield-v/BZ2N7TQ0XCF2",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.242.64032621253256243.9745cf01-8239-4973-8193-31de18936f03.a8c3c497-3428-45cb-85b3-d84dcb2743bd?w=%i&h=%i",
@@ -445,7 +445,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/battletoads/9N7GCF5SGCXC",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.14695.14065499269907016.670ddf59-3954-4cfa-927c-60562b664545.56c9f977-b0a8-4b8e-8644-609b768fbc51?w=%i&h=%i",
@@ -463,7 +463,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/before-we-leave/9N360TZQZ0TR",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.64240.13938260246595322.6dab1a29-4d96-4a37-b22b-2baaeba55633.f371254b-cef0-4600-ad24-a5c03f04615a?w=%i&h=%i",
@@ -515,7 +515,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/black-desert/BTPDCJXNFSZL",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.55168.70463400880857175.d5efc868-ff4c-4751-bfbd-5f5b12ceed46.f8533b63-65dc-4100-9db6-a2b328bf176a?w=%i&h=%i",
@@ -533,7 +533,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/bleeding-edge/9NX6XGVJ0J3D",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.5290.14431087147384961.13dc1a18-3532-477b-b2d2-772256efc040.6fab8e78-8a3d-4b85-a5b1-33f32aeb8ea3?w=%i&h=%i",
@@ -568,7 +568,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/breathedge/9NR7LV9PB9SD",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.64781.14387940932825223.b2bcb764-5659-4e3e-be75-fea7de3ead94.36290a14-76b1-4cda-b2b6-1991f2e95476?w=%i&h=%i",
@@ -727,7 +727,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/clustertruck/BX4J85JZNGXQ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.11196.63460736466173537.43accb13-0658-4cb9-a3a9-2dd4b18ae15e.c12756d4-a28f-46d2-89d0-43593731f0d5?w=%i&h=%i",
@@ -779,7 +779,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/conan-exiles/C2X6ZCNKN2WR",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.44164.69492393318249993.eb0b8c74-1474-48d0-b663-4ec3bebca223.d1386244-7094-4e00-bff5-1aceb0260ec1?w=%i&h=%i",
@@ -813,7 +813,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/cooking-simulator/9N3DKKRHSJBT",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.40773.13934302625463282.ce885e17-8e35-4fa6-951c-1f7e58c35e4f.d2b59c71-aed1-4d55-b09f-70e66bdac381?w=%i&h=%i",
@@ -830,7 +830,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/crackdown-3/9NXR6469DM2P",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.63949.14494915233617130.8bc2d647-9563-4ed3-9081-f4a771cfa3a6.6504c19a-15a5-40a6-9231-343598749956?w=%i&h=%i",
@@ -848,7 +848,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/craftopia/9NTM9G539XTT",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.59045.14415744061326680.ca18f220-3c29-47ac-b488-ffd7a3e0ba11.93c25555-0136-44cc-a2f7-3a95f1e85315?w=%i&h=%i",
@@ -865,7 +865,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/cricket-22/9NWNX54ZMT1K",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.1551.14445715000850412.83840d24-19b4-4894-8f10-770047ae8042.fb44a74d-b647-4469-8076-46dc98b8c5d8?w=%i&h=%i",
@@ -899,7 +899,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/crossfirex-operation-catalyst/9N5Q1VBD1ZWZ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.27725.14033786176609620.31182a97-1d0c-40d0-8327-f1d454daeeaa.f29602cc-3292-41e1-8d36-67e405056c36?w=%i&h=%i",
@@ -935,11 +935,29 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/crusader-kings-iii/9MZ8RZSD0NFQ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.30214.13879075332331019.da1cf290-ab60-45cb-891e-71702235fa65.f0c38059-800f-4c03-ba16-7594f08ea6a4?w=%i&h=%i",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.61473.13879075332331019.da1cf290-ab60-45cb-891e-71702235fa65.18daa26b-682e-491f-8e1c-87533a00b5b3?h=%i&format=jpg"
+    },
+    {
+        "gameTitle": "DC Liga dos Superpets: As Aventuras de Krypto e Ace",
+        "gamePublisher": "Outright Games Ltd.",
+        "gameDeveloper": "PHL Collective",
+        "gameGenres": [
+            "Fam\u00edlia e crian\u00e7as",
+            "Corrida e voo"
+        ],
+        "releaseDate": "15/07/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/dc-league-of-super-pets-the-adventures-of-krypto-a/9NP1G0T8JDMR",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.14291.13727697462687238.ee76eff3-10ea-49a9-b873-90c81b9db9f0.f9fcc017-5bf0-4d89-84be-0fabc9746dcc?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.34631.13727697462687238.ee76eff3-10ea-49a9-b873-90c81b9db9f0.1abd2a13-907a-4bb9-b31e-6bc1c9f7420f?h=%i&format=jpg"
     },
     {
         "gameTitle": "DEEEER Simulator: Um Jogo de Veado Corriqueiro do Cotidiano",
@@ -952,7 +970,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/deeeer-simulator-your-average-everyday-deer-game/9NNBPBM2F60W",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.38917.13741589124987756.7ce40278-4e54-4838-8822-3f597ec873af.cea3e300-6115-4b9a-b1e8-20db029b012f?w=%i&h=%i",
@@ -987,7 +1005,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/djmax-respect-v/9P544PGZXC0P",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.28299.14576235444726870.3e2b0155-ca8d-4075-bc12-04165b7144c1.54dbb62c-89d0-43d8-b39d-baef555b54ab?w=%i&h=%i",
@@ -1004,7 +1022,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/doom/C3QH42WRGM3R",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.9537.66773763610413114.5c7115ed-b566-4d24-80ce-7027cb5b7c3e.26ccbdb5-174d-4f5d-8e51-9fbb56b09362?w=%i&h=%i",
@@ -1021,7 +1039,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/doom-1993/9PLZPHBNHTMF",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.50165.14303655336501012.2beb08d9-395e-453b-b5e3-0d4ac24d9d15.3b2510cc-2384-4f0d-b261-cdaa80b16ccc?w=%i&h=%i",
@@ -1038,7 +1056,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/doom-3/9NSL68D814GC",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.60652.14361385044335696.50e1eb97-e01a-40d6-839c-7082e07b25b3.470b5116-eb1e-4467-b925-703e307c0297?w=%i&h=%i",
@@ -1056,7 +1074,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/doom-64/9MXND4PQLK3W",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.46055.13886780434132750.58497d0f-3220-4d2f-a7ff-96dcff27bc5f.4aac1ddb-3d94-42df-a4bb-cb2dc420c7fb?w=%i&h=%i",
@@ -1073,7 +1091,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/doom-eternal-standard-edition/9P5S26314HWQ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.447.64234556958324114.f920cec9-b4fb-47f4-bbac-667ed8bb82e6.361bfcfd-dedc-4575-aa66-5a5f145a6b75?w=%i&h=%i",
@@ -1090,7 +1108,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/doom-ii-classic/9PLT62LRF9V7",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.57570.14311014949668376.25a6b443-a817-4a82-b4ec-852ef07ef120.7bb2e6db-047f-41cd-8d76-a78b5abe499b?w=%i&h=%i",
@@ -1107,7 +1125,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/dragon-ball-fighterz/BZRK5C951KK7",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.53484.63836873768130262.f1f140d8-4fff-49c3-b318-36fca1cd7343.9bf0edf7-3a14-43bb-8d05-f53de189ece1?w=%i&h=%i",
@@ -1124,7 +1142,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/dragon-quest-builders-2/9PFD00CZJ35V",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.53352.14202829435326027.d8e6d286-7438-43e7-999e-60378c648621.3518a5b8-26cf-4ed6-9016-068170d6cc70?w=%i&h=%i",
@@ -1210,7 +1228,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/dayz/BSR9NLHVF1KL",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.47889.69886306496288395.9ec42146-6037-4440-b5c7-3a44e5213cc3.633ff3eb-8f2a-4567-ac38-ab688a819736?w=%i&h=%i",
@@ -1245,7 +1263,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/dead-space/BRJLJ6RPLQTJ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.9607.69768431406041041.e1386476-b377-413b-9457-1f5559dbb168.345050eb-2861-4fc1-9bdb-e7dcc7965eea?w=%i&h=%i",
@@ -1263,7 +1281,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/dead-by-daylight/C0N22P73QZ60",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.51458.64366672042187759.733004ed-c696-44cf-98cc-30eddf2375a8.33981a4c-a34b-4492-b81f-8695c017496b?w=%i&h=%i",
@@ -1297,7 +1315,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/deep-rock-galactic/9NHFVWX1V7QJ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.49248.13626568325427111.ffcf66bb-5b9a-4ac5-8d67-8ba8f37e12a9.6b66bb30-355f-43ac-aab3-1256b15578c1?w=%i&h=%i",
@@ -1315,7 +1333,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/descenders/C37XBX7DCBZ0",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.22806.65934155925401073.332e7c23-85a6-43b3-a586-2f915e27a737.f779bef0-3997-4eba-94f0-7b88eb3a74b4?w=%i&h=%i",
@@ -1332,7 +1350,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/destroy-all-humans/C2GMBPMTHDDK",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.24055.65473857825187654.ebbe44de-afda-462d-a514-ec44f41ee0aa.811f648d-1bf8-4b89-bb26-f7c413b42cd2?w=%i&h=%i",
@@ -1384,7 +1402,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/dishonored-2/BSZM480TSWGP",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.10911.70043444627144466.07c9aa2e-cabd-4198-941b-534a009f5e9b.cf528c6d-d4d8-4c06-ab21-dafe846ff6ac?w=%i&h=%i",
@@ -1401,7 +1419,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/dishonored-definitive-edition/C299QVC2BSJF",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.59694.65371894126242138.81c958b9-c96e-47c6-81fa-93c549ea1a80.2a213c60-376c-4924-add8-4429c6ef6357?w=%i&h=%i",
@@ -1418,7 +1436,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/dishonored-death-of-the-outsider/C5F2XDQPPJKZ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.45510.67180938922431908.a2c2d9ea-42a1-4ddc-bf74-8b91562769cf.29da272d-e2a1-4934-b9e9-563227373143?w=%i&h=%i",
@@ -1436,7 +1454,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/disney-dreamlight-valley/9NSF0BGH8D86",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.62890.14365104417622257.42e17a74-81d1-4e35-8c38-a935ba30ef21.80948ce2-63b2-49df-9e97-4ab247b81f10?w=%i&h=%i",
@@ -1453,7 +1471,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/disneyland-adventures/9N6Z8DQXSQWH",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.38755.14005003576279990.0e4e6d67-22da-40e5-b520-630686e37930.302b7455-6387-4813-8177-5e2844e8b61f?w=%i&h=%i",
@@ -1505,7 +1523,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/dragon-age-inquisition/C47GZZBMR5WG",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.1094.66474211586744867.e24f67e1-7195-4bf7-9758-84e7723c0673.ba5ac0c8-e5fb-42c8-a648-a81b5fe939ff?w=%i&h=%i",
@@ -1594,7 +1612,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/embr/9P9XS9D0LBPV",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.10405.14134157626658703.ad01f8b0-d5c5-49de-b137-27e100034590.7e8ae4c0-4206-430c-90d0-8db4c8edb68f?w=%i&h=%i",
@@ -1647,7 +1665,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/evil-genius-2-world-domination/9NPC5398SCQ6",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.56773.13725970033936449.25aa6307-fa1b-4241-9ec3-abc63be55bac.e27edbe4-2824-44ff-8139-77965b9581a9?w=%i&h=%i",
@@ -1683,7 +1701,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/f1-2021/9N6J02VPG635",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.37657.14013748203655664.db785774-47f3-45ce-bd9e-3b1596621222.efc40178-0102-49ea-ab22-2dd4e3fad20c?w=%i&h=%i",
@@ -1717,7 +1735,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/for-honor-marching-fire-edition/C4CBF3FHHCND",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.27398.66538969761564623.2ff1d4ba-a932-4a84-a4e7-5e3810d6d336.f36638ca-65e0-4b99-97be-f665c0ab94bd?w=%i&h=%i",
@@ -1804,7 +1822,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/fallout-3/C29HQ887KH4B",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.38961.65367730044127425.992bf426-3c9a-450f-a792-7946f7138dee.98e9a605-2163-4484-8952-1d8de0909b8f?w=%i&h=%i",
@@ -1821,7 +1839,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/fallout-4/C3KLDKZBHNCZ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.54862.66091604408099736.4cc75ea1-c6a0-40ec-b7f9-7fdb8da581b2.5e94fe90-d2f9-4757-8c2c-b97408d79876?w=%i&h=%i",
@@ -1838,11 +1856,11 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/fallout-76/BS6WJ2L56B10",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.54723.70143269474194625.7895589d-aef0-4bdb-84fa-7b4f1e1489ea.971ee220-5ab3-404d-8d23-543efe52311c?w=%i&h=%i",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.43952.70143269474194625.7895589d-aef0-4bdb-84fa-7b4f1e1489ea.a3337edf-7f3d-4b68-8925-49721f7109ce?h=%i&format=jpg"
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.39914.70143269474194625.d1eeac92-8fe9-443b-af8f-40450ce537a2.86eb483a-50d8-4b2b-94e1-ecf09ce5e590?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.58496.70143269474194625.d1eeac92-8fe9-443b-af8f-40450ce537a2.03fe8575-ee40-4cef-98cb-bb6896afa3b1?h=%i&format=jpg"
     },
     {
         "gameTitle": "Fallout: New Vegas",
@@ -1856,7 +1874,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/fallout-new-vegas/BX3JNK07Z6QK",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.54716.63413868670389858.a909f79f-bf9a-495a-9565-6895806c3525.3405026a-8882-4e5a-8f49-41ccbc9686a3?w=%i&h=%i",
@@ -1873,7 +1891,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/far-cry-5/BR7X7MVBBQKM",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.48705.69582963086497758.e1cff2e3-ddf1-42bf-930d-f380ad63f100.1eb992fd-461c-4edd-9e5e-b3fbb7a41044?w=%i&h=%i",
@@ -1890,7 +1908,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/farming-simulator-22/9P6SRW1HVW9K",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.44229.14617846210383148.2692112c-5cf0-4f44-8fcf-72e45e75380c.cb519bf7-8b19-4e28-bd15-994c42ee2b26?w=%i&h=%i",
@@ -1961,7 +1979,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/forager/9MV2S7Q5PHSW",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.54794.13796714672158376.aa1c19be-0d47-46ac-9fb3-74c8d6d9fdf8.aa68b619-7475-49d7-9f98-ea5020f22958?w=%i&h=%i",
@@ -1996,7 +2014,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/forza-horizon-4-standard-edition/9PNJXVCVWD4K",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.2050.14343301090572358.2000000000007864205.da7d6a7f-5e66-439b-82e9-e5c23f17f739?w=%i&h=%i",
@@ -2013,7 +2031,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/forza-horizon-5-standard-edition/9NKX70BBCDRN",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.18975.13718773309227929.bebdcc0e-1ed5-4778-8732-f4ef65a2f445.125d6b3b-492f-4e5f-8037-7ade230c8224?w=%i&h=%i",
@@ -2065,7 +2083,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/gang-beasts/BPQZT43FWD49",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.27333.68150164172276526.ddc374d7-ef5e-43b9-940a-bbc04440bb33.fa908ac2-c1a8-4d1b-9652-c977565a8111?w=%i&h=%i",
@@ -2134,7 +2152,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/gears-of-war-2/C1SDBNRFXT1D",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.22422.65595136073047161.857e51a5-2b52-4c0e-8ac2-92b6b4609fc2.575238f4-dafa-47d8-a0b9-0ab665f39566?w=%i&h=%i",
@@ -2151,7 +2169,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/gears-of-war-3/BPKDQSSFQ9WV",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.17664.68607194681373551.b4c09a44-be36-42d6-96c5-4a33b566becd.f0735af8-acef-4b7e-b40c-d0d2b622dd37?w=%i&h=%i",
@@ -2168,7 +2186,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/gears-of-war-4/9NBLGGH4PBBM",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.27107.13510798887356280.e9581154-ba55-457f-9b5f-4285b6036ba9.852cd1b9-b6db-430f-a640-b02d32c72c05?w=%i&h=%i",
@@ -2185,7 +2203,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/gears-of-war-judgment/BSHMMGRP84N4",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.44244.70323071690757883.aa344172-c923-4b38-a055-9ce9a093bc86.0f5d2994-3b99-4968-9b8b-ccdff7d7612f?w=%i&h=%i",
@@ -2202,7 +2220,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/gears-of-war-ultimate-edition/BQT21VXFS52F",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.30935.68785176255228170.152a1029-d0c3-4d27-a42d-ecccb32aa4ca.dc750da7-3cda-4a73-9705-24b6c06e820d?w=%i&h=%i",
@@ -2220,7 +2238,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/generation-zero/C20WW4W29FQ1",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.26037.65743914527603622.c1e9cb1f-651a-4556-9033-7aa1173649f4.a99f23b6-999e-464f-95d9-fd4609a6b809?w=%i&h=%i",
@@ -2255,7 +2273,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/goat-simulator/BV0NM309K1TL",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.53467.70628353720390187.c5ec2284-1a6e-4ed0-a094-b54b14b8d466.186f50d1-55ce-4827-925f-6816154430d6?w=%i&h=%i",
@@ -2309,7 +2327,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/gorogoa/C41M2F4NWB2S",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.11042.66945940929342019.3c8e01a6-6e60-4733-ada9-8cdf420e19fd.10801ac2-a270-44eb-ad4c-6956c2499b23?w=%i&h=%i",
@@ -2326,7 +2344,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/grounded---game-preview/9PJTHRNVH62H",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.44004.14280109286674604.07457100-a11d-4e1d-8c2b-59dd36bb9443.03777f72-96c3-46a2-8bee-f1769fdf8bfd?w=%i&h=%i",
@@ -2360,7 +2378,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/halo-5-guardians/BRRC2BP0G9P0",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.64118.69279545232152045.f1a4a87c-fcc9-4b7c-a620-f6c56eb2d5ad.37725d25-3e41-41e7-a2ce-6b0f9994ef5c?w=%i&h=%i",
@@ -2377,7 +2395,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/halo-infinite-campaign/9NP1P1WFS0LB",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.56579.13727851868390641.c9cc5f66-aff8-406c-af6b-440838730be0.0dee39b3-efb2-4425-8f1f-087c111ff9b2?w=%i&h=%i",
@@ -2447,7 +2465,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/halo-the-master-chief-collection/9MT8PTGVHX2P",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.16930.13817186670444302.148c432a-9fce-4c7d-bf13-8a2bd3a527b3.99d16324-9915-41d7-a388-fa5dd98940cb?w=%i&h=%i",
@@ -2482,7 +2500,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/hollow-knight-voidheart-edition/9MW9469V91LM",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.47695.13847644057609868.a4a91f76-8d1c-4e19-aa78-f4d27d2818fb.090b8af1-1963-48b3-8c6d-1255f335fceb?w=%i&h=%i",
@@ -2499,7 +2517,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/house-flipper/9NBFGKQLMV33",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.46741.13518543789452586.33e180bb-4f0b-4a39-b1c8-cde6206c1eb3.63c679bb-4c3c-42c4-81bf-e3b3666a61b6?w=%i&h=%i",
@@ -2517,7 +2535,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/human-fall-flat/BSMZH25V6V46",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.28166.69811231537758929.e4656d28-2761-45a1-87cc-d343cdef0293.30fd12ec-1698-4cf8-9509-1643edc1d771?w=%i&h=%i",
@@ -2553,7 +2571,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/inside/C17GQF31D617",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.26010.65290118777571754.27f1da0f-d581-4307-9bec-41016a2e5567.7b9d8bfe-920c-447d-a3f0-fa336b8d077f?w=%i&h=%i",
@@ -2570,7 +2588,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/immortal-realms-vampire-wars/9P4Q17HQ2WKW",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.32448.14584218626935250.46a9c0b9-f228-4521-a159-9133d5fe93a6.f787427a-eed6-4778-93cd-01e7a182d406?w=%i&h=%i",
@@ -2587,7 +2605,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/immortality/9PM1905P9LQ6",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.52743.14302926931207469.aafd0cfc-a0f8-4195-84ed-10dd3c27bc62.3d18e51a-7c0f-4500-b194-9772ed4b7305?w=%i&h=%i",
@@ -2604,7 +2622,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/immortals-fenyx-rising/C07KJZRH0L7S",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.55065.64682799204913125.f407971c-f15c-4acc-99e1-682aec54019d.a839231d-b5a5-42ed-8874-ec8165d6f165?w=%i&h=%i",
@@ -2622,7 +2640,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/infernax/9NK7HNCG0R8D",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.3045.13661753595194559.6b97b9b9-2641-4892-950f-db05b0c5fa1c.85ed389e-c6c7-468b-8957-e3ce15d3c8ef?w=%i&h=%i",
@@ -2639,7 +2657,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/injustice-2/BPKVH4C4XV4N",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.15492.68598211680266771.73ef9826-822a-4a0b-ab4a-4fe8fd87fc3b.fcf3f2a7-591f-4316-a3cc-9a6595d29db9?w=%i&h=%i",
@@ -2657,7 +2675,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/into-the-pit/9NCFNFTSBM96",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.39935.13564737612475991.b8ee2cbb-c69a-47d9-b4ee-7d6c7fb9fb80.59114524-43b4-4947-8b56-c2d76eaa2619?w=%i&h=%i",
@@ -2674,7 +2692,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/it-takes-two---digital-version/9NXVC0482QS5",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.4452.14488339386131194.84ca8b8a-582e-4d34-904e-8f1e60f71000.1164a903-9308-49c2-a477-3b887cffb341?w=%i&h=%i",
@@ -2710,7 +2728,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/jurassic-world-evolution-2/9MWHMJ0SRBXV",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.57135.13843646153700405.faf0a0ab-da0c-4a73-a182-1b5794b3f805.a540c175-d9d9-48ce-984f-cce5ab49a2d8?w=%i&h=%i",
@@ -2727,7 +2745,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/just-cause-4-reloaded/9P9MC8B7R5FP",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.65015.14135675770949824.45a1c566-3aee-4e05-b600-cbc49fb16d6d.fb821434-f138-43f5-87d6-22eca4e67fa9?w=%i&h=%i",
@@ -2745,7 +2763,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/kameo/BV83SM3191S5",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.15560.71331020072920166.7e86d9ef-4edb-4eef-a0c8-86f5c9475e2f.aaf8b307-2d84-49cc-af67-613f0a8e8d8e?w=%i&h=%i",
@@ -2780,7 +2798,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/kill-it-with-fire/9MZVSHQZ666K",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.12401.13862857064512538.2709e225-b83d-480b-aeaf-58a54a6a45bb.17dd9acd-bdb3-4201-9ec4-a5ff91f3344a?w=%i&h=%i",
@@ -2867,7 +2885,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/lemnis-gate/9NJG48NJ480C",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.62822.13681731712633836.33ade687-6181-4fc4-b5b9-d030dbce8422.a7170725-bcd0-41ad-8ea3-d246cea1d612?w=%i&h=%i",
@@ -2920,7 +2938,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/lonely-mountains-downhill/9MV6MCVLT8GR",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.53295.13794437146560212.1c2132e1-8e75-4ecb-8f54-2474cd20e67a.772f1641-c20b-43ed-8316-94d97f7527a2?w=%i&h=%i",
@@ -3008,7 +3026,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/maneater/9P5B81KVDGP1",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.16927.14572536018362984.944e7368-3c2f-4b4e-8072-fe5da70a10fa.7c793b5f-5802-41ff-a28a-09de56512b3e?w=%i&h=%i",
@@ -3025,7 +3043,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/marvel's-avengers/BRX6HS1G5CDK",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.6955.69399725068812250.e18e30fe-4fd2-40d8-9c22-033732f7b7d3.2747f9ea-dbf7-4274-9066-95e0ae925afc?w=%i&h=%i",
@@ -3042,7 +3060,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/marvel's-guardians-of-the-galaxy/9PGLL77C201J",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.25922.14183003051629257.3b865ad2-052d-4fc0-ad6a-2a83af20ce2d.d5f1507b-98e4-44f5-a37c-23cbfd60814f?w=%i&h=%i",
@@ -3060,7 +3078,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/mass-effect-legendary-edition/9PKWHT7G60WQ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.59262.14254372351363255.ac3906d1-13b6-4af0-a00a-e10c8a92007b.dac28bb8-f830-421f-9e92-08a9db8b19f8?w=%i&h=%i",
@@ -3077,7 +3095,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/mass-effect-andromeda/BZPR04V49BMH",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.8041.63802047386749134.ad5f99e3-d1a2-49a5-bbb8-b299dc4073ec.526abbab-6137-45f8-a05b-8ace44165345?w=%i&h=%i",
@@ -3112,7 +3130,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/mechwarrior-5-mercenaries/9PB86W3JK8Z5",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.1453.14123304312086404.5dc09435-a0e3-402c-ba22-f58dbbaccd21.e2b9a345-d6e3-4983-ad7d-2d2c5c192d1c?w=%i&h=%i",
@@ -3129,7 +3147,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/microsoft-flight-simulator-standard-game-of-the-ye/9MTJ74MKQM46",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.52431.13812224868484781.17992d5a-54a4-4eb9-b62c-fbb7cee6d597.67861cc8-eb60-46c2-b21a-034c890d47ae?w=%i&h=%i",
@@ -3146,7 +3164,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/middle-earth-shadow-of-war/9PDV8FKWP3B4",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.1041.14146895813128195.1152921504736932926.b3b4137c-37ed-4268-8112-002922027d5f?w=%i&h=%i",
@@ -3200,7 +3218,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/mind-scanners/9MV8J6MFJNQV",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.64687.13792918252035849.70cae5d6-a601-49fa-aa3f-fe57d9dc8f66.9dad009e-69a8-440f-aba9-c95ff93f087f?w=%i&h=%i",
@@ -3235,7 +3253,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/mirror's-edge-catalyst/C48LBRJJCP2L",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.62830.66522486697599341.54595999-7800-48a6-8255-bf581c71e0dd.fdab5a16-85bd-4fa0-9c88-8ec2f16ced89?w=%i&h=%i",
@@ -3306,7 +3324,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/moonlighter/9P8XJRLCLH2P",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.23038.14078999020725962.ddb83977-3b2d-4498-aa21-0a1bdeb1cddc.b1c79423-8a23-4943-804b-c5333d258492?w=%i&h=%i",
@@ -3323,7 +3341,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/mortal-kombat-11/BTC0L0BW6LWC",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.63277.70804610839547354.8da93c46-fd13-4b16-8ebe-e8e02c53d93e.9d395244-d5c3-4d17-a83d-2ff95537c0f6?w=%i&h=%i",
@@ -3341,7 +3359,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/mortal-shell-enhanced-edition/9PC2BJDXR2LK",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.60033.14112185653659482.b5e15e3a-13c2-47bd-9e60-7709b165611f.727ea54e-9116-49fb-9def-e303eda19df8?w=%i&h=%i",
@@ -3359,7 +3377,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/motogp22/9P6N58X27150",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.38272.14616445086878693.b5e88527-6d84-46b3-aedb-b4ca1a01a63e.303843a3-9ef9-4014-8dbb-c89f6584b086?w=%i&h=%i",
@@ -3377,7 +3395,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/my-friend-pedro/9P16M6LF0QFH",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.40064.14517273440942106.95022d0f-01e8-4fa1-a16a-b7fa27a20afd.64ddf521-d35e-4239-a6ad-fbec57d06bde?w=%i&h=%i",
@@ -3411,7 +3429,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/my-time-at-portia/BX1FZX1X4132",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.8924.63380265586365831.1555bbb7-7743-4e40-af30-9522b68b2b3c.9ec78f2b-f34d-413c-b72f-31d62eb51f09?w=%i&h=%i",
@@ -3428,7 +3446,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/naraka-bladepoint---standard-edition/9MVVDHS95RCL",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.63321.13856197661114247.d18d95b4-04ab-4306-83a8-f6f7868b9215.8d21aeec-01d7-4eb0-873f-50adc19d0699?w=%i&h=%i",
@@ -3568,7 +3586,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/next-space-rebels/9PBGCRBQKXTP",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.64109.14119640268172716.d5337920-4722-41a0-b754-c6d32e905713.e82cc454-38a7-4868-8490-f79b73c8312f?w=%i&h=%i",
@@ -3586,7 +3604,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/no-man's-sky/BQVQTL3PCH05",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.14762.68818099466568894.b6fa22e3-f614-4484-ae3e-1c84407633d4.4295004d-bfcc-48ee-aba4-b0e460071a04?w=%i&h=%i",
@@ -3622,7 +3640,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/nongunz-doppelganger-edition/9NRDVCW02JD7",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.13510.14389204367011736.3e1e89b1-9b12-46d7-a373-9348f56d1999.2374e012-8afd-4e41-acc1-2d15f23b0f81?w=%i&h=%i",
@@ -3639,7 +3657,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/nuclear-throne/9PCCFDH6LMQJ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.45919.14171913677755527.7e192ea5-4d8a-4cd4-8882-2ee02006dca6.ec5431c5-cd06-42a4-8e49-d3d44661887f?w=%i&h=%i",
@@ -3673,7 +3691,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/omori/9P8WMQ1S4TF9",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.63765.14079624955953364.e347e65c-a873-4507-900a-8f8da39e1b5e.43fca221-a279-4413-b1f5-0cebd4e6c80d?w=%i&h=%i",
@@ -3708,7 +3726,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/opus-echo-of-starsong---full-bloom-edition/9NKKDCVR3VW9",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.10319.13659592663783828.c218620d-b41e-4037-9cc0-e5ec840c80aa.632cb077-44e2-4f26-a70f-d2d9319885bf?w=%i&h=%i",
@@ -3726,7 +3744,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/outriders/C083G6BGJ334",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.46955.64676761359365869.c6056fd3-1a88-4909-9197-e47917a0daf9.ab2ec758-0b35-43db-83ca-596f30f3ee25?w=%i&h=%i",
@@ -3744,7 +3762,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/olija/9N6PB00DXQ7H",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.1798.14014649267663230.52cdcd0a-d270-4877-9bec-d99419176577.babaad03-70b2-4054-99a2-78cda280cc86?w=%i&h=%i",
@@ -3780,7 +3798,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/ori-and-the-blind-forest-definitive-edition/BW85KQB8Q31M",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.33006.71930896676716842.b6740fa4-0359-4ca8-9e17-5d4e45c2d497.106c936e-9312-4ea3-b2c1-d6ea54a4377d?w=%i&h=%i",
@@ -3798,7 +3816,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/ori-and-the-will-of-the-wisps/9N8CD0XZKLP4",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.37519.14047496556148589.9fda5cef-7995-4dbb-a626-66d2ab3feb4f.c81b9aaa-f139-44ac-b9ca-0aa0dd0cbffb?w=%i&h=%i",
@@ -3816,7 +3834,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/outer-wilds/C596FKDKMQN7",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.38686.67120997535715720.38c3e502-0019-4560-826e-634bbaf5cb4b.26a27298-66b5-489a-83dc-b1741a12905f?w=%i&h=%i",
@@ -3940,7 +3958,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/perfect-dark-zero/BZF7N4FQWHNR",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.21399.63613604984995316.d403620a-54b7-4a68-9850-e3bfda4c2552.9ba8a8e5-8c96-45b2-83cf-8eeef411eb81?w=%i&h=%i",
@@ -3975,7 +3993,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/pikuniku/9N8WRDC25K6J",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.19280.14041044108785223.82419c4d-359a-436a-b07d-12cf7137d8fc.e3b3a42f-2c98-4caa-ac45-4ef73653930c?w=%i&h=%i",
@@ -4028,7 +4046,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/plants-vs.-zombies-garden-warfare/BTJ0T8C04ZBV",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.57712.70921300667420253.8c8a7ac7-d0bd-46fb-a144-4c5ea316247c.b4f3a4a4-1e61-4685-8c7a-49ef7addd34c?w=%i&h=%i",
@@ -4045,7 +4063,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/plants-vs.-zombies-battle-for-neighborville/C4HZC7LJG6PX",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.51083.66663660452837213.88feed53-4335-4b35-8a3a-476a0f0fd6ca.c4755ce8-cee4-4ca4-8f72-5e5bc6eae3de?w=%i&h=%i",
@@ -4062,7 +4080,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/plants-vs.-zombies-garden-warfare-2/BNRH7BRC1D02",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.25500.68092588132505117.32378282-ea7e-40c4-a3a2-81703aa936d7.188e00bb-916b-4c65-9bb7-f1e5f2a829f9?w=%i&h=%i",
@@ -4079,7 +4097,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/power-rangers-battle-for-the-grid/9P5VMG8D4P4B",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.60516.14636624242477201.684d5e4f-5586-4870-aa98-c0ce136ea8f4.4db9f25f-f2f2-4e72-a4d4-c4926ed6be0e?w=%i&h=%i",
@@ -4113,7 +4131,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/prey/BQMVWCMB8P59",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.11350.69234794984509140.ef3477c5-d6c7-4bd4-b5c7-7664d0e9e1be.56e552ce-a8b5-40eb-ae32-c7cefd77e069?w=%i&h=%i",
@@ -4131,7 +4149,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/project-wingman/9NQ73XB1Q5ZG",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.22923.13774735967551951.4e47740d-df56-4f79-8338-58493ef3afb7.b580b6f9-fd70-4d43-8e6b-7f37ba6fa349?w=%i&h=%i",
@@ -4202,7 +4220,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/quake/9P1Z43KRNQD4",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.31797.14497943460299347.3ad06bb4-d442-43a2-99e0-f41399a5b03e.d1944e73-cd9b-4fd2-914c-4a4c3db63b39?w=%i&h=%i",
@@ -4220,7 +4238,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/rage/BR27BSZ2M3SR",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.51318.68925464159691452.a2903bed-8f56-422f-b4a8-81cca9a4bf93.ddfde01b-109b-479a-83d4-428746a31c96?w=%i&h=%i",
@@ -4238,7 +4256,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/rage-2/C2DCJ95ZXBMS",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.25597.65377716030309997.4ce8fd57-e617-46e7-9d4f-e8b49f4d07ef.8032cd3b-4de6-4872-8e49-32f042b5a139?w=%i&h=%i",
@@ -4291,7 +4309,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/recore/9NBLGGH1Z6FQ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.34726.13510798886186651.76cfa366-2ebc-44ea-984f-6bf954e4c742.3a35291d-d9c2-451a-ab83-e043aba71471?w=%i&h=%i",
@@ -4309,7 +4327,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/recompile/9PDRJWHBSK88",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.7926.14144555811461915.e7755e4b-3306-4aad-9430-4916b54d99c2.b1011be9-3984-4479-9824-34a919e4d224?w=%i&h=%i",
@@ -4327,7 +4345,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/record-of-lodoss-war-deedlit-in-wonder-labyrinth-/9NRBH9HS807L",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.10926.14386120322819171.2fc4013e-47df-4a11-be12-356830abf1b1.0cef0785-64a2-402f-ab1b-cc19dfd1f741?w=%i&h=%i",
@@ -4363,7 +4381,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/road-96/9NVBKDF85W8T",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.37271.14401791124788682.a53b3c8e-a868-4dbf-845f-6db87942340c.99d9dd76-ba11-4a9f-91ec-3068355983d4?w=%i&h=%i",
@@ -4398,7 +4416,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/rush-a-disneypixar-adventure/9P3PL76N0KWZ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.54193.14538559069860396.375a4717-d4e1-4c14-b278-f4787b52d21a.8ccfcf77-d0bc-4895-a1e6-f70806a4a045?w=%i&h=%i",
@@ -4433,7 +4451,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/star-wars-jedi-fallen-order/C2CSDTSCBZ0C",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.52300.65392999590663672.028b6875-f925-4d40-b3a1-e44db3b4fa32.7bcb3d0f-46fc-43ea-84d1-031bd0817da2?w=%i&h=%i",
@@ -4450,7 +4468,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/star-wars-battlefront-ii/C0GWTPD0S8S1",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.57852.64256825846959382.44b5bc43-437a-4414-83ca-b41ba9e7764a.6845daab-0518-41a7-b14a-525d8d79f571?w=%i&h=%i",
@@ -4521,7 +4539,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/second-extinction-game-preview/9P9JZLNFQ9PT",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.42521.14137276003875252.d1d6dd04-81e9-424d-a1b6-7a81e52dfeef.e61cd8b8-4b66-4175-b861-651aa5adb79a?w=%i&h=%i",
@@ -4538,7 +4556,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/secret-neighbor/9P7GBPGT90L3",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.19855.14605254180386304.db0b6acf-32d5-404e-961c-57a78494928f.40fda6df-25aa-490f-ac84-95999557275c?w=%i&h=%i",
@@ -4556,7 +4574,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/serious-sam-4/9N5521ZQMQMJ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.47130.13969859700306157.e45e75fc-cfcd-4dcd-967b-c356d04848f4.096a5307-9c8a-4582-a415-9c38230bfbae?w=%i&h=%i",
@@ -4574,7 +4592,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/shadowrun-returns/9N6PHQ93Z451",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.55573.14009816262451240.3e3808e2-1e94-4457-b77b-8450027fa25a.12a5baa8-dec7-4fe0-ba05-3b068d35b733?w=%i&h=%i",
@@ -4592,7 +4610,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/shadowrun-dragonfall---director's-cut/9PKJTP6DTND3",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.13822.14266045593708116.bcec8af8-9570-471e-aa75-827739f252f6.a3f2fd69-c499-4cb1-9860-59c5d1d91518?w=%i&h=%i",
@@ -4610,7 +4628,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/shadowrun-hong-kong---extended-edition/9N7V5R3VLMJZ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.24618.14057715674749150.d6d6bc42-2e9e-4eb2-a96b-1baf2eaca60b.63cc5402-85b3-4a0a-9919-78cda3d9071c?w=%i&h=%i",
@@ -4628,7 +4646,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/shredders/9N4PGNQQ7ZFK",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.59364.13979077126806036.96d207e3-0572-4ada-b872-bc0f9f1ce219.652e1b3c-1da3-4076-afc2-a639fc83ec42?w=%i&h=%i",
@@ -4645,7 +4663,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/skate-3/BNKDKQXMXRR2",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.25388.68005754082254855.39795a60-73cf-4461-87d9-7f112c30c43c.7d99d88b-5b61-4951-9de7-34e5ddad1df2?w=%i&h=%i",
@@ -4681,7 +4699,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/skul-the-hero-slayer/9NW4Z3HPJVKW",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.47199.14456124164135894.3812513e-617a-4507-a78c-e1b3d444d32a.6eb602b5-ae29-4ed6-a518-a3129440840a?w=%i&h=%i",
@@ -4717,7 +4735,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/slime-rancher/C2NC88M7NWZ1",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.31719.65571960709588388.6e3322f5-d49a-48f6-ac1e-c5450bd5b3e2.114ce25e-4e9b-4a53-bfc9-5eb77a194e2a?w=%i&h=%i",
@@ -4735,7 +4753,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/sniper-elite-4/BZ5VLVX84STW",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.26770.64044195348567726.135f2cd2-9709-4fe7-a7ca-fefaee870959.3982bd5f-c6ad-4116-a2c1-43c1b0b3baa5?w=%i&h=%i",
@@ -4753,7 +4771,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/sniper-elite-5/9PP8Q82H79LC",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.28227.14329012547000484.584f0993-bf4d-4047-854d-bac80c1f8bf8.e7de3480-7471-4d8b-8745-bd02162add7b?w=%i&h=%i",
@@ -4770,7 +4788,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/snowrunner/9PNRSC0J6DT8",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.55989.13956056585254053.d21b86eb-3deb-434c-9c26-3ab2103cddee.de74032c-1317-49a7-8fbb-1e6cd211985c?w=%i&h=%i",
@@ -4788,7 +4806,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/solasta-crown-of-the-magister/9N1KQPLTR7S5",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.60384.13899562469464238.c1646c67-46ab-4599-8b51-491c5f064ca0.100258cb-4e28-4a7a-b0a4-66a3e0a1bd0f?w=%i&h=%i",
@@ -4878,7 +4896,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/state-of-decay-2-juggernaut-edition/9NT4X7P8B9NB",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.62160.14425140369408817.14846606-f5bc-4fb1-b355-26ef6a25e847.e14fc031-2974-4b66-9f84-16cf8d0807e9?w=%i&h=%i",
@@ -4896,7 +4914,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/stellaris-console-edition/BWL72GR7Z7GK",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.10542.71592693192229022.95f29c62-8ab9-4865-a362-219a5bf8c0d3.e1fbe4bc-1592-40a9-8545-1d76aef61a11?w=%i&h=%i",
@@ -4914,7 +4932,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/subnautica/BX3S1Q5DVHRD",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.19794.63409341877910445.4fd452e1-c3ee-4448-a0f8-ac6eb6bdaabf.8fe60020-9cc9-42c9-af2a-bf7b08cb5e13?w=%i&h=%i",
@@ -4932,7 +4950,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/subnautica-below-zero/9NDCJXL11096",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.63253.13546341381523259.8f30b71b-aac8-4816-a999-212ef85f8876.d2421f4e-6adb-427e-ad45-bb44e9ba125b?w=%i&h=%i",
@@ -4986,7 +5004,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/supraland/9PN6MTJX8LZD",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.32154.14354148193968541.017a6808-d170-40f2-a4c6-5b8716a41d7c.39a5082b-f046-4ab8-aba0-6b27aad146e2?w=%i&h=%i",
@@ -5004,7 +5022,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/surgeon-simulator-2/9NPPK20VCTGM",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.34455.13784877875223300.82d0e530-8878-4d4f-a9e5-9c3529471840.113556c3-95a3-4c60-9063-d5a6f47cf797?w=%i&h=%i",
@@ -5126,7 +5144,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/terraria/BTNPS60N3114",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.57835.70406876433810089.4beffaca-3fee-4154-a21f-ecd9b3bedbb3.c2203645-e73c-4760-bdbe-f1bcf32a0a05?w=%i&h=%i",
@@ -5144,7 +5162,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/the-anacrusis-game-preview/9P9S593SLMV7",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.51812.14132627781219400.b75eb479-8d85-476a-9b12-d9044cad7c6e.6e935896-30f8-4e35-8a8c-c807747adc55?w=%i&h=%i",
@@ -5269,7 +5287,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/the-elder-scrolls-iii-morrowind/BXVCFBJBNS17",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.23519.63316511565903586.d62160f8-6032-426e-af13-d87fe2d204a7.22bb08a7-a717-490d-8d63-036a3db4dc92?w=%i&h=%i",
@@ -5286,7 +5304,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/the-elder-scrolls-v-skyrim-special-edition/BQ1W1T1FC14W",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.4794.68326442227858632.03782b23-7f26-4a8e-ba87-177bdf2c3c90.b156af1e-9796-48af-8d11-3461727280ea?w=%i&h=%i",
@@ -5303,7 +5321,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/the-evil-within/C2M8HBNVPT1T",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.49736.65523398993639028.2c280ccc-7f03-4d25-8060-07f62a42af2f.f6c60388-390b-428f-8206-af048885200c?w=%i&h=%i",
@@ -5320,7 +5338,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/the-evil-within-2/C40860J5R2MP",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.54557.66902085872217864.df676289-5ef8-4c7c-8533-965928392024.79369858-479b-4542-991a-cfffd2af454b?w=%i&h=%i",
@@ -5410,7 +5428,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/the-long-dark/C41ZDFQ82M1G",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.6991.66934420265726607.e7f79b00-768c-452b-bd03-0eb82296f498.5f5892b3-2241-4b20-835e-27ae0eaf7796?w=%i&h=%i",
@@ -5428,7 +5446,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/the-outer-worlds/BVTKN6CQ8W5F",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.41558.71127714305215144.dfbe21c8-4e10-4861-b737-47393066d41d.a5829bf5-54b9-4e0f-b7a3-3772539dd491?w=%i&h=%i",
@@ -5482,7 +5500,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/the-riftbreaker/9P94PCKP864B",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.14415.14074927307991469.b436fff7-157c-4e97-b957-11e9d6f0e0eb.4690e1cb-fa16-4030-abd9-583e75be3c9d?w=%i&h=%i",
@@ -5500,7 +5518,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/the-sims-4/C08JXNK0VG5L",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.13730.64737940845214615.82a9a5cd-32c5-4fb1-a951-2a7b976ad460.fce0797b-8705-47da-839a-a21383f93eb7?w=%i&h=%i",
@@ -5585,7 +5603,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/this-war-of-mine-final-cut/9MT6TG9CXR2H",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.37303.13818178861591472.06d4cfd1-e581-4b7f-8268-7ed2cfca3f35.cd9123c5-f36e-4501-bf53-082666b3fa48?w=%i&h=%i",
@@ -5620,7 +5638,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/tom-clancy's-rainbow-six-siege-deluxe-edition/9NSHNMCM0JR8",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.392.14552088507516913.25c754f6-310b-4c4d-8353-e35dcfce21e4.d6dc659b-ce66-48ce-8516-28e747302292?w=%i&h=%i",
@@ -5637,7 +5655,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/tom-clancy%E2%80%99s-ghost-recon-wildlands---standard-edit/C2N9CS4FS1QR",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.35914.65577870102127192.24a0a154-ded1-4a40-a91f-102019aaee70.04f5f3e1-2dd4-4cfb-b1e6-add402749f0a?w=%i&h=%i",
@@ -5655,7 +5673,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/tom-clancy%E2%80%99s-rainbow-six-extraction/BXRB4ZH2GJHK",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.12410.63231504676176196.fce3b959-5f54-4aad-a199-00e19cf052ba.c309e2ab-1f04-4a32-8afc-381df080bb57?w=%i&h=%i",
@@ -5673,7 +5691,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/torment-tides-of-numenera/BQND4NQXFFV2",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.60839.69228847133651133.1a071f35-fd99-4884-ae4a-12f55849b9eb.8fd399bb-4620-497a-939c-722938a7b901?w=%i&h=%i",
@@ -5709,7 +5727,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/totally-reliable-delivery-service/9NZG72SH3H4W",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.57565.14481391283536320.2e278a9d-b63d-454a-a60e-ac81b25b445c.392440ba-2841-42da-9eae-3624c032300b?w=%i&h=%i",
@@ -5745,7 +5763,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/trailmakers/9NSFGM8J6MBJ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.4351.14364758607471359.e2225a2a-e6f7-44b1-a6a4-afd25f220f1c.17b9e5c5-fee2-401c-b74d-45d15133de94?w=%i&h=%i",
@@ -5762,7 +5780,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/train-sim-world-3-standard-edition/9PN99PX1P1LX",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.32810.13824994608911844.30135c6c-1c23-48e7-9923-7dd883c953d1.9a8b0171-e7a4-4598-a31d-df29e31f7bbf?w=%i&h=%i",
@@ -5780,7 +5798,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/trek-to-yomi/9MTCRVZQN3GV",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.109.13810431892468749.e5f7414c-2e05-4304-bb90-5df4b5221508.1f107c06-f879-4933-b58c-1a5dd881b421?w=%i&h=%i",
@@ -5870,7 +5888,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/unsighted/9P31WJ3N46KB",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.24081.14551478980510727.3f872f24-72f5-4271-8bf0-7ad7e9929ecd.c0a1ab79-ede7-4668-9820-5784b7cf34dd?w=%i&h=%i",
@@ -5904,7 +5922,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/undertale/9PJGGX9XJXPB",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.15028.14216942822196343.dfa45b94-960e-4595-b2be-f54c2f268b7a.1e441b9e-11a6-45a5-8d5c-2d563a19439a?w=%i&h=%i",
@@ -5957,7 +5975,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/unravel-two/C4VKLMG1HLZW",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.6886.67435278791875206.d60b3a6b-61b2-4afb-9c4c-453efe4ef48e.5851cf69-55b2-4383-a019-fb601fb993db?w=%i&h=%i",
@@ -5974,7 +5992,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/unsouled/9N7KBCL0NC5H",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.34215.14067847727673942.bc35e2b5-e9f7-46d2-88a7-ec8582f969a9.872121c0-6e54-4b4d-bfca-e00302c1a246?w=%i&h=%i",
@@ -6026,7 +6044,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/warhammer-40000-battlesector/9P4FCZR21QQK",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.26109.14590233302827538.70136681-c41b-42f8-a975-a9edb5e9d3f3.c591cd02-9837-4fe4-99a1-42b90cfba64e?w=%i&h=%i",
@@ -6096,7 +6114,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/we-happy-few/BPR2TBS2KMQJ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.40710.68143759676978415.617fe4d2-4978-4b4d-9e04-cba4cf86d432.4820a8ef-b0f3-4fcd-ab0a-6a76014c0c3c?w=%i&h=%i",
@@ -6114,7 +6132,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/weird-west/9P0B86JN5X28",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.15035.14464239229931947.75c64ed9-49e8-4a32-87eb-a4b9b662a927.fe8ca0b9-fe03-4e51-bcc4-20702ba507e0?w=%i&h=%i",
@@ -6150,7 +6168,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/wolfenstein-the-new-order/BT9FFLG51VVG",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.5170.70764866595776237.49bcb933-4bfd-4b64-a764-f2ef10fde8d5.a78a2b99-81e7-4ed0-8d98-c1f2dc453506?w=%i&h=%i",
@@ -6167,7 +6185,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/wolfenstein-the-old-blood/BPV4GXTDCNSH",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.20849.68153994599451024.9f03bc8c-e4ac-4d66-9e8a-c64ec1810cc0.92b342ca-5481-4109-8b6f-f1b0d2940433?w=%i&h=%i",
@@ -6185,7 +6203,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/wolfenstein-youngblood/C421ZX7RCG0W",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.22779.66937225626631404.377c6044-13d5-4b96-8957-5b00b3f14438.9112b323-c42b-4072-a1ea-11ce9cfd66fc?w=%i&h=%i",
@@ -6203,7 +6221,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/wolfenstein-ii-the-new-colossus/C4LLMHFQ1BXQ",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.2334.66681981221768345.76a0e962-989c-428d-a0d4-5b11187fa034.220af923-7124-4d46-98f3-78cc10b9492b?w=%i&h=%i",
@@ -6220,7 +6238,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/worms-w.m.d/C4BZ7X545J1T",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.41175.66550732470485128.fb64d8d0-8d1a-4592-beb7-c3634d551b35.69e1f605-b5b2-4401-a2f4-223edb7879e9?w=%i&h=%i",
@@ -6340,7 +6358,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/yakuza-kiwami/9NBJ51BD0LTH",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.3710.13512592555926242.4f764cb5-1ca8-4601-9f0f-fd3d82976ea7.ffff5017-617d-4238-afc5-59551b5b4f47?w=%i&h=%i",
@@ -6427,7 +6445,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/zombie-army-4-dead-war/9PLSCHRN5715",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.15083.14307155302772688.6d2bb19d-e8cc-4826-bd21-920020654895.22cfc234-258a-4edf-b871-db3c9e4a7127?w=%i&h=%i",
@@ -6480,7 +6498,7 @@
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
-            "touchControllerSupport": true
+            "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/thehunter-call-of-the-wild/BXBJQ1932138",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.9956.63553167684393025.1b31f51e-c4c6-49b1-bf61-a2e65ea14c73.a126b6d1-284c-4746-a11d-f6af188d1918?w=%i&h=%i",
