@@ -13,6 +13,7 @@ class GameButtonTile extends ButtonTile {
           gameModel.name,
           key: key,
           interactive: true,
+          appBadgeInfo: gameModel.extraGameProperties.toBadgeInfo(),
           tileSize: tileSize,
           image: NetworkImage(gameModel.tileGameImageUrl),
           onPressed: (context) {

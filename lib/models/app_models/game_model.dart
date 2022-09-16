@@ -1,3 +1,4 @@
+import 'package:xbox_launcher/models/app_badge_info.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 
@@ -69,4 +70,9 @@ class ExtraGameProperties {
           isInGamePass: json["isInGamePass"] as bool,
           controllerSupport: json["controllerSupport"] as bool,
           touchSupport: json["touchControllerSupport"] as bool);
+
+  AppBadgeInfo toBadgeInfo() => AppBadgeInfo(
+      controllerSupport: controllerSupport,
+      isInGamePass: isInGamePass,
+      touchSupport: touchSupport);
 }

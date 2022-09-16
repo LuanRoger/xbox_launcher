@@ -1,9 +1,11 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AppImages {
   static const String BUTTONS_ASSETS_PATH = "assets/buttons/";
+  static const String SVGS_ASSETS_PATH = "assets/svgs/";
 
   //Buttons
   static const A_BUTTON_IMAGE =
@@ -38,4 +40,10 @@ class AppImages {
       AssetImage("${BUTTONS_ASSETS_PATH}start_button.png");
   static const BACK_BUTTON_IMAGE =
       AssetImage("${BUTTONS_ASSETS_PATH}back_button.png");
+
+  //Tiles badge
+  static const GAMEPASS_BADGE = "${SVGS_ASSETS_PATH}game_pass_badge.svg";
+  static const CONTROLLER_SUPPORT_BADGE =
+      "${SVGS_ASSETS_PATH}controller_support.svg";
+  static const TOUCH_SUPPORT = "${SVGS_ASSETS_PATH}touch_support.svg";
 }

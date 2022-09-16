@@ -23,6 +23,7 @@ dependencies:
   carousel_slider: ^4.1.1
   path_provider: ^2.0.11
   win32: ^2.7.0
+  flutter_svg: ^1.1.5
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +36,7 @@ flutter:
 
   assets:
   - assets/buttons/
+  - assets/svgs/
 
   fonts:
     - family: Bahnschrift

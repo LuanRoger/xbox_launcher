@@ -1,5 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:xbox_launcher/models/app_badge_info.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/tile_badges.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_base_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_cover.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_title_bar.dart';
@@ -7,6 +9,7 @@ import 'package:xbox_launcher/shared/widgets/tiles/tile_title_bar.dart';
 class ButtonTile extends TileBaseStateful {
   final String title;
   final bool interactive;
+  final AppBadgeInfo? appBadgeInfo;
   final IconData? icon;
   final Widget? customCover;
   final ImageProvider? image;
@@ -29,6 +32,7 @@ class ButtonTile extends TileBaseStateful {
       {Key? key,
       required TileSize tileSize,
       this.interactive = false,
+      this.appBadgeInfo,
       this.color,
       this.onPressed,
       this.icon,
@@ -60,15 +64,24 @@ class ButtonTile extends TileBaseStateful {
 class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
   final FocusNode focusNode = FocusNode();
   late bool getFocused;
-  TileTitleBar? titleBar;
+  TileTitleBar? _titleBar;
+  TileBadges? _tileBadges;
 
   @override
   void initState() {
     super.initState();
+
+    if (widget.appBadgeInfo != null) {
+      _tileBadges = TileBadges(widget.appBadgeInfo!);
+    }
+
     if (widget.interactive) {
       focusNode.addListener(() {
         setState(() {
-          titleBar = focusNode.hasFocus ? TileTitleBar(widget.title) : null;
+          _titleBar = focusNode.hasFocus ? TileTitleBar(widget.title) : null;
+          _tileBadges = !focusNode.hasFocus && widget.appBadgeInfo != null
+              ? TileBadges(widget.appBadgeInfo!)
+              : null;
         });
       });
     }
@@ -93,7 +106,13 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
           ),
           Align(
               alignment: Alignment.bottomLeft,
-              child: titleBar ?? const SizedBox())
+              child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 3.0, right: 3.0, bottom: 3.0),
+                  child: _tileBadges ?? const SizedBox())),
+          Align(
+              alignment: Alignment.bottomLeft,
+              child: _titleBar ?? const SizedBox())
         ],
       ),
     );
