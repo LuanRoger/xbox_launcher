@@ -12,7 +12,7 @@ dependencies:
   fluent_ui: ^3.12.0
   webview_windows: ^0.2.1
   provider: ^6.0.3
-  xinput_gamepad: ^1.1.0
+  xinput_gamepad: ^1.2.0
   virtual_keyboard:
     git: https://github.com/LuanRoger/virtual_keyboard.git
   clock: ^1.1.1
@@ -22,7 +22,6 @@ dependencies:
   sprintf: ^6.0.2
   carousel_slider: ^4.1.1
   path_provider: ^2.0.11
-  win32: ^2.7.0
   flutter_svg: ^1.1.5
 
 dev_dependencies:

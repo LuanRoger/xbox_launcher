@@ -1,7 +1,9 @@
 // ignore_for_file: constant_identifier_names
 import 'package:fluent_ui/fluent_ui.dart' hide Overlay;
+import 'package:flutter/services.dart' hide KeyboardKey;
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
+import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/mapping_definition.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_images.dart';
@@ -21,6 +23,8 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
   bool _keyboardLockState = true;
   void Function(void Function())? _updateKeyboardState;
   String? _initialStringMemento;
+  @override
+  bool hasBeenMappign = false;
 
   void Function(bool cancel)? onFinish;
   void Function(String value)? onChanged;
@@ -83,34 +87,37 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
 
   void _cancel(BuildContext context) {
     controller.text = _initialStringMemento!;
-    undefineMapping(context);
     Navigator.pop(context);
   }
 
   void _finish(BuildContext context) {
     onFinish?.call(false);
-    undefineMapping(context);
     Navigator.pop(context);
   }
   //#endregion
 
   @override
-  void defineMapping(BuildContext context) {
+  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
+      BuildContext context) {
     KeyboardControllerActionManipulator.saveAllCurrentAtMemento(context);
 
-    KeyboardControllerActionManipulator.mapControllerActions(context, {
-      ControllerButton.LEFT_SHOULDER: (_) => _switchKeyboardLayout(),
-      ControllerButton.LEFT_THUMB: (_) => _switchLayoutToCaps(),
-      ControllerButton.RIGHT_THUMB: (_) => _switchKeyboardLocker(),
-      ControllerButton.X_BUTTON: (_) => _backspace(),
-      ControllerButton.Y_BUTTON: (_) => _space(),
-      ControllerButton.BACK: (context) => _cancel(context),
-      ControllerButton.START: (context) => _finish(context)
-    });
-  }
-
-  void undefineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.applyMementoInAll(context);
+    return {
+      ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.tab),
+          ControllerButton.LEFT_SHOULDER): (_) => _switchKeyboardLayout(),
+      ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.capsLock),
+          ControllerButton.LEFT_THUMB): (_) => _switchLayoutToCaps(),
+      ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.insert),
+          ControllerButton.RIGHT_THUMB): (_) => _switchKeyboardLocker(),
+      ControllerKeyboardPair(
+          const SingleActivator(LogicalKeyboardKey.backspace),
+          ControllerButton.X_BUTTON): (_) => _backspace(),
+      ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.space),
+          ControllerButton.Y_BUTTON): (_) => _space(),
+      ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
+          ControllerButton.BACK): (context) => _cancel(context),
+      ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.enter),
+          ControllerButton.START): (context) => _finish(context)
+    };
   }
 
   @override
@@ -121,7 +128,8 @@ class KeyboardOverlay implements Overlay, MappingDefinition {
 
     _changeKeyboardLayout(KeyboardLayout.ALPHABET);
     _initialStringMemento = String.fromCharCodes(controller.text.codeUnits);
-    defineMapping(context);
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, defineMapping(context)!);
 
     showGeneralDialog(
         context: context,

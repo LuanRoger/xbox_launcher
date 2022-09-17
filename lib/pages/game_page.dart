@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:webview_windows/webview_windows.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
+import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/utils/string_formatter.dart';
@@ -9,7 +10,8 @@ class GamePage extends XboxPageStateful {
   final GameModel gameModel;
   final String server;
 
-  GamePage(this.gameModel, {Key? key, required this.server}) : super(key: key);
+  const GamePage(this.gameModel, {Key? key, required this.server})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _GamePageState();
@@ -51,9 +53,9 @@ class _GamePageState extends XboxPageState<GamePage> {
   }
 
   @override
-  void defineMapping(BuildContext context) {
-    //This page has no mapping
-  }
+  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
+          BuildContext context) =>
+      null;
 
   Future<void> initPlatformState() async {
     await _controller.initialize();

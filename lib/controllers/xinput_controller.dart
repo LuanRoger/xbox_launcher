@@ -32,7 +32,7 @@ class XInputController {
     controller0 = Controller(index: 0);
     controller0.buttonsMapping = _basicControllers;
 
-    controller0.lister();
+    controller0.listen();
   }
 
   void mapBasicControllers() {

@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
+import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
@@ -17,9 +18,9 @@ class HomePage extends XboxPageStateless {
   HomePage({Key? key}) : super(key: key);
 
   @override
-  void defineMapping(BuildContext context) {
-    //This page does have mapping
-  }
+  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
+          BuildContext context) =>
+      null;
 
   @override
   Widget virtualBuild(BuildContext context) {

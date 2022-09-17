@@ -17,20 +17,15 @@ import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class PersonalizationConfigurationPage extends ConfigurationMenu {
   PersonalizationConfigurationPage({Key? key})
-      : super("General", "Personalization",
-            pageKeysAction: {
-              ControllerKeyboardPair(
-                      const SingleActivator(LogicalKeyboardKey.escape),
-                      ControllerButton.B_BUTTON):
-                  ((context) => Navigator.pop(context))
-            },
-            key: key);
+      : super("General", "Personalization", key: key);
 
   @override
-  void defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, pageKeysAction!);
-  }
+  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
+          BuildContext context) =>
+      {
+        ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
+            ControllerButton.B_BUTTON): ((context) => Navigator.pop(context))
+      };
 
   void setCustomImage(BuildContext context) async {
     var profileProvider = context.read<ProfileProvider>();

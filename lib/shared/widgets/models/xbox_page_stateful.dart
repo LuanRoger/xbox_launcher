@@ -1,29 +1,27 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
+import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/mapping_definition.dart';
 import 'package:xbox_launcher/providers/keyboard_action_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 
-abstract class XboxPageStateful extends StatefulWidget implements XboxPage {
-  @override
-  Map<ControllerKeyboardPair, void Function(BuildContext)>? pageKeysAction;
-
-  XboxPageStateful({Key? key, this.pageKeysAction}) : super(key: key);
+abstract class XboxPageStateful extends StatefulWidget {
+  const XboxPageStateful({Key? key}) : super(key: key);
 }
 
 abstract class XboxPageState<T extends XboxPageStateful> extends State<T>
     implements MappingDefinition {
-  bool _hasBeenMappign = false;
 
   Widget virtualBuild(BuildContext context);
 
   @override
   Widget build(BuildContext context) {
-    if (!_hasBeenMappign && widget.pageKeysAction != null) {
-      defineMapping(context);
-      _hasBeenMappign = true;
+    Map<ControllerKeyboardPair, void Function(BuildContext)>? mapping =
+        defineMapping(context);
+    if (mapping != null) {
+      KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+          context, mapping);
     }
 
     return CallbackShortcuts(

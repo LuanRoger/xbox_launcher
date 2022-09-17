@@ -1,5 +1,4 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
@@ -9,11 +8,8 @@ abstract class ConfigurationMenu extends XboxPageStateless {
   final String routeName;
   final String menuTitle;
 
-  ConfigurationMenu(this.routeName, this.menuTitle,
-      {Key? key,
-      required Map<ControllerKeyboardPair, void Function(BuildContext)>
-          pageKeysAction})
-      : super(key: key, pageKeysAction: pageKeysAction);
+  ConfigurationMenu(this.routeName, this.menuTitle, {Key? key})
+      : super(key: key);
 
   Map<String?, List<SystemButton>> buttonsBuilder(BuildContext context);
 

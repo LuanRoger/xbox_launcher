@@ -1,6 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
-import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/full_library_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/my_apps_section.dart';
@@ -11,12 +10,7 @@ import 'package:xbox_launcher/shared/widgets/navigations/navigation_item.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class MyLibraryPage extends XboxPageStateful {
-  MyLibraryPage({Key? key})
-      : super(pageKeysAction: {
-          ControllerKeyboardPair(
-              const SingleActivator(LogicalKeyboardKey.escape),
-              ControllerButton.B_BUTTON): ((context) => Navigator.pop(context))
-        }, key: key);
+  const MyLibraryPage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _MyGamesPageState();
@@ -32,10 +26,12 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
   }
 
   @override
-  void defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, widget.pageKeysAction!);
-  }
+  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
+          BuildContext context) =>
+      {
+        ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
+            ControllerButton.B_BUTTON): ((context) => Navigator.pop(context))
+      };
 
   @override
   Widget virtualBuild(BuildContext context) {

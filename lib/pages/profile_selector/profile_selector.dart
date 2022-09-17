@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/pages/profile_selector/widgets/profile_selector_item.dart';
@@ -14,37 +13,17 @@ import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class ProfileSelector extends XboxPageStateful {
   final String? title;
-  final CarouselController _profileSliderController = CarouselController();
   final void Function(BuildContext, ProfileModel) onProfileSelect;
 
-  ProfileSelector({required this.onProfileSelect, this.title, Key? key})
-      : super(key: key, pageKeysAction: {}) {
-    const Duration profileChangeAnimationTime = Duration(milliseconds: 500);
-    const Curve profileChangeAnimationCurve = Curves.easeOutQuart;
-
-    pageKeysAction = {
-      ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
-          ControllerButton.B_BUTTON): ((context) => Navigator.pop(context)),
-      ControllerKeyboardPair(
-              const SingleActivator(LogicalKeyboardKey.arrowRight),
-              ControllerButton.DPAD_RIGHT):
-          (_) => _profileSliderController.nextPage(
-              curve: profileChangeAnimationCurve,
-              duration: profileChangeAnimationTime),
-      ControllerKeyboardPair(
-              const SingleActivator(LogicalKeyboardKey.arrowLeft),
-              ControllerButton.DPAD_LEFT):
-          (_) => _profileSliderController.previousPage(
-              curve: profileChangeAnimationCurve,
-              duration: profileChangeAnimationTime)
-    };
-  }
+  const ProfileSelector({required this.onProfileSelect, this.title, Key? key})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _ProfileSelectorState();
 }
 
 class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
+  final CarouselController profileSliderController = CarouselController();
   late List<FocusNode> _sliderItemsFocusNodes;
   Background? _backgroundPreview;
   late Key _backgroundTransitionKey;
@@ -61,9 +40,27 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
   }
 
   @override
-  void defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, widget.pageKeysAction!);
+  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
+      BuildContext context) {
+    const Duration profileChangeAnimationTime = Duration(milliseconds: 500);
+    const Curve profileChangeAnimationCurve = Curves.easeOutQuart;
+
+    return {
+      ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
+          ControllerButton.B_BUTTON): ((context) => Navigator.pop(context)),
+      ControllerKeyboardPair(
+              const SingleActivator(LogicalKeyboardKey.arrowRight),
+              ControllerButton.DPAD_RIGHT):
+          (_) => profileSliderController.nextPage(
+              curve: profileChangeAnimationCurve,
+              duration: profileChangeAnimationTime),
+      ControllerKeyboardPair(
+              const SingleActivator(LogicalKeyboardKey.arrowLeft),
+              ControllerButton.DPAD_LEFT):
+          (_) => profileSliderController.previousPage(
+              curve: profileChangeAnimationCurve,
+              duration: profileChangeAnimationTime)
+    };
   }
 
   void generateSelectorItems(BuildContext context) {
@@ -130,7 +127,7 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
                                   _profilesAvailable[_currentProfile!]);
                         });
                       }),
-                  carouselController: widget._profileSliderController,
+                  carouselController: profileSliderController,
                 ),
               ),
             ],

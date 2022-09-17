@@ -14,20 +14,16 @@ class VideoConfigurationPage extends ConfigurationMenu {
       : super(
           "General",
           "Video",
-          pageKeysAction: {
-            ControllerKeyboardPair(
-                    const SingleActivator(LogicalKeyboardKey.escape),
-                    ControllerButton.B_BUTTON):
-                ((context) => Navigator.pop(context))
-          },
           key: key,
         );
 
   @override
-  void defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, pageKeysAction!);
-  }
+  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
+          BuildContext context) =>
+      {
+        ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
+            ControllerButton.B_BUTTON): ((context) => Navigator.pop(context))
+      };
 
   @override
   Map<String, List<SystemButton>> buttonsBuilder(BuildContext context) {

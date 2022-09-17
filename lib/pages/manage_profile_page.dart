@@ -17,12 +17,7 @@ import 'package:xbox_launcher/shared/widgets/buttons/profile_avatar_button.dart'
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class ManageProfilePage extends XboxPageStateful {
-  ManageProfilePage({Key? key})
-      : super(pageKeysAction: {
-          ControllerKeyboardPair(
-              const SingleActivator(LogicalKeyboardKey.escape),
-              ControllerButton.B_BUTTON): ((context) => Navigator.pop(context))
-        }, key: key);
+  const ManageProfilePage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _ManageProfilePageState();
@@ -48,10 +43,12 @@ class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
   }
 
   @override
-  void defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, widget.pageKeysAction!);
-  }
+  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
+          BuildContext context) =>
+      {
+        ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
+            ControllerButton.B_BUTTON): ((context) => Navigator.pop(context))
+      };
 
   void getProfileInfo(BuildContext context) {
     var profileProvider = context.read<ProfileProvider>();

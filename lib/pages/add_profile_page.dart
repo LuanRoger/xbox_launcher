@@ -17,12 +17,7 @@ import 'package:xbox_launcher/shared/widgets/buttons/profile_avatar_button.dart'
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class AddProfilePage extends XboxPageStateful {
-  AddProfilePage({Key? key})
-      : super(pageKeysAction: {
-          ControllerKeyboardPair(
-              const SingleActivator(LogicalKeyboardKey.escape),
-              ControllerButton.B_BUTTON): ((context) => Navigator.pop(context))
-        }, key: key);
+  const AddProfilePage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _AddProfilePageState();
@@ -45,10 +40,12 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
   }
 
   @override
-  void defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, widget.pageKeysAction!);
-  }
+  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
+          BuildContext context) =>
+      {
+        ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
+            ControllerButton.B_BUTTON): ((context) => Navigator.pop(context))
+      };
 
   bool _isProfileNameValid() => profileNameController.text.isNotEmpty;
   Future changeToNewProfileDialog(
