@@ -96,9 +96,9 @@ class ProfileConfigurationSection extends NavigationSection {
                     context, AppRoutes.selectProfileRoute,
                     arguments: [
                       null,
-                      (context, selectedProfile) {
+                      (BuildContext context, ProfileModel selectedProfile) {
                         Provider.of<ProfileProvider>(context, listen: false)
-                            .setCurrentById(selectedProfile.name);
+                            .setCurrentById(selectedProfile.id);
                         Navigator.pop(context);
                       }
                     ]),

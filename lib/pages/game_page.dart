@@ -9,8 +9,14 @@ import 'package:xbox_launcher/utils/string_formatter.dart';
 class GamePage extends XboxPageStateful {
   final GameModel gameModel;
   final String server;
+  final bool autoLogin;
+  final bool autoPlay;
 
-  const GamePage(this.gameModel, {Key? key, required this.server})
+  const GamePage(this.gameModel,
+      {Key? key,
+      required this.server,
+      this.autoLogin = true,
+      this.autoPlay = false})
       : super(key: key);
 
   @override
@@ -25,6 +31,8 @@ class _GamePageState extends XboxPageState<GamePage> {
   late final String gameUrl;
 
   late bool _loadReady;
+  late bool _autoLogin;
+  late bool _autoPlay;
   bool _entranceAnimationDone = true;
 
   void formatUrlToServer() {
@@ -38,7 +46,10 @@ class _GamePageState extends XboxPageState<GamePage> {
   void initState() {
     super.initState();
 
+    _autoLogin = widget.autoLogin;
+    _autoPlay = widget.autoPlay;
     _loadReady = false;
+
     webViewFocus = FocusNode();
     formatUrlToServer();
     initPlatformState();
@@ -57,6 +68,16 @@ class _GamePageState extends XboxPageState<GamePage> {
           BuildContext context) =>
       null;
 
+  Future autoLogin() async {
+    await _controller.executeScript(
+        "document.getElementsByClassName(\"${AppConsts.LOGIN_BUTTON_CLASS_NAME}\")[0].click()");
+  }
+
+  Future autoPlay() async {
+    await _controller.executeScript(
+        "document.getElementsByClassName(\"${AppConsts.PLAY_GAME_BUTTON_CLASS_NAME}\")[0].focus()");
+  }
+
   Future<void> initPlatformState() async {
     await _controller.initialize();
     _controller.url.listen((url) {
@@ -67,8 +88,18 @@ class _GamePageState extends XboxPageState<GamePage> {
 
     await _controller.setPopupWindowPolicy(WebviewPopupWindowPolicy.deny);
     await _controller.loadUrl(gameUrl);
-    _controller.loadingState.listen((event) {
-      if (event == LoadingState.navigationCompleted) {
+    _controller.loadingState.listen((event) async {
+      if (event != LoadingState.navigationCompleted) return;
+
+      if (_autoLogin) {
+        await autoLogin();
+        _autoLogin = false;
+      }
+      if (_autoPlay) {
+        await autoPlay();
+        setState(() => _autoPlay = false);
+      }
+      if (!_loadReady && !_autoLogin && !_autoPlay) {
         setState(() => _loadReady = true);
       }
     });
