@@ -6,13 +6,13 @@ import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/search_button.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 import 'package:xbox_launcher/utils/loaders/xcloud_json_db_loader.dart';
 
-class FullLibrarySection extends NavigationSection {
+class FullLibrarySection extends NavigationSectionStateless {
   late final List<AppModel> library;
   final TextEditingController searchController = TextEditingController();
   List<AppModel>? searchResult;
@@ -61,7 +61,7 @@ class FullLibrarySection extends NavigationSection {
   }
 
   @override
-  List<Widget>? buildActions(BuildContext context) => [
+  List<Widget>? titleActions(BuildContext context) => [
         SearchButton(
           controller: searchController,
           onFinish: (cancel) {
@@ -71,9 +71,11 @@ class FullLibrarySection extends NavigationSection {
           },
         ),
       ];
+  @override
+  List<Widget>? midActions(BuildContext context) => null;
 
   @override
-  List<Widget> buildColumnItems(BuildContext context) => [
+  List<Widget> columnItems(BuildContext context) => [
         Expanded(
             flex: 10,
             child: StatefulBuilder(

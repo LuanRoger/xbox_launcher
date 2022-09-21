@@ -2,7 +2,6 @@ import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
-import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/profile_update_info.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';

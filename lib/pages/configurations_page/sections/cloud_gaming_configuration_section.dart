@@ -4,19 +4,19 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 
-class CloudGamingConfigurationSection extends NavigationSection {
+class CloudGamingConfigurationSection extends NavigationSectionStateless {
   final TextEditingController jsonUrlTextController = TextEditingController();
   final TextEditingController controllerTest = TextEditingController();
 
   CloudGamingConfigurationSection({Key? key}) : super("Cloud Gaming", key: key);
 
   @override
-  List<Widget>? buildActions(BuildContext context) => null;
+  List<Widget>? titleActions(BuildContext context) => null;
 
   @override
-  List<Widget> buildColumnItems(BuildContext context) {
+  List<Widget> columnItems(BuildContext context) {
     jsonUrlTextController.text =
         Provider.of<ProfileProvider>(context, listen: false)
                 .xcloudGamesJsonPath ??
