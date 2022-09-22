@@ -5,16 +5,20 @@ import 'package:xbox_launcher/shared/widgets/chip/chip_notify_check.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_notify_observer.dart';
 
 abstract class ChipBase extends StatelessWidget implements ChipNotifyCheck {
-  bool isSelected;
+  late bool isSelected;
   Object? value;
   void Function(bool, Object?)? onCheck;
   double? height;
   double? width;
 
   @override
-  late ChipNotifyObserver singleObserver;
+  late ChipNotifyObserver observer;
   @override
-  void notifyObserver() => singleObserver.notificationReact(this, value);
+  void notifyObserver() => observer.notificationReact(this, value);
+
+  void Function(void Function())? _rebuildChip;
+  void rebuildChip(void Function() newStateChipCallback) =>
+      _rebuildChip?.call(newStateChipCallback);
 
   Widget buttonChipChild(BuildContext context);
 
@@ -34,21 +38,27 @@ abstract class ChipBase extends StatelessWidget implements ChipNotifyCheck {
       height: height,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(25.0),
-        child: Button(
-          child: buttonChipChild(context),
-          onPressed: () {
-            isSelected = !isSelected;
-            onCheck?.call(isSelected, value);
-          },
-          style: ButtonStyle(
-              padding: ButtonState.all(const EdgeInsets.all(15.0)),
-              backgroundColor: isSelected
-                  ? ButtonState.all(context.read<ProfileProvider>().accentColor)
-                  : ButtonState.all(Colors.transparent),
-              shadowColor:
-                  !isSelected ? ButtonState.all(Colors.transparent) : null,
-              border: ButtonState.all(BorderSide.none)),
-        ),
+        child: StatefulBuilder(builder: (_, setState) {
+          _rebuildChip = setState;
+          return Button(
+            child: buttonChipChild(context),
+            onPressed: () {
+              isSelected = !isSelected;
+              onCheck?.call(isSelected, value);
+              notifyObserver();
+              _rebuildChip?.call(() {});
+            },
+            style: ButtonStyle(
+                padding: ButtonState.all(const EdgeInsets.all(15.0)),
+                backgroundColor: isSelected
+                    ? ButtonState.all(
+                        context.read<ProfileProvider>().accentColor)
+                    : ButtonState.all(Colors.transparent),
+                shadowColor:
+                    !isSelected ? ButtonState.all(Colors.transparent) : null,
+                border: ButtonState.all(BorderSide.none)),
+          );
+        }),
       ),
     );
   }

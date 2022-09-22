@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_base.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_notify_observer.dart';
+import 'package:collection/collection.dart';
 
 class ChipsRow extends StatefulWidget {
   final List<ChipBase> chips;
@@ -19,21 +20,22 @@ class _ChipsRowState extends State<ChipsRow> implements ChipNotifyObserver {
   @override
   void initState() {
     super.initState();
-    // ignore: avoid_function_literals_in_foreach_calls
     chips = List.from(widget.chips);
+    // ignore: avoid_function_literals_in_foreach_calls
     chips.forEach((chip) {
-      chip.singleObserver = this;
-      if (widget.onCheckChange != null) {
-        chip.onCheck = widget.onCheckChange;
-      }
+      chip.observer = this;
+      chip.onCheck = widget.onCheckChange;
     });
   }
 
   @override
-  void notificationReact(Object sender, Object? payload) {
-    ChipBase checkedChip =
-        chips.firstWhere((chip) => chip == sender as ChipBase);
-    widget.onCheckChange(checkedChip.isSelected, payload);
+  void notificationReact(ChipBase sender, Object? payload) {
+    ChipBase? currentSelected =
+        chips.firstWhereOrNull((chip) => chip != sender && chip.isSelected);
+    currentSelected?.rebuildChip(() {
+      currentSelected.isSelected = false;
+    });
+    widget.onCheckChange(sender.isSelected, payload);
   }
 
   @override

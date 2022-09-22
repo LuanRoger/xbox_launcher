@@ -7,32 +7,26 @@ import 'package:xbox_launcher/shared/widgets/buttons/search_button.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_base.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_row.dart';
 import 'package:xbox_launcher/shared/widgets/chip/text_chip.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 import 'package:xbox_launcher/utils/loaders/xcloud_json_db_loader.dart';
 
-class MyGamesSection extends NavigationSectionStateful {
-  const MyGamesSection({Key? key}) : super("Games", key: key);
-
-  @override
-  State<StatefulWidget> createState() => _MyGamesSectionState();
-}
-
-class _MyGamesSectionState extends NavigationSectionStatefulState {
-  late XCloudJsonDbLoader gamesLoader;
+class MyGamesSection extends NavigationSectionStateless {
+  XCloudJsonDbLoader gamesLoader = XCloudJsonDbLoader();
   late List<GameModel> gamesList;
-  List<GameModel>? gamesSearchResult;
-  TextEditingController searchTextController = TextEditingController();
-  List<ChipBase> chipsList = List.empty(growable: true);
+  void Function(void Function())? _reloadTileGrid;
 
-  @override
-  void initState() {
-    super.initState();
-    gamesLoader = XCloudJsonDbLoader();
-  }
+  List<GameModel>? gamesSearchResult;
+  String? gameGenreFilter;
+
+  TextEditingController searchTextController = TextEditingController();
+  late ChipsRow chipsRow;
+  late List<ChipBase> chipsList;
+
+  MyGamesSection({Key? key}) : super("Games", key: key);
 
   Future<bool> readXCloudGames(BuildContext context) async {
     ProfileProvider profileProvider = context.read<ProfileProvider>();
@@ -52,11 +46,40 @@ class _MyGamesSectionState extends NavigationSectionStatefulState {
         .toList();
 
     if (searchResult.isEmpty) {
-      setState(() => gamesSearchResult = null);
+      _reloadTileGrid?.call(() => gamesSearchResult = null);
       return;
     }
 
-    setState(() => gamesSearchResult = searchResult);
+    _reloadTileGrid?.call(() => gamesSearchResult = searchResult);
+  }
+
+  void filterByGenre(String? genre) {
+    if (genre == null) {
+      _reloadTileGrid?.call(() => gamesSearchResult = null);
+      return;
+    }
+
+    List<GameModel> filterResult =
+        gamesList.where((game) => game.gameGenres.contains(genre)).toList();
+
+    if (filterResult.isEmpty) return;
+
+    _reloadTileGrid?.call(() => gamesSearchResult = filterResult);
+  }
+
+  void updateChipsList() {
+    List<String> gamesGenre = List.empty(growable: true);
+
+    for (GameModel game in gamesList) {
+      gamesGenre.addAll(game.gameGenres);
+    }
+
+    List<ChipBase> tempChipsList = List.empty(growable: true);
+    for (String gameGenre in Set.from(gamesGenre)) {
+      tempChipsList.add(TextChip(gameGenre));
+    }
+
+    chipsList = tempChipsList.toList();
   }
 
   @override
@@ -70,21 +93,6 @@ class _MyGamesSectionState extends NavigationSectionStatefulState {
           },
         ),
       ];
-
-  void updateChipsList() {
-    List<String> gamesGenre = List.empty(growable: true);
-
-    for (GameModel game in gamesList) {
-      gamesGenre.addAll(game.gameGenres);
-    }
-
-    List<Widget> tempChipsList = List.empty(growable: true);
-    for (String gameGenre in Set.from(gamesGenre)) {
-      tempChipsList.add(TextChip(gameGenre));
-    }
-
-    chipsList = List.from(tempChipsList);
-  }
 
   @override
   List<Widget> columnItems(BuildContext context) => [
@@ -108,24 +116,31 @@ class _MyGamesSectionState extends NavigationSectionStatefulState {
                             child: ChipsRow(
                           chipsList,
                           onCheckChange: (isSelected, value) {
-                            print(value);
+                            if (!isSelected) filterByGenre(null);
+
+                            filterByGenre(value as String);
                           },
                         )),
                         const Spacer(),
                         Expanded(
                           flex: 10,
-                          child: TileGrid.count(
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 5,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 10,
-                            ),
-                            tiles: WidgetGen.generateByModel(
-                                gamesSearchResult ?? gamesList,
-                                TileGeneratorOption([TileSize.MEDIUM],
-                                    context: context)),
-                            scrollDirection: Axis.vertical,
+                          child: StatefulBuilder(
+                            builder: (context, setState) {
+                              _reloadTileGrid = setState;
+                              return TileGrid.count(
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 5,
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 10,
+                                ),
+                                tiles: WidgetGen.generateByModel(
+                                    gamesSearchResult ?? gamesList,
+                                    TileGeneratorOption([TileSize.MEDIUM],
+                                        context: context)),
+                                scrollDirection: Axis.vertical,
+                              );
+                            },
                           ),
                         ),
                       ],
