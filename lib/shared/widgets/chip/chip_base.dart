@@ -33,14 +33,14 @@ abstract class ChipBase extends StatelessWidget implements ChipNotifyCheck {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      height: height,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(25.0),
-        child: StatefulBuilder(builder: (_, setState) {
-          _rebuildChip = setState;
-          return Button(
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(25.0),
+      child: StatefulBuilder(builder: (_, setState) {
+        _rebuildChip = setState;
+        return SizedBox(
+          width: width,
+          height: height,
+          child: Button(
             child: buttonChipChild(context),
             onPressed: () {
               isSelected = !isSelected;
@@ -49,7 +49,7 @@ abstract class ChipBase extends StatelessWidget implements ChipNotifyCheck {
               _rebuildChip?.call(() {});
             },
             style: ButtonStyle(
-                padding: ButtonState.all(const EdgeInsets.all(15.0)),
+                padding: ButtonState.all(const EdgeInsets.all(13.0)),
                 backgroundColor: isSelected
                     ? ButtonState.all(
                         context.read<ProfileProvider>().accentColor)
@@ -57,9 +57,9 @@ abstract class ChipBase extends StatelessWidget implements ChipNotifyCheck {
                 shadowColor:
                     !isSelected ? ButtonState.all(Colors.transparent) : null,
                 border: ButtonState.all(BorderSide.none)),
-          );
-        }),
-      ),
+          ),
+        );
+      }),
     );
   }
 }

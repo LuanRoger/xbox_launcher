@@ -7,6 +7,7 @@ import 'package:xbox_launcher/shared/widgets/buttons/search_button.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_base.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_row.dart';
 import 'package:xbox_launcher/shared/widgets/chip/text_chip.dart';
+import 'package:xbox_launcher/shared/widgets/combobox/enums/sort_options.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
@@ -21,6 +22,10 @@ class MyGamesSection extends NavigationSectionStateless {
 
   List<GameModel>? gamesSearchResult;
   String? gameGenreFilter;
+  SortOptions? currentSortOption;
+
+  //Cached lists
+  List<GameModel>? _cachedReleaseDataGameSort;
 
   TextEditingController searchTextController = TextEditingController();
   late ChipsRow chipsRow;
@@ -82,6 +87,35 @@ class MyGamesSection extends NavigationSectionStateless {
     chipsList = tempChipsList.toList();
   }
 
+  void sortGameList(SortOptions? sortOptions) {
+    if (sortOptions == null) return;
+
+    switch (sortOptions) {
+      case SortOptions.ATOZ:
+        gamesList.sort((game1, game2) => game1.name.compareTo(game2.name));
+        break;
+      case SortOptions.RELEASE_DATE:
+        if (_cachedReleaseDataGameSort != null) {
+          gamesList = _cachedReleaseDataGameSort!;
+        }
+        gamesList.sort((game1, game2) {
+          List<String> releaseDate1 = game1.releaseDate.split('/');
+          DateTime game1ReleaseDate = DateTime.utc(int.parse(releaseDate1[2]),
+              int.parse(releaseDate1[1]), int.parse(releaseDate1[0]));
+
+          List<String> releaseDate2 = game1.releaseDate.split('/');
+          DateTime game2ReleaseDate = DateTime.utc(int.parse(releaseDate2[2]),
+              int.parse(releaseDate2[1]), int.parse(releaseDate2[0]));
+
+          return game2ReleaseDate.compareTo(game1ReleaseDate);
+        });
+        _cachedReleaseDataGameSort = List.from(gamesList);
+        break;
+    }
+
+    _reloadTileGrid?.call(() => currentSortOption = sortOptions);
+  }
+
   @override
   List<Widget>? titleActions(BuildContext context) => [
         SearchButton(
@@ -112,7 +146,7 @@ class MyGamesSection extends NavigationSectionStateless {
                     updateChipsList();
                     return Column(
                       children: [
-                        Expanded(
+                        Flexible(
                             child: ChipsRow(
                           chipsList,
                           onCheckChange: (isSelected, value) {
@@ -123,22 +157,62 @@ class MyGamesSection extends NavigationSectionStateless {
                         )),
                         const Spacer(),
                         Expanded(
-                          flex: 10,
+                          flex: 13,
                           child: StatefulBuilder(
                             builder: (context, setState) {
                               _reloadTileGrid = setState;
-                              return TileGrid.count(
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 5,
-                                  crossAxisSpacing: 10,
-                                  mainAxisSpacing: 10,
-                                ),
-                                tiles: WidgetGen.generateByModel(
-                                    gamesSearchResult ?? gamesList,
-                                    TileGeneratorOption([TileSize.MEDIUM],
-                                        context: context)),
-                                scrollDirection: Axis.vertical,
+                              return Column(
+                                children: [
+                                  Expanded(
+                                    flex: 2,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          width: 270.0,
+                                          height: double.infinity,
+                                          child: Combobox<SortOptions>(
+                                              value: currentSortOption ??
+                                                  SortOptions.ATOZ,
+                                              onChanged: sortGameList,
+                                              autofocus: true,
+                                              isExpanded: true,
+                                              items: const [
+                                                ComboboxItem(
+                                                  child: Text("Sort: A to Z"),
+                                                  value: SortOptions.ATOZ,
+                                                ),
+                                                ComboboxItem(
+                                                  child: Text("Release date"),
+                                                  value:
+                                                      SortOptions.RELEASE_DATE,
+                                                )
+                                              ]),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  Expanded(
+                                    flex: 20,
+                                    child: TileGrid.count(
+                                      gridDelegate:
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 6,
+                                        crossAxisSpacing: 10,
+                                        mainAxisSpacing: 10,
+                                      ),
+                                      tiles: WidgetGen.generateByModel(
+                                          gamesSearchResult ?? gamesList,
+                                          TileGeneratorOption([TileSize.MEDIUM],
+                                              context: context)),
+                                      scrollDirection: Axis.vertical,
+                                    ),
+                                  )
+                                ],
                               );
                             },
                           ),
