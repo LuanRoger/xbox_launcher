@@ -16,47 +16,38 @@ abstract class NavigationSectionStateless extends StatelessWidget
   @override
   List<Widget>? titleActions(BuildContext context);
 
-  List<Widget> _buildColumnItems(
+  Column _buildColumn(
       List<Widget> columnContent, List<Widget>? titleActionsList) {
-    List<Widget> columnItems = List<Widget>.empty(growable: true);
-
-    columnItems.add(
-      Expanded(
-        flex: 0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              sectionName,
-              style: AppTextStyle.MY_GAMES_SECTIONS_TILE,
-            ),
-            titleActionsList != null
-                ? Row(
-                    children: titleActionsList,
-                  )
-                : const SizedBox()
-          ],
+    return Column(
+      children: [
+        Flexible(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                sectionName,
+                style: AppTextStyle.MY_GAMES_SECTIONS_TILE,
+              ),
+              titleActionsList != null
+                  ? Row(
+                      children: titleActionsList,
+                    )
+                  : const SizedBox()
+            ],
+          ),
         ),
-      ),
+        const SizedBox(
+          height: 8.0,
+        ),
+        ...columnContent,
+      ],
     );
-
-    columnItems.add(const Spacer());
-
-    columnItems.addAll(columnContent);
-
-    return columnItems;
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(50, 50, 50, 0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children:
-            _buildColumnItems(columnItems(context), titleActions(context)),
-      ),
-    );
+        padding: const EdgeInsets.fromLTRB(50, 50, 50, 0),
+        child: _buildColumn(columnItems(context), titleActions(context)));
   }
 }

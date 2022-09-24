@@ -7,7 +7,6 @@ import 'package:xbox_launcher/pages/configurations_page/sections/cloud_gaming_co
 import 'package:xbox_launcher/pages/configurations_page/sections/general_configurations_section.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_bar.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_item.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class ConfigurationsPage extends XboxPageStateful {
@@ -40,11 +39,11 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
       icon: FluentIcons.settings,
       selectedTab: selectedTab,
       paneItems: [
-        NavigationItem("General"),
-        NavigationItem("Profile"),
-        NavigationItem("Cloud gaming"),
-        NavigationSeparatorItem(),
-        NavigationItem("About")
+        PaneItem(icon: const SizedBox(), title: const Text("General")),
+        PaneItem(icon: const SizedBox(), title: const Text("Profile")),
+        PaneItem(icon: const SizedBox(), title: const Text("Cloud gaming")),
+        PaneItemSeparator(),
+        PaneItem(icon: const SizedBox(), title: const Text("About"))
       ],
       bodyItems: [
         const GenralConfigurationSection(),

@@ -38,17 +38,27 @@ class _NavigationBarState extends State<NavigationBar> {
   @override
   Widget build(BuildContext context) {
     return NavigationView(
-      appBar: const NavigationAppBar(),
+      contentShape:
+          const ContinuousRectangleBorder(borderRadius: BorderRadius.zero),
+      clipBehavior: Clip.antiAlias,
       pane: NavigationPane(
           header: NavigationBarProfile(widget.icon),
           selected: selectedTab,
           indicator: StickyNavigationIndicator(
             color: context.read<ProfileProvider>().accentColor,
           ),
+          size: const NavigationPaneSize(headerHeight: 140),
           displayMode: PaneDisplayMode.open,
           onChanged: (index) => setState(() => selectedTab = index),
           items: widget.paneItems),
-      content: NavigationBody(index: selectedTab, children: widget.bodyItems),
+      content: NavigationBody(
+        animationCurve: Curves.easeOutQuart,
+        animationDuration: const Duration(milliseconds: 300),
+        transitionBuilder: (child, animation) =>
+            EntrancePageTransition(child: child, animation: animation),
+        index: selectedTab,
+        children: widget.bodyItems,
+      ),
     );
   }
 }

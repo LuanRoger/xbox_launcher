@@ -6,7 +6,6 @@ import 'package:xbox_launcher/pages/my_library_page/sections/my_apps_section.dar
 import 'package:xbox_launcher/pages/my_library_page/sections/my_games_section.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_bar.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_item.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class MyLibraryPage extends XboxPageStateful {
@@ -36,10 +35,15 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
   @override
   Widget virtualBuild(BuildContext context) {
     return NavigationBar(icon: FluentIcons.library, paneItems: [
-      NavigationItem("Games"),
-      NavigationItem("Apps"),
-      NavigationSeparatorItem(),
-      NavigationItem("Full library")
+      PaneItem(
+          icon: const Icon(FluentIcons.history), title: const Text("Games")),
+      PaneItem(
+          icon: const Icon(FluentIcons.app_icon_default),
+          title: const Text("Apps")),
+      PaneItemSeparator(),
+      PaneItem(
+          icon: const Icon(FluentIcons.library),
+          title: const Text("Full library"))
     ], bodyItems: [
       MyGamesSection(),
       const MyAppsSection(),
