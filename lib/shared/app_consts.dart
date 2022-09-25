@@ -1,6 +1,8 @@
 // ignore_for_file: constant_identifier_names
 
 class AppConsts {
+  static const APP_WINDOW_TITLE = "Xbox Launcher";
+
   static const XCLOUD_SUPPORTED_SERVERS = ["en-US", "pt-BR"];
   static const XCLOUD_PLAY_BASE_URL = "https://www.xbox.com/%s/play";
   static const DEFAULT_USERNAME = "Default";
