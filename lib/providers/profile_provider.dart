@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
+import 'package:xbox_launcher/models/apps_group.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/models/profile_update_info.dart';
 import 'package:xbox_launcher/utils/loaders/profile_loader.dart';
@@ -94,6 +95,15 @@ class ProfileProvider extends ChangeNotifier {
 
     notifyListeners();
     saveProfile();
+  }
+
+  List<AppsGroup> get appsGroups => _currentProfile.appsGroups.groups;
+  void addAppsGroup(AppsGroup appsGroup) {
+    _currentProfile.appsGroups.addNewGroup(appsGroup);
+  }
+
+  void removeAppsGroup(int groupId) {
+    _currentProfile.appsGroups.removeNewGroup(groupId);
   }
 
   int get preferedColorIndex =>
