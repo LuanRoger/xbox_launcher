@@ -2,7 +2,7 @@ import 'package:xbox_launcher/models/apps_group.dart';
 
 class ProfileAppsGroups {
   late int lastId;
-  List<AppsGroup> groups = List.empty(growable: true);
+  List<AppsGroup> groups = List<AppsGroup>.empty(growable: true);
 
   ProfileAppsGroups({required this.groups}) {
     if (groups.isNotEmpty) {
@@ -15,7 +15,7 @@ class ProfileAppsGroups {
     }
   }
   factory ProfileAppsGroups.fromJson(Map<String, dynamic> json) =>
-      ProfileAppsGroups(groups: json["groups"]);
+      ProfileAppsGroups(groups: json["groups"].cast<AppsGroup>());
 
   void addNewGroup(AppsGroup appsGroup) {
     appsGroup.id = ++lastId;

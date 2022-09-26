@@ -1,4 +1,5 @@
 import 'package:xbox_launcher/models/app_models/app_model.dart';
+import 'package:xbox_launcher/utils/loaders/apps_model_loader.dart';
 
 class AppsGroup {
   int? id;
@@ -6,9 +7,15 @@ class AppsGroup {
   final List<AppModel> apps;
 
   AppsGroup({required this.groupName, required this.apps});
-  factory AppsGroup.fromJson(Map<String, dynamic> json) =>
-      AppsGroup(groupName: json["groupName"], apps: json["apps"])
-        ..id = json["id"];
+  factory AppsGroup.fromJson(Map<String, dynamic> json) {
+    AppsModelLoader loader = AppsModelLoader();
+    AppsGroup appsGroup = AppsGroup(
+        groupName: json["groupName"] as String,
+        apps: loader.recoganizeGenericApps(json["apps"]));
+    appsGroup.id = json["id"] as int;
+
+    return appsGroup;
+  }
 
   void addNewApp(AppModel appModel) {
     apps.add(appModel);
