@@ -7,7 +7,8 @@ import 'package:xbox_launcher/shared/widgets/buttons/search_button.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_base.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_row.dart';
 import 'package:xbox_launcher/shared/widgets/chip/text_chip.dart';
-import 'package:xbox_launcher/shared/widgets/combobox/enums/sort_options.dart';
+import 'package:xbox_launcher/shared/widgets/combobox/combobox.dart';
+import 'package:xbox_launcher/shared/enums/sort_options.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
@@ -29,7 +30,7 @@ class MyGamesSection extends NavigationSectionStateless {
 
   TextEditingController searchTextController = TextEditingController();
   late ChipsRow chipsRow;
-  late List<ChipBase> chipsList;
+  List<ChipBase>? chipsList;
 
   MyGamesSection({Key? key}) : super("Games", key: key);
 
@@ -40,6 +41,7 @@ class MyGamesSection extends NavigationSectionStateless {
     gamesLoader.jsonFilePath = profileProvider.xcloudGamesJsonPath!;
     await gamesLoader.readJsonFile();
     gamesList = gamesLoader.deserializeAllJson();
+    updateChipsList();
     return true;
   }
 
@@ -139,16 +141,14 @@ class MyGamesSection extends NavigationSectionStateless {
                   case ConnectionState.waiting:
                     return const ProgressRing();
                   default:
-                    if (!snapshot.hasData &&
-                        snapshot.data as bool &&
-                        gamesList.isEmpty) const XCloudFileUnavailable();
+                    if (snapshot.hasData && !(snapshot.data as bool) ||
+                        gamesList.isEmpty) return const XCloudFileUnavailable();
 
-                    updateChipsList();
                     return Column(
                       children: [
                         Flexible(
                             child: ChipsRow(
-                          chipsList,
+                          chipsList ?? List.empty(),
                           onCheckChange: (isSelected, value) {
                             if (!isSelected) filterByGenre(null);
 
@@ -171,26 +171,23 @@ class MyGamesSection extends NavigationSectionStateless {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        SizedBox(
+                                        ComboBox(
+                                          [
+                                            ComboboxItem(
+                                              child: const Text("Sort: A to Z"),
+                                              value: SortOptions.ATOZ.index,
+                                            ),
+                                            ComboboxItem(
+                                              child: const Text("Release date"),
+                                              value: SortOptions
+                                                  .RELEASE_DATE.index,
+                                            )
+                                          ],
+                                          onChange: (sortOptionsIndex) =>
+                                              sortGameList(SortOptions
+                                                  .values[sortOptionsIndex]),
                                           width: 270.0,
                                           height: double.infinity,
-                                          child: Combobox<SortOptions>(
-                                              value: currentSortOption ??
-                                                  SortOptions.ATOZ,
-                                              onChanged: sortGameList,
-                                              autofocus: true,
-                                              isExpanded: true,
-                                              items: const [
-                                                ComboboxItem(
-                                                  child: Text("Sort: A to Z"),
-                                                  value: SortOptions.ATOZ,
-                                                ),
-                                                ComboboxItem(
-                                                  child: Text("Release date"),
-                                                  value:
-                                                      SortOptions.RELEASE_DATE,
-                                                )
-                                              ]),
                                         )
                                       ],
                                     ),

@@ -3,6 +3,7 @@ import 'package:xbox_launcher/models/background_profile_preferences.dart';
 import 'package:xbox_launcher/models/theme_data_profile.dart';
 import 'package:xbox_launcher/models/video_preferences.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
+import 'package:xbox_launcher/shared/enums/xcloud_supported_servers.dart';
 
 class ProfileModel {
   late int id;
@@ -38,7 +39,8 @@ class ProfileModel {
     ProfileModel defaultProfile = ProfileModel();
     defaultProfile.id = 0;
     defaultProfile.name = AppConsts.DEFAULT_USERNAME;
-    defaultProfile.preferedServer = AppConsts.XCLOUD_SUPPORTED_SERVERS[0];
+    defaultProfile.preferedServer =
+        XCloudSupportedServers.values[0].countryCode;
 
     defaultProfile.appsHistoric = AppsHistoric();
     defaultProfile.backgroundPreferences =
