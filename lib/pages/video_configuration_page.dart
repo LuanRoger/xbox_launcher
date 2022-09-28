@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
+import 'package:xbox_launcher/models/shortcut_activator.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/check_button.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/page_models_base/configuration_menu.dart';
@@ -18,12 +18,13 @@ class VideoConfigurationPage extends ConfigurationMenu {
         );
 
   @override
-  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
-          BuildContext context) =>
-      {
-        ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
-            ControllerButton.B_BUTTON): ((context) => Navigator.pop(context))
-      };
+  List<ShortcutOption>? defineMapping(BuildContext context) => [
+        ShortcutOption("",
+            controllerKeyboardPair: ControllerKeyboardPair(
+                const SingleActivator(LogicalKeyboardKey.escape),
+                ControllerButton.B_BUTTON),
+            action: (context) => Navigator.pop(context))
+      ];
 
   @override
   Map<String, List<SystemButton>> buttonsBuilder(BuildContext context) {

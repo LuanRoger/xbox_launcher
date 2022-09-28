@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
+import 'package:xbox_launcher/models/shortcut_activator.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/apps_group_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/full_library_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/manage_section.dart';
@@ -27,12 +28,13 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
   }
 
   @override
-  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
-          BuildContext context) =>
-      {
-        ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
-            ControllerButton.B_BUTTON): ((context) => Navigator.pop(context))
-      };
+  List<ShortcutOption>? defineMapping(BuildContext context) => [
+        ShortcutOption("Back",
+            controllerKeyboardPair: ControllerKeyboardPair(
+                const SingleActivator(LogicalKeyboardKey.escape),
+                ControllerButton.B_BUTTON),
+            action: (context) => Navigator.pop(context))
+      ];
 
   @override
   Widget virtualBuild(BuildContext context) {
