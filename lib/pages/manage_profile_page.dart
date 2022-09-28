@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/profile_update_info.dart';
-import 'package:xbox_launcher/models/shortcut_activator.dart';
+import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
@@ -44,7 +44,7 @@ class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
 
   @override
   List<ShortcutOption>? defineMapping(BuildContext context) => [
-        ShortcutOption("",
+        ShortcutOption("Back",
             controllerKeyboardPair: ControllerKeyboardPair(
                 const SingleActivator(LogicalKeyboardKey.escape),
                 ControllerButton.B_BUTTON),

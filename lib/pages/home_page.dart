@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
-import 'package:xbox_launcher/models/shortcut_activator.dart';
+import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
@@ -43,7 +43,6 @@ class HomePage extends XboxPageStateless {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: const [
-                          //TODO: Add controllers info
                           Flexible(flex: 0, child: ClockTimer()),
                         ],
                       ),

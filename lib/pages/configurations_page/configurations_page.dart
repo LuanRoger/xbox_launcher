@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
-import 'package:xbox_launcher/models/shortcut_activator.dart';
+import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/about_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/profile_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/cloud_gaming_configuration_section.dart';
@@ -28,7 +28,7 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
 
   @override
   List<ShortcutOption> defineMapping(BuildContext context) => [
-        ShortcutOption("",
+        ShortcutOption("Back",
             controllerKeyboardPair: ControllerKeyboardPair(
                 const SingleActivator(LogicalKeyboardKey.escape),
                 ControllerButton.B_BUTTON),

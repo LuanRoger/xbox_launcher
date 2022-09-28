@@ -2,9 +2,8 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_images.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
-class ButtonSvgGen {
-  //TODO: Get all buttons in SVG
-  static List<AssetImage> getSvgByButtons(List<ControllerButton> buttons) {
+class ButtonsImageGen {
+  static List<AssetImage> getButtonsImage(List<ControllerButton> buttons) {
     List<AssetImage> buttonsImage = List.empty(growable: true);
 
     for (var button in buttons) {
@@ -30,8 +29,7 @@ class ButtonSvgGen {
         default:
           break;
       }
-
     }
-      return buttonsImage;
+    return buttonsImage;
   }
 }

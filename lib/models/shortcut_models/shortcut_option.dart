@@ -12,5 +12,5 @@ class ShortcutOption {
   ShortcutOption(this.description,
       {required this.controllerKeyboardPair,
       required this.action,
-      this.show = false});
+      this.show = true});
 }

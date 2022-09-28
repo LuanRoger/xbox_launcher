@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
-import 'package:xbox_launcher/models/shortcut_activator.dart';
+import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/apps_group_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/full_library_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/manage_section.dart';

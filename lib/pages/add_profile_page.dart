@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
-import 'package:xbox_launcher/models/shortcut_activator.dart';
+import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
@@ -41,11 +41,10 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
 
   @override
   List<ShortcutOption>? defineMapping(BuildContext context) => [
-        ShortcutOption(
-            "",
-            controllerKeyboardPair:
-                ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
-            ControllerButton.B_BUTTON),
+        ShortcutOption("Back",
+            controllerKeyboardPair: ControllerKeyboardPair(
+                const SingleActivator(LogicalKeyboardKey.escape),
+                ControllerButton.B_BUTTON),
             action: (context) => Navigator.pop(context))
       ];
 

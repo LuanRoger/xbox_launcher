@@ -1,10 +1,10 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/models/shortcut_activator.dart';
+import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/check_button.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
-import 'package:xbox_launcher/pages/page_models_base/configuration_menu.dart';
+import 'package:xbox_launcher/pages/configurations_page/widgets/models/configuration_menu.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
