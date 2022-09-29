@@ -47,4 +47,6 @@ class AppTextStyle {
 
   static const MENU_DIALOG_TITLE =
       TextStyle(fontWeight: FontWeight.bold, fontSize: 24);
+  static const CONTEXT_MENU_TITLE =
+      TextStyle(fontWeight: FontWeight.w600, fontSize: 22);
 }

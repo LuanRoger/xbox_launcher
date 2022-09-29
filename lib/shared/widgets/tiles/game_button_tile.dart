@@ -12,6 +12,7 @@ class GameButtonTile extends ButtonTile {
       : super(
           gameModel.name,
           key: key,
+          objectInfoSender: gameModel,
           interactive: true,
           appBadgeInfo: gameModel.extraGameProperties.toBadgeInfo(),
           tileSize: tileSize,

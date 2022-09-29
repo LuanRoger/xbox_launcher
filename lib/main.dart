@@ -2,6 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:xbox_launcher/controllers/xinput_controller.dart';
+import 'package:xbox_launcher/providers/focus_element_provider.dart';
 import 'package:xbox_launcher/providers/keyboard_action_provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/providers/controller_action_provider.dart';
@@ -23,6 +24,8 @@ void main() async {
     ChangeNotifierProvider<ProfileProvider>(
       create: (_) => profileProvider,
     ),
+    ChangeNotifierProvider<FocusElementProvider>(
+        create: (_) => FocusElementProvider(null)),
     Provider<ControllerActionProvider>(
         create: (_) => ControllerActionProvider(xInputController)),
     Provider(create: (_) => KeyboardActionProvider())

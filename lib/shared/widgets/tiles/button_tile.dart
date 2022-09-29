@@ -1,5 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/app_badge_info.dart';
+import 'package:xbox_launcher/providers/focus_element_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_badges.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_base_stateful.dart';
@@ -30,6 +32,7 @@ class ButtonTile extends TileBaseStateful {
 
   ButtonTile(this.title,
       {Key? key,
+      Object? objectInfoSender,
       required TileSize tileSize,
       this.interactive = false,
       this.appBadgeInfo,
@@ -38,7 +41,7 @@ class ButtonTile extends TileBaseStateful {
       this.icon,
       this.customCover,
       this.image})
-      : super(key: key) {
+      : super(key: key, objectInfoSender: objectInfoSender) {
     _tileSize = tileSize;
     switch (tileSize) {
       case TileSize.SMALL:
@@ -75,16 +78,21 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
       _tileBadges = TileBadges(widget.appBadgeInfo!);
     }
 
-    if (widget.interactive) {
-      focusNode.addListener(() {
-        setState(() {
-          _titleBar = focusNode.hasFocus ? TileTitleBar(widget.title) : null;
-          _tileBadges = !focusNode.hasFocus && widget.appBadgeInfo != null
-              ? TileBadges(widget.appBadgeInfo!)
-              : null;
-        });
+    if (!widget.interactive) return;
+    focusNode.addListener(() {
+      setState(() {
+        _titleBar = focusNode.hasFocus ? TileTitleBar(widget.title) : null;
+        _tileBadges = !focusNode.hasFocus && widget.appBadgeInfo != null
+            ? TileBadges(widget.appBadgeInfo!)
+            : null;
       });
-    }
+    });
+
+    if (widget.objectInfoSender == null) return;
+    focusNode.addListener(() {
+      Provider.of<FocusElementProvider>(context, listen: false).currentValue =
+          widget.objectInfoSender;
+    });
   }
 
   @override
