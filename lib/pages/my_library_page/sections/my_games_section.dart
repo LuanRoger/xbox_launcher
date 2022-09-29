@@ -10,7 +10,7 @@ import 'package:xbox_launcher/shared/widgets/chip/text_chip.dart';
 import 'package:xbox_launcher/shared/widgets/combobox/combobox.dart';
 import 'package:xbox_launcher/shared/enums/sort_options.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
-import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable.dart';
+import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable_message.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
@@ -142,7 +142,8 @@ class MyGamesSection extends NavigationSectionStateless {
                     return const ProgressRing();
                   default:
                     if (snapshot.hasData && !(snapshot.data as bool) ||
-                        gamesList.isEmpty) return const XCloudFileUnavailable();
+                        gamesList.isEmpty)
+                      return const XCloudFileUnavailableMessage();
 
                     return Column(
                       children: [

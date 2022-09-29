@@ -4,6 +4,7 @@ import 'package:xbox_launcher/models/apps_group.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/group_viwer.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
+import 'package:xbox_launcher/shared/widgets/placeholder_messages/no_groups_message.dart';
 
 class AppsGroupSection extends NavigationSectionStateless {
   const AppsGroupSection({super.key}) : super("Groups");
@@ -17,7 +18,7 @@ class AppsGroupSection extends NavigationSectionStateless {
       Selector<ProfileProvider, List<AppsGroup>>(
           selector: (_, profileProvider) => profileProvider.appsGroups,
           builder: (_, value, __) {
-            if (value.isEmpty) return const Text("Não há grupos");
+            if (value.isEmpty) return const NoGroupsMessage();
 
             return Column(
               children: value.map((group) => GroupViwer(group.id!)).toList(),
