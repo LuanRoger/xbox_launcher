@@ -1,13 +1,13 @@
-import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart'
-    as xbox_button;
+import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
+import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 
 class SystemDialog extends ContentDialog {
   SystemDialog(
-      {Key? key, required String title,
+      {super.key,
+      required String title,
       required String content,
-      required List<xbox_button.TextButton> actions})
-      : super(key: key, title: Text(title), content: Text(content), actions: actions);
+      required List<TextButton> actions})
+      : super(title: Text(title), content: Text(content), actions: actions);
 
   Future show(BuildContext context) {
     return showDialog(

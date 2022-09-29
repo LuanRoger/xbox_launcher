@@ -150,7 +150,7 @@ class KeyboardOverlay implements MappingDefinition {
 
     showGeneralDialog(
         context: context,
-        pageBuilder: (buildContext, _, __) {
+        pageBuilder: (_, __, ___) {
           return Stack(
             alignment: Alignment.center,
             children: [
