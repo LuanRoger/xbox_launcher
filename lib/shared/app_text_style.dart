@@ -49,4 +49,7 @@ class AppTextStyle {
       TextStyle(fontWeight: FontWeight.bold, fontSize: 24);
   static const CONTEXT_MENU_TITLE =
       TextStyle(fontWeight: FontWeight.w600, fontSize: 22);
+
+  static const APPS_GROUP_TITLE =
+      TextStyle(fontSize: 20);
 }

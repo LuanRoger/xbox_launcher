@@ -100,10 +100,27 @@ class ProfileProvider extends ChangeNotifier {
   List<AppsGroup> get appsGroups => _currentProfile.appsGroups.groups;
   void addAppsGroup(AppsGroup appsGroup) {
     _currentProfile.appsGroups.addNewGroup(appsGroup);
+
+    notifyListeners();
+    saveProfile();
+  }
+
+  void addAppToGroups(int id, AppModel appModel) {
+    _currentProfile.appsGroups.addAppToGroups(id, appModel);
+
+    notifyListeners();
+    saveProfile();
   }
 
   void removeAppsGroup(int groupId) {
     _currentProfile.appsGroups.removeNewGroup(groupId);
+  }
+
+  void removeAppFromGroup(int groupId, AppModel appModel) {
+    _currentProfile.appsGroups.removeAppFromGroup(groupId, appModel);
+
+    notifyListeners();
+    saveProfile();
   }
 
   int get preferedColorIndex =>

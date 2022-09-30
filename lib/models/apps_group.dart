@@ -1,5 +1,8 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
+
 import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/utils/loaders/apps_model_loader.dart';
+import 'package:collection/collection.dart';
 
 class AppsGroup {
   int? id;
@@ -18,6 +21,9 @@ class AppsGroup {
   }
 
   void addNewApp(AppModel appModel) {
+    if (apps.firstWhereOrNull((app) => appModel.name == app.name) != null)
+      return;
+
     apps.add(appModel);
   }
 

@@ -12,7 +12,9 @@ import 'package:xbox_launcher/pages/my_library_page/sections/manage_section.dart
 import 'package:xbox_launcher/pages/my_library_page/sections/my_apps_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/my_games_section.dart';
 import 'package:xbox_launcher/providers/focus_element_provider.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu.dart';
+import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_group.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_item.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_bar.dart';
@@ -54,7 +56,8 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
                       return;
 
                     GameModel gameModel = focusObject as GameModel;
-                    print(gameModel.name);
+                    ContextMenuGroup(gameModel.name, appModel: gameModel)
+                        .show(context);
                   }),
                   ContextMenuItem("See on Microsoft Store",
                       icon: FluentIcons.store_logo16,
