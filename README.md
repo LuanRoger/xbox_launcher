@@ -3,6 +3,7 @@
 Launcher with the Xbox Series X/S's dashboard to play Xbox Cloud Gaming (XCloud) games.
 
 [![fluent_desing](https://img.shields.io/badge/fluent-design-blue?style=flat-square&color=gray&labelColor=0078D7)](https://github.com/bdlukaa/fluent_ui)
+[![license](https://img.shields.io/github/license/LuanRoger/xbox_launcher)](https://github.com/LuanRoger/xbox_launcher/blob/main/LICENCE.md)
 ![issues](https://img.shields.io/github/issues/LuanRoger/xbox_launcher)
 ![releases](https://img.shields.io/github/v/release/LuanRoger/xbox_launcher?include_prereleases)
 [![Discuss on GitHub](https://img.shields.io/badge/GitHub-Discussions-333333?logo=github)](https://github.com/LuanRoger/xbox_launcher/discussions)
@@ -85,7 +86,7 @@ We are always needing help to:
 - Improve the code architecture.
 - Improve performance and decrease memory consumption (memory leak).
 
-TODO: Create **CONTRIBUTING.md**.
+For more info check the [Contribuition Guideline](https://github.com/LuanRoger/xbox_launcher/blob/main/CONTRIBUTING.md).
 
 ## Contribute to used packages
 This project uses first-party and third-party open-source packages, so consider contributing to those as well.
