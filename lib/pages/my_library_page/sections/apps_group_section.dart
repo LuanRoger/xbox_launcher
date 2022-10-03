@@ -1,6 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/models/apps_group.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/group_viwer.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
@@ -15,15 +14,18 @@ class AppsGroupSection extends NavigationSectionStateless {
   @override
   List<Widget> columnItems(BuildContext context) {
     return [
-      Selector<ProfileProvider, List<AppsGroup>>(
-          selector: (_, profileProvider) => profileProvider.appsGroups,
-          builder: (_, value, __) {
-            if (value.isEmpty) return const NoGroupsMessage();
+      Consumer<ProfileProvider>(builder: (_, value, __) {
+        if (value.appsGroups.isEmpty) return const NoGroupsMessage();
 
-            return Column(
-              children: value.map((group) => GroupViwer(group.id!)).toList(),
-            );
-          })
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: value.appsGroups
+              .map((group) => Container(
+                  margin: const EdgeInsets.only(bottom: 20.0),
+                  child: GroupViwer(group)))
+              .toList(),
+        );
+      })
     ];
   }
 }

@@ -1,5 +1,6 @@
 import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/models/apps_group.dart';
+import 'package:collection/collection.dart';
 
 class ProfileAppsGroups {
   late int lastId;
@@ -24,8 +25,8 @@ class ProfileAppsGroups {
     return ProfileAppsGroups(groups: appGroups);
   }
 
-  AppsGroup _getGroupById(int id) =>
-      groups.firstWhere((group) => group.id == id);
+  AppsGroup? getGroupById(int id) =>
+      groups.firstWhereOrNull((group) => group.id == id);
 
   void addNewGroup(AppsGroup appsGroup) {
     appsGroup.id = ++lastId;
@@ -33,15 +34,19 @@ class ProfileAppsGroups {
   }
 
   void addAppToGroups(int id, AppModel appModel) {
-    _getGroupById(id).addNewApp(appModel);
+    getGroupById(id)?.addNewApp(appModel);
+  }
+
+  void renameGroup(int id, String newName) {
+    getGroupById(id)?.groupName = newName;
   }
 
   void removeNewGroup(int id) {
-    groups.remove(_getGroupById(id));
+    groups.remove(getGroupById(id));
   }
 
   void removeAppFromGroup(int groupId, AppModel appModel) {
-    _getGroupById(groupId).apps.remove(appModel);
+    getGroupById(groupId)?.apps.remove(appModel);
   }
 
   Map<String, dynamic> toJson() => {"lastId": lastId, "groups": groups};

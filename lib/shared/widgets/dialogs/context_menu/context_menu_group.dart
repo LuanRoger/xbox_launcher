@@ -6,7 +6,6 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_base.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_item.dart';
-import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button_search.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_overlay.dart';
 
 class ContextMenuGroup extends ContextMenuBase {

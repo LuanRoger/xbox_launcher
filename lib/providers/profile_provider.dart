@@ -98,6 +98,10 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   List<AppsGroup> get appsGroups => _currentProfile.appsGroups.groups;
+  AppsGroup? getGroupById(int id) {
+    return _currentProfile.appsGroups.getGroupById(id);
+  }
+
   void addAppsGroup(AppsGroup appsGroup) {
     _currentProfile.appsGroups.addNewGroup(appsGroup);
 
@@ -112,8 +116,18 @@ class ProfileProvider extends ChangeNotifier {
     saveProfile();
   }
 
+  void renameGroup(int id, String newName) {
+    _currentProfile.appsGroups.renameGroup(id, newName);
+
+    notifyListeners();
+    saveProfile();
+  }
+
   void removeAppsGroup(int groupId) {
     _currentProfile.appsGroups.removeNewGroup(groupId);
+
+    notifyListeners();
+    saveProfile();
   }
 
   void removeAppFromGroup(int groupId, AppModel appModel) {
