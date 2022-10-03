@@ -87,12 +87,14 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
             : null;
       });
     });
-
-    if (widget.objectInfoSender == null) return;
-    focusNode.addListener(() {
-      Provider.of<FocusElementProvider>(context, listen: false).currentValue =
-          widget.objectInfoSender;
-    });
+    focusNode.addListener(widget.objectInfoSender != null
+        ? () {
+            Provider.of<FocusElementProvider>(context, listen: false)
+                .setCurrentValue(this, widget.objectInfoSender!);
+          }
+        : () {
+            Provider.of<FocusElementProvider>(context, listen: false).clear();
+          });
   }
 
   @override

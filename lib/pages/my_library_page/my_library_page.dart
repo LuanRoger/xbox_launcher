@@ -3,6 +3,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
@@ -14,7 +15,7 @@ import 'package:xbox_launcher/pages/my_library_page/sections/my_games_section.da
 import 'package:xbox_launcher/providers/focus_element_provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu.dart';
-import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_group.dart';
+import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_add_group.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_item.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_bar.dart';
@@ -52,11 +53,10 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
                       onPressed: () {
                     Object? focusObject =
                         context.read<FocusElementProvider>().currentValue;
-                    if (focusObject == null && focusObject is! GameModel)
-                      return;
+                    if (focusObject == null && focusObject is! AppModel) return;
 
-                    GameModel gameModel = focusObject as GameModel;
-                    ContextMenuGroup(gameModel.name, appModel: gameModel)
+                    AppModel appModel = focusObject as AppModel;
+                    ContextMenuAddGroup(appModel.name, appModel: appModel)
                         .show(context);
                   }),
                   ContextMenuItem("See on Microsoft Store",
