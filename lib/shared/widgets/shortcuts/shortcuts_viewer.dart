@@ -29,6 +29,8 @@ class ShortcutsViewer extends StatelessWidget {
           Text(sOption.description)
         ],
       ));
+
+      counter++;
     }
 
     return shortcutRow;
