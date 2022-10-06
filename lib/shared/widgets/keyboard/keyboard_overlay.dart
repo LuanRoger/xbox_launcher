@@ -19,7 +19,7 @@ class KeyboardOverlay implements MappingDefinition {
 
   late KeyboardLayout _currentKeyboardType;
   void Function(void Function())? _setNewLayout;
-  final FocusNode _keyboardFocus = FocusNode(canRequestFocus: false);
+  final FocusNode _textBoxFocus = FocusNode(canRequestFocus: false);
   bool _keyboardLockState = true;
   void Function(void Function())? _updateKeyboardState;
   String? _initialStringMemento;
@@ -66,11 +66,11 @@ class KeyboardOverlay implements MappingDefinition {
   }
 
   void _switchKeyboardLocker() {
-    _keyboardFocus.canRequestFocus = !_keyboardFocus.canRequestFocus;
+    _textBoxFocus.canRequestFocus = !_textBoxFocus.canRequestFocus;
     _updateKeyboardState
-        ?.call(() => _keyboardLockState = !_keyboardFocus.canRequestFocus);
+        ?.call(() => _keyboardLockState = !_textBoxFocus.canRequestFocus);
     if (!_keyboardLockState) {
-      _keyboardFocus.requestFocus();
+      _textBoxFocus.requestFocus();
     }
   }
 
@@ -146,7 +146,7 @@ class KeyboardOverlay implements MappingDefinition {
     _changeKeyboardLayout(KeyboardLayout.ALPHABET);
     _initialStringMemento = String.fromCharCodes(controller.text.codeUnits);
     KeyboardControllerActionManipulator.mapKeyboardControllerActions(context,
-        Map.fromEntries(defineMapping(context)! .map((e) => e.rawShortcut)));
+        Map.fromEntries(defineMapping(context)!.map((e) => e.rawShortcut)));
 
     showGeneralDialog(
         context: context,
@@ -163,7 +163,7 @@ class KeyboardOverlay implements MappingDefinition {
                     Expanded(
                       child: SystemTextBox(
                         controller: controller,
-                        focusNode: _keyboardFocus,
+                        focusNode: _textBoxFocus,
                         onChanged: onChanged,
                         color:
                             Provider.of<ProfileProvider>(context, listen: false)

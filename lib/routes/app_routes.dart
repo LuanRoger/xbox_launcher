@@ -9,4 +9,5 @@ class AppRoutes {
   static const String selectProfileRoute = "/selectProfile";
   static const String xcloudGameRoute = "/xcloudGame";
   static const String systemAppRoute = "/systemApp";
+  static const String groupsReorderRoute = "/groupsReorder";
 }

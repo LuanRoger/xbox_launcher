@@ -4,6 +4,7 @@ import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/pages/add_profile_page.dart';
 import 'package:xbox_launcher/pages/configurations_page/configurations_page.dart';
 import 'package:xbox_launcher/pages/game_page.dart';
+import 'package:xbox_launcher/pages/groups_reorder.dart';
 import 'package:xbox_launcher/pages/home_page.dart';
 import 'package:xbox_launcher/pages/manage_profile_page.dart';
 import 'package:xbox_launcher/pages/my_library_page/my_library_page.dart';
@@ -40,6 +41,8 @@ class AppRouteDriver {
             routeArgs![0] as GameModel, routeArgs[1] as String);
       case AppRoutes.systemAppRoute:
         return getSystemAppPageRoute(routeArgs![0] as Widget);
+      case AppRoutes.groupsReorderRoute:
+        return getGroupReorderPageRoute;
       default:
         return homePageRoute;
     }
@@ -72,6 +75,8 @@ class AppRouteDriver {
                 gameModel,
                 server: server,
               ));
+  static FluentPageRoute get getGroupReorderPageRoute =>
+      FluentPageRoute(builder: (_) => const GroupsReorder());
   static FluentPageRoute getSystemAppPageRoute(Widget appHomePage) =>
       FluentPageRoute(builder: (_) => appHomePage);
 }
