@@ -13,7 +13,8 @@ class TextButton extends SystemButton {
       this.textStyle,
       super.height,
       super.width,
-      super.style})
+      super.style,
+      super.focusNode})
       : super(
             key: key,
             content: Row(

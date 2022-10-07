@@ -2,7 +2,6 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/apps_group.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
-import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_base.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_item.dart';
@@ -36,10 +35,6 @@ class ContextMenuGroup extends ContextMenuBase {
           },
         ).show(context);
       }),
-      ContextMenuItem("Move group",
-          icon: FluentIcons.group_object,
-          onPressed: () => Navigator.pushReplacementNamed(
-              context, AppRoutes.groupsReorderRoute)),
       ContextMenuItem("Remove group", icon: FluentIcons.remove_content,
           onPressed: () {
         Provider.of<ProfileProvider>(context, listen: false)

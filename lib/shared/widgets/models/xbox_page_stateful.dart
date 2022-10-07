@@ -33,6 +33,7 @@ abstract class XboxPageState<T extends XboxPageStateful> extends State<T>
   @override
   Widget build(BuildContext context) {
     List<ShortcutOption>? mapping = defineMapping(context);
+    
     if (mapping != null) {
       KeyboardControllerActionManipulator.mapKeyboardControllerActions(
           context, Map.fromEntries(mapping.map((e) => e.rawShortcut)));

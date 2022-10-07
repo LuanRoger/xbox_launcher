@@ -5,21 +5,19 @@ abstract class SystemButton extends Button {
   final Widget content;
   final double? height;
   final double? width;
-  @override
-  ButtonStyle? style;
 
   SystemButton(
-      {Key? key,
+      {super.key,
       required this.content,
-      required void Function() onPressed,
+      super.onPressed,
       this.width = 170.0,
       this.height = 70.0,
-      this.style})
+      ButtonStyle? style,
+      super.focusNode})
       : super(
-          key: key,
-          onPressed: onPressed,
-          style: style ?? ButtonStyle(
-              backgroundColor: ButtonState.all(AppColors.ELEMENT_BG)),
+          style: style ??
+              ButtonStyle(
+                  backgroundColor: ButtonState.all(AppColors.ELEMENT_BG)),
           child: SizedBox(height: height, width: width, child: content),
         );
 }
