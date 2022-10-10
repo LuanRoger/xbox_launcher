@@ -1,8 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
-
-import 'controller_keyboard_pair.dart';
+import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 
 abstract class MappingDefinition {
-  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
-      BuildContext context);
+  List<ShortcutOption>? defineMapping(BuildContext context);
 }

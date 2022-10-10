@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
+import 'package:xbox_launcher/models/apps_group.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/models/profile_update_info.dart';
 import 'package:xbox_launcher/utils/loaders/profile_loader.dart';
@@ -91,6 +92,46 @@ class ProfileProvider extends ChangeNotifier {
 
   void removeAppFromHistory(AppModel appModel) {
     _currentProfile.appsHistoric.removeApp(appModel);
+
+    notifyListeners();
+    saveProfile();
+  }
+
+  List<AppsGroup> get appsGroups => _currentProfile.appsGroups.groups;
+  AppsGroup? getGroupById(int id) {
+    return _currentProfile.appsGroups.getGroupById(id);
+  }
+
+  void addAppsGroup(AppsGroup appsGroup) {
+    _currentProfile.appsGroups.addNewGroup(appsGroup);
+
+    notifyListeners();
+    saveProfile();
+  }
+
+  void addAppToGroups(int id, AppModel appModel) {
+    _currentProfile.appsGroups.addAppToGroups(id, appModel);
+
+    notifyListeners();
+    saveProfile();
+  }
+
+  void renameGroup(int id, String newName) {
+    _currentProfile.appsGroups.renameGroup(id, newName);
+
+    notifyListeners();
+    saveProfile();
+  }
+
+  void removeAppsGroup(int groupId) {
+    _currentProfile.appsGroups.removeNewGroup(groupId);
+
+    notifyListeners();
+    saveProfile();
+  }
+
+  void removeAppFromGroup(int groupId, AppModel appModel) {
+    _currentProfile.appsGroups.removeAppFromGroup(groupId, appModel);
 
     notifyListeners();
     saveProfile();

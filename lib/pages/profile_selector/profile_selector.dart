@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
+import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/pages/profile_selector/widgets/profile_selector_item.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
@@ -40,27 +41,33 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
   }
 
   @override
-  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
-      BuildContext context) {
+  List<ShortcutOption> defineMapping(BuildContext context) {
     const Duration profileChangeAnimationTime = Duration(milliseconds: 500);
     const Curve profileChangeAnimationCurve = Curves.easeOutQuart;
 
-    return {
-      ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
-          ControllerButton.B_BUTTON): ((context) => Navigator.pop(context)),
-      ControllerKeyboardPair(
+    return [
+      ShortcutOption("Back",
+          controllerKeyboardPair: ControllerKeyboardPair(
+              const SingleActivator(LogicalKeyboardKey.escape),
+              ControllerButton.B_BUTTON),
+          action: (context) => Navigator.pop(context)),
+      ShortcutOption("",
+          controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.arrowRight),
-              ControllerButton.DPAD_RIGHT):
-          (_) => profileSliderController.nextPage(
+              ControllerButton.DPAD_RIGHT),
+          action: (_) => profileSliderController.nextPage(
               curve: profileChangeAnimationCurve,
               duration: profileChangeAnimationTime),
-      ControllerKeyboardPair(
+          show: false),
+      ShortcutOption("",
+          controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.arrowLeft),
-              ControllerButton.DPAD_LEFT):
-          (_) => profileSliderController.previousPage(
+              ControllerButton.DPAD_LEFT),
+          action: (_) => profileSliderController.previousPage(
               curve: profileChangeAnimationCurve,
-              duration: profileChangeAnimationTime)
-    };
+              duration: profileChangeAnimationTime),
+          show: false)
+    ];
   }
 
   void generateSelectorItems(BuildContext context) {

@@ -1,8 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 
-class XCloudFileUnavailable extends StatelessWidget {
-  const XCloudFileUnavailable({Key? key}) : super(key: key);
+class XCloudFileUnavailableMessage extends StatelessWidget {
+  const XCloudFileUnavailableMessage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

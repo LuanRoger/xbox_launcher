@@ -11,8 +11,6 @@ class MyAppsSection extends NavigationSectionStateless {
 
   @override
   List<Widget>? titleActions(BuildContext context) => null;
-  @override
-  List<Widget>? midActions(BuildContext context) => null;
 
   @override
   List<Widget> columnItems(BuildContext context) => [

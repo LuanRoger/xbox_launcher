@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
+import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
@@ -39,12 +40,13 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
   }
 
   @override
-  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
-          BuildContext context) =>
-      {
-        ControllerKeyboardPair(const SingleActivator(LogicalKeyboardKey.escape),
-            ControllerButton.B_BUTTON): ((context) => Navigator.pop(context))
-      };
+  List<ShortcutOption>? defineMapping(BuildContext context) => [
+        ShortcutOption("Back",
+            controllerKeyboardPair: ControllerKeyboardPair(
+                const SingleActivator(LogicalKeyboardKey.escape),
+                ControllerButton.B_BUTTON),
+            action: (context) => Navigator.pop(context))
+      ];
 
   bool _isProfileNameValid() => profileNameController.text.isNotEmpty;
   Future changeToNewProfileDialog(

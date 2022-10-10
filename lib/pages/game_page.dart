@@ -2,6 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:webview_windows/webview_windows.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
+import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/utils/string_formatter.dart';
@@ -64,9 +65,7 @@ class _GamePageState extends XboxPageState<GamePage> {
   }
 
   @override
-  Map<ControllerKeyboardPair, void Function(BuildContext)>? defineMapping(
-          BuildContext context) =>
-      null;
+  List<ShortcutOption>? defineMapping(BuildContext context) => null;
 
   Future autoLogin() async {
     await _controller.executeScript(

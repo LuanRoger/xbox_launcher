@@ -19,6 +19,8 @@ abstract class NavigationSectionStateless extends StatelessWidget
   Column _buildColumn(
       List<Widget> columnContent, List<Widget>? titleActionsList) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Flexible(
           child: Row(
