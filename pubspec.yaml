@@ -23,8 +23,8 @@ dependencies:
   carousel_slider: ^4.1.1
   path_provider: ^2.0.11
   flutter_svg: ^1.1.5
-  windows_system_info:
-    git: https://github.com/Abdulazeezvp/windows_system_info.git
+  sys_info_getter:
+    path: ./internals/sys_info_getter/
 
 dev_dependencies:
   flutter_test:
