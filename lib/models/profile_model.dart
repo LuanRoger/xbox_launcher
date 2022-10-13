@@ -1,6 +1,7 @@
 import 'package:xbox_launcher/models/apps_historic.dart';
 import 'package:xbox_launcher/models/background_profile_preferences.dart';
 import 'package:xbox_launcher/models/profile_apps_groups.dart';
+import 'package:xbox_launcher/models/profile_preview_elements_preferences.dart';
 import 'package:xbox_launcher/models/theme_data_profile.dart';
 import 'package:xbox_launcher/models/video_preferences.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
@@ -13,6 +14,7 @@ class ProfileModel {
   String? xcloudGamesJsonPath;
   String? profileImagePath;
 
+  late ProfilePreviewElementsPreferences previewElementsPreferences;
   late AppsHistoric appsHistoric;
   late ProfileAppsGroups appsGroups;
   late BackgroundProfilePreferences backgroundPreferences;
@@ -27,6 +29,9 @@ class ProfileModel {
     profileModel.preferedServer = json["preferedServer"];
     profileModel.xcloudGamesJsonPath = json["xcloudGamesJsonPath"];
     profileModel.profileImagePath = json["profileImagePath"];
+    profileModel.previewElementsPreferences =
+        ProfilePreviewElementsPreferences.fromJson(
+            json["previewElementsPreferences"]);
     profileModel.appsHistoric = AppsHistoric.fromJson(json["appsHistoric"]);
     profileModel.appsGroups = ProfileAppsGroups.fromJson(json["appsGroups"]);
     profileModel.backgroundPreferences =
@@ -45,6 +50,8 @@ class ProfileModel {
     defaultProfile.preferedServer =
         XCloudSupportedServers.values[0].countryCode;
 
+    defaultProfile.previewElementsPreferences =
+        ProfilePreviewElementsPreferences();
     defaultProfile.appsHistoric = AppsHistoric();
     defaultProfile.appsGroups =
         ProfileAppsGroups(groups: List.empty(growable: true));
@@ -62,6 +69,7 @@ class ProfileModel {
         "preferedServer": preferedServer,
         "xcloudGamesJsonPath": xcloudGamesJsonPath,
         "profileImagePath": profileImagePath,
+        "previewElementsPreferences": previewElementsPreferences.toJson(),
         "appsHistoric": appsHistoric.toJson(),
         "appsGroups": appsGroups.toJson(),
         "backgroundPreferences": backgroundPreferences.toJson(),
