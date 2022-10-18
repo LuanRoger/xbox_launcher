@@ -13,9 +13,11 @@ class XcloudGame:
     xcloudUrl: str
     tileGameImageUrl: str
     gameImageUrl: str
+    storeUrl: str
 
     def __init__(self, gameTitle: str, gamePublisher:str, gameDeveloper: str, gameGenres: List[str],
-     releaseDate: str, extraGameProperties: GameProperties, xcloudUrl: str, tileGameImageUrl: str, gameImageUrl: str):
+     releaseDate: str, extraGameProperties: GameProperties, xcloudUrl: str, tileGameImageUrl: str, gameImageUrl: str, 
+     storeUrl: str):
         self.gameTitle = gameTitle
         self.gamePublisher = gamePublisher
         self.gameDeveloper = gameDeveloper
@@ -25,6 +27,7 @@ class XcloudGame:
         self.xcloudUrl = xcloudUrl
         self.tileGameImageUrl = tileGameImageUrl
         self.gameImageUrl = gameImageUrl
+        self.storeUrl = storeUrl
 
     def __eq__(self, other: object) -> bool:
         if(isinstance(other, type(self))):

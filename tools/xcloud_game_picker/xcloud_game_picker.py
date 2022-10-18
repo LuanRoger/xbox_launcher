@@ -81,7 +81,7 @@ while not done:
 
         game_title = driver.find_element(by=By.CLASS_NAME, value=GAME_TITLE_H1_ELEMENT).text
         game_properties: GameProperties = getGamesProperties(driver.find_element(by=By.CLASS_NAME, value=GAME_PROPERTIES_CONTAINER))
-
+        store_url: str = driver.find_element(by=By.CLASS_NAME, value=STORE_BUTTON_ELEMENT).find_element(by=By.TAG_NAME, value="a").get_attribute("href")
         game_genre = getGameGenres(driver)
 
         hero_image = driver.find_elements(by=By.TAG_NAME, value="source")
@@ -93,7 +93,7 @@ while not done:
         goto_tab(driver, 0)
 
         new_game = XcloudGame(game_title, game_info_box[0], game_info_box[1], game_genre, game_info_box[2],
-         game_properties, add_formater_game_url_server(game_url), tile_image_url, game_image_url)
+         game_properties, add_formater_game_url_server(game_url), tile_image_url, game_image_url, store_url)
 
         if(new_game not in games_list):
             games_list.append(new_game)
