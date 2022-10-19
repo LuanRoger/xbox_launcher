@@ -1,7 +1,7 @@
 import json
 from typing import List
 
-from models.game_properties import GameProperties
+from .game_properties import GameProperties
 
 class XcloudGame:
     gameTitle: str

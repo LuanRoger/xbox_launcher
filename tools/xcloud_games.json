@@ -34,6 +34,24 @@
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.12478.13714290489749263.fa316741-1615-4cad-942c-7c2fddc7b069.f1bbf8b2-4ab6-4295-8bea-d41b506e812a?h=%i&format=jpg"
     },
     {
+        "gameTitle": "A Plague Tale: Requiem",
+        "gamePublisher": "Focus Entertainment",
+        "gameDeveloper": "Asobo Studio",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "RPG"
+        ],
+        "releaseDate": "18/10/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/a-plague-tale-requiem/9ND0JVB184XL",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.60562.13558336166432541.beb57fbe-cc4b-40c5-ba76-c8112867dea2.9a69e497-4f9f-495d-9ac6-f8956b491d91?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.59830.13558336166432541.beb57fbe-cc4b-40c5-ba76-c8112867dea2.f764a45c-f860-483f-b264-aa9041f2bb62?h=%i&format=jpg"
+    },
+    {
         "gameTitle": "ANVIL : Vault Breaker (Game Preview)",
         "gamePublisher": "SK TELECOM CO., LTD.",
         "gameDeveloper": "ACTION SQUARE CO., LTD.",
@@ -787,14 +805,11 @@
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.32115.13934302625463282.ce885e17-8e35-4fa6-951c-1f7e58c35e4f.aedd415c-053d-49a0-a707-3aba18aa2a4f?h=%i&format=jpg"
     },
     {
-        "gameTitle": "Costume Quest",
-        "gamePublisher": "THQ, Inc.",
-        "gameDeveloper": "Double Fine Productions, Inc.",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura",
-            "RPG"
-        ],
-        "releaseDate": "19/10/2010",
+        "gameTitle": "",
+        "gamePublisher": "",
+        "gameDeveloper": "",
+        "gameGenres": [],
+        "releaseDate": "",
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": false,
@@ -1985,8 +2000,8 @@
             "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/fortnite/BT5P2X999VH2",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.29537.70702278257994163.b4f7e5cb-12c9-4573-a0a3-d67a76ff36fd.264a0e27-9ca4-4422-b683-aff14b835f31?w=%i&h=%i",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.16457.70702278257994163.b4f7e5cb-12c9-4573-a0a3-d67a76ff36fd.aea76de6-52f8-42af-ba8c-06e3603e0e87?h=%i&format=jpg"
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.59377.70702278257994163.852f160a-a678-4fa5-a9e3-fdeffeb7e7dd.44c6f6d7-4bb2-42ba-be35-984b29425077?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.39022.70702278257994163.852f160a-a678-4fa5-a9e3-fdeffeb7e7dd.71fff695-ed20-459a-a44d-2ce06684e9df?h=%i&format=jpg"
     },
     {
         "gameTitle": "Forza Horizon 4 Edi\u00e7\u00e3o Padr\u00e3o",
@@ -3193,11 +3208,14 @@
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.31810.13792918252035849.70cae5d6-a601-49fa-aa3f-fe57d9dc8f66.05f7102e-6f01-4bb2-bacb-7208fd00fbd0?h=%i&format=jpg"
     },
     {
-        "gameTitle": "",
-        "gamePublisher": "",
-        "gameDeveloper": "",
-        "gameGenres": [],
-        "releaseDate": "",
+        "gameTitle": "Minecraft Dungeons",
+        "gamePublisher": "Xbox Game Studios",
+        "gameDeveloper": "Mojang Studios / \u202aDouble Eleven Limited",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "RPG"
+        ],
+        "releaseDate": "26/05/2020",
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": false,

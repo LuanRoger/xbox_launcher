@@ -1,3 +1,7 @@
+# Xcloud extra picker
+GAMES_GRID_ELEMENT: str = "GameItemGrid-module__fixedSizeGrid___RZZqw"
+
+# Xcloud game picker
 GAMES_GRID_ELEMENT: str = "GameItemGrid-module__postitionRelative___1SLzN"
 GAME_TITLE_H1_ELEMENT: str = "Header-module__titleText___2UTto"
 GAME_SUBTITLE_ELEMENT: str = "Header-module__subtitleText___s-dWF"

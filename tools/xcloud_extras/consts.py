@@ -1,0 +1,1 @@
+XCLOUD_RECENTLY_ADDED_URL: str = "https://www.xbox.com/pt-BR/play/gallery/recently-added"
