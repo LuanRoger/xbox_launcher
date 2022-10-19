@@ -1,0 +1,286 @@
+[
+    {
+        "gameTitle": "A Plague Tale: Requiem",
+        "gamePublisher": "Focus Entertainment",
+        "gameDeveloper": "Asobo Studio",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "RPG"
+        ],
+        "releaseDate": "18/10/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/a-plague-tale-requiem/9ND0JVB184XL",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.60562.13558336166432541.beb57fbe-cc4b-40c5-ba76-c8112867dea2.9a69e497-4f9f-495d-9ac6-f8956b491d91?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.59830.13558336166432541.beb57fbe-cc4b-40c5-ba76-c8112867dea2.f764a45c-f860-483f-b264-aa9041f2bb62?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/a-plague-tale-requiem/9ND0JVB184XL"
+    },
+    {
+        "gameTitle": "Beacon Pines",
+        "gamePublisher": "Fellow Traveller",
+        "gameDeveloper": "Hiding Spot",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "Fam\u00edlia e crian\u00e7as"
+        ],
+        "releaseDate": "22/09/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/beacon-pines/9P4R2M0NRWNK",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.23560.14588206397851258.078192f2-519f-4a81-b68d-2dbd6199f2c2.af953250-54af-4a2a-be0c-163b68917421?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.39650.14588206397851258.078192f2-519f-4a81-b68d-2dbd6199f2c2.0f659ae9-51f1-4a1d-a086-0a5f165d5b5f?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/beacon-pines/9P4R2M0NRWNK"
+    },
+    {
+        "gameTitle": "Chivalry 2",
+        "gamePublisher": "Tripwire Interactive LLC",
+        "gameDeveloper": "Torn Banner Studios",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "Luta"
+        ],
+        "releaseDate": "08/06/2021",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/chivalry-2/9N7CJX93ZGWN",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.61947.14071745200459129.81e3e86f-3ab4-4027-b9a1-81f595fcb505.fc2487e4-7785-4a73-b2ad-b94aa01a7e7f?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.56595.14071745200459129.81e3e86f-3ab4-4027-b9a1-81f595fcb505.bcc44c15-cee0-4c07-a92c-766beb8fb174?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/chivalry-2/9N7CJX93ZGWN"
+    },
+    {
+        "gameTitle": "Costume Quest",
+        "gamePublisher": "THQ, Inc.",
+        "gameDeveloper": "Double Fine Productions, Inc.",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "RPG"
+        ],
+        "releaseDate": "19/10/2010",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/costume-quest/BR74RLMH966K",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.18636.69532389726997442.230b98e2-1f17-47ab-9d5a-06afb771f0de.57d2c274-ba74-4d0a-a98f-24a4ca808a82?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.47121.69532389726997442.230b98e2-1f17-47ab-9d5a-06afb771f0de.a4b185ec-6d05-4391-9919-046299c7651b?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/costume-quest/BR74RLMH966K"
+    },
+    {
+        "gameTitle": "DEATHLOOP",
+        "gamePublisher": "Bethesda Softworks",
+        "gameDeveloper": "Arkane Studios",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "Jogos de tiros"
+        ],
+        "releaseDate": "20/09/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/deathloop/9P5Z4530318L",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.5858.14634955238674857.649b7ff9-0dfc-4951-9b65-c5d815215da6.90208516-ba3b-47a9-a130-ef94cf860f5b?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.26641.14634955238674857.649b7ff9-0dfc-4951-9b65-c5d815215da6.bacdd878-0313-4c58-9434-459afd7cf535?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/deathloop/9P5Z4530318L"
+    },
+    {
+        "gameTitle": "Despot's Game",
+        "gamePublisher": "tinyBuild",
+        "gameDeveloper": "Konfa Games",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "Outros"
+        ],
+        "releaseDate": "29/09/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/despot's-game/9P5ZDVMCJMFD",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.54530.14634731171917513.ee44ea98-341d-42e8-b67a-c2a4254a08a0.3a8876e7-694c-40d5-8efc-0264051414e8?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.13399.14634731171917513.ee44ea98-341d-42e8-b67a-c2a4254a08a0.4239454b-8c5a-4424-b410-2039ca63a84c?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/despot's-game/9P5ZDVMCJMFD"
+    },
+    {
+        "gameTitle": "Eville",
+        "gamePublisher": "Versus Evil, LLC.",
+        "gameDeveloper": "VestGames",
+        "gameGenres": [
+            "Outros",
+            "RPG"
+        ],
+        "releaseDate": "11/10/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/eville/9PC12991NZ5N",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.31296.14112988465880137.944f8dc0-63f1-4f15-96aa-cab88a628053.65e7f8f4-3625-4a09-8aa7-fead27a7806f?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.19828.14112988465880137.944f8dc0-63f1-4f15-96aa-cab88a628053.3baaa95c-7788-4c73-aef5-b1cd1bd840b6?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/eville/9PC12991NZ5N"
+    },
+    {
+        "gameTitle": "Grounded",
+        "gamePublisher": "Xbox Game Studios",
+        "gameDeveloper": "Obsidian Entertainment",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "RPG"
+        ],
+        "releaseDate": "27/09/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/grounded/9PJTHRNVH62H",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.36912.14280109286674604.94f3a3e8-211f-41e5-ac9c-d948b5377852.4e9bf257-12e0-4f04-9239-671818df45b0?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.27514.14280109286674604.1fb359e4-01eb-4818-b992-b225ce4869c9.c9733025-0344-4e66-aff1-ee3bcf9016a7?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/grounded/9PJTHRNVH62H"
+    },
+    {
+        "gameTitle": "Hardspace: Shipbreaker",
+        "gamePublisher": "Focus Entertainment",
+        "gameDeveloper": "Blackbird Interactive",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "Simula\u00e7\u00e3o"
+        ],
+        "releaseDate": "20/09/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/hardspace-shipbreaker/9ND8C4314ZZG",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.11359.13552902647075103.9e24872e-3f43-4078-8279-1ddf37a77ab1.795f17b4-3acd-4226-91d9-5c6031d7899e?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.36125.13552902647075103.9e24872e-3f43-4078-8279-1ddf37a77ab1.246fb260-7ac0-4916-867b-dce60a943024?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/hardspace-shipbreaker/9ND8C4314ZZG"
+    },
+    {
+        "gameTitle": "Let's Build a Zoo",
+        "gamePublisher": "No More Robots",
+        "gameDeveloper": "Springloaded",
+        "gameGenres": [
+            "Simula\u00e7\u00e3o",
+            "Estrat\u00e9gia"
+        ],
+        "releaseDate": "28/09/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/let's-build-a-zoo/9P8N66DTG10T",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.63900.14084512162357210.0d6eea09-167f-4aad-97d7-d4d17f848799.2a1722e7-328d-4bb3-b556-0d4acae1567b?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.15530.14084512162357210.0d6eea09-167f-4aad-97d7-d4d17f848799.9a461717-eb83-4a42-875e-7c96139197b1?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/let's-build-a-zoo/9P8N66DTG10T"
+    },
+    {
+        "gameTitle": "Medieval Dynasty",
+        "gamePublisher": "Toplitz Productions",
+        "gameDeveloper": "Render Cube",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "RPG"
+        ],
+        "releaseDate": "06/10/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/medieval-dynasty/9PDDP6ML6XHF",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.26306.14156112272410024.03b91df3-d826-4d77-a692-6b75d9b18188.14e344a6-e6f9-43bd-8f8d-f6e965429119?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.63309.14156112272410024.03b91df3-d826-4d77-a692-6b75d9b18188.85b2f37e-0bd7-4de5-a925-bc86f2c59896?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/medieval-dynasty/9PDDP6ML6XHF"
+    },
+    {
+        "gameTitle": "Moonscars",
+        "gamePublisher": "Humble Games",
+        "gameDeveloper": "Black Mermaid",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "Plataforma"
+        ],
+        "releaseDate": "27/09/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/moonscars/9P77VD8MGJX8",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.48607.14609228948314679.57b5d232-e029-48c3-a08c-a51885c8f604.a75be4f6-a08c-465f-8452-bf3c2ee5da75?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.16286.14609228948314679.57b5d232-e029-48c3-a08c-a51885c8f604.af5bedd3-16ab-4c9d-a23d-deda8b3b585f?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/moonscars/9P77VD8MGJX8"
+    },
+    {
+        "gameTitle": "Patrulha Canina: Grand Prix",
+        "gamePublisher": "Outright Games Ltd.",
+        "gameDeveloper": "3DClouds",
+        "gameGenres": [
+            "Fam\u00edlia e crian\u00e7as",
+            "A\u00e7\u00e3o e aventura"
+        ],
+        "releaseDate": "29/09/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/paw-patrol-grand-prix/9MWBT3HFCZ3Z",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.30417.13842132658396836.fba80705-9bc9-45ad-84f9-621f75fe99ec.63412d4a-24e5-449a-9622-75435adb7a73?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.53527.13842132658396836.fba80705-9bc9-45ad-84f9-621f75fe99ec.a7d39a33-f2c3-408b-a88d-4ef40eb5c446?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/patrulha-canina-grand-prix/9MWBT3HFCZ3Z"
+    },
+    {
+        "gameTitle": "Prodeus",
+        "gamePublisher": "Humble Games",
+        "gameDeveloper": "Bounding Box Software Inc.",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "Jogos de tiros"
+        ],
+        "releaseDate": "23/06/2021",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/prodeus/9MZRSLLWKWDV",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.13041.13864617007662897.01825ec5-fdc1-49fc-a5ac-f29f1860b3d2.b9a8b49a-0945-4ea8-a389-1cc6ba14ba50?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.9406.13864617007662897.01825ec5-fdc1-49fc-a5ac-f29f1860b3d2.4de0b1f4-bc29-45f6-9f06-cb0449d3d4d3?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/prodeus/9MZRSLLWKWDV"
+    },
+    {
+        "gameTitle": "Scorn",
+        "gamePublisher": "Kepler Interactive",
+        "gameDeveloper": "Ebb Software",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura"
+        ],
+        "releaseDate": "14/10/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": false,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/scorn/9NM3TNRPQXLR",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.51381.13699799412731780.9f7b812e-456c-430e-8cec-380f1ca9e4a2.dd9f4725-f6e0-4fe4-9484-9d5f22682786?w=%i&h=%i",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.16661.13699799412731780.1afb5b8c-d3cf-40b3-aa5e-f5e01adefd6c.71e32c0e-4c10-4a4b-a813-3478373b1769?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/scorn/9NM3TNRPQXLR"
+    }
+]
