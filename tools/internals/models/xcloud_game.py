@@ -47,7 +47,8 @@ class XcloudGame:
             "extraGameProperties": dict(self.extraGameProperties),
             "xcloudUrl": self.xcloudUrl,
             "tileGameImageUrl": self.tileGameImageUrl,
-            "gameImageUrl": self.gameImageUrl
+            "gameImageUrl": self.gameImageUrl,
+            "storeUrl": self.storeUrl
         }.items()
 
     def toJson(self):

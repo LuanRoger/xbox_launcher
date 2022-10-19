@@ -24,7 +24,7 @@ games_list: List[XcloudGame] = []
 while not done:
     for game in getGamesInGrid(games_grid):
         game_url: str = game.get_attribute("href")
-        if(add_formater_game_url_server(game_url) in [geted_game.xcloudUrl for geted_game in games_list]):
+        if(add_formater_game_url_server(game_url, XCLOUD_BASE_URL) in [geted_game.xcloudUrl for geted_game in games_list]):
             continue
         
         game_image_element = game.find_element(by=By.TAG_NAME, value="img")
