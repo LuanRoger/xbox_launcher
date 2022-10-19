@@ -1,3 +1,6 @@
+def add_formater_game_url_server(url: str, base_url: str) -> str:
+    return base_url + "%s/" + url[len(base_url):]
+
 def add_parameter_sprinter(url: str) -> str:
     if(url is None): return None
 
@@ -13,6 +16,7 @@ def add_parameter_sprinter(url: str) -> str:
     arguments = arguments.replace(height, "%i", 1)
 
     return url[:argument_start] + arguments
+    
 def format_hero_image(url: str) -> str:
     if(url is None): return None
 

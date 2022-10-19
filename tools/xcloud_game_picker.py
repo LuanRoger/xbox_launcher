@@ -6,6 +6,7 @@ from xcloud_game.consts import GAMES_JSON_FILE_PATH
 
 from internals.utils.url_formater import *
 from xcloud_game.consts import *
+from internals.shared_consts import XCLOUD_BASE_URL
 from internals.element_picker import getGamesInfoInNewTab, getGamesInGrid
 from internals.webdriver_utils import *
 from internals.xcloud_elements_consts import *
@@ -16,10 +17,6 @@ driver = webdriver.Edge()
 driver.get(XCLOUD_URL)
 games_grid = driver.find_element(by=By.CLASS_NAME, value=GAMES_GRID_ELEMENT)
 done: bool = False
-
-def add_formater_game_url_server(url: str) -> str:
-    base_url = XCLOUD_BASE_URL
-    return base_url + "%s/" + url[len(base_url):]
 
 page_scroll_point = 0
 page_height = driver.execute_script("return document.body.scrollHeight")
@@ -36,7 +33,7 @@ while not done:
         xcloud_game = getGamesInfoInNewTab(driver, game_url)
         if(xcloud_game == None):
             continue
-        xcloud_game.xcloudUrl = add_formater_game_url_server(game_url)
+        xcloud_game.xcloudUrl = add_formater_game_url_server(game_url, XCLOUD_BASE_URL)
         xcloud_game.tileGameImageUrl = tile_image_url
 
         if(xcloud_game not in games_list):
