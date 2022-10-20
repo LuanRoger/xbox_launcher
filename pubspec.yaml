@@ -14,7 +14,7 @@ dependencies:
   provider: ^6.0.3
   xinput_gamepad: ^1.2.0
   virtual_keyboard:
-    git: https://github.com/LuanRoger/virtual_keyboard.git
+    git: https://github.com/LuanRoger/virtual_keyboard
   clock: ^1.1.1
   window_manager: ^0.2.7
   shared_preferences: ^2.0.15
@@ -25,6 +25,7 @@ dependencies:
   flutter_svg: ^1.1.5
   sys_info_getter:
     path: ./internals/sys_info_getter/
+  url_launcher: ^6.1.6
 
 dev_dependencies:
   flutter_test:

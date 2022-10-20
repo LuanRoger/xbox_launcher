@@ -3,6 +3,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
@@ -60,8 +61,14 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
                         .show(context);
                   }),
                   ContextMenuItem("See on Microsoft Store",
-                      icon: FluentIcons.store_logo16,
-                      onPressed: () => print("Microsoft Store")),
+                      icon: FluentIcons.store_logo16, onPressed: () async {
+                    Object? focusObject =
+                        context.read<FocusElementProvider>().currentValue;
+                    if (focusObject == null && focusObject is! AppModel) return;
+
+                    GameModel gameModel = focusObject as GameModel;
+                    await launchUrl(Uri.parse(gameModel.storeUrl));
+                  }),
                 ]).show(context))
       ];
 
