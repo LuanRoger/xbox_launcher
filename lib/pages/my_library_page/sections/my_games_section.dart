@@ -144,7 +144,7 @@ class MyGamesSection extends NavigationSectionStateless {
             builder: (_, snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.waiting:
-                  return const ProgressRing();
+                  return const Center(child: ProgressRing());
                 default:
                   if (snapshot.hasData && !(snapshot.data as bool) ||
                       gamesList.isEmpty)

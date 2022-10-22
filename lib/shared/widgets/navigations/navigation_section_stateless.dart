@@ -38,9 +38,6 @@ abstract class NavigationSectionStateless extends StatelessWidget
             ],
           ),
         ),
-        const SizedBox(
-          height: 8.0,
-        ),
         ...columnContent,
       ],
     );

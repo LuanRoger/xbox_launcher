@@ -27,8 +27,10 @@ class ManageSection extends NavigationSectionStateless {
   List<Widget> columnItems(BuildContext context) {
     return [
       Flexible(
-        child: ButtonGrid(buttons: {
-          "Tiles": [
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text("Tiles", style: AppTextStyle.MY_APPS_SECTIONS_TILE),
             IconTextButton(
                 title: "Tile size",
                 icon: FluentIcons.size_legacy,
@@ -51,22 +53,30 @@ class ManageSection extends NavigationSectionStateless {
                     })
                   ]).show(context);
                 })
-          ]
-        }),
+          ],
+        ),
       ),
-      const Text("Device info", style: AppTextStyle.MY_APPS_SECTIONS_TILE),
-      Flexible(
-          child: FutureBuilder<List<DiskInfo>?>(
-        future: getDiskInfos(),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-              return const ProgressRing();
-            default:
-              return VolumeInfoList(diskInfos: snapshot.data!);
-          }
-        },
-      )),
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text("Device info",
+                style: AppTextStyle.MY_APPS_SECTIONS_TILE),
+            FutureBuilder<List<DiskInfo>?>(
+              future: getDiskInfos(),
+              builder: (context, snapshot) {
+                switch (snapshot.connectionState) {
+                  case ConnectionState.waiting:
+                    return const ProgressRing();
+                  default:
+                    return Expanded(
+                        child: VolumeInfoList(diskInfos: snapshot.data!));
+                }
+              },
+            )
+          ],
+        ),
+      ),
     ];
   }
 }

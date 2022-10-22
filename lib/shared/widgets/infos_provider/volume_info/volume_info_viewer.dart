@@ -16,7 +16,6 @@ class VolumeInfoViwer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 30,
       width: 250,
       child: OutlinedButton(
         style: ButtonStyle(border: ButtonState.all(BorderSide.none)),
@@ -43,13 +42,17 @@ class VolumeInfoViwer extends StatelessWidget {
               Expanded(
                 child: Stack(
                   alignment: Alignment.center,
-                  fit: StackFit.expand,
                   children: [
-                    ProgressRing(
-                      value: percentageRemaining,
-                      backgroundColor: Colors.green,
-                      activeColor: Colors.green,
-                      strokeWidth: 3,
+                    SizedBox(
+                      height: 100,
+                      width: 100,
+                      child: ProgressRing(
+                        value: percentageRemaining,
+                        backgroundColor: Colors.green,
+                        activeColor: Colors.green,
+                        backwards: true,
+                        strokeWidth: 3,
+                      ),
                     ),
                     Center(
                         child: Text(
