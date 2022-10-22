@@ -21,7 +21,7 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
 
   @override
   List<ShortcutOption>? defineMapping(BuildContext context) => [
-        ShortcutOption("",
+        ShortcutOption("Back",
             controllerKeyboardPair: ControllerKeyboardPair(
                 const SingleActivator(LogicalKeyboardKey.escape),
                 ControllerButton.B_BUTTON),
