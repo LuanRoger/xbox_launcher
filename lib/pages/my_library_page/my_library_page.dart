@@ -13,7 +13,6 @@ import 'package:xbox_launcher/pages/my_library_page/sections/full_library_sectio
 import 'package:xbox_launcher/pages/my_library_page/sections/manage_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/my_apps_section.dart';
 import 'package:xbox_launcher/pages/my_library_page/sections/my_games_section.dart';
-import 'package:xbox_launcher/providers/focus_element_provider.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_add_group.dart';
@@ -46,45 +45,6 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
                 const SingleActivator(LogicalKeyboardKey.escape),
                 ControllerButton.B_BUTTON),
             action: (context) => Navigator.pop(context)),
-        ShortcutOption("More options",
-            controllerKeyboardPair: ControllerKeyboardPair(
-                const SingleActivator(LogicalKeyboardKey.f1),
-                ControllerButton.BACK),
-            action: (context) => ContextMenu("Options", contextItems: [
-                  ContextMenuItem("Add to a group", icon: FluentIcons.add,
-                      onPressed: () {
-                    Object? focusObject =
-                        context.read<FocusElementProvider>().currentValue;
-                    if (focusObject == null && focusObject is! AppModel) return;
-
-                    AppModel appModel = focusObject as AppModel;
-                    ContextMenuAddGroup(appModel.name, appModel: appModel)
-                        .show(context);
-                  }),
-                  ContextMenuItem("See on Microsoft Store",
-                      icon: FluentIcons.store_logo16, onPressed: () async {
-                    Object? focusObject =
-                        context.read<FocusElementProvider>().currentValue;
-                    if (focusObject == null && focusObject is! AppModel) return;
-
-                    GameModel gameModel = focusObject as GameModel;
-                    await SystemDialog(
-                      title: "Access a external site.",
-                      content: "Do you want to go to a external site?",
-                      actions: [
-                        TextButton(
-                            title: "Confirm",
-                            onPressed: () async {
-                              await launchUrl(Uri.parse(gameModel.storeUrl));
-                              Navigator.pop(context);
-                            }),
-                        TextButton(
-                            title: "Cancel",
-                            onPressed: () => Navigator.pop(context))
-                      ],
-                    ).show(context);
-                  }),
-                ]).show(context))
       ];
 
   @override

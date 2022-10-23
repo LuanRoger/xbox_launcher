@@ -1,7 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/app_badge_info.dart';
-import 'package:xbox_launcher/providers/focus_element_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_badges.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_base_stateful.dart';
@@ -16,6 +14,7 @@ class ButtonTile extends TileBaseStateful {
   final Widget? customCover;
   final ImageProvider? image;
   final void Function(BuildContext)? onPressed;
+  final FocusNode? focusNode;
 
   @override
   final Color? color;
@@ -40,7 +39,8 @@ class ButtonTile extends TileBaseStateful {
       this.onPressed,
       this.icon,
       this.customCover,
-      this.image})
+      this.image,
+      this.focusNode})
       : super(key: key, objectInfoSender: objectInfoSender) {
     _tileSize = tileSize;
     switch (tileSize) {
@@ -65,14 +65,16 @@ class ButtonTile extends TileBaseStateful {
 }
 
 class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
-  final FocusNode focusNode = FocusNode();
   late bool getFocused;
   TileTitleBar? _titleBar;
   TileBadges? _tileBadges;
+  late final FocusNode focusNode;
 
   @override
   void initState() {
     super.initState();
+
+    focusNode = widget.focusNode ?? FocusNode();
 
     if (widget.appBadgeInfo != null) {
       _tileBadges = TileBadges(widget.appBadgeInfo!);
@@ -87,14 +89,6 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
             : null;
       });
     });
-    focusNode.addListener(widget.objectInfoSender != null
-        ? () {
-            Provider.of<FocusElementProvider>(context, listen: false)
-                .setCurrentValue(this, widget.objectInfoSender!);
-          }
-        : () {
-            Provider.of<FocusElementProvider>(context, listen: false).clear();
-          });
   }
 
   @override
