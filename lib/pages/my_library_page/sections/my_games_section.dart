@@ -48,16 +48,15 @@ class MyGamesSection extends NavigationSectionStateless {
   }
 
   void searchGamesByName(String gameName) {
+    if (gameName.isEmpty) {
+      _reloadTileGrid?.call(() => gamesSearchResult = null);
+    }
+
     gameName = gameName.toLowerCase();
 
     List<GameModel> searchResult = gamesList
         .where((game) => game.name.toLowerCase().contains(gameName))
         .toList();
-
-    if (searchResult.isEmpty) {
-      _reloadTileGrid?.call(() => gamesSearchResult = null);
-      return;
-    }
 
     _reloadTileGrid?.call(() => gamesSearchResult = searchResult);
   }
@@ -156,7 +155,10 @@ class MyGamesSection extends NavigationSectionStateless {
                           child: ChipsRow(
                         chipsList ?? List.empty(),
                         onCheckChange: (isSelected, value) {
-                          if (!isSelected) filterByGenre(null);
+                          if (!isSelected) {
+                            filterByGenre(null);
+                            return;
+                          }
 
                           filterByGenre(value as String);
                         },
@@ -167,6 +169,7 @@ class MyGamesSection extends NavigationSectionStateless {
                         child: StatefulBuilder(
                           builder: (context, setState) {
                             _reloadTileGrid = setState;
+
                             return Column(
                               children: [
                                 Expanded(
