@@ -1,3 +1,5 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
+
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
@@ -131,94 +133,93 @@ class MyGamesSection extends NavigationSectionStateless {
       ];
 
   @override
-  List<Widget> columnItems(BuildContext context) => [
-        Expanded(
-            flex: 10,
-            child: FutureBuilder(
-              future: readXCloudGames(context),
-              builder: (_, snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.waiting:
-                    return const ProgressRing();
-                  default:
-                    if (snapshot.hasData && !(snapshot.data as bool) ||
-                        gamesList.isEmpty)
-                      return const XCloudFileUnavailableMessage();
+  List<Widget> columnItems(BuildContext context) {
+    final TileSize tileSize = context.read<ProfileProvider>().myLibraryTileSize;
 
-                    return Column(
-                      children: [
-                        Flexible(
-                            child: ChipsRow(
-                          chipsList ?? List.empty(),
-                          onCheckChange: (isSelected, value) {
-                            if (!isSelected) filterByGenre(null);
+    return [
+      Expanded(
+          flex: 10,
+          child: FutureBuilder(
+            future: readXCloudGames(context),
+            builder: (_, snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                  return const Center(child: ProgressRing());
+                default:
+                  if (snapshot.hasData && !(snapshot.data as bool) ||
+                      gamesList.isEmpty)
+                    return const XCloudFileUnavailableMessage();
 
-                            filterByGenre(value as String);
-                          },
-                        )),
-                        const Spacer(),
-                        Expanded(
-                          flex: 13,
-                          child: StatefulBuilder(
-                            builder: (context, setState) {
-                              _reloadTileGrid = setState;
-                              return Column(
-                                children: [
-                                  Expanded(
-                                    flex: 2,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        ComboBox(
-                                          [
-                                            ComboboxItem(
-                                              child: const Text("Sort: A to Z"),
-                                              value: SortOptions.ATOZ.index,
-                                            ),
-                                            ComboboxItem(
-                                              child: const Text("Release date"),
-                                              value: SortOptions
-                                                  .RELEASE_DATE.index,
-                                            )
-                                          ],
-                                          onChange: (sortOptionsIndex) =>
-                                              sortGameList(SortOptions
-                                                  .values[sortOptionsIndex]),
-                                          width: 270.0,
-                                          height: double.infinity,
-                                        )
-                                      ],
-                                    ),
+                  return Column(
+                    children: [
+                      Flexible(
+                          child: ChipsRow(
+                        chipsList ?? List.empty(),
+                        onCheckChange: (isSelected, value) {
+                          if (!isSelected) filterByGenre(null);
+
+                          filterByGenre(value as String);
+                        },
+                      )),
+                      const Spacer(),
+                      Expanded(
+                        flex: 13,
+                        child: StatefulBuilder(
+                          builder: (context, setState) {
+                            _reloadTileGrid = setState;
+                            return Column(
+                              children: [
+                                Expanded(
+                                  flex: 2,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ComboBox(
+                                        [
+                                          ComboboxItem(
+                                            child: const Text("Sort: A to Z"),
+                                            value: SortOptions.ATOZ.index,
+                                          ),
+                                          ComboboxItem(
+                                            child: const Text("Release date"),
+                                            value:
+                                                SortOptions.RELEASE_DATE.index,
+                                          )
+                                        ],
+                                        onChange: (sortOptionsIndex) =>
+                                            sortGameList(SortOptions
+                                                .values[sortOptionsIndex]),
+                                        width: 270.0,
+                                        height: double.infinity,
+                                      )
+                                    ],
                                   ),
-                                  const Spacer(),
-                                  Expanded(
-                                    flex: 20,
-                                    child: TileGrid.count(
-                                      gridDelegate:
-                                          const SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 6,
-                                        crossAxisSpacing: 10,
-                                        mainAxisSpacing: 10,
-                                      ),
-                                      tiles: WidgetGen.generateByModel(
-                                          gamesSearchResult ?? gamesList,
-                                          TileGeneratorOption([TileSize.MEDIUM],
-                                              context: context)),
-                                      scrollDirection: Axis.vertical,
-                                    ),
-                                  )
-                                ],
-                              );
-                            },
-                          ),
+                                ),
+                                const Spacer(),
+                                Expanded(
+                                  flex: 20,
+                                  child: TileGrid.tileSize(
+                                    tileSize: tileSize,
+                                    tiles: WidgetGen.generateByModel(
+                                        gamesSearchResult ?? gamesList,
+                                        TileGeneratorOption([tileSize],
+                                            context: context)),
+                                    scrollDirection: Axis.vertical,
+                                  ),
+                                )
+                              ],
+                            );
+                          },
                         ),
-                      ],
-                    );
-                }
-              },
-            )),
-      ];
+                      ),
+                    ],
+                  );
+              }
+            },
+          )),
+    ];
+  }
 }

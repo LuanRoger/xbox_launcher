@@ -4,6 +4,7 @@ import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/models/apps_group.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/models/profile_update_info.dart';
+import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/utils/loaders/profile_loader.dart';
 
 class ProfileProvider extends ChangeNotifier {
@@ -80,6 +81,15 @@ class ProfileProvider extends ChangeNotifier {
 
     notifyListeners();
     saveProfile();
+  }
+
+  TileSize get myLibraryTileSize =>
+      _currentProfile.previewElementsPreferences.myLibraryTileSize;
+  set myLibraryTileSize(TileSize tileSize) {
+    _currentProfile.previewElementsPreferences.myLibraryTileSize = tileSize;
+
+    saveProfile();
+    notifyListeners();
   }
 
   List<AppModel> get lastApps => _currentProfile.appsHistoric.lastApps;

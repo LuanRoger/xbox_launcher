@@ -50,6 +50,10 @@ class AppTextStyle {
   static const CONTEXT_MENU_TITLE =
       TextStyle(fontWeight: FontWeight.w600, fontSize: 22);
 
-  static const APPS_GROUP_TITLE =
-      TextStyle(fontSize: 20);
+  static const APPS_GROUP_TITLE = TextStyle(fontSize: 20);
+
+  static const VOLUME_INFOS =
+      TextStyle(fontSize: 16, fontWeight: FontWeight.w100);
+  static const VOLUME_PERCENTAGE =
+      TextStyle(fontSize: 18, fontWeight: FontWeight.w300);
 }

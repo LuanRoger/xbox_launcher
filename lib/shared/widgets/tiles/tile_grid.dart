@@ -1,4 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_base.dart';
 
 class TileGrid extends StatelessWidget {
@@ -39,6 +40,37 @@ class TileGrid extends StatelessWidget {
     return TileGrid(
       tiles: tiles,
       gridDelegate: gridDelegate,
+      itemCount: tiles.length,
+      scrollDirection: scrollDirection,
+    );
+  }
+
+  factory TileGrid.tileSize(
+      {Key? key,
+      required List<TileBase> tiles,
+      required TileSize tileSize,
+      Axis scrollDirection = Axis.vertical}) {
+    int crossAxisCount;
+    switch (tileSize) {
+      case TileSize.SMALL:
+        crossAxisCount = 8;
+        break;
+      case TileSize.BIG:
+        crossAxisCount = 4;
+        break;
+      case TileSize.LENGHTY:
+      case TileSize.MEDIUM:
+      default:
+        crossAxisCount = 6;
+        break;
+    }
+    return TileGrid(
+      tiles: tiles,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+      ),
       itemCount: tiles.length,
       scrollDirection: scrollDirection,
     );

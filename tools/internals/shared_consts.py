@@ -1,0 +1,1 @@
+XCLOUD_BASE_URL: str = "https://www.xbox.com/"
