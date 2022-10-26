@@ -6,6 +6,8 @@ import 'package:xbox_launcher/models/shortcut_models/shortcut_info.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/providers/keyboard_action_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
+import 'package:xbox_launcher/shared/widgets/focus/element_focus_scope.dart';
+import 'package:xbox_launcher/shared/widgets/focus/focable_element.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_builder.dart';
 import 'package:xbox_launcher/shared/widgets/shortcuts/shortcut_viewer_support.dart';
 
@@ -13,9 +15,19 @@ abstract class XboxPageStateful extends StatefulWidget {
   const XboxPageStateful({Key? key}) : super(key: key);
 }
 
-abstract class XboxPageState<T extends XboxPageStateful> extends State<T> with ShortcutViewerSupport
+abstract class XboxPageState<T extends XboxPageStateful> extends State<T>
+    with ShortcutViewerSupport
     implements MappingDefinition, XboxPageBuilder {
+  ElementFocusScope elementFocusScope = ElementFocusScope();
+
+  XboxPageState() {
+    elementFocusScope.onElementFocus = onElementFocus;
+  }
+
   Widget virtualBuild(BuildContext context);
+  void onElementFocus(FocableElement sender, Object? focusedElementValue) {
+    /*Virtual: Not required*/
+  }
 
   @override
   Widget genPageChild(BuildContext context) {

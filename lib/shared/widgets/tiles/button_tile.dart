@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/models/app_badge_info.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
+import 'package:xbox_launcher/shared/widgets/focus/element_focus_node.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_badges.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_base_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_cover.dart';
@@ -14,7 +15,6 @@ class ButtonTile extends TileBaseStateful {
   final Widget? customCover;
   final ImageProvider? image;
   final void Function(BuildContext)? onPressed;
-  final FocusNode? focusNode;
 
   @override
   final Color? color;
@@ -22,6 +22,10 @@ class ButtonTile extends TileBaseStateful {
   late final double height;
   @override
   late final double width;
+  @override
+  Object? elementValue;
+  @override
+  ElementFocusNode? focusNode;
 
   late final TileSize _tileSize;
   TileSize get tileSize => _tileSize;
@@ -31,7 +35,6 @@ class ButtonTile extends TileBaseStateful {
 
   ButtonTile(this.title,
       {Key? key,
-      Object? objectInfoSender,
       required TileSize tileSize,
       this.interactive = false,
       this.appBadgeInfo,
@@ -40,8 +43,9 @@ class ButtonTile extends TileBaseStateful {
       this.icon,
       this.customCover,
       this.image,
+      this.elementValue,
       this.focusNode})
-      : super(key: key, objectInfoSender: objectInfoSender) {
+      : super(key: key) {
     _tileSize = tileSize;
     switch (tileSize) {
       case TileSize.SMALL:
@@ -61,6 +65,8 @@ class ButtonTile extends TileBaseStateful {
         height = 100;
         break;
     }
+
+    focusNode?.setFocucableElement(this);
   }
 }
 
