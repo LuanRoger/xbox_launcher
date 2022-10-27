@@ -13,7 +13,7 @@ import 'package:xbox_launcher/shared/widgets/infos_provider/volume_info/volume_i
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 
 class ManageSection extends NavigationSectionStateless {
-  const ManageSection({super.key}) : super("Manage");
+  const ManageSection({super.key, super.currentScope}) : super("Manage");
 
   Future<List<DiskInfo>?> getDiskInfos() {
     SystemInfoGetter infoGetter = SystemInfoGetter();

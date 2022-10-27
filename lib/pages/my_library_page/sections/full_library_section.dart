@@ -19,7 +19,7 @@ class FullLibrarySection extends NavigationSectionStateless {
 
   void Function(void Function())? _reloadTilesGrid;
 
-  FullLibrarySection({Key? key}) : super("Full library", key: key);
+  FullLibrarySection({super.key, super.currentScope}) : super("Full library");
 
   Future<List<GameModel>?> _loadXCloudGames(BuildContext context) async {
     ProfileProvider profileProvider = context.read<ProfileProvider>();
@@ -93,7 +93,8 @@ class FullLibrarySection extends NavigationSectionStateless {
                         tileSize: tileSize,
                         tiles: WidgetGen.generateByModel(
                             searchResult ?? library,
-                            TileGeneratorOption([tileSize], context: context)),
+                            TileGeneratorOption([tileSize],
+                                focusScope: currentScope, context: context)),
                         scrollDirection: Axis.vertical,
                       );
                   }

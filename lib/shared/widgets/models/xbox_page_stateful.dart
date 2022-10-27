@@ -29,6 +29,12 @@ abstract class XboxPageState<T extends XboxPageStateful> extends State<T>
     /*Virtual: Not required*/
   }
 
+  void updateShortcuts(List<ShortcutInfo> shortcuts) {
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, shortcuts.whereType<ShortcutOption>().toList());
+    updateShortcutsViewer(shortcuts);
+  }
+
   @override
   Widget genPageChild(BuildContext context) {
     if (supportShortcuts) {
@@ -45,15 +51,12 @@ abstract class XboxPageState<T extends XboxPageStateful> extends State<T>
   Widget build(BuildContext context) {
     List<ShortcutInfo>? mapping = defineMapping(context);
 
-    if (mapping != null) {
-      KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-          context, mapping.whereType<ShortcutOption>().toList());
-      updateShortcuts(mapping);
-    }
+    if (mapping != null) updateShortcuts(mapping);
 
-    return CallbackShortcuts(
-        bindings: Provider.of<KeyboardActionProvider>(context, listen: false)
-            .keyboardBinding,
-        child: genPageChild(context));
+    return Consumer<KeyboardActionProvider>(
+      builder: (context, value, child) =>
+          CallbackShortcuts(bindings: value.keyboardBinding, child: child!),
+      child: genPageChild(context),
+    );
   }
 }

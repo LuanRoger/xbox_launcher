@@ -46,7 +46,7 @@ abstract class XboxPageStateless extends StatelessWidget
     if (mapping != null) {
       KeyboardControllerActionManipulator.mapKeyboardControllerActions(
           context, mapping.whereType<ShortcutOption>().toList());
-      updateShortcuts(mapping);
+      updateShortcutsViewer(mapping);
     }
 
     return CallbackShortcuts(

@@ -20,7 +20,7 @@ abstract class ShortcutViewerSupport {
     );
   }
 
-  void updateShortcuts(List<ShortcutInfo> shortcuts) {
+  void updateShortcutsViewer(List<ShortcutInfo> shortcuts) {
     if (shortcuts.isEmpty) return;
 
     _shortcutsOverlay = ShortcutsViewer(shortcuts);

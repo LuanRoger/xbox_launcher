@@ -34,7 +34,7 @@ class MyGamesSection extends NavigationSectionStateless {
   late ChipsRow chipsRow;
   List<ChipBase>? chipsList;
 
-  MyGamesSection({Key? key}) : super("Games", key: key);
+  MyGamesSection({super.key, super.currentScope}) : super("Games");
 
   Future<bool> readXCloudGames(BuildContext context) async {
     ProfileProvider profileProvider = context.read<ProfileProvider>();
@@ -209,6 +209,7 @@ class MyGamesSection extends NavigationSectionStateless {
                                     tiles: WidgetGen.generateByModel(
                                         gamesSearchResult ?? gamesList,
                                         TileGeneratorOption([tileSize],
+                                            focusScope: currentScope,
                                             context: context)),
                                     scrollDirection: Axis.vertical,
                                   ),
