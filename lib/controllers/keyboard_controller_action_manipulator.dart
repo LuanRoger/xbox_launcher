@@ -7,7 +7,8 @@ import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class KeyboardControllerActionManipulator {
   static void mapKeyboardControllerActions(
-      BuildContext context, List<ShortcutOption> shortcutsOptions) {
+      BuildContext context, List<ShortcutOption> shortcutsOptions,
+      {bool notifyChanges = true}) {
     if (shortcutsOptions.isEmpty) return;
 
     var keyboardProvider =
@@ -24,7 +25,8 @@ class KeyboardControllerActionManipulator {
           () => action.value(context);
     }
 
-    keyboardProvider.keyboardBinding = keyboarMapping;
+    keyboardProvider.setKeyboardBinding(keyboarMapping,
+        notifyChanges: notifyChanges);
     controllerProvider.controller0Binding = controllerMapping;
   }
 

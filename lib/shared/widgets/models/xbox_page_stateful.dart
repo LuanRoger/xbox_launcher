@@ -29,9 +29,11 @@ abstract class XboxPageState<T extends XboxPageStateful> extends State<T>
     /*Virtual: Not required*/
   }
 
-  void updateShortcuts(List<ShortcutInfo> shortcuts) {
+  void updateShortcuts(List<ShortcutInfo> shortcuts,
+      {bool notifyChanges = true}) {
     KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, shortcuts.whereType<ShortcutOption>().toList());
+        context, shortcuts.whereType<ShortcutOption>().toList(),
+        notifyChanges: notifyChanges);
     updateShortcutsViewer(shortcuts);
   }
 
@@ -51,7 +53,7 @@ abstract class XboxPageState<T extends XboxPageStateful> extends State<T>
   Widget build(BuildContext context) {
     List<ShortcutInfo>? mapping = defineMapping(context);
 
-    if (mapping != null) updateShortcuts(mapping);
+    if (mapping != null) updateShortcuts(mapping, notifyChanges: false);
 
     return Consumer<KeyboardActionProvider>(
       builder: (context, value, child) =>

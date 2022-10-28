@@ -27,6 +27,14 @@ abstract class XboxPageStateless extends StatelessWidget
     /*Virtual: Not required*/
   }
 
+  void updateShortcuts(BuildContext context, List<ShortcutInfo> shortcuts,
+      {bool notifyChanges = true}) {
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, shortcuts.whereType<ShortcutOption>().toList(),
+        notifyChanges: notifyChanges);
+    updateShortcutsViewer(shortcuts);
+  }
+
   @override
   Widget genPageChild(BuildContext context) {
     if (supportShortcuts) {
@@ -43,11 +51,7 @@ abstract class XboxPageStateless extends StatelessWidget
   Widget build(BuildContext context) {
     List<ShortcutInfo>? mapping = defineMapping(context);
 
-    if (mapping != null) {
-      KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-          context, mapping.whereType<ShortcutOption>().toList());
-      updateShortcutsViewer(mapping);
-    }
+    if (mapping != null) updateShortcuts(context, mapping, notifyChanges: false);
 
     return CallbackShortcuts(
         bindings: Provider.of<KeyboardActionProvider>(context, listen: false)

@@ -12,10 +12,12 @@ class KeyboardActionProvider extends ChangeNotifier
     return Map.from(_keyboardBinding);
   }
 
-  set keyboardBinding(Map<ShortcutActivator, void Function()> keyboardBinding) {
+  void setKeyboardBinding(
+      Map<ShortcutActivator, void Function()> keyboardBinding,
+      {bool notifyChanges = true}) {
     _keyboardBinding = keyboardBinding;
 
-    notifyListeners();
+    if (notifyChanges) notifyListeners();
   }
 
   @override
