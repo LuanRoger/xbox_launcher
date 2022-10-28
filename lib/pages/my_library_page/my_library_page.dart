@@ -129,7 +129,9 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
         MyAppsSection(currentScope: elementFocusScope),
         const AppsGroupSection(),
         FullLibrarySection(currentScope: elementFocusScope),
-        const ManageSection()
+        ManageSection(
+          currentScope: elementFocusScope,
+        )
       ],
     );
   }

@@ -2,8 +2,8 @@ import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/models/system_outlined_button.dart';
 
-class OutlinedTextButton extends SystemOutlinedButton {
-  OutlinedTextButton(
+class TextOutlinedButton extends SystemOutlinedButton {
+  TextOutlinedButton(
       {super.key,
       required String title,
       TextStyle? textStyle,
@@ -14,6 +14,7 @@ class OutlinedTextButton extends SystemOutlinedButton {
       : super(
             content: Text(
               title,
+              textAlign: TextAlign.start,
               style: textStyle ?? AppTextStyle.APPS_GROUP_TITLE,
             ),
             style: ButtonStyle(

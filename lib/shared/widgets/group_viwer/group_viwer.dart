@@ -24,8 +24,9 @@ class GroupViwer extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        OutlinedTextButton(
+        TextOutlinedButton(
           title: group.groupName,
+          height: null,
           onPressed: () =>
               buttonEnable ? ContextMenuGroup(group).show(context) : null,
         ),
