@@ -165,7 +165,7 @@ class KeyboardOverlay implements MappingDefinition {
                         controller: controller,
                         focusNode: _textBoxFocus,
                         onChanged: onChanged,
-                        color:
+                        highlightColor:
                             Provider.of<ProfileProvider>(context, listen: false)
                                 .accentColor,
                       ),

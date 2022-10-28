@@ -9,6 +9,7 @@ import 'package:xbox_launcher/pages/profile_selector/widgets/profile_selector_it
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
+import 'package:xbox_launcher/shared/widgets/focus/element_focus_node.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
@@ -25,7 +26,7 @@ class ProfileSelector extends XboxPageStateful {
 
 class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
   final CarouselController profileSliderController = CarouselController();
-  late List<FocusNode> _sliderItemsFocusNodes;
+  late List<ElementFocusNode> _sliderItemsFocusNodes;
   Background? _backgroundPreview;
   late Key _backgroundTransitionKey;
   late List<ProfileModel> _profilesAvailable;
@@ -75,9 +76,10 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
       ProfileSelectorItem item = ProfileSelectorItem(
         profileModel: profile,
         onSelect: () => widget.onProfileSelect(context, profile),
+        focusNode: elementFocusScope.createFocusNode(),
       );
       if (_sliderItemsFocusNodes.length != _profilesAvailable.length) {
-        _sliderItemsFocusNodes.add(item.focusNode);
+        _sliderItemsFocusNodes.add(item.focusNode!);
       }
       _selectorProfileItems.add(item);
     }
