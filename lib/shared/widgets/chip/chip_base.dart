@@ -1,15 +1,23 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
+import 'package:xbox_launcher/shared/widgets/focus/element_focus_node.dart';
+import 'package:xbox_launcher/shared/widgets/focus/focable_element.dart';
 import 'package:xbox_launcher/shared/widgets/utils/observers/chip_notify_check.dart';
 import 'package:xbox_launcher/shared/widgets/utils/observers/observer.dart';
 
-abstract class ChipBase extends StatelessWidget implements ChipNotifyCheck {
+abstract class ChipBase extends StatelessWidget
+    implements ChipNotifyCheck, FocableElement {
   late bool isSelected;
   Object? value;
   void Function(bool, Object?)? onCheck;
   double? height;
   double? width;
+
+  @override
+  Object? elementValue;
+  @override
+  ElementFocusNode? focusNode;
 
   @override
   late Observer observer;
@@ -28,8 +36,11 @@ abstract class ChipBase extends StatelessWidget implements ChipNotifyCheck {
       this.onCheck,
       this.value,
       this.width,
-      this.height})
-      : super(key: key);
+      this.height,
+      this.focusNode})
+      : super(key: key) {
+    focusNode?.setFocucableElement(this);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +52,7 @@ abstract class ChipBase extends StatelessWidget implements ChipNotifyCheck {
           width: width,
           height: height,
           child: Button(
+            focusNode: focusNode,
             child: buttonChipChild(context),
             onPressed: () => _rebuildChip?.call(() {
               isSelected = !isSelected;

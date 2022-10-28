@@ -7,8 +7,7 @@ class ChipsRow extends StatefulWidget {
   final List<ChipBase> chips;
   final void Function(bool, Object?) onCheckChange;
 
-  const ChipsRow(this.chips, {Key? key, required this.onCheckChange})
-      : super(key: key);
+  const ChipsRow(this.chips, {super.key, required this.onCheckChange});
 
   @override
   State<ChipsRow> createState() => _ChipsRowState();

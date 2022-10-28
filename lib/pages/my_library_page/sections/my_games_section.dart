@@ -84,7 +84,10 @@ class MyGamesSection extends NavigationSectionStateless {
 
     List<ChipBase> tempChipsList = List.empty(growable: true);
     for (String gameGenre in Set.from(gamesGenre)) {
-      tempChipsList.add(TextChip(gameGenre));
+      tempChipsList.add(TextChip(
+        gameGenre,
+        focusNode: currentScope?.createFocusNode(),
+      ));
     }
 
     chipsList = tempChipsList.toList();
