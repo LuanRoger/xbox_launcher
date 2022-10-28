@@ -10,7 +10,7 @@ import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/menu_dialog_overlay.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/models/system_button.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/button_tile.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';

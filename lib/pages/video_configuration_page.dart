@@ -6,7 +6,7 @@ import 'package:xbox_launcher/shared/widgets/buttons/check_button.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/pages/configurations_page/widgets/models/configuration_menu.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/models/system_button.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class VideoConfigurationPage extends ConfigurationMenu {
