@@ -32,6 +32,20 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^1.0.0
+  msix: ^2.8.18
+
+msix_config:
+  display_name: Xbox Launcher
+  publisher_display_name: Luan Roger
+  identity_name: luanroger.xboxlauncher
+  msix_version: 0.0.1.0
+  capabilities: internetClient
+  enable_at_startup: false
+  output_name: xbox_launcher
+  store: false
+  architecture: x64
+  certificate_path: XboxLauncher.pfx
+  certificate_password: lrxboxlauncher
 
 flutter:
   uses-material-design: true
