@@ -10,6 +10,7 @@ class TextChip extends ChipBase {
       super.height,
       super.width,
       super.onCheck,
+      super.value,
       super.focusNode});
 
   @override
