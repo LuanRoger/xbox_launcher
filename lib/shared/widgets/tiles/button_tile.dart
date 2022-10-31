@@ -88,6 +88,7 @@ class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
 
     if (!widget.interactive) return;
     focusNode.addListener(() {
+      if (!mounted) return;
       setState(() {
         _titleBar = focusNode.hasFocus ? TileTitleBar(widget.title) : null;
         _tileBadges = !focusNode.hasFocus && widget.appBadgeInfo != null
