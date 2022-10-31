@@ -1,22 +1,23 @@
 import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
-import 'package:xbox_launcher/shared/app_consts.dart';
+import 'package:xbox_launcher/shared/enums/xcloud_supported_servers.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
+import 'package:xbox_launcher/shared/widgets/combobox/combobox.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 
-class CloudGamingConfigurationSection extends NavigationSection {
+class CloudGamingConfigurationSection extends NavigationSectionStateless {
   final TextEditingController jsonUrlTextController = TextEditingController();
   final TextEditingController controllerTest = TextEditingController();
 
   CloudGamingConfigurationSection({Key? key}) : super("Cloud Gaming", key: key);
 
   @override
-  List<Widget>? buildActions(BuildContext context) => null;
+  List<Widget>? titleActions(BuildContext context) => null;
 
   @override
-  List<Widget> buildColumnItems(BuildContext context) {
+  List<Widget> columnItems(BuildContext context) {
     jsonUrlTextController.text =
         Provider.of<ProfileProvider>(context, listen: false)
                 .xcloudGamesJsonPath ??
@@ -35,28 +36,22 @@ class CloudGamingConfigurationSection extends NavigationSection {
       ),
       const Spacer(),
       InfoLabel(
-        label: "XCloud server:",
-        child: StatefulBuilder(
-          builder: ((_, setState) => Consumer<ProfileProvider>(
-                builder: (_, value, __) => Combobox<String>(
-                  isExpanded: true,
-                  placeholder: const Text("Select the server"),
-                  items: AppConsts.XCLOUD_SUPPORTED_SERVERS
-                      .map((item) => ComboboxItem(
-                            child: Text(item),
-                            value: item,
-                          ))
-                      .toList(),
-                  value: AppConsts.XCLOUD_SUPPORTED_SERVERS
-                      .firstWhere((element) => element == value.preferedServer),
-                  onChanged: (newValue) {
-                    value.preferedServer = newValue!;
-                    setState(() {});
-                  },
-                ),
-              )),
-        ),
-      ),
+          label: "XCloud server:",
+          child: Consumer<ProfileProvider>(
+            builder: (_, value, __) => ComboBox(
+              XCloudSupportedServers.values
+                  .map((item) => ComboboxItem(
+                        child: Text(item.countryCode),
+                        value: item.index,
+                      ))
+                  .toList(),
+              placeholder: "Select the server",
+              onChange: (newValue) {
+                value.preferedServer =
+                    XCloudSupportedServers.fromIndex(newValue).countryCode;
+              },
+            ),
+          )),
       const Spacer(),
       Flexible(
         flex: 10,

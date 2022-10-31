@@ -2,16 +2,16 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 
-class GenralConfigurationSection extends NavigationSection {
+class GenralConfigurationSection extends NavigationSectionStateless {
   const GenralConfigurationSection({Key? key}) : super("General", key: key);
 
   @override
-  List<Widget>? buildActions(BuildContext context) => null;
+  List<Widget>? titleActions(BuildContext context) => null;
 
   @override
-  List<Widget> buildColumnItems(BuildContext context) => [
+  List<Widget> columnItems(BuildContext context) => [
         Flexible(
             flex: 15,
             child: ButtonGrid(buttons: {

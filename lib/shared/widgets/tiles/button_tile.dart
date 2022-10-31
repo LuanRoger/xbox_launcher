@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/models/app_badge_info.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
+import 'package:xbox_launcher/shared/widgets/focus/element_focus_node.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_badges.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_base_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_cover.dart';
@@ -21,6 +22,10 @@ class ButtonTile extends TileBaseStateful {
   late final double height;
   @override
   late final double width;
+  @override
+  Object? elementValue;
+  @override
+  ElementFocusNode? focusNode;
 
   late final TileSize _tileSize;
   TileSize get tileSize => _tileSize;
@@ -37,7 +42,9 @@ class ButtonTile extends TileBaseStateful {
       this.onPressed,
       this.icon,
       this.customCover,
-      this.image})
+      this.image,
+      this.elementValue,
+      this.focusNode})
       : super(key: key) {
     _tileSize = tileSize;
     switch (tileSize) {
@@ -58,33 +65,37 @@ class ButtonTile extends TileBaseStateful {
         height = 100;
         break;
     }
+
+    focusNode?.setFocucableElement(this);
   }
 }
 
 class _ButtonTileState extends TileBaseStatefulState<ButtonTile> {
-  final FocusNode focusNode = FocusNode();
   late bool getFocused;
   TileTitleBar? _titleBar;
   TileBadges? _tileBadges;
+  late final FocusNode focusNode;
 
   @override
   void initState() {
     super.initState();
 
+    focusNode = widget.focusNode ?? FocusNode();
+
     if (widget.appBadgeInfo != null) {
       _tileBadges = TileBadges(widget.appBadgeInfo!);
     }
 
-    if (widget.interactive) {
-      focusNode.addListener(() {
-        setState(() {
-          _titleBar = focusNode.hasFocus ? TileTitleBar(widget.title) : null;
-          _tileBadges = !focusNode.hasFocus && widget.appBadgeInfo != null
-              ? TileBadges(widget.appBadgeInfo!)
-              : null;
-        });
+    if (!widget.interactive) return;
+    focusNode.addListener(() {
+      if (!mounted) return;
+      setState(() {
+        _titleBar = focusNode.hasFocus ? TileTitleBar(widget.title) : null;
+        _tileBadges = !focusNode.hasFocus && widget.appBadgeInfo != null
+            ? TileBadges(widget.appBadgeInfo!)
+            : null;
       });
-    }
+    });
   }
 
   @override

@@ -47,4 +47,13 @@ class AppTextStyle {
 
   static const MENU_DIALOG_TITLE =
       TextStyle(fontWeight: FontWeight.bold, fontSize: 24);
+  static const CONTEXT_MENU_TITLE =
+      TextStyle(fontWeight: FontWeight.w600, fontSize: 22);
+
+  static const APPS_GROUP_TITLE = TextStyle(fontSize: 20);
+
+  static const VOLUME_INFOS =
+      TextStyle(fontSize: 16, fontWeight: FontWeight.w100);
+  static const VOLUME_PERCENTAGE =
+      TextStyle(fontSize: 18, fontWeight: FontWeight.w300);
 }

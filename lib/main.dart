@@ -27,7 +27,7 @@ void main() async {
     ),
     Provider<ControllerActionProvider>(
         create: (_) => ControllerActionProvider(xInputController)),
-    Provider(create: (_) => KeyboardActionProvider())
+    ChangeNotifierProvider(create: (_) => KeyboardActionProvider())
   ], child: const FlutterAppMain()));
 }
 

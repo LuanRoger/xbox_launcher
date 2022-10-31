@@ -7,9 +7,9 @@ import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 
-class ProfileConfigurationSection extends NavigationSection {
+class ProfileConfigurationSection extends NavigationSectionStateless {
   const ProfileConfigurationSection({Key? key}) : super("Profile", key: key);
 
   Future _removeProfileFlow(ProfileModel toRemove, BuildContext context) {
@@ -50,10 +50,10 @@ class ProfileConfigurationSection extends NavigationSection {
   }
 
   @override
-  List<Widget>? buildActions(BuildContext context) => null;
+  List<Widget>? titleActions(BuildContext context) => null;
 
   @override
-  List<Widget> buildColumnItems(BuildContext context) => [
+  List<Widget> columnItems(BuildContext context) => [
         Expanded(
           flex: 15,
           child: ButtonGrid(buttons: {

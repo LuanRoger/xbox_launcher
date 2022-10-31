@@ -37,7 +37,7 @@ class AppImages {
 
   //Central buttons
   static const START_BUTTON_IMAGE =
-      AssetImage("${BUTTONS_ASSETS_PATH}start_button.png");
+      AssetImage("${BUTTONS_ASSETS_PATH}menu_button.png");
   static const BACK_BUTTON_IMAGE =
       AssetImage("${BUTTONS_ASSETS_PATH}back_button.png");
 

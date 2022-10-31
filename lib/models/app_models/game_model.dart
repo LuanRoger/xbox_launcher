@@ -16,6 +16,7 @@ class GameModel implements AppModel {
   late String xcloudUrl;
   late String tileGameImageUrl;
   late String gameImageUrl;
+  late String storeUrl;
 
   @override
   GameModel fromJson(Map<String, dynamic> json) {
@@ -31,6 +32,7 @@ class GameModel implements AppModel {
     gameModel.xcloudUrl = json['xcloudUrl'] as String;
     gameModel.tileGameImageUrl = json['tileGameImageUrl'] as String;
     gameModel.gameImageUrl = json['gameImageUrl'] as String;
+    gameModel.storeUrl = json["storeUrl"] as String;
 
     return gameModel;
   }
@@ -46,7 +48,8 @@ class GameModel implements AppModel {
         "extraGameProperties": extraGameProperties.toJson(),
         "xcloudUrl": xcloudUrl,
         "tileGameImageUrl": tileGameImageUrl,
-        "gameImageUrl": gameImageUrl
+        "gameImageUrl": gameImageUrl,
+        "storeUrl": storeUrl
       };
 }
 

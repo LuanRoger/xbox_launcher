@@ -6,20 +6,20 @@ import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/search_button.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 import 'package:xbox_launcher/utils/loaders/xcloud_json_db_loader.dart';
 
-class FullLibrarySection extends NavigationSection {
-  late final List<AppModel> library;
+class FullLibrarySection extends NavigationSectionStateless {
+  late List<AppModel> library;
   final TextEditingController searchController = TextEditingController();
   List<AppModel>? searchResult;
 
   void Function(void Function())? _reloadTilesGrid;
 
-  FullLibrarySection({Key? key}) : super("Full library", key: key);
+  FullLibrarySection({super.key, super.currentScope}) : super("Full library");
 
   Future<List<GameModel>?> _loadXCloudGames(BuildContext context) async {
     ProfileProvider profileProvider = context.read<ProfileProvider>();
@@ -61,7 +61,7 @@ class FullLibrarySection extends NavigationSection {
   }
 
   @override
-  List<Widget>? buildActions(BuildContext context) => [
+  List<Widget>? titleActions(BuildContext context) => [
         SearchButton(
           controller: searchController,
           onFinish: (cancel) {
@@ -73,36 +73,35 @@ class FullLibrarySection extends NavigationSection {
       ];
 
   @override
-  List<Widget> buildColumnItems(BuildContext context) => [
-        Expanded(
-            flex: 10,
-            child: StatefulBuilder(
-              builder: (_, setState) {
-                _reloadTilesGrid = setState;
-                return FutureBuilder(
-                  future: _createListFullLibrary(context),
-                  builder: (_, snapshot) {
-                    switch (snapshot.connectionState) {
-                      case ConnectionState.waiting:
-                        return const ProgressRing();
-                      default:
-                        return TileGrid.count(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 5,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                          ),
-                          tiles: WidgetGen.generateByModel(
-                              searchResult ?? library,
-                              TileGeneratorOption([TileSize.MEDIUM],
-                                  context: context)),
-                          scrollDirection: Axis.vertical,
-                        );
-                    }
-                  },
-                );
-              },
-            ))
-      ];
+  List<Widget> columnItems(BuildContext context) {
+    final TileSize tileSize = context.read<ProfileProvider>().myLibraryTileSize;
+
+    return [
+      Expanded(
+          flex: 10,
+          child: StatefulBuilder(
+            builder: (_, setState) {
+              _reloadTilesGrid = setState;
+              return FutureBuilder(
+                future: _createListFullLibrary(context),
+                builder: (_, snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.waiting:
+                      return const ProgressRing();
+                    default:
+                      return TileGrid.tileSize(
+                        tileSize: tileSize,
+                        tiles: WidgetGen.generateByModel(
+                            searchResult ?? library,
+                            TileGeneratorOption([tileSize],
+                                focusScope: currentScope, context: context)),
+                        scrollDirection: Axis.vertical,
+                      );
+                  }
+                },
+              );
+            },
+          ))
+    ];
+  }
 }

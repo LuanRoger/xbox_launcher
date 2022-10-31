@@ -1,7 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart' hide Overlay;
-import 'package:xbox_launcher/shared/widgets/models/overlay.dart';
 
-class AlertBarOverlay extends Overlay {
+class AlertBarOverlay {
   String title;
   String content;
   InfoBarSeverity severity;
@@ -9,7 +8,6 @@ class AlertBarOverlay extends Overlay {
   AlertBarOverlay(this.title, this.content,
       {this.severity = InfoBarSeverity.info});
 
-  @override
   void show(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;

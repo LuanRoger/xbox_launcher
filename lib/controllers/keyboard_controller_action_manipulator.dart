@@ -1,16 +1,15 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
+import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/providers/controller_action_provider.dart';
 import 'package:xbox_launcher/providers/keyboard_action_provider.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class KeyboardControllerActionManipulator {
   static void mapKeyboardControllerActions(
-      BuildContext context,
-      Map<ControllerKeyboardPair, void Function(BuildContext context)>
-          actionEntry) {
-    if (actionEntry.isEmpty) return;
+      BuildContext context, List<ShortcutOption> shortcutsOptions,
+      {bool notifyChanges = true}) {
+    if (shortcutsOptions.isEmpty) return;
 
     var keyboardProvider =
         Provider.of<KeyboardActionProvider>(context, listen: false);
@@ -19,38 +18,15 @@ class KeyboardControllerActionManipulator {
 
     Map<ShortcutActivator, void Function()> keyboarMapping = {};
     Map<ControllerButton, void Function()> controllerMapping = {};
-    for (var action in actionEntry.entries) {
+    for (var action in shortcutsOptions
+        .map((shortcutOption) => shortcutOption.rawShortcut)) {
       keyboarMapping[action.key.keyboardkey] = () => action.value(context);
       controllerMapping[action.key.controllerButton] =
           () => action.value(context);
     }
-    keyboardProvider.keyboardBinding = keyboarMapping;
-    controllerProvider.controller0Binding = controllerMapping;
-  }
 
-  static void mapKeyboardActions(BuildContext context,
-      Map<SingleActivator, void Function(BuildContext context)> keyAction) {
-    if (keyAction.isEmpty) return;
-
-    var keyboardProvider =
-        Provider.of<KeyboardActionProvider>(context, listen: false);
-    Map<ShortcutActivator, void Function()> keyboardMapping = {};
-    keyAction.forEach((key, value) {
-      keyboardMapping[key] = () => value(context);
-    });
-
-    keyboardProvider.keyboardBinding = keyboardMapping;
-  }
-
-  static void mapControllerActions(BuildContext context,
-      Map<ControllerButton, void Function(BuildContext context)> buttonAction) {
-    if (buttonAction.isEmpty) return;
-    var controllerProvider =
-        Provider.of<ControllerActionProvider>(context, listen: false);
-    Map<ControllerButton, void Function()> controllerMapping = {};
-    buttonAction.forEach((key, value) {
-      controllerMapping[key] = () => value(context);
-    });
+    keyboardProvider.setKeyboardBinding(keyboarMapping,
+        notifyChanges: notifyChanges);
     controllerProvider.controller0Binding = controllerMapping;
   }
 

@@ -1,15 +1,15 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 
-class AboutConfigurationSection extends NavigationSection {
+class AboutConfigurationSection extends NavigationSectionStateless {
   const AboutConfigurationSection({Key? key}) : super("About", key: key);
 
   @override
-  List<Widget>? buildActions(BuildContext context) => null;
+  List<Widget>? titleActions(BuildContext context) => null;
 
   @override
-  List<Widget> buildColumnItems(BuildContext context) => const [
+  List<Widget> columnItems(BuildContext context) => const [
         Flexible(
           flex: 5,
           child: Text(

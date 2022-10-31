@@ -3,7 +3,7 @@ description: XCloud with the Xbox Series S/X's interface.
 version: 0.0.1
 
 environment:
-  sdk: ">=2.16.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -14,7 +14,7 @@ dependencies:
   provider: ^6.0.3
   xinput_gamepad: ^1.2.0
   virtual_keyboard:
-    git: https://github.com/LuanRoger/virtual_keyboard.git
+    git: https://github.com/LuanRoger/virtual_keyboard
   clock: ^1.1.1
   window_manager: ^0.2.7
   shared_preferences: ^2.0.15
@@ -23,6 +23,9 @@ dependencies:
   carousel_slider: ^4.1.1
   path_provider: ^2.0.11
   flutter_svg: ^1.1.5
+  sys_info_getter:
+    path: ./internals/sys_info_getter/
+  url_launcher: ^6.1.6
 
 dev_dependencies:
   flutter_test:

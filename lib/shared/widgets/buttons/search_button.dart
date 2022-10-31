@@ -1,5 +1,4 @@
 import 'package:fluent_ui/fluent_ui.dart' hide IconButton;
-import 'package:xbox_launcher/shared/widgets/buttons/icon_button.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_overlay.dart';
 
 class SearchButton extends StatelessWidget {
@@ -9,24 +8,47 @@ class SearchButton extends StatelessWidget {
   final double? width;
   final double? height;
 
-  const SearchButton(
+  void Function(void Function())? _reloadText;
+
+  SearchButton(
       {Key? key,
       required this.controller,
       this.onChanged,
       this.onFinish,
-      this.width = 100.0,
-      this.height = 30.0})
-      : super(key: key);
+      this.width = 200.0,
+      this.height = 40.0})
+      : super(key: key) {
+    controller.addListener(() => _reloadText?.call(() {}));
+  }
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-        icon: FluentIcons.search,
-        width: width,
-        height: height,
+    return SizedBox(
+      width: width,
+      height: height,
+      child: Button(
         onPressed: () => KeyboardOverlay(
                 controller: controller,
                 onFinish: onChanged == null ? onFinish : null,
                 onChanged: onFinish == null ? onChanged : null)
-            .show(context));
+            .show(context),
+        child: Row(children: [
+          const Icon(FluentIcons.search),
+          const SizedBox(
+            width: 5,
+          ),
+          StatefulBuilder(
+            builder: (_, setState) {
+              _reloadText = setState;
+
+              return Text(
+                controller.text.isNotEmpty ? controller.text : "Search",
+                overflow: TextOverflow.fade,
+              );
+            },
+          )
+        ]),
+        style: ButtonStyle(border: ButtonState.all(BorderSide.none)),
+      ),
+    );
   }
 }
