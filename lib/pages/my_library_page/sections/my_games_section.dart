@@ -34,7 +34,7 @@ class MyGamesSection extends NavigationSectionStateless {
   late ChipsRow chipsRow;
   List<ChipBase>? chipsList;
 
-  MyGamesSection({Key? key}) : super("Games", key: key);
+  MyGamesSection({super.key, super.currentScope}) : super("Games");
 
   Future<bool> readXCloudGames(BuildContext context) async {
     ProfileProvider profileProvider = context.read<ProfileProvider>();
@@ -48,16 +48,15 @@ class MyGamesSection extends NavigationSectionStateless {
   }
 
   void searchGamesByName(String gameName) {
+    if (gameName.isEmpty) {
+      _reloadTileGrid?.call(() => gamesSearchResult = null);
+    }
+
     gameName = gameName.toLowerCase();
 
     List<GameModel> searchResult = gamesList
         .where((game) => game.name.toLowerCase().contains(gameName))
         .toList();
-
-    if (searchResult.isEmpty) {
-      _reloadTileGrid?.call(() => gamesSearchResult = null);
-      return;
-    }
 
     _reloadTileGrid?.call(() => gamesSearchResult = searchResult);
   }
@@ -85,7 +84,10 @@ class MyGamesSection extends NavigationSectionStateless {
 
     List<ChipBase> tempChipsList = List.empty(growable: true);
     for (String gameGenre in Set.from(gamesGenre)) {
-      tempChipsList.add(TextChip(gameGenre));
+      tempChipsList.add(TextChip(
+        gameGenre,
+        focusNode: currentScope?.createFocusNode(),
+      ));
     }
 
     chipsList = tempChipsList.toList();
@@ -156,7 +158,10 @@ class MyGamesSection extends NavigationSectionStateless {
                           child: ChipsRow(
                         chipsList ?? List.empty(),
                         onCheckChange: (isSelected, value) {
-                          if (!isSelected) filterByGenre(null);
+                          if (!isSelected) {
+                            filterByGenre(null);
+                            return;
+                          }
 
                           filterByGenre(value as String);
                         },
@@ -167,6 +172,7 @@ class MyGamesSection extends NavigationSectionStateless {
                         child: StatefulBuilder(
                           builder: (context, setState) {
                             _reloadTileGrid = setState;
+
                             return Column(
                               children: [
                                 Expanded(
@@ -206,6 +212,7 @@ class MyGamesSection extends NavigationSectionStateless {
                                     tiles: WidgetGen.generateByModel(
                                         gamesSearchResult ?? gamesList,
                                         TileGeneratorOption([tileSize],
+                                            focusScope: currentScope,
                                             context: context)),
                                     scrollDirection: Axis.vertical,
                                   ),

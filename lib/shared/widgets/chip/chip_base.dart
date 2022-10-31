@@ -1,10 +1,13 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
-import 'package:xbox_launcher/shared/widgets/chip/chip_notify_check.dart';
-import 'package:xbox_launcher/shared/widgets/chip/chip_notify_observer.dart';
+import 'package:xbox_launcher/shared/widgets/focus/element_focus_node.dart';
+import 'package:xbox_launcher/shared/widgets/focus/focable_element.dart';
+import 'package:xbox_launcher/shared/widgets/utils/observers/chip_notify_check.dart';
+import 'package:xbox_launcher/shared/widgets/utils/observers/observer.dart';
 
-abstract class ChipBase extends StatelessWidget implements ChipNotifyCheck {
+abstract class ChipBase extends StatelessWidget
+    implements ChipNotifyCheck, FocableElement {
   late bool isSelected;
   Object? value;
   void Function(bool, Object?)? onCheck;
@@ -12,9 +15,14 @@ abstract class ChipBase extends StatelessWidget implements ChipNotifyCheck {
   double? width;
 
   @override
-  late ChipNotifyObserver observer;
+  Object? elementValue;
   @override
-  void notifyObserver() => observer.notificationReact(this, value);
+  ElementFocusNode? focusNode;
+
+  @override
+  late Observer observer;
+  @override
+  void notifyObserver() => observer.react(this, value);
 
   void Function(void Function())? _rebuildChip;
   void rebuildChip(void Function() newStateChipCallback) =>
@@ -28,8 +36,11 @@ abstract class ChipBase extends StatelessWidget implements ChipNotifyCheck {
       this.onCheck,
       this.value,
       this.width,
-      this.height})
-      : super(key: key);
+      this.height,
+      this.focusNode})
+      : super(key: key) {
+    focusNode?.setFocucableElement(this);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +52,12 @@ abstract class ChipBase extends StatelessWidget implements ChipNotifyCheck {
           width: width,
           height: height,
           child: Button(
+            focusNode: focusNode,
             child: buttonChipChild(context),
-            onPressed: () {
+            onPressed: () => _rebuildChip?.call(() {
               isSelected = !isSelected;
-              onCheck?.call(isSelected, value);
               notifyObserver();
-              _rebuildChip?.call(() {});
-            },
+            }),
             style: ButtonStyle(
                 padding: ButtonState.all(const EdgeInsets.all(13.0)),
                 backgroundColor: isSelected

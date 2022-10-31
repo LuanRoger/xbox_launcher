@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/system_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/models/system_button.dart';
 
 class CheckButton extends SystemButton {
   final String title;
@@ -15,7 +15,10 @@ class CheckButton extends SystemButton {
       required this.checked,
       required void Function() onPressed,
       required this.onChange,
-      this.color})
+      this.color,
+      super.focusNode,
+      super.height,
+      super.width})
       : super(
             key: key,
             content: Row(

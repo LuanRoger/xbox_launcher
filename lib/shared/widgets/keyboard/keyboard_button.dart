@@ -24,7 +24,7 @@ class KeyboardButton extends StatelessWidget {
       child: SystemTextBox(
         controller: controller,
         placeholder: placeholder,
-        maxLenght: maxLenght,
+        maxLength: maxLenght,
         readOnly: true,
       ),
       onPressed: () => KeyboardOverlay(

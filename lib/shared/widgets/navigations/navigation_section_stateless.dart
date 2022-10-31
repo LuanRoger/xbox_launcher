@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
+import 'package:xbox_launcher/shared/widgets/focus/element_focus_scope.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/models/navigation_section_base.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/models/navigation_section_widget.dart';
 
@@ -7,8 +8,11 @@ abstract class NavigationSectionStateless extends StatelessWidget
     implements NavigationSectionBase, NavigationSectionWidget {
   @override
   final String sectionName;
+  @override
+  final ElementFocusScope? currentScope;
 
-  const NavigationSectionStateless(this.sectionName, {Key? key})
+  const NavigationSectionStateless(this.sectionName,
+      {Key? key, this.currentScope})
       : super(key: key);
 
   @override

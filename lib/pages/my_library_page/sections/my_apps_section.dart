@@ -9,7 +9,7 @@ import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_genera
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 
 class MyAppsSection extends NavigationSectionStateless {
-  const MyAppsSection({Key? key}) : super("Apps", key: key);
+  const MyAppsSection({super.key, super.currentScope}) : super("Apps");
 
   @override
   List<Widget>? titleActions(BuildContext context) => null;
@@ -23,8 +23,10 @@ class MyAppsSection extends NavigationSectionStateless {
           flex: 7,
           child: TileGrid.tileSize(
             tileSize: tileSize,
-            tiles: WidgetGen.generateByModel(SystemAppController.systemApps,
-                TileGeneratorOption([tileSize], context: context)),
+            tiles: WidgetGen.generateByModel(
+                SystemAppController.systemApps,
+                TileGeneratorOption([tileSize],
+                    focusScope: currentScope, context: context)),
             scrollDirection: Axis.vertical,
           ))
     ];

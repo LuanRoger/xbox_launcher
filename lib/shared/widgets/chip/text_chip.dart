@@ -5,18 +5,12 @@ class TextChip extends ChipBase {
   final String text;
 
   TextChip(this.text,
-      {Key? key,
-      bool isSelected = false,
-      double? height,
-      double? width,
-      void Function(bool, Object?)? onCheck})
-      : super(
-            key: key,
-            isSelected: isSelected,
-            value: text,
-            height: height,
-            width: width,
-            onCheck: onCheck);
+      {super.key,
+      super.isSelected = false,
+      super.height,
+      super.width,
+      super.onCheck,
+      super.focusNode});
 
   @override
   Widget buttonChipChild(BuildContext context) => Text(text);

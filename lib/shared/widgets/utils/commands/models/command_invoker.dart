@@ -1,4 +1,4 @@
-import 'package:xbox_launcher/shared/widgets/commands/models/shared_command.dart';
+import 'package:xbox_launcher/shared/widgets/utils/commands/models/shared_command.dart';
 
 class CommandInvoker {
   final SharedCommand _command;

@@ -145,8 +145,8 @@ class KeyboardOverlay implements MappingDefinition {
 
     _changeKeyboardLayout(KeyboardLayout.ALPHABET);
     _initialStringMemento = String.fromCharCodes(controller.text.codeUnits);
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(context,
-        Map.fromEntries(defineMapping(context)!.map((e) => e.rawShortcut)));
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, defineMapping(context)!.whereType<ShortcutOption>().toList());
 
     showGeneralDialog(
         context: context,
@@ -165,7 +165,7 @@ class KeyboardOverlay implements MappingDefinition {
                         controller: controller,
                         focusNode: _textBoxFocus,
                         onChanged: onChanged,
-                        color:
+                        highlightColor:
                             Provider.of<ProfileProvider>(context, listen: false)
                                 .accentColor,
                       ),

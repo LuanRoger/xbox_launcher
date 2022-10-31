@@ -1,9 +1,9 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
+import 'package:xbox_launcher/models/shortcut_models/shortcut_info.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/button_svg_gen.dart';
 
 class ShortcutsViewer extends StatelessWidget {
-  final List<ShortcutOption> mappedShortcuts;
+  final List<ShortcutInfo> mappedShortcuts;
 
   const ShortcutsViewer(this.mappedShortcuts, {super.key});
 
@@ -15,7 +15,7 @@ class ShortcutsViewer extends StatelessWidget {
 
     List<Row> shortcutRow = List.empty(growable: true);
     int counter = 0;
-    for (ShortcutOption sOption in mappedShortcuts) {
+    for (ShortcutInfo sOption in mappedShortcuts) {
       if (!sOption.show) continue;
 
       shortcutRow.add(Row(

@@ -5,7 +5,6 @@ import 'package:xbox_launcher/controllers/system_info_getter.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_item.dart';
@@ -13,7 +12,7 @@ import 'package:xbox_launcher/shared/widgets/infos_provider/volume_info/volume_i
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 
 class ManageSection extends NavigationSectionStateless {
-  const ManageSection({super.key}) : super("Manage");
+  const ManageSection({super.key, super.currentScope}) : super("Manage");
 
   Future<List<DiskInfo>?> getDiskInfos() {
     SystemInfoGetter infoGetter = SystemInfoGetter();
@@ -34,6 +33,7 @@ class ManageSection extends NavigationSectionStateless {
             IconTextButton(
                 title: "Tile size",
                 icon: FluentIcons.size_legacy,
+                focusNode: currentScope?.createFocusNode(),
                 onPressed: () {
                   ContextMenu("Tiles sizes", contextItems: [
                     ContextMenuItem("Small", onPressed: () {

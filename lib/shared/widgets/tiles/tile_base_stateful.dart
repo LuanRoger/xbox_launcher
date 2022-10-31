@@ -2,9 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_base.dart';
 
 abstract class TileBaseStateful extends StatefulWidget implements TileBase {
-  final Object? objectInfoSender;
-
-  const TileBaseStateful({Key? key, this.objectInfoSender}) : super(key: key);
+  const TileBaseStateful({Key? key}) : super(key: key);
 }
 
 abstract class TileBaseStatefulState<T extends TileBaseStateful>

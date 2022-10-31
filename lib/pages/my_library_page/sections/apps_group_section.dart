@@ -17,13 +17,15 @@ class AppsGroupSection extends NavigationSectionStateless {
       Consumer<ProfileProvider>(builder: (_, value, __) {
         if (value.appsGroups.isEmpty) return const NoGroupsMessage();
 
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: value.appsGroups
-              .map((group) => Container(
-                  margin: const EdgeInsets.only(bottom: 20.0),
-                  child: GroupViwer(group)))
-              .toList(),
+        return Expanded(
+          flex: 20,
+          child: ListView(
+            children: value.appsGroups
+                .map((group) => Container(
+                    margin: const EdgeInsets.only(bottom: 20.0),
+                    child: GroupViwer(group)))
+                .toList(),
+          ),
         );
       })
     ];

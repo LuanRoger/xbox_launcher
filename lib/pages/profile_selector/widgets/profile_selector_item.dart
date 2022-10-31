@@ -2,14 +2,23 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/profile_avatar_button.dart';
+import 'package:xbox_launcher/shared/widgets/focus/element_focus_node.dart';
+import 'package:xbox_launcher/shared/widgets/focus/focable_element.dart';
 
-class ProfileSelectorItem extends StatelessWidget {
+class ProfileSelectorItem extends StatelessWidget implements FocableElement {
   final ProfileModel profileModel;
-  final FocusNode focusNode = FocusNode();
   final void Function() onSelect;
 
+  @override
+  Object? elementValue;
+  @override
+  ElementFocusNode? focusNode;
+
   ProfileSelectorItem(
-      {Key? key, required this.profileModel, required this.onSelect})
+      {Key? key,
+      required this.profileModel,
+      required this.onSelect,
+      this.focusNode})
       : super(key: key);
 
   @override

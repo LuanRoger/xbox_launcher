@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
 import 'package:xbox_launcher/models/apps_group.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/outlined_text_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/text_outlined_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_group.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
@@ -24,8 +24,9 @@ class GroupViwer extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        OutlinedTextButton(
+        TextOutlinedButton(
           title: group.groupName,
+          height: null,
           onPressed: () =>
               buttonEnable ? ContextMenuGroup(group).show(context) : null,
         ),
