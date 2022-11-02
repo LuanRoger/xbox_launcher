@@ -1,6 +1,6 @@
 name: xbox_launcher
 description: XCloud with the Xbox Series S/X's interface.
-version: 0.0.1
+version: 0.0.2
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
@@ -38,7 +38,7 @@ msix_config:
   display_name: Xbox Launcher
   publisher_display_name: Luan Roger
   identity_name: luanroger.xboxlauncher
-  msix_version: 0.0.1.0
+  msix_version: 0.0.2.0
   capabilities: internetClient
   enable_at_startup: false
   output_name: xbox_launcher

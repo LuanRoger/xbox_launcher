@@ -13,7 +13,7 @@ class AboutConfigurationSection extends NavigationSectionStateless {
         Flexible(
           flex: 5,
           child: Text(
-            "Xbox Launcher v0.0.1",
+            "Xbox Launcher v0.0.2",
             style: AppTextStyle.ABOUT_SECTION_TITLE_CONFIGURATION,
           ),
         ),
