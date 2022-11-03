@@ -2,7 +2,6 @@
 
 import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
@@ -106,33 +105,28 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
 
   @override
   Widget virtualBuild(BuildContext context) {
-    return NavigationBar(
-      icon: FluentIcons.library,
-      paneItems: [
-        PaneItem(
-            icon: const Icon(FluentIcons.history), title: const Text("Games")),
-        PaneItem(
-            icon: const Icon(FluentIcons.app_icon_default),
-            title: const Text("Apps")),
-        PaneItem(
-            icon: const Icon(FluentIcons.favorite_list),
-            title: const Text("Group")),
-        PaneItem(
-            icon: const Icon(FluentIcons.library),
-            title: const Text("Full library")),
-        PaneItemSeparator(),
-        PaneItem(
-            icon: const Icon(FluentIcons.toolbox), title: const Text("Manage"))
-      ],
-      bodyItems: [
-        MyGamesSection(currentScope: elementFocusScope),
-        MyAppsSection(currentScope: elementFocusScope),
-        const AppsGroupSection(),
-        FullLibrarySection(currentScope: elementFocusScope),
-        ManageSection(
-          currentScope: elementFocusScope,
-        )
-      ],
-    );
+    return NavigationBar(icon: FluentIcons.library, paneItems: [
+      PaneItem(
+          icon: const Icon(FluentIcons.history),
+          title: const Text("Games"),
+          body: MyGamesSection(currentScope: elementFocusScope)),
+      PaneItem(
+          icon: const Icon(FluentIcons.app_icon_default),
+          title: const Text("Apps"),
+          body: MyAppsSection(currentScope: elementFocusScope)),
+      PaneItem(
+          icon: const Icon(FluentIcons.favorite_list),
+          title: const Text("Group"),
+          body: const AppsGroupSection()),
+      PaneItem(
+          icon: const Icon(FluentIcons.library),
+          title: const Text("Full library"),
+          body: FullLibrarySection(currentScope: elementFocusScope)),
+      PaneItem(
+          icon: const Icon(FluentIcons.toolbox),
+          title: const Text("Manage"),
+          body: ManageSection(currentScope: elementFocusScope))
+    ]);
+    ;
   }
 }

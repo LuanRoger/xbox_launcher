@@ -9,7 +9,7 @@ import 'package:xbox_launcher/shared/widgets/buttons/search_button.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_base.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_row.dart';
 import 'package:xbox_launcher/shared/widgets/chip/text_chip.dart';
-import 'package:xbox_launcher/shared/widgets/combobox/combobox.dart';
+import 'package:xbox_launcher/shared/widgets/listbox/listbox.dart';
 import 'package:xbox_launcher/shared/enums/sort_options.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable_message.dart';
@@ -184,13 +184,13 @@ class MyGamesSection extends NavigationSectionStateless {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      ComboBox(
+                                      ListBox(
                                         [
-                                          ComboboxItem(
+                                          ComboBoxItem(
                                             child: const Text("Sort: A to Z"),
                                             value: SortOptions.ATOZ.index,
                                           ),
-                                          ComboboxItem(
+                                          ComboBoxItem(
                                             child: const Text("Release date"),
                                             value:
                                                 SortOptions.RELEASE_DATE.index,

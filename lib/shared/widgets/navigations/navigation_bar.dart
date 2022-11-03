@@ -9,16 +9,13 @@ class NavigationBar extends StatefulWidget implements NavigationBase {
   final int selectedTab;
   final IconData icon;
   @override
-  final List<NavigationPaneItem> paneItems;
-  @override
-  final List<Widget> bodyItems;
+  final List<PaneItem> paneItems;
 
   const NavigationBar(
       {Key? key,
       this.selectedTab = 0,
       required this.icon,
-      required this.paneItems,
-      required this.bodyItems})
+      required this.paneItems})
       : super(key: key);
 
   @override
@@ -27,12 +24,14 @@ class NavigationBar extends StatefulWidget implements NavigationBase {
 
 class _NavigationBarState extends State<NavigationBar> {
   late int selectedTab;
+  late final List<NavigationPaneItem> paneItems;
 
   @override
   void initState() {
     super.initState();
 
     selectedTab = widget.selectedTab;
+    paneItems = List.from(widget.paneItems);
   }
 
   @override
@@ -50,15 +49,9 @@ class _NavigationBarState extends State<NavigationBar> {
           size: const NavigationPaneSize(headerHeight: 140),
           displayMode: PaneDisplayMode.open,
           onChanged: (index) => setState(() => selectedTab = index),
-          items: widget.paneItems),
-      content: NavigationBody(
-        animationCurve: Curves.easeOutQuart,
-        animationDuration: const Duration(milliseconds: 300),
-        transitionBuilder: (child, animation) =>
-            EntrancePageTransition(child: child, animation: animation),
-        index: selectedTab,
-        children: widget.bodyItems,
-      ),
+          items: paneItems),
+      transitionBuilder: (child, animation) =>
+          EntrancePageTransition(child: child, animation: animation),
     );
   }
 }

@@ -38,21 +38,25 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
   @override
   Widget virtualBuild(BuildContext context) {
     return NavigationBar(
-      icon: FluentIcons.settings,
-      selectedTab: selectedTab,
-      paneItems: [
-        PaneItem(icon: const SizedBox(), title: const Text("General")),
-        PaneItem(icon: const SizedBox(), title: const Text("Profile")),
-        PaneItem(icon: const SizedBox(), title: const Text("Cloud gaming")),
-        PaneItemSeparator(),
-        PaneItem(icon: const SizedBox(), title: const Text("About"))
-      ],
-      bodyItems: [
-        const GenralConfigurationSection(),
-        const ProfileConfigurationSection(),
-        CloudGamingConfigurationSection(),
-        const AboutConfigurationSection()
-      ],
-    );
+        icon: FluentIcons.settings,
+        selectedTab: selectedTab,
+        paneItems: [
+          PaneItem(
+              icon: const SizedBox(),
+              title: const Text("General"),
+              body: const GenralConfigurationSection()),
+          PaneItem(
+              icon: const SizedBox(),
+              title: const Text("Profile"),
+              body: const ProfileConfigurationSection()),
+          PaneItem(
+              icon: const SizedBox(),
+              title: const Text("Cloud gaming"),
+              body: CloudGamingConfigurationSection()),
+          PaneItem(
+              icon: const SizedBox(),
+              title: const Text("About"),
+              body: const AboutConfigurationSection())
+        ]);
   }
 }

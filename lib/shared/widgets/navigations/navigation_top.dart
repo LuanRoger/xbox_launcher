@@ -7,15 +7,9 @@ class NavigationTop extends StatefulWidget implements NavigationBase {
   @override
   final int selectedTab;
   @override
-  final List<Widget> bodyItems;
-  @override
-  final List<NavigationPaneItem> paneItems;
+  final List<PaneItem> paneItems;
 
-  const NavigationTop(
-      {Key? key,
-      this.selectedTab = 0,
-      required this.bodyItems,
-      required this.paneItems})
+  const NavigationTop({Key? key, this.selectedTab = 0, required this.paneItems})
       : super(key: key);
 
   @override
@@ -42,10 +36,6 @@ class _NavigationTopState extends State<NavigationTop> {
           size: const NavigationPaneSize(topHeight: 70),
           onChanged: (newIndex) => setState(() => selectedTab = newIndex),
           items: widget.paneItems),
-      content: NavigationBody(
-        index: selectedTab,
-        children: widget.bodyItems,
-      ),
     );
   }
 }
