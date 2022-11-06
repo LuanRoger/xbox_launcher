@@ -1,7 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateless.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/models/system_button.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 
 abstract class ConfigurationMenu extends XboxPageStateless {
@@ -11,7 +10,7 @@ abstract class ConfigurationMenu extends XboxPageStateless {
   ConfigurationMenu(this.routeName, this.menuTitle, {Key? key})
       : super(key: key);
 
-  Map<String?, List<SystemButton>> buttonsBuilder(BuildContext context);
+  List<ButtonGridGroup> buttonsBuilder(BuildContext context);
 
   @override
   Widget virtualBuild(BuildContext context) {

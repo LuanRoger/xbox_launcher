@@ -14,8 +14,8 @@ class GenralConfigurationSection extends NavigationSectionStateless {
   List<Widget> columnItems(BuildContext context) => [
         Flexible(
             flex: 15,
-            child: ButtonGrid(buttons: {
-              null: [
+            child: ButtonGrid(buttons: [
+              ButtonGridGroup(buttons: [
                 IconTextButton(
                   title: "Personalizations",
                   icon: FluentIcons.personalize,
@@ -30,9 +30,9 @@ class GenralConfigurationSection extends NavigationSectionStateless {
                   icon: FluentIcons.group,
                   width: null,
                   onPressed: () {},
-                ),
-              ],
-              "": [
+                )
+              ]),
+              ButtonGridGroup(buttons: [
                 IconTextButton(
                   title: "Video",
                   icon: FluentIcons.t_v_monitor,
@@ -46,7 +46,7 @@ class GenralConfigurationSection extends NavigationSectionStateless {
                   width: null,
                   onPressed: () {},
                 ),
-              ]
-            }))
+              ])
+            ]))
       ];
 }

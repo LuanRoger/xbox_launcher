@@ -8,6 +8,7 @@ import 'package:xbox_launcher/pages/configurations_page/widgets/models/configura
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/menu_dialog_overlay.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/models/system_button.dart';
@@ -85,21 +86,28 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
   }
 
   @override
-  Map<String, List<SystemButton>> buttonsBuilder(BuildContext context) => {
-        "Colors": [
-          TextButton(title: "Colors", onPressed: () => setMainColor(context)),
-        ],
-        "My Background": [
-          TextButton(
-              title: "Solid color",
-              onPressed: () => setBackgroundColor(context)),
-          TextButton(
-              title: "Custom image", onPressed: () => setCustomImage(context)),
-          TextButton(
-              title: "Reset background",
-              onPressed: () =>
-                  Provider.of<ProfileProvider>(context, listen: false)
-                      .resetBackground())
-        ]
-      };
+  List<ButtonGridGroup> buttonsBuilder(BuildContext context) => [
+        ButtonGridGroup(
+          groupName: "Colors",
+          buttons: [
+            TextButton(title: "Colors", onPressed: () => setMainColor(context)),
+          ],
+        ),
+        ButtonGridGroup(
+          groupName: "My Background",
+          buttons: [
+            TextButton(
+                title: "Solid color",
+                onPressed: () => setBackgroundColor(context)),
+            TextButton(
+                title: "Custom image",
+                onPressed: () => setCustomImage(context)),
+            TextButton(
+                title: "Reset background",
+                onPressed: () =>
+                    Provider.of<ProfileProvider>(context, listen: false)
+                        .resetBackground()),
+          ],
+        )
+      ];
 }

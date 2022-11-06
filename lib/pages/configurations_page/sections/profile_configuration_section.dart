@@ -56,55 +56,63 @@ class ProfileConfigurationSection extends NavigationSectionStateless {
   List<Widget> columnItems(BuildContext context) => [
         Expanded(
           flex: 15,
-          child: ButtonGrid(buttons: {
-            null: [
-              IconTextButton(
-                title: "Add profiles",
-                icon: FluentIcons.add_friend,
-                width: null,
-                onPressed: () =>
-                    Navigator.pushNamed(context, AppRoutes.addProfileRoute),
+          child: ButtonGrid(
+            buttons: [
+              ButtonGridGroup(
+                buttons: [
+                  IconTextButton(
+                    title: "Add profiles",
+                    icon: FluentIcons.add_friend,
+                    width: null,
+                    onPressed: () =>
+                        Navigator.pushNamed(context, AppRoutes.addProfileRoute),
+                  ),
+                  IconTextButton(
+                    title: "Manage profile",
+                    icon: FluentIcons.account_management,
+                    width: null,
+                    onPressed: () => Navigator.pushNamed(
+                        context, AppRoutes.manageProfileRoute),
+                  ),
+                ],
               ),
-              IconTextButton(
-                title: "Manage profile",
-                icon: FluentIcons.account_management,
-                width: null,
-                onPressed: () =>
-                    Navigator.pushNamed(context, AppRoutes.manageProfileRoute),
-              ),
-            ],
-            "": [
-              IconTextButton(
-                title: "Remove profiles",
-                icon: FluentIcons.user_remove,
-                width: null,
-                onPressed: () => Navigator.pushNamed(
-                    context, AppRoutes.selectProfileRoute,
-                    arguments: [
-                      "Select to delete.",
-                      (context, selectedProfile) async {
-                        await _removeProfileFlow(selectedProfile, context);
-                        Navigator.pop(context);
-                      }
-                    ]),
-              ),
-              IconTextButton(
-                title: "Change profile",
-                icon: FluentIcons.follow_user,
-                width: null,
-                onPressed: () => Navigator.pushNamed(
-                    context, AppRoutes.selectProfileRoute,
-                    arguments: [
-                      null,
-                      (BuildContext context, ProfileModel selectedProfile) {
-                        Provider.of<ProfileProvider>(context, listen: false)
-                            .setCurrentById(selectedProfile.id);
-                        Navigator.pop(context);
-                      }
-                    ]),
+              ButtonGridGroup(
+                buttons: [
+                  IconTextButton(
+                    title: "Remove profiles",
+                    icon: FluentIcons.user_remove,
+                    width: null,
+                    onPressed: () => Navigator.pushNamed(
+                        context, AppRoutes.selectProfileRoute,
+                        arguments: [
+                          "Select to delete.",
+                          (context, selectedProfile) async {
+                            await _removeProfileFlow(selectedProfile, context);
+                            Navigator.pop(context);
+                          }
+                        ]),
+                  ),
+                  IconTextButton(
+                    title: "Change profile",
+                    icon: FluentIcons.follow_user,
+                    width: null,
+                    onPressed: () => Navigator.pushNamed(
+                      context,
+                      AppRoutes.selectProfileRoute,
+                      arguments: [
+                        null,
+                        (BuildContext context, ProfileModel selectedProfile) {
+                          Provider.of<ProfileProvider>(context, listen: false)
+                              .setCurrentById(selectedProfile.id);
+                          Navigator.pop(context);
+                        }
+                      ],
+                    ),
+                  ),
+                ],
               )
-            ]
-          }),
+            ],
+          ),
         )
       ];
 }
