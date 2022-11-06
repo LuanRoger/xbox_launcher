@@ -17,8 +17,8 @@ class ThemeProfilePreferences {
 
   FocusThemeData get focusThemeData {
     return FocusThemeData(
-        glowFactor: 0.5,
-        glowColor: accentColor.withOpacity(0.03),
+        glowFactor: 3.0,
+        glowColor: accentColor.withOpacity(0.05),
         primaryBorder: BorderSide(
           width: 2.0,
           color: accentColor,

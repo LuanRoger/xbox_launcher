@@ -12,7 +12,7 @@ class ProfileAvatarButton extends SystemOutlinedButton {
       required super.onPressed,
       required this.accentColor,
       super.width,
-      super.height,
+      super.height = 170,
       super.focusNode,
       this.profileImagePath,
       this.radiusSize})
