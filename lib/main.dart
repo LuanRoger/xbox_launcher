@@ -7,13 +7,11 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/providers/controller_action_provider.dart';
 import 'package:xbox_launcher/routes/app_route_driver.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
-import 'package:xbox_launcher/shared/app_consts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await windowManager.ensureInitialized();
-  windowManager.setTitle(AppConsts.APP_WINDOW_TITLE);
 
   XInputController xInputController = XInputController();
   xInputController.init();

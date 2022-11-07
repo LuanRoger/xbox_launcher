@@ -2,8 +2,15 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/models/system_button.dart';
 
+class ButtonGridGroup {
+  String? groupName;
+  List<SystemButton> buttons;
+
+  ButtonGridGroup({this.groupName, required this.buttons});
+}
+
 class ButtonGrid extends StatelessWidget {
-  final Map<String?, List<SystemButton>> buttons;
+  final List<ButtonGridGroup> buttons;
   final int? collectionFlex;
   final int? buttonsFlex;
 
@@ -14,9 +21,9 @@ class ButtonGrid extends StatelessWidget {
   List<Widget> _generateButtonSet() {
     List<Widget> buttonSet = List<Widget>.empty(growable: true);
 
-    buttons.forEach((collectionName, buttonsList) {
+    buttons.forEach((buttonsGroup) {
       List<Widget> separatedButtons = List<Widget>.empty(growable: true);
-      for (var button in buttonsList) {
+      for (var button in buttonsGroup.buttons) {
         separatedButtons.addAll([
           Flexible(flex: buttonsFlex ?? 10, child: button),
           const Spacer(),
@@ -27,7 +34,7 @@ class ButtonGrid extends StatelessWidget {
         Flexible(
           flex: collectionFlex ?? 10,
           child: InfoLabel(
-            label: collectionName ?? "",
+            label: buttonsGroup.groupName ?? "",
             isHeader: true,
             labelStyle: AppTextStyle.BUTTON_GRID_COLLECTION_TITLE,
             child: Column(

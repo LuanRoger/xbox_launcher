@@ -4,7 +4,7 @@ import 'package:xbox_launcher/shared/widgets/buttons/models/system_button.dart';
 
 class TextButton extends SystemButton {
   TextButton(
-      {Key? key,
+      {super.key,
       required String title,
       TextStyle? textStyle,
       required super.onPressed,
@@ -13,9 +13,11 @@ class TextButton extends SystemButton {
       super.style,
       super.focusNode})
       : super(
-            key: key,
-            content: Text(
-              title,
-              style: textStyle ?? AppTextStyle.SYSTEM_BUTTON_TEXT,
-            ));
+            content: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            title,
+            style: textStyle ?? AppTextStyle.SYSTEM_BUTTON_TEXT,
+          ),
+        ));
 }

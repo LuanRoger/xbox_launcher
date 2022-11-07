@@ -86,11 +86,13 @@ class KeyboardOverlay implements MappingDefinition {
 
   void _cancel(BuildContext context) {
     controller.text = _initialStringMemento!;
+    KeyboardControllerActionManipulator.applyMementoInAll(context);
     Navigator.pop(context);
   }
 
   void _finish(BuildContext context) {
     onFinish?.call(false);
+    KeyboardControllerActionManipulator.applyMementoInAll(context);
     Navigator.pop(context);
   }
   //#endregion

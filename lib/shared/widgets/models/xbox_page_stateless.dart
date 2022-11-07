@@ -1,3 +1,5 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
+
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
@@ -37,21 +39,21 @@ abstract class XboxPageStateless extends StatelessWidget
 
   @override
   Widget genPageChild(BuildContext context) {
-    if (supportShortcuts) {
+    if (supportShortcuts)
       return Stack(children: [
         Container(color: AppColors.DARK_BG, child: virtualBuild(context)),
         shortcutOverlayWidget!
       ]);
-    } else {
+    else
       return Container(color: AppColors.DARK_BG, child: virtualBuild(context));
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     List<ShortcutInfo>? mapping = defineMapping(context);
 
-    if (mapping != null) updateShortcuts(context, mapping, notifyChanges: false);
+    if (mapping != null)
+      updateShortcuts(context, mapping, notifyChanges: false);
 
     return CallbackShortcuts(
         bindings: Provider.of<KeyboardActionProvider>(context, listen: false)

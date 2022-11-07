@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/xcloud_supported_servers.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
-import 'package:xbox_launcher/shared/widgets/combobox/combobox.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
+import 'package:xbox_launcher/shared/widgets/listbox/listbox.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 
 class CloudGamingConfigurationSection extends NavigationSectionStateless {
@@ -38,9 +38,9 @@ class CloudGamingConfigurationSection extends NavigationSectionStateless {
       InfoLabel(
           label: "XCloud server:",
           child: Consumer<ProfileProvider>(
-            builder: (_, value, __) => ComboBox(
+            builder: (_, value, __) => ListBox(
               XCloudSupportedServers.values
-                  .map((item) => ComboboxItem(
+                  .map((item) => ComboBoxItem(
                         child: Text(item.countryCode),
                         value: item.index,
                       ))
