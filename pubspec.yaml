@@ -26,6 +26,7 @@ dependencies:
   sys_info_getter:
     path: ./internals/sys_info_getter/
   url_launcher: ^6.1.6
+  path: ^1.8.2
 
 dev_dependencies:
   flutter_test:

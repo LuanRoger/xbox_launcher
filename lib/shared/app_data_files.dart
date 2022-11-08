@@ -3,11 +3,15 @@
 import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as P;
 
 class AppDataFiles {
-  static Future<Directory> get BASE_DIRECTORY async {
-    Directory baseDirectory = Directory(
-        (await getApplicationDocumentsDirectory()).path + "\\xbox_launcher");
+  static Future<Directory> get baseDirectory async {
+    String documentsDirectoryPath =
+        (await getApplicationDocumentsDirectory()).path;
+    Directory baseDirectory =
+        Directory(P.join(documentsDirectoryPath, "xbox_launcher"));
+
     if (!await baseDirectory.exists()) {
       await baseDirectory.create();
     }
@@ -15,7 +19,9 @@ class AppDataFiles {
     return baseDirectory;
   }
 
-  static Future<String> get PROFILES_JSON_FILE_PATH async {
-    return (await BASE_DIRECTORY).path + "\\profiles_data.json";
+  static Future<String> get profilesJsonFilePath async {
+    String baseDirectoryPath = (await baseDirectory).path;
+
+    return P.join(baseDirectoryPath, "profiles_data.json");
   }
 }

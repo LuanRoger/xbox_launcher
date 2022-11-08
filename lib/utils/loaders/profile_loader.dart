@@ -19,7 +19,7 @@ class ProfileLoader {
   }
 
   Future<File> get profileFile async =>
-      File(await AppDataFiles.PROFILES_JSON_FILE_PATH);
+      File(await AppDataFiles.profilesJsonFilePath);
 
   Future<bool> loadProfiles() async {
     File file = await profileFile;
