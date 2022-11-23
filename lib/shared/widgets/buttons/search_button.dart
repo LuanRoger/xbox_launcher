@@ -1,51 +1,53 @@
 import 'package:fluent_ui/fluent_ui.dart' hide IconButton;
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_overlay.dart';
 
-class SearchButton extends StatelessWidget {
+class SearchButton extends HookWidget {
   final TextEditingController controller;
   final void Function(String)? onChanged;
   final void Function(bool)? onFinish;
   final double? width;
   final double? height;
 
-  void Function(void Function())? _reloadText;
-
-  SearchButton(
+  const SearchButton(
       {Key? key,
       required this.controller,
       this.onChanged,
       this.onFinish,
       this.width = 200.0,
       this.height = 40.0})
-      : super(key: key) {
-    controller.addListener(() => _reloadText?.call(() {}));
-  }
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final showTextState = useState<String>("");
+    final internalTextControllerState =
+        useTextEditingController(text: controller.text);
+    internalTextControllerState.addListener(
+        () => showTextState.value = internalTextControllerState.text);
+
     return SizedBox(
       width: width,
       height: height,
       child: Button(
-        onPressed: () => KeyboardOverlay(
-                controller: controller,
-                onFinish: onChanged == null ? onFinish : null,
-                onChanged: onFinish == null ? onChanged : null)
-            .show(context),
+        onPressed: () async {
+          final keyboardHandler = KeyboardOverlay(
+              controller: controller,
+              onFinish: onChanged == null ? onFinish : null,
+              onChanged: onFinish == null ? onChanged : null);
+          await keyboardHandler.show(context);
+
+          keyboardHandler.dispose();
+        },
         child: Row(children: [
           const Icon(FluentIcons.search),
           const SizedBox(
             width: 5,
           ),
-          StatefulBuilder(
-            builder: (_, setState) {
-              _reloadText = setState;
-
-              return Text(
-                controller.text.isNotEmpty ? controller.text : "Search",
-                overflow: TextOverflow.fade,
-              );
-            },
-          )
+          Text(
+            controller.text.isNotEmpty ? controller.text : "Search",
+            overflow: TextOverflow.fade,
+          ),
         ]),
         style: ButtonStyle(border: ButtonState.all(BorderSide.none)),
       ),

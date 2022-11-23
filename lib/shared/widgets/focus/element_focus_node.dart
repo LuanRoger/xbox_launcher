@@ -4,18 +4,18 @@ import 'package:xbox_launcher/shared/widgets/focus/focable_element.dart';
 
 class ElementFocusNode extends FocusNode {
   final ElementFocusScope _currentScope;
-  late FocableElement _focableElement;
+  late final FocableElement _focableElement;
 
   ElementFocusNode(this._currentScope) {
-    addListener(() => notifyFocus());
-  }
-
-  void setFocucableElement(FocableElement focableElement) {
-    _focableElement = focableElement;
+    addListener(notifyFocus);
   }
 
   void notifyFocus() {
-    _currentScope.onElementFocus
-        ?.call(_focableElement, _focableElement.elementValue);
+    _currentScope.reciveFocusNotification(
+        _focableElement, _focableElement.elementValue);
+  }
+
+  void setCurrentElement(FocableElement element) {
+    _focableElement = element;
   }
 }

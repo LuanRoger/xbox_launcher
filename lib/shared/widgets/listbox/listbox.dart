@@ -1,8 +1,9 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:provider/provider.dart';
-import 'package:xbox_launcher/providers/profile_provider.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:xbox_launcher/providers/profile_providers.dart';
 
-class ListBox extends StatefulWidget {
+class ListBox extends HookConsumerWidget {
   final List<ComboBoxItem<int>> items;
   final void Function(int) onChange;
   String? placeholder;
@@ -22,39 +23,24 @@ class ListBox extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<ListBox> createState() => _ListBoxState();
-}
-
-class _ListBoxState extends State<ListBox> {
-  late int currentValue;
-
-  @override
-  void initState() {
-    super.initState();
-    currentValue = widget.initialIndex ?? 0;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    Color accentColor = context.read<ProfileProvider>().accentColor;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final profileTheme = ref.watch(profileThemeProvider);
+    final currentValueState = useState(initialIndex ?? 0);
 
     return SizedBox(
-      width: widget.width,
-      height: widget.height,
+      width: width,
+      height: height,
       child: ComboBox<int>(
-          value: currentValue,
-          focusNode: widget.focusNode,
+          value: currentValueState.value,
+          focusNode: focusNode,
           isExpanded: true,
-          popupColor: accentColor,
-          placeholder:
-              widget.placeholder != null ? Text(widget.placeholder!) : null,
+          popupColor: profileTheme.accentColor,
+          placeholder: placeholder != null ? Text(placeholder!) : null,
           onChanged: ((value) {
-            widget.onChange(value!);
-            setState(() {
-              currentValue = value;
-            });
+            onChange(value!);
+            currentValueState.value = value;
           }),
-          items: widget.items),
+          items: items),
     );
   }
 }

@@ -26,6 +26,7 @@ class SystemOutlinedButton extends OutlinedButton implements SystemButtonBase {
       ButtonStyle? style,
       this.focusNode})
       : super(
+            focusNode: focusNode,
             child: SizedBox(
               width: width,
               height: height,
@@ -33,7 +34,5 @@ class SystemOutlinedButton extends OutlinedButton implements SystemButtonBase {
             ),
             style: style != null
                 ? style.copyWith(border: ButtonState.all(BorderSide.none))
-                : ButtonStyle(border: ButtonState.all(BorderSide.none))) {
-    focusNode?.setFocucableElement(this);
-  }
+                : ButtonStyle(border: ButtonState.all(BorderSide.none)));
 }

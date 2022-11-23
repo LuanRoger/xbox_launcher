@@ -28,14 +28,13 @@ abstract class ContextMenuBase {
               backgroundColor: Colors.transparent,
               alignment: Alignment.center,
               child: Container(
-                width: size.width * 0.2,
-                padding:
-                    const EdgeInsets.only(top: 20.0, left: 1.0, right: 1.0),
-                decoration: BoxDecoration(
-                    color: AppColors.ELEMENT_BG,
-                    borderRadius: BorderRadius.circular(10.0)),
-                child: dialogContentBuilder(context),
-              ),
+                  width: size.width * 0.2,
+                  padding:
+                      const EdgeInsets.only(top: 20.0, left: 1.0, right: 1.0),
+                  decoration: BoxDecoration(
+                      color: AppColors.ELEMENT_BG,
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: dialogContentBuilder(context)),
             ));
   }
 }

@@ -1,9 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
-import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/app_models/system_app_model.dart';
-import 'package:xbox_launcher/providers/profile_provider.dart';
+import 'package:xbox_launcher/providers/profile_providers.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 import 'package:xbox_launcher/shared/widgets/utils/commands/models/shared_command.dart';
@@ -11,8 +10,9 @@ import 'package:xbox_launcher/shared/widgets/utils/commands/models/shared_comman
 class OpenAppCommand implements SharedCommand {
   AppModel appModel;
   BuildContext context;
+  WidgetRef ref;
 
-  OpenAppCommand(this.appModel, {required this.context});
+  OpenAppCommand(this.appModel, {required this.ref, required this.context});
 
   @override
   void execute() {
@@ -27,18 +27,17 @@ class OpenAppCommand implements SharedCommand {
   }
 
   void goToSystemApp() {
-    SystemAppModel systemAppModel = appModel as SystemAppModel;
     Navigator.pushNamed(context, AppRoutes.systemAppRoute,
-        arguments: [systemAppModel.appHome!]);
-    Provider.of<ProfileProvider>(context, listen: false)
-        .addAppToHistory(appModel);
+        arguments: [(appModel as SystemAppModel).appHome!]);
+
+    ref.read(appsHistoricProvider.notifier).addApp(appModel);
   }
 
   void goToGameApp() {
-    GameModel gameModel = appModel as GameModel;
+    final profileInfo = ref.read(currentProfileProvider);
+
     Navigator.pushNamed(context, AppRoutes.xcloudGameRoute,
-        arguments: [gameModel, context.read<ProfileProvider>().preferedServer]);
-    Provider.of<ProfileProvider>(context, listen: false)
-        .addAppToHistory(gameModel);
+        arguments: [appModel, profileInfo.preferedServer]);
+    ref.read(appsHistoricProvider.notifier).addApp(appModel);
   }
 }
