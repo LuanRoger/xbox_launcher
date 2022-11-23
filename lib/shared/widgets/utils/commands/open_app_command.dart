@@ -1,8 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/models/app_models/system_app_model.dart';
-import 'package:xbox_launcher/providers/profile_providers.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 import 'package:xbox_launcher/shared/widgets/utils/commands/models/shared_command.dart';
@@ -10,9 +10,8 @@ import 'package:xbox_launcher/shared/widgets/utils/commands/models/shared_comman
 class OpenAppCommand implements SharedCommand {
   AppModel appModel;
   BuildContext context;
-  WidgetRef ref;
 
-  OpenAppCommand(this.appModel, {required this.ref, required this.context});
+  OpenAppCommand(this.appModel, {required this.context});
 
   @override
   void execute() {
@@ -30,14 +29,14 @@ class OpenAppCommand implements SharedCommand {
     Navigator.pushNamed(context, AppRoutes.systemAppRoute,
         arguments: [(appModel as SystemAppModel).appHome!]);
 
-    ref.read(appsHistoricProvider.notifier).addApp(appModel);
+    context.read().addApp(appModel);
   }
 
   void goToGameApp() {
-    final profileInfo = ref.read(currentProfileProvider);
+    final profileInfo = context.read<ProfileProvider>();
 
     Navigator.pushNamed(context, AppRoutes.xcloudGameRoute,
         arguments: [appModel, profileInfo.preferedServer]);
-    ref.read(appsHistoricProvider.notifier).addApp(appModel);
+    profileInfo.addAppToHistory(appModel);
   }
 }

@@ -1,11 +1,11 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/focus/element_focus_scope.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/models/navigation_section_base.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/models/navigation_section_widget.dart';
 
-abstract class NavigationSection extends HookConsumerWidget
+abstract class NavigationSection extends HookWidget
     implements NavigationSectionBase, NavigationSectionWidget {
   @override
   final String sectionName;
@@ -16,9 +16,9 @@ abstract class NavigationSection extends HookConsumerWidget
       : super(key: key);
 
   @override
-  List<Widget> columnItems(BuildContext context, WidgetRef ref);
+  List<Widget> columnItems(BuildContext context);
   @override
-  List<Widget>? titleActions(BuildContext context, WidgetRef ref);
+  List<Widget>? titleActions(BuildContext context);
 
   Column _buildColumn(
       List<Widget> columnContent, List<Widget>? titleActionsList) {
@@ -48,10 +48,9 @@ abstract class NavigationSection extends HookConsumerWidget
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.fromLTRB(50, 50, 50, 0),
-        child: _buildColumn(
-            columnItems(context, ref), titleActions(context, ref)));
+        child: _buildColumn(columnItems(context), titleActions(context)));
   }
 }

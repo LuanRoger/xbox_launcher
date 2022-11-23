@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/profile_model.dart';
-import 'package:xbox_launcher/providers/profile_providers.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 
-class Background extends ConsumerWidget {
+class Background extends StatelessWidget {
   final ProfileModel? profileModel;
 
   const Background({Key? key, this.profileModel}) : super(key: key);
@@ -15,23 +15,21 @@ class Background extends ConsumerWidget {
       Image.file(File(imagePath), fit: BoxFit.cover);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final backgroundPreferences =
-        ref.watch(backgroundProfilePreferencesProvider);
-
+  Widget build(BuildContext context) {
     return SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: profileModel != null
+      width: double.infinity,
+      height: double.infinity,
+      child: Consumer<ProfileProvider>(
+        builder: (_, value, __) => profileModel != null
             ? profileModel!.backgroundPreferences.preferenceByImage
                 ? _generateImageBackground(
                     profileModel!.backgroundPreferences.imageBackgroundPath!)
                 : _generateColorBackground(
                     profileModel!.backgroundPreferences.solidColorBackground)
-            : backgroundPreferences.preferenceByImage
-                ? _generateImageBackground(
-                    backgroundPreferences.imageBackgroundPath!)
-                : _generateColorBackground(
-                    backgroundPreferences.solidColorBackground));
+            : value.preferenceByImage
+                ? _generateImageBackground(value.imageBackgroundPath!)
+                : _generateColorBackground(value.solidColorBackground),
+      ),
+    );
   }
 }

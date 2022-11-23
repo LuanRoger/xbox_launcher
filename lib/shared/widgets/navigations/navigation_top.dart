@@ -1,10 +1,10 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:xbox_launcher/providers/profile_providers.dart';
+import 'package:provider/provider.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/models/navigation_base.dart';
 
-class NavigationTop extends HookConsumerWidget implements NavigationBase {
+class NavigationTop extends HookWidget implements NavigationBase {
   @override
   final int selectedTab;
   @override
@@ -14,7 +14,7 @@ class NavigationTop extends HookConsumerWidget implements NavigationBase {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final selectedTabState = useState<int>(selectedTab);
 
     return NavigationView(
@@ -22,7 +22,7 @@ class NavigationTop extends HookConsumerWidget implements NavigationBase {
           selected: selectedTab,
           displayMode: PaneDisplayMode.top,
           indicator: StickyNavigationIndicator(
-              color: ref.read(profileThemeProvider).accentColor),
+              color: context.read<ProfileProvider>().accentColor),
           size: const NavigationPaneSize(topHeight: 70),
           onChanged: (newIndex) => selectedTabState.value = newIndex,
           items: paneItems),

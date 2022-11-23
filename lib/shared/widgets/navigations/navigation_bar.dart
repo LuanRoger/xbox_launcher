@@ -1,11 +1,11 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:xbox_launcher/providers/profile_providers.dart';
+import 'package:provider/provider.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/infos_provider/navigation_bar_profile_info.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/models/navigation_base.dart';
 
-class NavigationBar extends HookConsumerWidget implements NavigationBase {
+class NavigationBar extends HookWidget implements NavigationBase {
   @override
   final int selectedTab;
   final IconData icon;
@@ -20,7 +20,7 @@ class NavigationBar extends HookConsumerWidget implements NavigationBase {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final selectedTabState = useState<int>(selectedTab);
 
     return NavigationView(
@@ -31,7 +31,7 @@ class NavigationBar extends HookConsumerWidget implements NavigationBase {
           header: NavigationBarProfile(icon),
           selected: selectedTabState.value,
           indicator: StickyNavigationIndicator(
-            color: ref.read(profileThemeProvider).accentColor,
+            color: context.read<ProfileProvider>().accentColor,
           ),
           size: const NavigationPaneSize(headerHeight: 140),
           displayMode: PaneDisplayMode.open,

@@ -1,14 +1,14 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/app_models/system_app_model.dart';
-import 'package:xbox_launcher/providers/profile_providers.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/cover_generation_options.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 
-class TileCover extends ConsumerWidget {
+class TileCover extends StatelessWidget {
   final AppModel? appModel;
   final Color? color;
   final CoverGenerationOptions? generationOptions;
@@ -53,15 +53,15 @@ class TileCover extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final profileTheme = ref.watch(profileThemeProvider);
-
-    return WidgetGen.generateTileCover(
-        colorByGenerator: profileTheme.accentColor,
-        color: color,
-        icon: icon,
-        customCover: customCover,
-        image: image,
-        generationOptions: generationOptions);
+  Widget build(BuildContext context) {
+    return Consumer<ProfileProvider>(
+      builder: (_, value, __) => WidgetGen.generateTileCover(
+          colorByGenerator: value.accentColor,
+          color: color,
+          icon: icon,
+          customCover: customCover,
+          image: image,
+          generationOptions: generationOptions),
+    );
   }
 }

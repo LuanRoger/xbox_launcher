@@ -1,5 +1,4 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:xbox_launcher/models/app_badge_info.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/models/covered_tile.dart';
@@ -54,13 +53,13 @@ class ButtonTile extends TileWidget implements CoveredTile {
   }
 
   @override
-  Widget virtualBuild(BuildContext context, WidgetRef ref) {
+  Widget virtualBuild(BuildContext context) {
     return Button(
       style: ButtonStyle(
           backgroundColor: ButtonState.all(Colors.transparent),
           elevation: ButtonState.all(0),
           padding: ButtonState.all(EdgeInsets.zero)),
-      onPressed: () => onPressed?.call(context, ref),
+      onPressed: () => onPressed?.call(context),
       child: Stack(
         children: [
           TileCover(

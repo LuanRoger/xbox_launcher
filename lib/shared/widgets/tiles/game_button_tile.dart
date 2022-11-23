@@ -19,9 +19,9 @@ class GameButtonTile extends ButtonTileInteractive {
           tileSize: tileSize,
           image: NetworkImage(gameModel.tileGameImageUrl),
           focusNode: focusNode,
-          onPressed: (context, ref) {
-            CommandInvoker command = CommandInvoker(
-                OpenAppCommand(gameModel, context: context, ref: ref));
+          onPressed: (context) {
+            CommandInvoker command =
+                CommandInvoker(OpenAppCommand(gameModel, context: context));
             command.execute();
           },
         );

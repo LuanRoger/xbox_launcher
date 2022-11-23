@@ -1,9 +1,11 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/app_models/system_app_model.dart';
-import 'package:xbox_launcher/providers/profile_providers.dart';
+import 'package:xbox_launcher/models/profile_preview_elements_preferences.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/hooks/element_focus_node_hook.dart';
@@ -14,7 +16,7 @@ import 'package:xbox_launcher/shared/widgets/tiles/models/tile_widget.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/system_app_tile.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 
-class AppsTilesGrid extends HookConsumerWidget implements TileGenerator {
+class AppsTilesGrid extends HookWidget implements TileGenerator {
   final List<AppModel> apps;
   final Axis scrollDirection;
   final TileGeneratorOption customGenerationOption;
@@ -80,20 +82,17 @@ class AppsTilesGrid extends HookConsumerWidget implements TileGenerator {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final previewElementsPreferences =
-        ref.watch(profilePreviewElementsPreferencesProvider);
-    final crossAxisCount =
-        _crossAxisCount(previewElementsPreferences.myLibraryTileSize);
-
-    return GridView.count(
-      crossAxisCount: crossAxisCount,
-      crossAxisSpacing: crossAxisSpacing ?? 0.0,
-      mainAxisSpacing: mainAxisSpacing ?? 0.0,
-      shrinkWrap: true,
-      scrollDirection: scrollDirection,
-      children: generateByModel(apps,
-          previewElementsPreferences.myLibraryTileSize, customGenerationOption),
+  Widget build(BuildContext context) {
+    return Consumer<ProfileProvider>(
+      builder: (_, value, __) => GridView.count(
+        crossAxisCount: _crossAxisCount(value.myLibraryTileSize),
+        crossAxisSpacing: crossAxisSpacing ?? 0.0,
+        mainAxisSpacing: mainAxisSpacing ?? 0.0,
+        shrinkWrap: true,
+        scrollDirection: scrollDirection,
+        children: generateByModel(
+            apps, value.myLibraryTileSize, customGenerationOption),
+      ),
     );
   }
 }

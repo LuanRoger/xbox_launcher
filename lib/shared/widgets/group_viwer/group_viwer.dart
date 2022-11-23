@@ -2,7 +2,6 @@ import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
 import 'package:xbox_launcher/models/apps_group.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_outlined_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_group.dart';
-import 'package:xbox_launcher/shared/widgets/focus/element_focus_scope.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/apps_tiles_grid.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 

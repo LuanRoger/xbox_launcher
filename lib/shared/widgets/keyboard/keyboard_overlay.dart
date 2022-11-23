@@ -1,13 +1,12 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart' hide KeyboardKey;
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/mapping_definition.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
-import 'package:xbox_launcher/providers/profile_providers.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_images.dart';
 import 'package:xbox_launcher/shared/enums/keyboard_layout.dart';
-import 'package:xbox_launcher/shared/hooks/keyboard_controller_mapping_hook.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_text_box.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_key.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keys_char.dart';
@@ -74,37 +73,37 @@ class KeyboardOverlay implements MappingDefinition {
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.tab),
               ControllerButton.LEFT_SHOULDER),
-          action: (_, __) => _switchKeyboardLayout()),
+          action: (_) => _switchKeyboardLayout()),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.capsLock),
               ControllerButton.LEFT_THUMB),
-          action: (_, __) => _switchLayoutToCaps()),
+          action: (_) => _switchLayoutToCaps()),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.insert),
               ControllerButton.RIGHT_THUMB),
-          action: (_, __) => _switchKeyboardLocker()),
+          action: (_) => _switchKeyboardLocker()),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.backspace),
               ControllerButton.X_BUTTON),
-          action: (_, __) => _backspace()),
+          action: (_) => _backspace()),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.space),
               ControllerButton.Y_BUTTON),
-          action: (_, __) => _space()),
+          action: (_) => _space()),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.escape),
               ControllerButton.BACK),
-          action: (_, __) => _cancel(context)),
+          action: (_) => _cancel(context)),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.enter),
               ControllerButton.START),
-          action: (_, __) => _finish(context))
+          action: (_) => _finish(context))
     ];
   }
 
@@ -153,99 +152,94 @@ class KeyboardOverlay implements MappingDefinition {
     final double screenWidth = size.width;
 
     _changeKeyboardLayout(KeyboardLayout.ALPHABET);
+    useKeyMapping(defineMapping(context)!, notify: false);
 
     return showGeneralDialog(
         context: context,
         pageBuilder: (_, __, ___) {
-          return HookConsumer(
-            builder: (context, ref, _) {
-              useKeyMapping(ref, defineMapping(context)!, notify: false);
-
-              return Stack(
-                alignment: Alignment.center,
-                children: [
-                  SizedBox(
-                    width: screenWidth * 0.8,
-                    height: 35,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: SystemTextBox(
-                            controller: _textBufferController,
-                            focusNode: _textBoxFocus,
-                            onChanged: onChanged,
-                            highlightColor:
-                                ref.read(profileThemeProvider).accentColor,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Flexible(
-                          child: StatefulBuilder(
-                            builder: (_, setState) {
-                              _updateKeyboardState ??= setState;
-                              return Icon(_keyboardLockState
-                                  ? FluentIcons.lock
-                                  : FluentIcons.unlock);
-                            },
-                          ),
-                        )
-                      ],
+          return Stack(
+            alignment: Alignment.center,
+            children: [
+              SizedBox(
+                width: screenWidth * 0.8,
+                height: 35,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: SystemTextBox(
+                        controller: _textBufferController,
+                        focusNode: _textBoxFocus,
+                        onChanged: onChanged,
+                        highlightColor:
+                            context.read<ProfileProvider>().accentColor,
+                      ),
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      padding: const EdgeInsets.fromLTRB(200, 23, 200, 23),
-                      width: double.infinity,
-                      height: screenHeight * 0.45,
-                      color: Colors.black,
-                      child: Row(children: [
-                        Flexible(
-                            flex: 1,
-                            child: _LeftButtonsSet(
-                                layoutKeyCallback: _switchKeyboardLayout,
-                                capsKeyCallback: _switchLayoutToCaps,
-                                cancelKeyCallback: _cancel)),
-                        const SizedBox(width: 3),
-                        Expanded(
-                            flex: 5,
-                            child: Column(
-                              children: [
-                                Flexible(
-                                  flex: 4,
-                                  child: StatefulBuilder(
-                                    builder: (_, updateKeyboard) {
-                                      _setNewLayout ??= updateKeyboard;
-                                      return currentKeyboardLayout;
-                                    },
-                                  ),
-                                ),
-                                const SizedBox(height: 3),
-                                Expanded(
-                                    child: KeyboardKey(
-                                  text: "Space",
-                                  onKeyPress: () => _space(),
-                                  buttonImage: AppImages.Y_BUTTON_IMAGE,
-                                ))
-                              ],
-                            )),
-                        const SizedBox(width: 3),
-                        Flexible(
-                            flex: 1,
-                            child: _RightButtonsSet(
-                              backspaceKeyCallback: _backspace,
-                              lockKeyCallback: _switchKeyboardLocker,
-                              confirmKeyCallback: _finish,
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Flexible(
+                      child: StatefulBuilder(
+                        builder: (_, setState) {
+                          _updateKeyboardState ??= setState;
+                          return Icon(_keyboardLockState
+                              ? FluentIcons.lock
+                              : FluentIcons.unlock);
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(200, 23, 200, 23),
+                  width: double.infinity,
+                  height: screenHeight * 0.45,
+                  color: Colors.black,
+                  child: Row(children: [
+                    Flexible(
+                        flex: 1,
+                        child: _LeftButtonsSet(
+                            layoutKeyCallback: _switchKeyboardLayout,
+                            capsKeyCallback: _switchLayoutToCaps,
+                            cancelKeyCallback: _cancel)),
+                    const SizedBox(width: 3),
+                    Expanded(
+                        flex: 5,
+                        child: Column(
+                          children: [
+                            Flexible(
+                              flex: 4,
+                              child: StatefulBuilder(
+                                builder: (_, updateKeyboard) {
+                                  _setNewLayout ??= updateKeyboard;
+                                  return currentKeyboardLayout;
+                                },
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Expanded(
+                                child: KeyboardKey(
+                              text: "Space",
+                              onKeyPress: () => _space(),
+                              buttonImage: AppImages.Y_BUTTON_IMAGE,
                             ))
-                      ]),
-                    ),
-                  )
-                ],
-              );
-            },
+                          ],
+                        )),
+                    const SizedBox(width: 3),
+                    Flexible(
+                        flex: 1,
+                        child: _RightButtonsSet(
+                          backspaceKeyCallback: _backspace,
+                          lockKeyCallback: _switchKeyboardLocker,
+                          confirmKeyCallback: _finish,
+                        ))
+                  ]),
+                ),
+              )
+            ],
           );
         });
   }

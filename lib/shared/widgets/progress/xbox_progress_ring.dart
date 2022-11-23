@@ -1,8 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:xbox_launcher/providers/profile_providers.dart';
+import 'package:provider/provider.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 
-class XboxProgressRing extends ConsumerWidget {
+class XboxProgressRing extends StatelessWidget {
   double? value;
   bool backwards;
   double strokeWidth;
@@ -11,14 +11,14 @@ class XboxProgressRing extends ConsumerWidget {
       {super.key, this.value, this.backwards = false, this.strokeWidth = 4.5});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(profileThemeProvider);
-
-    return ProgressRing(
-      value: value,
-      activeColor: theme.accentColor,
-      backwards: backwards,
-      strokeWidth: strokeWidth,
+  Widget build(BuildContext context) {
+    return Consumer<ProfileProvider>(
+      builder: (_, value, __) => ProgressRing(
+        value: this.value,
+        activeColor: value.accentColor,
+        backwards: backwards,
+        strokeWidth: strokeWidth,
+      ),
     );
   }
 }

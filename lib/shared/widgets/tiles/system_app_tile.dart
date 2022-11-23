@@ -19,9 +19,9 @@ class SystemAppButtonTile extends ButtonTileInteractive {
             tileSize: tileSize,
             elementValue: appModel,
             focusNode: focusNode,
-            icon: appModel.icon, onPressed: (context, ref) {
-          CommandInvoker command = CommandInvoker(
-              OpenAppCommand(appModel, context: context, ref: ref));
+            icon: appModel.icon, onPressed: (context) {
+          CommandInvoker command =
+              CommandInvoker(OpenAppCommand(appModel, context: context));
           command.execute();
         });
 }
