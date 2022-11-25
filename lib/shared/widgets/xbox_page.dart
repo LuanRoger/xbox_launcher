@@ -2,19 +2,19 @@
 
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/mapping_definition.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_info.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
-import 'package:xbox_launcher/providers/controllers_providers.dart';
+import 'package:xbox_launcher/providers/keyboard_action_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/hooks/keyboard_controller_mapping_hook.dart';
 import 'package:xbox_launcher/shared/widgets/focus/element_focus_scope.dart';
 import 'package:xbox_launcher/shared/widgets/focus/focusable_scope.dart';
 import 'package:xbox_launcher/shared/widgets/shortcuts/shortcuts_viewer.dart';
 
-abstract class XboxPage extends HookConsumerWidget
+abstract class XboxPage extends HookWidget
     implements MappingDefinition, FocusableScope {
   @override
   ElementFocusScope elementsFocusScope = ElementFocusScope();
@@ -22,41 +22,41 @@ abstract class XboxPage extends HookConsumerWidget
 
   XboxPage({super.key});
 
-  Widget virtualBuild(BuildContext context, WidgetRef ref);
+  Widget virtualBuild(BuildContext context);
 
-  void startShortcuts(List<ShortcutInfo> shortcuts, WidgetRef ref) {
-    useKeyMapping(ref, shortcuts.whereType<ShortcutOption>().toList(),
+  void startShortcuts(List<ShortcutInfo> shortcuts, BuildContext context) {
+    useKeyMapping(shortcuts.whereType<ShortcutOption>().toList(), context,
         notify: false);
     _shortcutsOverlay = ShortcutsViewer(shortcuts);
   }
 
-  void updateShortcuts(
-      WidgetRef ref, BuildContext context, List<ShortcutInfo> shortcuts) {
+  void updateShortcuts(List<ShortcutInfo> shortcuts, BuildContext context) {
     KeyboardControllerActionManipulator.updateCurrentMapping(
-        ref, context, shortcuts.whereType<ShortcutOption>().toList(), false);
+        context, shortcuts.whereType<ShortcutOption>().toList(), false);
     _shortcutsOverlay = ShortcutsViewer(shortcuts);
   }
 
-  Widget genPageChild(BuildContext context, WidgetRef ref) {
+  Widget genPageChild(BuildContext context) {
     if (_shortcutsOverlay != null)
       return Stack(children: [
-        Container(color: AppColors.DARK_BG, child: virtualBuild(context, ref)),
+        Container(color: AppColors.DARK_BG, child: virtualBuild(context)),
         _shortcutsOverlay!
       ]);
 
-    return Container(
-        color: AppColors.DARK_BG, child: virtualBuild(context, ref));
+    return Container(color: AppColors.DARK_BG, child: virtualBuild(context));
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final keyboardShortcutsMapping = ref.watch(keyboardActionProvider);
+  Widget build(BuildContext context) {
     List<ShortcutInfo>? mapping = defineMapping(context);
 
-    if (mapping != null) startShortcuts(mapping, ref);
+    if (mapping != null) startShortcuts(mapping, context);
 
-    return CallbackShortcuts(
-        bindings: keyboardShortcutsMapping.state,
-        child: genPageChild(useContext(), ref));
+    return Consumer<KeyboardActionProvider>(
+      builder: (context, value, child) => CallbackShortcuts(
+          bindings: context.read<KeyboardActionProvider>().keyboardBindings,
+          child: child!),
+      child: genPageChild(context),
+    );
   }
 }

@@ -11,12 +11,20 @@ class ControllerActionProvider
 
   Map<ControllerButton, Function> get controller0Binding =>
       _inputController.controller0.buttonsMapping!;
-  set controller0Binding(Map<ControllerButton, Function> buttonsBinding) {
+
+  ControllerActionProvider(this._inputController);
+
+  void setControllerBinding(Map<ControllerButton, Function> buttonsBinding) {
+    addToMementoStack();
+
     _inputController.controller0.buttonsMapping = buttonsBinding;
     _inputController.mapBasicControllers();
   }
 
-  ControllerActionProvider(this._inputController);
+  void updateControllerBinding(Map<ControllerButton, Function> buttonsBinding) {
+    _inputController.controller0.buttonsMapping = buttonsBinding;
+    _inputController.mapBasicControllers();
+  }
 
   @override
   void addToMementoStack() => mementoStack
@@ -25,7 +33,7 @@ class ControllerActionProvider
   @override
   void applyFromMementoStack() {
     var valueToApply = mementoStack.removeLast();
-    controller0Binding = valueToApply;
+    setControllerBinding(valueToApply);
   }
 
   @override

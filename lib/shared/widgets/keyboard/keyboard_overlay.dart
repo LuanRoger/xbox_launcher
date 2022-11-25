@@ -7,6 +7,7 @@ import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_images.dart';
 import 'package:xbox_launcher/shared/enums/keyboard_layout.dart';
+import 'package:xbox_launcher/shared/hooks/keyboard_controller_mapping_hook.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_text_box.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_key.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keys_char.dart';
@@ -152,7 +153,7 @@ class KeyboardOverlay implements MappingDefinition {
     final double screenWidth = size.width;
 
     _changeKeyboardLayout(KeyboardLayout.ALPHABET);
-    useKeyMapping(defineMapping(context)!, notify: false);
+    useKeyMapping(defineMapping(context)!, context, notify: false);
 
     return showGeneralDialog(
         context: context,

@@ -1,6 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateless.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 
 abstract class ConfigurationMenu extends XboxPageStateless {
