@@ -7,6 +7,7 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/search_button.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/apps_tiles_grid.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
@@ -89,13 +90,11 @@ class FullLibrarySection extends NavigationSectionStateless {
                     case ConnectionState.waiting:
                       return const ProgressRing();
                     default:
-                      return TileGrid.tileSize(
-                        tileSize: tileSize,
-                        tiles: WidgetGen.generateByModel(
-                            searchResult ?? library,
-                            TileGeneratorOption([tileSize],
-                                focusScope: currentScope, context: context)),
+                      return AppsTilesGrid(
+                        apps: searchResult ?? library,
                         scrollDirection: Axis.vertical,
+                        customGenerationOption: TileGeneratorOption(
+                            focusScope: currentScope, context: context),
                       );
                   }
                 },

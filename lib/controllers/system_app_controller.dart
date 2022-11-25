@@ -7,7 +7,7 @@ class SystemAppController {
     SystemAppModel.complete(
         name: "Configurations",
         icon: FluentIcons.settings,
-        appHome: const ConfigurationsPage()),
+        appHome: ConfigurationsPage()),
   ];
 
   static SystemAppModel getByName(String name) =>

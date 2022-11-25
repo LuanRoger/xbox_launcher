@@ -11,9 +11,7 @@ import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/menu_dialog_overlay.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/models/system_button.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/button_tile.dart';
-import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class PersonalizationConfigurationPage extends ConfigurationMenu {
@@ -41,7 +39,7 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
 
   void setMainColor(BuildContext context) {
     MenuDialogOverlay("Colors",
-        content: TileGrid.build(
+        content: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 2),
           itemCount: AppColors.COLORS_LIST.length - 1,
@@ -63,7 +61,7 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
 
   void setBackgroundColor(BuildContext context) {
     MenuDialogOverlay("Background color",
-        content: TileGrid.build(
+        content: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 2),
           itemCount: AppColors.COLORS_LIST.length - 1,
