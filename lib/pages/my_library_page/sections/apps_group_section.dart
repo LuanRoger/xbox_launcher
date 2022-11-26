@@ -3,10 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/widgets/group_viwer/group_viwer.dart';
 import 'package:xbox_launcher/shared/widgets/group_viwer/profile_groups_viewer.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/no_groups_message.dart';
 
-class AppsGroupSection extends NavigationSectionStateless {
+class AppsGroupSection extends NavigationSection {
   const AppsGroupSection({super.key}) : super("Groups");
 
   @override

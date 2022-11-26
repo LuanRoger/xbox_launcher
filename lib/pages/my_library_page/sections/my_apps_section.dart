@@ -1,14 +1,10 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/system_app_controller.dart';
-import 'package:xbox_launcher/providers/profile_provider.dart';
-import 'package:xbox_launcher/shared/enums/tile_size.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/apps_tiles_grid.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
-import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 
-class MyAppsSection extends NavigationSectionStateless {
+class MyAppsSection extends NavigationSection {
   const MyAppsSection({super.key, super.currentScope}) : super("Apps");
 
   @override
@@ -23,6 +19,8 @@ class MyAppsSection extends NavigationSectionStateless {
             apps: SystemAppController.systemApps,
             customGenerationOption:
                 TileGeneratorOption(focusScope: currentScope, context: context),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
             scrollDirection: Axis.vertical,
           ))
     ];

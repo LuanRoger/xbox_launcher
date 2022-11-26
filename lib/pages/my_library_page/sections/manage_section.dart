@@ -10,9 +10,9 @@ import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_item.dart';
 import 'package:xbox_launcher/shared/widgets/infos_provider/volume_info/volume_info_list.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 
-class ManageSection extends NavigationSectionStateless {
+class ManageSection extends NavigationSection {
   const ManageSection({super.key, super.currentScope}) : super("Manage");
 
   Future<List<DiskInfo>?> getDiskInfos() {
