@@ -18,6 +18,7 @@ abstract class XboxPage extends HookWidget
     implements MappingDefinition, FocusableScope {
   @override
   ElementFocusScope elementsFocusScope = ElementFocusScope();
+
   ShortcutsViewer? _shortcutsOverlay;
 
   XboxPage({super.key});
@@ -32,7 +33,7 @@ abstract class XboxPage extends HookWidget
 
   void updateShortcuts(List<ShortcutInfo> shortcuts, BuildContext context) {
     KeyboardControllerActionManipulator.updateCurrentMapping(
-        context, shortcuts.whereType<ShortcutOption>().toList(), false);
+        context, shortcuts.whereType<ShortcutOption>().toList());
     _shortcutsOverlay = ShortcutsViewer(shortcuts);
   }
 
@@ -52,11 +53,9 @@ abstract class XboxPage extends HookWidget
 
     if (mapping != null) startShortcuts(mapping, context);
 
-    return Consumer<KeyboardActionProvider>(
-      builder: (context, value, child) => CallbackShortcuts(
-          bindings: context.read<KeyboardActionProvider>().keyboardBindings,
-          child: child!),
-      child: genPageChild(context),
-    );
+    //TODO: Watch [KeyboardActionProvider] with Riverpod
+    return CallbackShortcuts(
+        bindings: context.read<KeyboardActionProvider>().keyboardBindings,
+        child: genPageChild(context));
   }
 }

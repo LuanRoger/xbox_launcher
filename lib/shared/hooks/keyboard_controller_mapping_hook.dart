@@ -27,7 +27,8 @@ class _KeyboardControllerMappingHookState
   void initHook() {
     super.initHook();
     KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        hook.context, hook.shortcuts, hook.notify);
+        hook.context, hook.shortcuts,
+        notify: hook.notify);
   }
 
   @override

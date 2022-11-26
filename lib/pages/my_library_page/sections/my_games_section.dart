@@ -16,9 +16,7 @@ import 'package:xbox_launcher/shared/enums/sort_options.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable_message.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/apps_tiles_grid.dart';
-import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
-import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 import 'package:xbox_launcher/utils/loaders/xcloud_json_db_loader.dart';
 
 class MyGamesSection extends NavigationSection {

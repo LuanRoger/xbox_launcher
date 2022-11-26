@@ -161,7 +161,7 @@ class KeyboardOverlay implements MappingDefinition {
     _changeKeyboardLayout(KeyboardLayout.ALPHABET);
 
     KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, defineMapping(context)!, false);
+        context, defineMapping(context)!, notify: false);
 
     return showGeneralDialog(
         context: context,
