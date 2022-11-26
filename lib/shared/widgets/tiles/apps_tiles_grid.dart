@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/app_models/app_model.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/app_models/system_app_model.dart';
-import 'package:xbox_launcher/models/profile_preview_elements_preferences.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
@@ -45,8 +44,9 @@ class AppsTilesGrid extends HookWidget implements TileGenerator {
   }
 
   @override
-  List<TileWidget> generateByModel(List<AppModel> appModels, TileSize tilesSize,
-      TileGeneratorOption option) {
+  List<TileWidget> generateByModel(
+      List<AppModel> appModels, TileSize tilesSize, TileGeneratorOption option,
+      {List<ElementFocusNode>? appsFocusNodes}) {
     List<TileWidget> tiles = List.empty(growable: true);
 
     for (AppModel model in appModels) {
@@ -83,16 +83,17 @@ class AppsTilesGrid extends HookWidget implements TileGenerator {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ProfileProvider>(
-      builder: (_, value, __) => GridView.count(
-        crossAxisCount: _crossAxisCount(value.myLibraryTileSize),
-        crossAxisSpacing: crossAxisSpacing ?? 0.0,
-        mainAxisSpacing: mainAxisSpacing ?? 0.0,
-        shrinkWrap: true,
-        scrollDirection: scrollDirection,
-        children: generateByModel(
-            apps, value.myLibraryTileSize, customGenerationOption),
-      ),
+    //TODO: Its not fetching with the provider.
+    //Fetch when migrate to Riverpod.
+    const appsTileSize = TileSize.MEDIUM;
+
+    return GridView.count(
+      crossAxisCount: _crossAxisCount(appsTileSize),
+      crossAxisSpacing: crossAxisSpacing ?? 0.0,
+      mainAxisSpacing: mainAxisSpacing ?? 0.0,
+      shrinkWrap: true,
+      scrollDirection: scrollDirection,
+      children: generateByModel(apps, appsTileSize, customGenerationOption),
     );
   }
 }

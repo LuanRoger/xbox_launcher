@@ -72,19 +72,9 @@ class AppsTileRow extends HookWidget implements TileGenerator {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ProfileProvider>(
-      builder: (_, value, __) => ListView.custom(
-        childrenDelegate: SliverChildListDelegate(wrapInFlexibles(
-            generateByModel(
-                tiles,
-                value.myLibraryTileSize,
-                customGenerateOption ??
-                    TileGeneratorOption(context: context)))),
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        clipBehavior: Clip.hardEdge,
-      ),
+    return Row(
+      children: wrapInFlexibles(generateByModel(tiles, TileSize.MEDIUM,
+          customGenerateOption ?? TileGeneratorOption(context: context))),
     );
   }
 }

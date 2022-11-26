@@ -29,7 +29,7 @@ class OpenAppCommand implements SharedCommand {
     Navigator.pushNamed(context, AppRoutes.systemAppRoute,
         arguments: [(appModel as SystemAppModel).appHome!]);
 
-    context.read().addApp(appModel);
+    context.read<ProfileProvider>().addAppToHistory(appModel);
   }
 
   void goToGameApp() {
