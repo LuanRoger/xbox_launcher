@@ -25,6 +25,7 @@ class ContextMenuGroup extends ContextMenuBase {
           onPressed: () async {
         final keyboardHandler = KeyboardOverlay(
           controller: renameController,
+          context: context,
           onFinish: (cancel) {
             if (cancel) {
               Navigator.pop(context);
@@ -38,8 +39,8 @@ class ContextMenuGroup extends ContextMenuBase {
             Navigator.pop(context);
           },
         );
-        await keyboardHandler.show(context);
 
+        await keyboardHandler.show();
         keyboardHandler.dispose();
       }),
       ContextMenuItem("Remove group", icon: FluentIcons.remove_content,

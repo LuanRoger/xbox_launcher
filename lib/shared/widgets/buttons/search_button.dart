@@ -33,10 +33,11 @@ class SearchButton extends HookWidget {
         onPressed: () async {
           final keyboardHandler = KeyboardOverlay(
               controller: controller,
+              context: context,
               onFinish: onChanged == null ? onFinish : null,
               onChanged: onFinish == null ? onChanged : null);
-          await keyboardHandler.show(context);
 
+          await keyboardHandler.show();
           keyboardHandler.dispose();
         },
         child: Row(children: [

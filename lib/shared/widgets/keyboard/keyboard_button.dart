@@ -28,9 +28,12 @@ class KeyboardButton extends StatelessWidget {
       ),
       onPressed: () async {
         final keyboardHandler = KeyboardOverlay(
-            controller: controller, onFinish: onFinish, onChanged: onChanged);
+            controller: controller,
+            context: context,
+            onFinish: onFinish,
+            onChanged: onChanged);
 
-        await keyboardHandler.show(context);
+        await keyboardHandler.show();
         keyboardHandler.dispose();
       },
       style: ButtonStyle(

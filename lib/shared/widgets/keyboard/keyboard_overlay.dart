@@ -1,13 +1,13 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart' hide KeyboardKey;
 import 'package:provider/provider.dart';
+import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/mapping_definition.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_images.dart';
 import 'package:xbox_launcher/shared/enums/keyboard_layout.dart';
-import 'package:xbox_launcher/shared/hooks/keyboard_controller_mapping_hook.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_text_box.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_key.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keys_char.dart';
@@ -17,6 +17,7 @@ class KeyboardOverlay implements MappingDefinition {
   TextEditingController controller;
   void Function(bool cancel)? onFinish;
   void Function(String value)? onChanged;
+  BuildContext context;
 
   late GridView currentKeyboardLayout;
   late KeyboardLayout currentKeyboardType;
@@ -29,7 +30,11 @@ class KeyboardOverlay implements MappingDefinition {
   bool _keyboardLockState = true;
   String? _initialStringMemento;
 
-  KeyboardOverlay({required this.controller, this.onChanged, this.onFinish}) {
+  KeyboardOverlay(
+      {required this.controller,
+      required this.context,
+      this.onChanged,
+      this.onFinish}) {
     _textBufferController = TextEditingController(text: controller.text);
     _textBoxFocus = FocusNode(canRequestFocus: false);
   }
@@ -37,6 +42,7 @@ class KeyboardOverlay implements MappingDefinition {
   void dispose() {
     _textBufferController.dispose();
     _textBoxFocus.dispose();
+    KeyboardControllerActionManipulator.applyMementoInAll(context);
   }
 
   void _changeKeyboardLayout(KeyboardLayout _keyboardLayout) {
@@ -147,13 +153,15 @@ class KeyboardOverlay implements MappingDefinition {
   }
   //#endregion
 
-  Future show(BuildContext context) {
+  Future show() {
     final Size size = MediaQuery.of(context).size;
     final double screenHeight = size.height;
     final double screenWidth = size.width;
 
     _changeKeyboardLayout(KeyboardLayout.ALPHABET);
-    useKeyMapping(defineMapping(context)!, context, notify: false);
+
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, defineMapping(context)!, false);
 
     return showGeneralDialog(
         context: context,
@@ -224,7 +232,7 @@ class KeyboardOverlay implements MappingDefinition {
                             Expanded(
                                 child: KeyboardKey(
                               text: "Space",
-                              onKeyPress: () => _space(),
+                              onKeyPress: _space,
                               buttonImage: AppImages.Y_BUTTON_IMAGE,
                             ))
                           ],

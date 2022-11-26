@@ -34,6 +34,7 @@ class ContextMenuAddGroup extends ContextMenuBase {
       final groupEditingController = TextEditingController();
       final keyboardHandler = KeyboardOverlay(
         controller: groupEditingController,
+        context: context,
         onFinish: (cancel) {
           if (cancel) {
             Navigator.pop(context);
@@ -45,8 +46,8 @@ class ContextMenuAddGroup extends ContextMenuBase {
           Navigator.pop(context);
         },
       );
-      await keyboardHandler.show(context);
 
+      await keyboardHandler.show();
       keyboardHandler.dispose();
     }));
 
