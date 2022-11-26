@@ -1,27 +1,26 @@
 import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/xcloud_supported_servers.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
 import 'package:xbox_launcher/shared/widgets/listbox/listbox.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 
-class CloudGamingConfigurationSection extends NavigationSectionStateless {
-  final TextEditingController jsonUrlTextController = TextEditingController();
-  final TextEditingController controllerTest = TextEditingController();
-
-  CloudGamingConfigurationSection({Key? key}) : super("Cloud Gaming", key: key);
+class CloudGamingConfigurationSection extends NavigationSection {
+  const CloudGamingConfigurationSection({Key? key})
+      : super("Cloud Gaming", key: key);
 
   @override
   List<Widget>? titleActions(BuildContext context) => null;
 
   @override
   List<Widget> columnItems(BuildContext context) {
-    jsonUrlTextController.text =
-        Provider.of<ProfileProvider>(context, listen: false)
+    final jsonUrlTextController = useTextEditingController(
+        text: Provider.of<ProfileProvider>(context, listen: false)
                 .xcloudGamesJsonPath ??
-            "";
+            "");
 
     return [
       Flexible(

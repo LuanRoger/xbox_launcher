@@ -1,8 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 
-class AboutConfigurationSection extends NavigationSectionStateless {
+class AboutConfigurationSection extends NavigationSection {
   const AboutConfigurationSection({Key? key}) : super("About", key: key);
 
   @override

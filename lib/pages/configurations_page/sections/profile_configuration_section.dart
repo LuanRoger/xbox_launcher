@@ -7,9 +7,9 @@ import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 
-class ProfileConfigurationSection extends NavigationSectionStateless {
+class ProfileConfigurationSection extends NavigationSection {
   const ProfileConfigurationSection({Key? key}) : super("Profile", key: key);
 
   Future _removeProfileFlow(ProfileModel toRemove, BuildContext context) {
