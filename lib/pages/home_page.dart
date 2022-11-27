@@ -9,6 +9,7 @@ import 'package:xbox_launcher/shared/widgets/placeholder_messages/wellcoming_mes
 import 'package:xbox_launcher/shared/widgets/buttons/system_banner_button.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_info.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/apps_tile_row.dart';
+import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/xbox_page.dart';
 
 class HomePage extends XboxPage {
@@ -52,7 +53,12 @@ class HomePage extends XboxPage {
                     builder: (_, value, __) {
                       return value.lastApps.isEmpty
                           ? const WellcomingMessage()
-                          : AppsTileRow(tiles: value.lastApps);
+                          : AppsTileRow(
+                              tiles: value.lastApps,
+                              customGenerateOption: TileGeneratorOption(
+                                  context: context,
+                                  focusScope: elementsFocusScope),
+                            );
                     },
                   )),
               const SizedBox(height: 20),

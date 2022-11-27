@@ -19,8 +19,8 @@ class AppsTileRow extends HookWidget implements TileGenerator {
   final List<AppModel> tiles;
   final TileGeneratorOption? customGenerateOption;
 
-  const AppsTileRow({Key? key, required this.tiles, this.customGenerateOption})
-      : super(key: key);
+  const AppsTileRow(
+      {super.key, required this.tiles, this.customGenerateOption});
 
   @override
   List<TileWidget> generateByModel(List<AppModel> appModels, TileSize tilesSize,
