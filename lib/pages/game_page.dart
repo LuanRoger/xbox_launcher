@@ -18,7 +18,9 @@ class GamePage extends XboxPage {
   late final String xcloudBaseUrl;
   late final String gameUrl;
 
-  GamePage(this.gameModel, {super.key, required this.server});
+  GamePage(this.gameModel, {super.key, required this.server}) {
+    formatUrlToServer();
+  }
 
   void formatUrlToServer() {
     xcloudBaseUrl =
@@ -40,16 +42,19 @@ class GamePage extends XboxPage {
   //       "document.getElementsByClassName(\"${AppConsts.PLAY_GAME_BUTTON_CLASS_NAME}\")[0].focus()");
   // }
 
-  Future<void> initPlatformState(WebviewController controller) async {
+  Future initPlatformState(
+      WebviewController controller, BuildContext context) async {
     await controller.initialize();
+
     controller.url.listen((url) {
       if (url == xcloudBaseUrl) {
-        Navigator.pop(useContext());
+        Navigator.pop(context);
       }
     });
 
     await controller.setPopupWindowPolicy(WebviewPopupWindowPolicy.deny);
     await controller.loadUrl(gameUrl);
+    await Future.delayed(const Duration(seconds: 2));
   }
 
   Future<WebviewPermissionDecision> _onPermissionRequested(
@@ -79,45 +84,29 @@ class GamePage extends XboxPage {
 
   @override
   Widget virtualBuild(BuildContext context) {
-    final loadReadyState = useState(false);
-    final entranceAnimationDoneState = useState(true);
     final webviewController = useWebviewController();
+    final initWebviewFutureData =
+        useMemoized(() => initPlatformState(webviewController, useContext()));
+    final initWebviewFuture = useFuture(initWebviewFutureData);
 
-    formatUrlToServer();
+    Widget mainWidget = Webview(
+      webviewController,
+      permissionRequested: _onPermissionRequested,
+    );
 
-    initPlatformState(webviewController);
-    webviewController.loadingState.listen((event) async {
-      if (event != LoadingState.navigationCompleted) return;
-
-      if (!loadReadyState.value) loadReadyState.value = true;
-    });
-
-    return Stack(
-      alignment: Alignment.center,
-      fit: StackFit.expand,
-      children: [
-        Webview(
-          webviewController,
-          permissionRequested: _onPermissionRequested,
+    if (initWebviewFuture.connectionState == ConnectionState.waiting)
+      mainWidget = SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: Image(
+          image: NetworkImage(gameModel.gameImageUrl),
+          fit: BoxFit.cover,
         ),
-        Visibility(
-          visible: entranceAnimationDoneState.value,
-          child: AnimatedOpacity(
-              opacity: loadReadyState.value ? 0 : 1,
-              duration: const Duration(milliseconds: 200),
-              onEnd: () {
-                entranceAnimationDoneState.value = false;
-              },
-              child: SizedBox(
-                width: double.infinity,
-                height: double.infinity,
-                child: Image(
-                  image: NetworkImage(gameModel.gameImageUrl),
-                  fit: BoxFit.cover,
-                ),
-              )),
-        )
-      ],
+      );
+
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      child: mainWidget,
     );
   }
 }
