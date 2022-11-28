@@ -32,7 +32,7 @@ class HomePage extends XboxPage {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -77,6 +77,7 @@ class HomePage extends XboxPage {
                   ],
                 ),
               ),
+              const Spacer()
             ],
           ),
         ),

@@ -1,10 +1,9 @@
 import 'package:xbox_launcher/models/app_models/app_model.dart';
-import 'package:xbox_launcher/models/app_models/system_app_model.dart';
 import 'package:xbox_launcher/utils/loaders/apps_model_loader.dart';
 import 'package:collection/collection.dart';
 
 class AppsHistoric {
-  List<AppModel> lastApps = List<SystemAppModel>.empty(growable: true);
+  List<AppModel> lastApps = List.empty(growable: true);
 
   AppsHistoric();
   factory AppsHistoric.fromJson(Map<String, dynamic> json) {

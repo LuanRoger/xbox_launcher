@@ -68,12 +68,10 @@ class ButtonTileInteractive extends TileWidget
   @override
   Widget virtualBuild(BuildContext context) {
     final titleBarState = useState<TileTitleBar?>(null);
-    final tileBadgeState = useState<TileBadges?>(null);
+    final tileBadgeState = useState<TileBadges?>(
+        appBadgeInfo != null ? TileBadges(appBadgeInfo!)
+            : null);
     final isMounted = useIsMounted();
-
-    if (appBadgeInfo != null && tileBadgeState.value != null) {
-      tileBadgeState.value = TileBadges(appBadgeInfo!);
-    }
 
     focusNode?.addListener(() {
       if (!isMounted()) return;
