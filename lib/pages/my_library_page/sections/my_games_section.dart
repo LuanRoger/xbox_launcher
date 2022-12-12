@@ -1,24 +1,25 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
+import 'package:xbox_launcher/shared/hooks/element_focus_node_hook.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/search_button.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_base.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_row.dart';
 import 'package:xbox_launcher/shared/widgets/chip/text_chip.dart';
 import 'package:xbox_launcher/shared/widgets/listbox/listbox.dart';
 import 'package:xbox_launcher/shared/enums/sort_options.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable_message.dart';
-import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/apps_tiles_grid.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
-import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 import 'package:xbox_launcher/utils/loaders/xcloud_json_db_loader.dart';
 
-class MyGamesSection extends NavigationSectionStateless {
+class MyGamesSection extends NavigationSection {
   XCloudJsonDbLoader gamesLoader = XCloudJsonDbLoader();
   late List<GameModel> gamesList;
   void Function(void Function())? _reloadTileGrid;
@@ -36,6 +37,7 @@ class MyGamesSection extends NavigationSectionStateless {
 
   MyGamesSection({super.key, super.currentScope}) : super("Games");
 
+  //TODO: Move to a future provider on Riverpod
   Future<bool> readXCloudGames(BuildContext context) async {
     ProfileProvider profileProvider = context.read<ProfileProvider>();
     if (profileProvider.xcloudGamesJsonPath == null) return false;
@@ -43,7 +45,8 @@ class MyGamesSection extends NavigationSectionStateless {
     gamesLoader.jsonFilePath = profileProvider.xcloudGamesJsonPath!;
     await gamesLoader.readJsonFile();
     gamesList = gamesLoader.deserializeAllJson();
-    updateChipsList();
+    //Hooks dont work inside of a FutureBuilder
+    //updateChipsList();
     return true;
   }
 
@@ -87,7 +90,7 @@ class MyGamesSection extends NavigationSectionStateless {
       tempChipsList.add(TextChip(
         gameGenre,
         value: gameGenre,
-        focusNode: currentScope?.createFocusNode(),
+        focusNode: useElementFocusNode(currentScope!),
       ));
     }
 
@@ -208,13 +211,13 @@ class MyGamesSection extends NavigationSectionStateless {
                                 const Spacer(),
                                 Expanded(
                                   flex: 20,
-                                  child: TileGrid.tileSize(
-                                    tileSize: tileSize,
-                                    tiles: WidgetGen.generateByModel(
-                                        gamesSearchResult ?? gamesList,
-                                        TileGeneratorOption([tileSize],
-                                            focusScope: currentScope,
-                                            context: context)),
+                                  child: AppsTilesGrid(
+                                    apps: gamesSearchResult ?? gamesList,
+                                    customGenerationOption: TileGeneratorOption(
+                                        focusScope: currentScope,
+                                        context: context),
+                                    crossAxisSpacing: 10,
+                                    mainAxisSpacing: 10,
                                     scrollDirection: Axis.vertical,
                                   ),
                                 )

@@ -1,21 +1,18 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/models/shortcut_models/shortcut_info.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
 import 'package:xbox_launcher/shared/widgets/infos_provider/clock_time.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/wellcoming_message.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_banner_button.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_info.dart';
-import 'package:xbox_launcher/shared/enums/tile_size.dart';
-import 'package:xbox_launcher/shared/widgets/tiles/tile_row.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/apps_tile_row.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
-import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
+import 'package:xbox_launcher/shared/widgets/xbox_page.dart';
 
-class HomePage extends XboxPageStateless {
+class HomePage extends XboxPage {
   HomePage({Key? key}) : super(key: key);
 
   @override
@@ -30,44 +27,43 @@ class HomePage extends XboxPageStateless {
             height: double.infinity,
             child: Background()),
         Padding(
-          padding: const EdgeInsets.all(50),
+          padding: const EdgeInsets.symmetric(horizontal: 50),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Flexible(
-                flex: 0,
+              Expanded(
+                flex: 2,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Flexible(child: ProfileInfo()),
-                    Flexible(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: const [
-                          Flexible(flex: 0, child: ClockTimer()),
-                        ],
-                      ),
+                    const ProfileInfo(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: const [
+                        Flexible(flex: 0, child: ClockTimer()),
+                      ],
                     )
                   ],
                 ),
               ),
               const Spacer(),
               Flexible(
-                  flex: 10,
+                  flex: 2,
                   child: Consumer<ProfileProvider>(
                     builder: (_, value, __) {
                       return value.lastApps.isEmpty
                           ? const WellcomingMessage()
-                          : TileRow(
-                              tiles: WidgetGen.generateByModel(
-                                  value.lastApps,
-                                  TileGeneratorOption(
-                                      [TileSize.BIG, TileSize.MEDIUM],
-                                      context: context)));
+                          : AppsTileRow(
+                              tiles: value.lastApps,
+                              customGenerateOption: TileGeneratorOption(
+                                  context: context,
+                                  focusScope: elementsFocusScope),
+                            );
                     },
                   )),
-              const Spacer(),
+              const SizedBox(height: 20),
               Flexible(
-                flex: 5,
+                flex: 0,
                 child: Row(
                   children: [
                     Flexible(
@@ -81,6 +77,7 @@ class HomePage extends XboxPageStateless {
                   ],
                 ),
               ),
+              const Spacer()
             ],
           ),
         ),

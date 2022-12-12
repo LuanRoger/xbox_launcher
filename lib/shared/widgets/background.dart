@@ -19,19 +19,17 @@ class Background extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       height: double.infinity,
-      child: profileModel != null
-          ? profileModel!.backgroundPreferences.preferenceByImage
-              ? _generateImageBackground(
-                  profileModel!.backgroundPreferences.imageBackgroundPath!)
-              : _generateColorBackground(
-                  profileModel!.backgroundPreferences.solidColorBackground)
-          : Consumer<ProfileProvider>(
-              builder: (_, value, __) {
-                return value.preferenceByImage
-                    ? _generateImageBackground(value.imageBackgroundPath!)
-                    : _generateColorBackground(value.solidColorBackground);
-              },
-            ),
+      child: Consumer<ProfileProvider>(
+        builder: (_, value, __) => profileModel != null
+            ? profileModel!.backgroundPreferences.preferenceByImage
+                ? _generateImageBackground(
+                    profileModel!.backgroundPreferences.imageBackgroundPath!)
+                : _generateColorBackground(
+                    profileModel!.backgroundPreferences.solidColorBackground)
+            : value.preferenceByImage
+                ? _generateImageBackground(value.imageBackgroundPath!)
+                : _generateColorBackground(value.solidColorBackground),
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/external_file_picker.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
@@ -12,32 +13,12 @@ import 'package:xbox_launcher/shared/widgets/alert_bar/alert_bar_overlay.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/profile_avatar_button.dart';
+import 'package:xbox_launcher/shared/widgets/xbox_page.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
-class AddProfilePage extends XboxPageStateful {
-  const AddProfilePage({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => _AddProfilePageState();
-}
-
-class _AddProfilePageState extends XboxPageState<AddProfilePage> {
-  String? _profileImagePath;
-  late final TextEditingController profileNameController;
-
-  @override
-  void initState() {
-    super.initState();
-    profileNameController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    profileNameController.dispose();
-  }
+class AddProfilePage extends XboxPage {
+  AddProfilePage({super.key});
 
   @override
   List<ShortcutOption>? defineMapping(BuildContext context) => [
@@ -48,13 +29,11 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
             action: (context) => Navigator.pop(context))
       ];
 
-  bool _isProfileNameValid() => profileNameController.text.isNotEmpty;
   Future changeToNewProfileDialog(
       BuildContext context, ProfileModel newProfile) async {
     await SystemDialog(
         title: "Change to new profile?",
-        content:
-            "Do you want to change to the profile ${profileNameController.text} now?",
+        content: "Do you want to change to the profile ${newProfile.name} now?",
         actions: [
           TextButton(
             title: "Yes",
@@ -71,6 +50,9 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
 
   @override
   Widget virtualBuild(BuildContext context) {
+    final profileNameController = useTextEditingController();
+    final profileImagePathState = useState<String?>(null);
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -95,10 +77,10 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
                           onPressed: () async {
                             String? tempImagePath =
                                 await ExternalFilePicker.getImagePath();
-                            setState(() => _profileImagePath = tempImagePath);
+                            profileImagePathState.value = tempImagePath;
                           },
                           radiusSize: 100,
-                          profileImagePath: _profileImagePath)),
+                          profileImagePath: profileImagePathState.value)),
                   const Spacer(),
                   Expanded(
                     flex: 15,
@@ -124,7 +106,7 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
                   TextButton(
                       title: "Confirm",
                       onPressed: () async {
-                        if (!_isProfileNameValid()) {
+                        if (profileNameController.text.isEmpty) {
                           AlertBarOverlay("Can't be empty.",
                                   "The Profile name can't be empty.",
                                   severity: InfoBarSeverity.error)
@@ -139,7 +121,8 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
                         ProfileModel newProfile =
                             profileProvider.generateNewDumyProfile();
                         newProfile.name = profileNameController.text;
-                        newProfile.profileImagePath = _profileImagePath;
+                        newProfile.profileImagePath =
+                            profileImagePathState.value;
 
                         profileProvider.addNewProfile(newProfile);
 

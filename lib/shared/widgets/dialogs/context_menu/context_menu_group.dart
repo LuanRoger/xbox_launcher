@@ -3,12 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/apps_group.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
+import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_overlay.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_base.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_item.dart';
-import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_overlay.dart';
 
 class ContextMenuGroup extends ContextMenuBase {
   @override
+  // ignore: overridden_fields
   late List<ContextMenuItem>? contextItems;
   final AppsGroup group;
   final TextEditingController renameController = TextEditingController();
@@ -18,27 +19,33 @@ class ContextMenuGroup extends ContextMenuBase {
   @override
   Widget buildContextItemsList(BuildContext context) {
     contextItems = List.empty(growable: true);
+
     contextItems!.addAll([
-      ContextMenuItem("Rename group", icon: FluentIcons.rename, onPressed: () {
-        KeyboardOverlay(
+      ContextMenuItem("Rename group", icon: FluentIcons.rename,
+          onPressed: () async {
+        final keyboardHandler = KeyboardOverlay(
           controller: renameController,
+          context: context,
           onFinish: (cancel) {
             if (cancel) {
               Navigator.pop(context);
               return;
             }
 
-            Provider.of<ProfileProvider>(context, listen: false)
+            context
+                .read<ProfileProvider>()
                 .renameGroup(group.id!, renameController.text);
             renameController.clear();
             Navigator.pop(context);
           },
-        ).show(context);
+        );
+
+        await keyboardHandler.show();
+        keyboardHandler.dispose();
       }),
       ContextMenuItem("Remove group", icon: FluentIcons.remove_content,
           onPressed: () {
-        Provider.of<ProfileProvider>(context, listen: false)
-            .removeAppsGroup(group.id!);
+        context.read<ProfileProvider>().removeGroup(group.id!);
 
         Navigator.pop(context);
       }),
@@ -66,6 +73,8 @@ class ContextMenuGroup extends ContextMenuBase {
             const SizedBox(
               height: 10.0,
             ),
-            buildContextItemsList(context)
+            Consumer(
+              builder: (context, ref, _) => buildContextItemsList(context),
+            )
           ]);
 }

@@ -31,7 +31,5 @@ abstract class SystemButton extends Button implements SystemButtonBase {
               ButtonStyle(
                   backgroundColor: ButtonState.all(AppColors.ELEMENT_BG)),
           child: SizedBox(height: height, width: width, child: content),
-        ) {
-    focusNode?.setFocucableElement(this);
-  }
+        );
 }

@@ -3,29 +3,37 @@ import 'package:xbox_launcher/models/memento.dart';
 
 class KeyboardActionProvider extends ChangeNotifier
     implements Memento<Map<ShortcutActivator, void Function()>> {
+  Map<ShortcutActivator, void Function()> _keyboardBindings = {};
+  Map<ShortcutActivator, void Function()> get keyboardBindings =>
+      Map.from(_keyboardBindings);
+
   @override
   List<Map<ShortcutActivator, void Function()>> mementoStack =
       List.empty(growable: true);
-  Map<ShortcutActivator, void Function()> _keyboardBinding = {};
-
-  Map<ShortcutActivator, void Function()> get keyboardBinding {
-    return Map.from(_keyboardBinding);
-  }
 
   void setKeyboardBinding(
       Map<ShortcutActivator, void Function()> keyboardBinding,
-      {bool notifyChanges = true}) {
-    _keyboardBinding = keyboardBinding;
+      {bool notify = true}) {
+    addToMementoStack();
+    _keyboardBindings = keyboardBinding;
 
-    if (notifyChanges) notifyListeners();
+    if (notify) notifyListeners();
+  }
+
+  void updateKeyboardBinding(
+      Map<ShortcutActivator, void Function()> keyboardBinding,
+      {bool notify = true}) {
+    _keyboardBindings = keyboardBinding;
+
+    if (notify) notifyListeners();
   }
 
   @override
   void addToMementoStack() => mementoStack
-      .add(Map<ShortcutActivator, void Function()>.from(_keyboardBinding));
+      .add(Map<ShortcutActivator, void Function()>.from(_keyboardBindings));
   @override
   void applyFromMementoStack() {
-    _keyboardBinding = mementoStack.removeLast();
+    _keyboardBindings = mementoStack.removeLast();
     notifyListeners();
   }
 

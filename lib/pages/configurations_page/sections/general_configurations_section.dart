@@ -2,9 +2,9 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
-import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
+import 'package:xbox_launcher/shared/widgets/navigations/navigation_section.dart';
 
-class GenralConfigurationSection extends NavigationSectionStateless {
+class GenralConfigurationSection extends NavigationSection {
   const GenralConfigurationSection({Key? key}) : super("General", key: key);
 
   @override

@@ -1,5 +1,4 @@
-// ignore_for_file: constant_identifier_names
-import 'package:fluent_ui/fluent_ui.dart' hide Overlay;
+import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart' hide KeyboardKey;
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
@@ -10,31 +9,46 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_images.dart';
 import 'package:xbox_launcher/shared/enums/keyboard_layout.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_text_box.dart';
-import 'package:xbox_launcher/shared/widgets/keyboard/keys_char.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_key.dart';
+import 'package:xbox_launcher/shared/widgets/keyboard/keys_char.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class KeyboardOverlay implements MappingDefinition {
-  late GridView _currentKeyboardLayout;
-
-  late KeyboardLayout _currentKeyboardType;
-  void Function(void Function())? _setNewLayout;
-  final FocusNode _textBoxFocus = FocusNode(canRequestFocus: false);
-  bool _keyboardLockState = true;
-  void Function(void Function())? _updateKeyboardState;
-  String? _initialStringMemento;
-  bool hasBeenMappign = false;
-
+  TextEditingController controller;
   void Function(bool cancel)? onFinish;
   void Function(String value)? onChanged;
-  TextEditingController controller;
+  BuildContext context;
 
-  KeyboardOverlay({required this.controller, this.onFinish, this.onChanged});
+  late GridView currentKeyboardLayout;
+  late KeyboardLayout currentKeyboardType;
+
+  late final TextEditingController _textBufferController;
+  late final FocusNode _textBoxFocus;
+
+  void Function(void Function())? _setNewLayout;
+  void Function(void Function())? _updateKeyboardState;
+  bool _keyboardLockState = true;
+  String? _initialStringMemento;
+
+  KeyboardOverlay(
+      {required this.controller,
+      required this.context,
+      this.onChanged,
+      this.onFinish}) {
+    _textBufferController = TextEditingController(text: controller.text);
+    _textBoxFocus = FocusNode(canRequestFocus: false);
+  }
+
+  void dispose() {
+    _textBufferController.dispose();
+    _textBoxFocus.dispose();
+    KeyboardControllerActionManipulator.applyMementoInAll(context);
+  }
 
   void _changeKeyboardLayout(KeyboardLayout _keyboardLayout) {
     var characters = KeysChar.getKeys(_keyboardLayout);
 
-    _currentKeyboardLayout = GridView.builder(
+    currentKeyboardLayout = GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing: 3,
             crossAxisSpacing: 3,
@@ -44,63 +58,23 @@ class KeyboardOverlay implements MappingDefinition {
           String char = characters[index];
           return KeyboardKey(
               text: char,
-              onKeyPress: () => controller.text = controller.text + char);
+              onKeyPress: () => _textBufferController.text =
+                  _textBufferController.text + char);
         },
         itemCount: characters.length);
-    _currentKeyboardType = _keyboardLayout;
+    currentKeyboardType = _keyboardLayout;
   }
 
   //#region Special Keyboard Keys Calls
   void _switchKeyboardLayout() {
     _setNewLayout?.call(() => _changeKeyboardLayout(
-        _currentKeyboardType == KeyboardLayout.SYMBOLS
+        currentKeyboardType == KeyboardLayout.SYMBOLS
             ? KeyboardLayout.ALPHABET
             : KeyboardLayout.SYMBOLS));
   }
 
-  void _switchLayoutToCaps() {
-    _setNewLayout?.call(() => _changeKeyboardLayout(
-        _currentKeyboardType != KeyboardLayout.ALPHABET_CAPS
-            ? KeyboardLayout.ALPHABET_CAPS
-            : KeyboardLayout.ALPHABET));
-  }
-
-  void _switchKeyboardLocker() {
-    _textBoxFocus.canRequestFocus = !_textBoxFocus.canRequestFocus;
-    _updateKeyboardState
-        ?.call(() => _keyboardLockState = !_textBoxFocus.canRequestFocus);
-    if (!_keyboardLockState) {
-      _textBoxFocus.requestFocus();
-    }
-  }
-
-  void _backspace() {
-    if (controller.text.isEmpty) return;
-    controller.text =
-        controller.text.replaceRange(controller.text.length - 1, null, "");
-  }
-
-  void _space() {
-    controller.text = controller.text + " ";
-  }
-
-  void _cancel(BuildContext context) {
-    controller.text = _initialStringMemento!;
-    KeyboardControllerActionManipulator.applyMementoInAll(context);
-    Navigator.pop(context);
-  }
-
-  void _finish(BuildContext context) {
-    onFinish?.call(false);
-    KeyboardControllerActionManipulator.applyMementoInAll(context);
-    Navigator.pop(context);
-  }
-  //#endregion
-
   @override
   List<ShortcutOption>? defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.saveAllCurrentAtMemento(context);
-
     return [
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
@@ -140,17 +114,56 @@ class KeyboardOverlay implements MappingDefinition {
     ];
   }
 
-  void show(BuildContext context) {
+  void _switchLayoutToCaps() {
+    _setNewLayout?.call(() => _changeKeyboardLayout(
+        currentKeyboardType != KeyboardLayout.ALPHABET_CAPS
+            ? KeyboardLayout.ALPHABET_CAPS
+            : KeyboardLayout.ALPHABET));
+  }
+
+  void _switchKeyboardLocker() {
+    _textBoxFocus.canRequestFocus = !_textBoxFocus.canRequestFocus;
+    _updateKeyboardState
+        ?.call(() => _keyboardLockState = !_textBoxFocus.canRequestFocus);
+    if (!_keyboardLockState) {
+      _textBoxFocus.requestFocus();
+    }
+  }
+
+  void _backspace() {
+    if (_textBufferController.text.isEmpty) return;
+    _textBufferController.text = _textBufferController.text
+        .replaceRange(_textBufferController.text.length - 1, null, "");
+  }
+
+  void _space() {
+    _textBufferController.text = _textBufferController.text + " ";
+  }
+
+  void _cancel(BuildContext context) {
+    _textBufferController.text = _initialStringMemento!;
+    Navigator.pop(context);
+  }
+
+  void _finish(BuildContext context) {
+    controller.text = _textBufferController.text;
+
+    onFinish?.call(false);
+    Navigator.pop(context);
+  }
+  //#endregion
+
+  Future show() {
     final Size size = MediaQuery.of(context).size;
     final double screenHeight = size.height;
     final double screenWidth = size.width;
 
     _changeKeyboardLayout(KeyboardLayout.ALPHABET);
-    _initialStringMemento = String.fromCharCodes(controller.text.codeUnits);
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
-        context, defineMapping(context)!.whereType<ShortcutOption>().toList());
 
-    showGeneralDialog(
+    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+        context, defineMapping(context)!, notify: false);
+
+    return showGeneralDialog(
         context: context,
         pageBuilder: (_, __, ___) {
           return Stack(
@@ -164,12 +177,11 @@ class KeyboardOverlay implements MappingDefinition {
                   children: [
                     Expanded(
                       child: SystemTextBox(
-                        controller: controller,
+                        controller: _textBufferController,
                         focusNode: _textBoxFocus,
                         onChanged: onChanged,
                         highlightColor:
-                            Provider.of<ProfileProvider>(context, listen: false)
-                                .accentColor,
+                            context.read<ProfileProvider>().accentColor,
                       ),
                     ),
                     const SizedBox(
@@ -212,7 +224,7 @@ class KeyboardOverlay implements MappingDefinition {
                               child: StatefulBuilder(
                                 builder: (_, updateKeyboard) {
                                   _setNewLayout ??= updateKeyboard;
-                                  return _currentKeyboardLayout;
+                                  return currentKeyboardLayout;
                                 },
                               ),
                             ),
@@ -220,7 +232,7 @@ class KeyboardOverlay implements MappingDefinition {
                             Expanded(
                                 child: KeyboardKey(
                               text: "Space",
-                              onKeyPress: () => _space(),
+                              onKeyPress: _space,
                               buttonImage: AppImages.Y_BUTTON_IMAGE,
                             ))
                           ],

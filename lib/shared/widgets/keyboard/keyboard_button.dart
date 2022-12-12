@@ -1,6 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/system_text_box.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_overlay.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/system_text_box.dart';
 
 class KeyboardButton extends StatelessWidget {
   final String placeholder;
@@ -10,13 +10,12 @@ class KeyboardButton extends StatelessWidget {
   final void Function(String value)? onChanged;
 
   const KeyboardButton(
-      {Key? key,
+      {super.key,
       required this.placeholder,
       required this.controller,
       this.maxLenght,
       this.onFinish,
-      this.onChanged})
-      : super(key: key);
+      this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +26,16 @@ class KeyboardButton extends StatelessWidget {
         maxLength: maxLenght,
         readOnly: true,
       ),
-      onPressed: () => KeyboardOverlay(
-              controller: controller, onFinish: onFinish, onChanged: onChanged)
-          .show(context),
+      onPressed: () async {
+        final keyboardHandler = KeyboardOverlay(
+            controller: controller,
+            context: context,
+            onFinish: onFinish,
+            onChanged: onChanged);
+
+        await keyboardHandler.show();
+        keyboardHandler.dispose();
+      },
       style: ButtonStyle(
           padding: ButtonState.all(EdgeInsets.zero),
           shape: ButtonState.all(

@@ -48,17 +48,17 @@ class AppRouteDriver {
   static FluentPageRoute get homePageRoute =>
       FluentPageRoute(builder: (_) => HomePage());
   static FluentPageRoute get configurationPageRoute =>
-      FluentPageRoute(builder: (_) => const ConfigurationsPage());
+      FluentPageRoute(builder: (_) => ConfigurationsPage());
   static FluentPageRoute get myLibraryPageRoute =>
-      FluentPageRoute(builder: (_) => const MyLibraryPage());
+      FluentPageRoute(builder: (_) => MyLibraryPage());
   static FluentPageRoute get personalizationConfigPageRoute =>
       FluentPageRoute(builder: (_) => PersonalizationConfigurationPage());
   static FluentPageRoute get videoConfigPageRoute =>
       FluentPageRoute(builder: (_) => VideoConfigurationPage());
   static FluentPageRoute get addProfilePageRoute =>
-      FluentPageRoute(builder: (_) => const AddProfilePage());
+      FluentPageRoute(builder: (_) => AddProfilePage());
   static FluentPageRoute get manageProfilePageRoute =>
-      FluentPageRoute(builder: (_) => const ManageProfilePage());
+      FluentPageRoute(builder: (_) => ManageProfilePage());
   static FluentPageRoute getSelectProfilePageRoute(
           String? title, void Function(BuildContext, ProfileModel) callback) =>
       FluentPageRoute(

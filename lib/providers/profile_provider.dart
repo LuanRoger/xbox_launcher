@@ -112,7 +112,7 @@ class ProfileProvider extends ChangeNotifier {
     return _currentProfile.appsGroups.getGroupById(id);
   }
 
-  void addAppsGroup(AppsGroup appsGroup) {
+  void addNewGroup(AppsGroup appsGroup) {
     _currentProfile.appsGroups.addNewGroup(appsGroup);
 
     notifyListeners();
@@ -133,7 +133,7 @@ class ProfileProvider extends ChangeNotifier {
     saveProfile();
   }
 
-  void removeAppsGroup(int groupId) {
+  void removeGroup(int groupId) {
     _currentProfile.appsGroups.removeNewGroup(groupId);
 
     notifyListeners();

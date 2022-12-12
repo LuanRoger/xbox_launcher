@@ -5,16 +5,15 @@ import 'package:xbox_launcher/providers/controller_action_provider.dart';
 import 'package:xbox_launcher/providers/keyboard_action_provider.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
+//TODO: Create global fucntions for manipulate this class.
+// If you are in a build context, use the hooks.
+
+//TODO: Made this private.
 class KeyboardControllerActionManipulator {
   static void mapKeyboardControllerActions(
       BuildContext context, List<ShortcutOption> shortcutsOptions,
-      {bool notifyChanges = true}) {
+      {bool notify = true}) {
     if (shortcutsOptions.isEmpty) return;
-
-    var keyboardProvider =
-        Provider.of<KeyboardActionProvider>(context, listen: false);
-    var controllerProvider =
-        Provider.of<ControllerActionProvider>(context, listen: false);
 
     Map<ShortcutActivator, void Function()> keyboarMapping = {};
     Map<ControllerButton, void Function()> controllerMapping = {};
@@ -25,22 +24,38 @@ class KeyboardControllerActionManipulator {
           () => action.value(context);
     }
 
-    keyboardProvider.setKeyboardBinding(keyboarMapping,
-        notifyChanges: notifyChanges);
-    controllerProvider.controller0Binding = controllerMapping;
+    context
+        .read<KeyboardActionProvider>()
+        .setKeyboardBinding(keyboarMapping, notify: notify);
+    context
+        .read<ControllerActionProvider>()
+        .setControllerBinding(controllerMapping);
   }
 
-  static void saveAllCurrentAtMemento(BuildContext context) {
-    Provider.of<KeyboardActionProvider>(context, listen: false)
-        .addToMementoStack();
-    Provider.of<ControllerActionProvider>(context, listen: false)
-        .addToMementoStack();
+  static void updateCurrentMapping(
+      BuildContext context, List<ShortcutOption> shortcutsOptions,
+      {bool notify = true}) {
+    if (shortcutsOptions.isEmpty) return;
+
+    Map<ShortcutActivator, void Function()> keyboarMapping = {};
+    Map<ControllerButton, void Function()> controllerMapping = {};
+    for (var action in shortcutsOptions
+        .map((shortcutOption) => shortcutOption.rawShortcut)) {
+      keyboarMapping[action.key.keyboardkey] = () => action.value(context);
+      controllerMapping[action.key.controllerButton] =
+          () => action.value(context);
+    }
+
+    context
+        .read<KeyboardActionProvider>()
+        .updateKeyboardBinding(keyboarMapping, notify: notify);
+    context
+        .read<ControllerActionProvider>()
+        .updateControllerBinding(controllerMapping);
   }
 
   static void applyMementoInAll(BuildContext context) {
-    Provider.of<KeyboardActionProvider>(context, listen: false)
-        .applyFromMementoStack();
-    Provider.of<ControllerActionProvider>(context, listen: false)
-        .applyFromMementoStack();
+    context.read<KeyboardActionProvider>().applyFromMementoStack();
+    context.read<ControllerActionProvider>().applyFromMementoStack();
   }
 }

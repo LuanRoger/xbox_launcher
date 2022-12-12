@@ -55,12 +55,13 @@ class TileCover extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ProfileProvider>(
-        builder: (_, value, __) => WidgetGen.generateTileCover(
-            colorByGenerator: value.accentColor,
-            color: color,
-            icon: icon,
-            customCover: customCover,
-            image: image,
-            generationOptions: generationOptions));
+      builder: (_, value, __) => WidgetGen.generateTileCover(
+          colorByGenerator: value.accentColor,
+          color: color,
+          icon: icon,
+          customCover: customCover,
+          image: image,
+          generationOptions: generationOptions),
+    );
   }
 }

@@ -1,8 +1,9 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 
-class ListBox extends StatefulWidget {
+class ListBox extends HookWidget {
   final List<ComboBoxItem<int>> items;
   final void Function(int) onChange;
   String? placeholder;
@@ -22,39 +23,25 @@ class ListBox extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<ListBox> createState() => _ListBoxState();
-}
-
-class _ListBoxState extends State<ListBox> {
-  late int currentValue;
-
-  @override
-  void initState() {
-    super.initState();
-    currentValue = widget.initialIndex ?? 0;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    Color accentColor = context.read<ProfileProvider>().accentColor;
+    final currentValueState = useState(initialIndex ?? 0);
 
     return SizedBox(
-      width: widget.width,
-      height: widget.height,
-      child: ComboBox<int>(
-          value: currentValue,
-          focusNode: widget.focusNode,
-          isExpanded: true,
-          popupColor: accentColor,
-          placeholder:
-              widget.placeholder != null ? Text(widget.placeholder!) : null,
-          onChanged: ((value) {
-            widget.onChange(value!);
-            setState(() {
-              currentValue = value;
-            });
-          }),
-          items: widget.items),
+      width: width,
+      height: height,
+      child: Consumer<ProfileProvider>(
+        builder: (_, value, __) => ComboBox<int>(
+            value: currentValueState.value,
+            focusNode: focusNode,
+            isExpanded: true,
+            popupColor: value.accentColor,
+            placeholder: placeholder != null ? Text(placeholder!) : null,
+            onChanged: ((value) {
+              onChange(value!);
+              currentValueState.value = value;
+            }),
+            items: items),
+      ),
     );
   }
 }

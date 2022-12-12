@@ -1,14 +1,24 @@
-import 'package:xbox_launcher/shared/widgets/focus/element_focus_node.dart';
 import 'package:xbox_launcher/shared/widgets/focus/focable_element.dart';
 
+typedef OnElementFocusCallback = void Function(
+    FocableElement sender, Object? focusedElementValue);
+
 class ElementFocusScope {
-  final List<ElementFocusNode> _elementsFocusNode = List.empty(growable: true);
-  void Function(FocableElement sender, Object? focusedElementValue)? onElementFocus;
+  final List<OnElementFocusCallback?> _focusCallbacks =
+      List.empty(growable: true);
 
-  ElementFocusNode createFocusNode() {
-    ElementFocusNode focusNode = ElementFocusNode(this);
-    _elementsFocusNode.add(focusNode);
+  void setCallback(OnElementFocusCallback callback) {
+    _focusCallbacks.add(callback);
+  }
 
-    return focusNode;
+  void removeCallback(OnElementFocusCallback callback) {
+    _focusCallbacks.remove(callback);
+  }
+
+  void reciveFocusNotification(
+      FocableElement sender, Object? focusedElementValue) {
+    for (OnElementFocusCallback? callback in _focusCallbacks) {
+      callback?.call(sender, focusedElementValue);
+    }
   }
 }

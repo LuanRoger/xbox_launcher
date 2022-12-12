@@ -9,7 +9,6 @@ class TextChip extends ChipBase {
       super.isSelected = false,
       super.height,
       super.width,
-      super.onCheck,
       super.value,
       super.focusNode});
 

@@ -1,39 +1,26 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/widgets/chip/chip_base.dart';
-import 'package:collection/collection.dart';
 import 'package:xbox_launcher/shared/widgets/utils/observers/observer.dart';
 
-class ChipsRow extends StatefulWidget {
+class ChipsRow extends StatelessWidget implements Observer {
   final List<ChipBase> chips;
-  final void Function(bool, Object?) onCheckChange;
+  final void Function(bool, List<Object?>) onCheckChange;
 
-  const ChipsRow(this.chips, {super.key, required this.onCheckChange});
+  ChipsRow(this.chips, {super.key, required this.onCheckChange}) {
+    _injectObserver();
+  }
 
-  @override
-  State<ChipsRow> createState() => _ChipsRowState();
-}
-
-class _ChipsRowState extends State<ChipsRow> implements Observer {
-  late List<ChipBase> chips;
-
-  @override
-  void initState() {
-    super.initState();
-    chips = List.from(widget.chips);
-    for (var chip in chips) {
-      chip.observer = this;
-      chip.onCheck = widget.onCheckChange;
-    }
+  void _injectObserver() {
+    for (var chip in chips) chip.observer = this;
   }
 
   @override
   void react(Object sender, Object? payload) {
-    ChipBase? currentSelected =
-        chips.firstWhereOrNull((chip) => chip != sender && chip.isSelected);
-    currentSelected?.rebuildChip(() {
-      currentSelected.isSelected = false;
-    });
-    widget.onCheckChange((sender as ChipBase).isSelected, payload);
+    List<Object?> currentsSelected =
+        chips.where((chip) => chip.isSelected).map((e) => e.value).toList();
+
+    onCheckChange((sender as ChipBase).isSelected, currentsSelected);
   }
 
   @override
