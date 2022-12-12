@@ -11,6 +11,7 @@ import 'package:xbox_launcher/shared/widgets/placeholder_messages/wellcoming_mes
 import 'package:xbox_launcher/shared/widgets/buttons/system_banner_button.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_info.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/app_tiles_row.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_row.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
@@ -57,12 +58,12 @@ class HomePage extends XboxPageStateless {
                     builder: (_, value, __) {
                       return value.lastApps.isEmpty
                           ? const WellcomingMessage()
-                          : TileRow(
-                              tiles: WidgetGen.generateByModel(
-                                  value.lastApps,
-                                  TileGeneratorOption(
-                                      [TileSize.BIG, TileSize.MEDIUM],
-                                      context: context)));
+                          : AppsTileRow(
+                              tiles: value.lastApps,
+                              customGenerateOption: TileGeneratorOption(
+                                  context: context,
+                                  focusScope: elementFocusScope),
+                            );
                     },
                   )),
               const Spacer(),
