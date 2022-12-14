@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 
-abstract class TileWidget extends StatelessWidget {
+abstract class TileWidget extends StatefulWidget {
   void Function(BuildContext)? onPressed;
   late double width;
   late double height;
@@ -33,14 +33,19 @@ abstract class TileWidget extends StatelessWidget {
     }
   }
 
+  @override
+  State<TileWidget> createState();
+}
+
+abstract class TileWidgetState<T extends TileWidget> extends State<T> {
   Widget virtualBuild(BuildContext context);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: color,
-      width: width,
-      height: height,
+      color: widget.color,
+      width: widget.width,
+      height: widget.height,
       child: virtualBuild(context),
     );
   }

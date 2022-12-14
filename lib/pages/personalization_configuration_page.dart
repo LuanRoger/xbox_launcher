@@ -47,7 +47,6 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
           itemCount: AppColors.COLORS_LIST.length - 1,
           itemBuilder: (context, index) {
             return ButtonTile(
-              "",
               tileSize: TileSize.MEDIUM,
               color: AppColors.COLORS_LIST[index],
               onPressed: (context) {
@@ -69,7 +68,6 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
           itemCount: AppColors.COLORS_LIST.length - 1,
           itemBuilder: (context, index) {
             return ButtonTile(
-              "",
               tileSize: TileSize.MEDIUM,
               color: AppColors.COLORS_LIST[index],
               onPressed: (context) {

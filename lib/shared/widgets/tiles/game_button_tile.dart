@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/models/app_models/game_model.dart';
+import 'package:xbox_launcher/models/tile_title_bar_info.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/focus/element_focus_node.dart';
 import 'package:xbox_launcher/shared/widgets/utils/commands/models/command_invoker.dart';
@@ -12,11 +13,11 @@ class GameButtonTile extends ButtonTile {
   GameButtonTile(this.gameModel,
       {Key? key, required TileSize tileSize, ElementFocusNode? focusNode})
       : super(
-          gameModel.name,
           key: key,
           elementValue: gameModel,
           interactive: true,
           appBadgeInfo: gameModel.extraGameProperties.toBadgeInfo(),
+          tileTitleBarInfo: TileTitleBarInfo(gameModel.name),
           tileSize: tileSize,
           image: NetworkImage(gameModel.tileGameImageUrl),
           focusNode: focusNode,
