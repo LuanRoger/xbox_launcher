@@ -93,6 +93,8 @@ class FullLibrarySection extends NavigationSectionStateless {
                     default:
                       return AppsTilesGrid(
                         apps: searchResult ?? library,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
                         customGenerationOption: TileGeneratorOption(
                             focusScope: currentScope, context: context),
                         scrollDirection: Axis.vertical,

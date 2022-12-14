@@ -211,6 +211,8 @@ class MyGamesSection extends NavigationSectionStateless {
                                   flex: 20,
                                   child: AppsTilesGrid(
                                     apps: gamesSearchResult ?? gamesList,
+                                    mainAxisSpacing: 10,
+                                    crossAxisSpacing: 10,
                                     customGenerationOption: TileGeneratorOption(
                                         focusScope: currentScope,
                                         context: context),

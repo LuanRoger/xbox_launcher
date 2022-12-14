@@ -31,12 +31,12 @@ class HomePage extends XboxPageStateless {
             height: double.infinity,
             child: Background()),
         Padding(
-          padding: const EdgeInsets.all(50),
+          padding: const EdgeInsets.only(left: 50, top: 50, right: 50),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Flexible(
-                flex: 0,
+                flex: 1,
                 child: Row(
                   children: [
                     const Flexible(child: ProfileInfo()),
@@ -52,32 +52,34 @@ class HomePage extends XboxPageStateless {
                 ),
               ),
               const Spacer(),
-              Flexible(
-                  flex: 10,
-                  child: Consumer<ProfileProvider>(
-                    builder: (_, value, __) {
-                      return value.lastApps.isEmpty
-                          ? const WellcomingMessage()
-                          : AppsTileRow(
-                              tiles: value.lastApps,
-                              customGenerateOption: TileGeneratorOption(
-                                  context: context,
-                                  focusScope: elementFocusScope),
-                            );
-                    },
-                  )),
-              const Spacer(),
-              Flexible(
-                flex: 5,
-                child: Row(
+              Expanded(
+                flex: 0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Flexible(
-                      child: SystemBannerButton(
-                        "My games",
-                        onClick: () => Navigator.pushNamed(
-                            context, AppRoutes.myLibraryRoute),
-                        icon: FluentIcons.library,
-                      ),
+                    Consumer<ProfileProvider>(
+                      builder: (_, value, __) {
+                        return value.lastApps.isEmpty
+                            ? const WellcomingMessage()
+                            : AppsTileRow(
+                                tiles: value.lastApps,
+                                customGenerateOption: TileGeneratorOption(
+                                    context: context,
+                                    focusScope: elementFocusScope),
+                              );
+                      },
+                    ),
+                    const SizedBox(height: 30),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SystemBannerButton(
+                          "My games",
+                          onClick: () => Navigator.pushNamed(
+                              context, AppRoutes.myLibraryRoute),
+                          icon: FluentIcons.library,
+                        ),
+                      ],
                     ),
                   ],
                 ),

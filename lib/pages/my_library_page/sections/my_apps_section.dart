@@ -16,6 +16,8 @@ class MyAppsSection extends NavigationSectionStateless {
       Expanded(
           flex: 7,
           child: AppsTilesGrid(
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
             apps: SystemAppController.systemApps,
             customGenerationOption:
                 TileGeneratorOption(focusScope: currentScope, context: context),
