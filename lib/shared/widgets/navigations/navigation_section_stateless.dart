@@ -9,10 +9,10 @@ abstract class NavigationSectionStateless extends StatelessWidget
   @override
   final String sectionName;
   @override
-  final ElementFocusScope? currentScope;
+  final ElementFocusScope currentScope;
 
   const NavigationSectionStateless(this.sectionName,
-      {Key? key, this.currentScope})
+      {Key? key, required this.currentScope})
       : super(key: key);
 
   @override

@@ -117,7 +117,9 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
       PaneItem(
           icon: const Icon(FluentIcons.favorite_list),
           title: const Text("Group"),
-          body: const AppsGroupSection()),
+          body: AppsGroupSection(
+            currentScope: elementFocusScope,
+          )),
       PaneItem(
           icon: const Icon(FluentIcons.library),
           title: const Text("Full library"),

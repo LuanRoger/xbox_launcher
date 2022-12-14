@@ -5,7 +5,8 @@ import 'package:xbox_launcher/shared/widgets/buttons/icon_text_button.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 
 class GenralConfigurationSection extends NavigationSectionStateless {
-  const GenralConfigurationSection({Key? key}) : super("General", key: key);
+  const GenralConfigurationSection({super.key, required super.currentScope})
+      : super("General");
 
   @override
   List<Widget>? titleActions(BuildContext context) => null;

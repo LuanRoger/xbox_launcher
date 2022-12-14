@@ -11,7 +11,8 @@ class CloudGamingConfigurationSection extends NavigationSectionStateless {
   final TextEditingController jsonUrlTextController = TextEditingController();
   final TextEditingController controllerTest = TextEditingController();
 
-  CloudGamingConfigurationSection({Key? key}) : super("Cloud Gaming", key: key);
+  CloudGamingConfigurationSection({super.key, required super.currentScope})
+      : super("Cloud Gaming");
 
   @override
   List<Widget>? titleActions(BuildContext context) => null;

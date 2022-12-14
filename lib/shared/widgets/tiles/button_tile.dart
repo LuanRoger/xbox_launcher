@@ -25,9 +25,6 @@ class ButtonTile extends TileWidget implements CoveredTile, FocableElement {
 
   late bool getFocused;
 
-  late final TileSize _tileSize;
-  TileSize get tileSize => _tileSize;
-
   ButtonTile(String title,
       {super.key,
       required TileSize tileSize,

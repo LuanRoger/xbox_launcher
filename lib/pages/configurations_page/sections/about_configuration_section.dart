@@ -3,7 +3,8 @@ import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 
 class AboutConfigurationSection extends NavigationSectionStateless {
-  const AboutConfigurationSection({Key? key}) : super("About", key: key);
+  const AboutConfigurationSection({super.key, required super.currentScope})
+      : super("About");
 
   @override
   List<Widget>? titleActions(BuildContext context) => null;
