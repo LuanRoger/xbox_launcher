@@ -9,6 +9,13 @@ from .xcloud_elements_consts import SUPPORTED_INPUTS_CONTAINER, GAME_INFO_BOX_XP
 from .webdriver_utils import *
 from .utils.url_formater import *
 
+def getTileGameImageUrl(gamePicture) -> str:
+    img_element = gamePicture.find_element(by=By.TAG_NAME, value="img")
+    image_src_set: str = img_element.get_attribute("srcset").split(',')
+
+    image_src = image_src_set[1][:-2].strip()
+    return image_src
+
 def getGamesInGrid(grid) -> Any:
     return grid.find_elements(by=By.TAG_NAME, value="a")
 
@@ -50,12 +57,12 @@ def getGamesProperties(gameInfoContainer) -> GameProperties:
     except:
         pass
 
-    supported_controller_container = gameInfoContainer.find_element(by=By.CLASS_NAME, value=SUPPORTED_INPUTS_CONTAINER)
-    supported_controller_divs = supported_controller_container.find_elements(by=By.TAG_NAME, value="div")
+    supported_inputs_container = gameInfoContainer.find_element(by=By.CLASS_NAME, value=SUPPORTED_INPUTS_CONTAINER).find_element(by=By.TAG_NAME, value="div")
+    supported_inputs = supported_inputs_container.find_elements(by=By.TAG_NAME, value="svg")
 
-    d = len(supported_controller_divs)
-    support_controller: bool = len(supported_controller_divs) >= 2
-    touch_controller: bool = len(supported_controller_divs) >= 4
+    d = len(supported_inputs)
+    support_controller: bool = len(supported_inputs) >= 1
+    touch_controller: bool = len(supported_inputs) >= 2
 
     return GameProperties(is_in_gamepass, support_controller, touch_controller)
 
