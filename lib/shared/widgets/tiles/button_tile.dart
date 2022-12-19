@@ -53,7 +53,6 @@ class ButtonTile extends TileWidget implements CoveredTile, FocableElement {
 }
 
 class _ButtonTileState extends TileWidgetState<ButtonTile> {
-  late TileCover _tileCover;
   late FocusNode _focusNode;
   TileTitleBar? _titleBar;
   TileBadges? _tileBadges;
@@ -61,12 +60,6 @@ class _ButtonTileState extends TileWidgetState<ButtonTile> {
   @override
   void initState() {
     super.initState();
-    _tileCover = TileCover(
-      customCover: widget.customCover,
-      icon: widget.icon,
-      image: widget.image,
-      color: widget.color,
-    );
 
     _focusNode = widget.focusNode ?? FocusNode();
     if (widget.appBadgeInfo != null)
@@ -90,6 +83,12 @@ class _ButtonTileState extends TileWidgetState<ButtonTile> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _focusNode.dispose();
+  }
+
+  @override
   Widget virtualBuild(BuildContext context) {
     return Button(
       focusNode: _focusNode,
@@ -100,7 +99,12 @@ class _ButtonTileState extends TileWidgetState<ButtonTile> {
       onPressed: () => widget.onPressed?.call(context),
       child: Stack(
         children: [
-          _tileCover,
+          TileCover(
+            customCover: widget.customCover,
+            icon: widget.icon,
+            image: widget.image,
+            color: widget.color,
+          ),
           Align(
               alignment: Alignment.bottomLeft,
               child: Padding(

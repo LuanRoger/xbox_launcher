@@ -12,10 +12,10 @@ import 'package:xbox_launcher/shared/widgets/tiles/utils/tiles_generator.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 
 class AppsTileRow extends StatelessWidget implements TileGenerator {
-  final List<AppModel> tiles;
+  List<AppModel> tiles;
   final TileGeneratorOption customGenerateOption;
 
-  const AppsTileRow(
+  AppsTileRow(
       {super.key, required this.tiles, required this.customGenerateOption});
 
   @override

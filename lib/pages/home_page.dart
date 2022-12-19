@@ -62,11 +62,11 @@ class HomePage extends XboxPageStateless {
                         return value.lastApps.isEmpty
                             ? const WellcomingMessage()
                             : AppsTileRow(
-                                tiles: value.lastApps,
-                                customGenerateOption: TileGeneratorOption(
-                                    context: context,
-                                    focusScope: elementFocusScope),
-                              );
+                              tiles: value.lastApps,
+                              customGenerateOption: TileGeneratorOption(
+                                  context: context,
+                                  focusScope: elementFocusScope),
+                            );
                       },
                     ),
                     const SizedBox(height: 30),
