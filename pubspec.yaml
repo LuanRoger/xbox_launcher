@@ -1,6 +1,6 @@
 name: xbox_launcher
 description: XCloud with the Xbox Series S/X's interface.
-version: 0.0.2
+version: 0.0.3
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
@@ -33,20 +33,20 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^1.0.0
-  msix: ^2.8.18
+  msix: ^3.7.0
 
 msix_config:
   display_name: Xbox Launcher
   publisher_display_name: Luan Roger
   identity_name: luanroger.xboxlauncher
-  msix_version: 0.0.2.0
+  msix_version: 0.0.3.0
   capabilities: internetClient
   enable_at_startup: false
   output_name: xbox_launcher
   store: false
   architecture: x64
-  certificate_path: XboxLauncher.pfx
-  certificate_password: lrxboxlauncher
+  publisher: CN=Luan Roger, C=BR
+  sign_msix: false
 
 flutter:
   uses-material-design: true
