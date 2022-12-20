@@ -9,23 +9,23 @@ dependencies:
   flutter:
     sdk: flutter
 
-  fluent_ui: ^4.0.3
-  webview_windows: ^0.2.1
-  provider: ^6.0.3
-  xinput_gamepad: ^1.2.0
+  fluent_ui: ^4.1.2
+  webview_windows: ^0.2.2
+  provider: ^6.0.5
+  xinput_gamepad: ^1.2.3
   virtual_keyboard:
     git: https://github.com/LuanRoger/virtual_keyboard
   clock: ^1.1.1
-  window_manager: ^0.2.7
+  window_manager: ^0.2.8
   shared_preferences: ^2.0.15
-  file_picker: ^5.0.1
-  sprintf: ^6.0.2
-  carousel_slider: ^4.1.1
+  file_picker: ^5.2.4
+  sprintf: ^7.0.0
+  carousel_slider: ^4.2.1
   path_provider: ^2.0.11
-  flutter_svg: ^1.1.5
+  flutter_svg: ^1.1.6
   sys_info_getter:
     path: ./internals/sys_info_getter/
-  url_launcher: ^6.1.6
+  url_launcher: ^6.1.7
   path: ^1.8.2
 
 dev_dependencies:

@@ -10,7 +10,8 @@ import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 
 class ProfileConfigurationSection extends NavigationSectionStateless {
-  const ProfileConfigurationSection({Key? key}) : super("Profile", key: key);
+  const ProfileConfigurationSection({super.key, required super.currentScope})
+      : super("Profile");
 
   Future _removeProfileFlow(ProfileModel toRemove, BuildContext context) {
     return SystemDialog(

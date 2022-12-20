@@ -13,6 +13,7 @@ import 'package:xbox_launcher/shared/widgets/listbox/listbox.dart';
 import 'package:xbox_launcher/shared/enums/sort_options.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable_message.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/apps_tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
@@ -34,7 +35,7 @@ class MyGamesSection extends NavigationSectionStateless {
   late ChipsRow chipsRow;
   List<ChipBase>? chipsList;
 
-  MyGamesSection({super.key, super.currentScope}) : super("Games");
+  MyGamesSection({super.key, required super.currentScope}) : super("Games");
 
   Future<bool> readXCloudGames(BuildContext context) async {
     ProfileProvider profileProvider = context.read<ProfileProvider>();
@@ -87,7 +88,7 @@ class MyGamesSection extends NavigationSectionStateless {
       tempChipsList.add(TextChip(
         gameGenre,
         value: gameGenre,
-        focusNode: currentScope?.createFocusNode(),
+        focusNode: currentScope.createFocusNode(),
       ));
     }
 
@@ -208,13 +209,13 @@ class MyGamesSection extends NavigationSectionStateless {
                                 const Spacer(),
                                 Expanded(
                                   flex: 20,
-                                  child: TileGrid.tileSize(
-                                    tileSize: tileSize,
-                                    tiles: WidgetGen.generateByModel(
-                                        gamesSearchResult ?? gamesList,
-                                        TileGeneratorOption([tileSize],
-                                            focusScope: currentScope,
-                                            context: context)),
+                                  child: AppsTilesGrid(
+                                    apps: gamesSearchResult ?? gamesList,
+                                    mainAxisSpacing: 10,
+                                    crossAxisSpacing: 10,
+                                    customGenerationOption: TileGeneratorOption(
+                                        focusScope: currentScope,
+                                        context: context),
                                     scrollDirection: Axis.vertical,
                                   ),
                                 )

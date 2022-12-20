@@ -5,7 +5,7 @@ from internals.models.xcloud_game import XcloudGame
 
 from xcloud_extras.consts import *
 from internals.shared_consts import XCLOUD_BASE_URL
-from internals.element_picker import getGamesInGrid, getGamesInfoInNewTab
+from internals.element_picker import getGamesInGrid, getGamesInfoInNewTab, getTileGameImageUrl
 from internals.webdriver_utils import *
 from internals.xcloud_elements_consts import *
 from internals.json_writer import *
@@ -19,8 +19,8 @@ games = getGamesInGrid(games_grid)
 games_list: List[XcloudGame] = []
 for game in games:
     game_url: str = game.get_attribute("href")
-    game_image_element = game.find_element(by=By.TAG_NAME, value="img")
-    tile_image_url = add_parameter_sprinter(game_image_element.get_attribute("src"))
+    game_image_src: str = getTileGameImageUrl(game.find_element(by=By.TAG_NAME, value="picture"))
+    tile_image_url = add_parameter_sprinter(game_image_src)
 
     xcloud_game = getGamesInfoInNewTab(driver, game_url)
     xcloud_game.xcloudUrl = add_formater_game_url_server(game_url, XCLOUD_BASE_URL)

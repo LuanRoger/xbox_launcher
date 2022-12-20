@@ -44,19 +44,27 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
           PaneItem(
               icon: const SizedBox(),
               title: const Text("General"),
-              body: const GenralConfigurationSection()),
+              body: GenralConfigurationSection(
+                currentScope: elementFocusScope,
+              )),
           PaneItem(
               icon: const SizedBox(),
               title: const Text("Profile"),
-              body: const ProfileConfigurationSection()),
+              body: ProfileConfigurationSection(
+                currentScope: elementFocusScope,
+              )),
           PaneItem(
               icon: const SizedBox(),
               title: const Text("Cloud gaming"),
-              body: CloudGamingConfigurationSection()),
+              body: CloudGamingConfigurationSection(
+                currentScope: elementFocusScope,
+              )),
           PaneItem(
               icon: const SizedBox(),
               title: const Text("About"),
-              body: const AboutConfigurationSection())
+              body: AboutConfigurationSection(
+                currentScope: elementFocusScope,
+              ))
         ]);
   }
 }

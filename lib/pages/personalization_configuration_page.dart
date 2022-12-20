@@ -41,13 +41,12 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
 
   void setMainColor(BuildContext context) {
     MenuDialogOverlay("Colors",
-        content: TileGrid.build(
+        content: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 2),
           itemCount: AppColors.COLORS_LIST.length - 1,
           itemBuilder: (context, index) {
             return ButtonTile(
-              "",
               tileSize: TileSize.MEDIUM,
               color: AppColors.COLORS_LIST[index],
               onPressed: (context) {
@@ -63,13 +62,12 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
 
   void setBackgroundColor(BuildContext context) {
     MenuDialogOverlay("Background color",
-        content: TileGrid.build(
+        content: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 2),
           itemCount: AppColors.COLORS_LIST.length - 1,
           itemBuilder: (context, index) {
             return ButtonTile(
-              "",
               tileSize: TileSize.MEDIUM,
               color: AppColors.COLORS_LIST[index],
               onPressed: (context) {

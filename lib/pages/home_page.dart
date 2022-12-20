@@ -11,6 +11,7 @@ import 'package:xbox_launcher/shared/widgets/placeholder_messages/wellcoming_mes
 import 'package:xbox_launcher/shared/widgets/buttons/system_banner_button.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_info.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
+import 'package:xbox_launcher/shared/widgets/tiles/app_tiles_row.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/tile_row.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
@@ -30,12 +31,12 @@ class HomePage extends XboxPageStateless {
             height: double.infinity,
             child: Background()),
         Padding(
-          padding: const EdgeInsets.all(50),
+          padding: const EdgeInsets.only(left: 50, top: 50, right: 50),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Flexible(
-                flex: 0,
+                flex: 1,
                 child: Row(
                   children: [
                     const Flexible(child: ProfileInfo()),
@@ -51,32 +52,34 @@ class HomePage extends XboxPageStateless {
                 ),
               ),
               const Spacer(),
-              Flexible(
-                  flex: 10,
-                  child: Consumer<ProfileProvider>(
-                    builder: (_, value, __) {
-                      return value.lastApps.isEmpty
-                          ? const WellcomingMessage()
-                          : TileRow(
-                              tiles: WidgetGen.generateByModel(
-                                  value.lastApps,
-                                  TileGeneratorOption(
-                                      [TileSize.BIG, TileSize.MEDIUM],
-                                      context: context)));
-                    },
-                  )),
-              const Spacer(),
-              Flexible(
-                flex: 5,
-                child: Row(
+              Expanded(
+                flex: 0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Flexible(
-                      child: SystemBannerButton(
-                        "My games",
-                        onClick: () => Navigator.pushNamed(
-                            context, AppRoutes.myLibraryRoute),
-                        icon: FluentIcons.library,
-                      ),
+                    Consumer<ProfileProvider>(
+                      builder: (_, value, __) {
+                        return value.lastApps.isEmpty
+                            ? const WellcomingMessage()
+                            : AppsTileRow(
+                              tiles: value.lastApps,
+                              customGenerateOption: TileGeneratorOption(
+                                  context: context,
+                                  focusScope: elementFocusScope),
+                            );
+                      },
+                    ),
+                    const SizedBox(height: 30),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SystemBannerButton(
+                          "My games",
+                          onClick: () => Navigator.pushNamed(
+                              context, AppRoutes.myLibraryRoute),
+                          icon: FluentIcons.library,
+                        ),
+                      ],
                     ),
                   ],
                 ),
