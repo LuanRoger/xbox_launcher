@@ -6,9 +6,9 @@ import 'package:xbox_launcher/models/app_models/system_app_model.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/enums/app_type.dart';
-import 'package:xbox_launcher/shared/widgets/utils/commands/models/shared_command.dart';
+import 'package:xbox_launcher/shared/widgets/utils/commands/models/command.dart';
 
-class OpenAppCommand implements SharedCommand {
+class OpenAppCommand implements Command {
   AppModel appModel;
   BuildContext context;
 
