@@ -16,17 +16,31 @@ class KeyboardActionProvider extends ChangeNotifier
       Map<ShortcutActivator, void Function()> keyboardBinding,
       {bool notifyChanges = true}) {
     _keyboardBinding = keyboardBinding;
+    addToMementoStack();
 
+    if (notifyChanges) notifyListeners();
+  }
+
+  void popLastBindig({bool notifyChanges = true}) {
+    if (mementoStack.isEmpty) return;
+
+    applyFromMementoStack();
     if (notifyChanges) notifyListeners();
   }
 
   @override
   void addToMementoStack() => mementoStack
       .add(Map<ShortcutActivator, void Function()>.from(_keyboardBinding));
+
   @override
   void applyFromMementoStack() {
+    if (mementoStack.length == 1) {
+      removeFromMementoStack();
+      _keyboardBinding = {};
+      return;
+    }
+
     _keyboardBinding = mementoStack.removeLast();
-    notifyListeners();
   }
 
   @override

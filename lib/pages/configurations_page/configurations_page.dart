@@ -32,7 +32,7 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
             controllerKeyboardPair: ControllerKeyboardPair(
                 const SingleActivator(LogicalKeyboardKey.escape),
                 ControllerButton.B_BUTTON),
-            action: (context) => Navigator.pop(context))
+            action: () => Navigator.pop(context))
       ];
 
   @override

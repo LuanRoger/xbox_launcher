@@ -23,7 +23,7 @@ class VideoConfigurationPage extends ConfigurationMenu {
             controllerKeyboardPair: ControllerKeyboardPair(
                 const SingleActivator(LogicalKeyboardKey.escape),
                 ControllerButton.B_BUTTON),
-            action: (context) => Navigator.pop(context))
+            action: () => Navigator.pop(context))
       ];
 
   @override

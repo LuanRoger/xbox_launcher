@@ -9,23 +9,31 @@ class ControllerActionProvider
       List.empty(growable: true);
   final XInputController _inputController;
 
-  Map<ControllerButton, Function> get controller0Binding =>
-      _inputController.controller0.buttonsMapping!;
-  set controller0Binding(Map<ControllerButton, Function> buttonsBinding) {
-    _inputController.controller0.buttonsMapping = buttonsBinding;
-    _inputController.mapBasicControllers();
-  }
-
   ControllerActionProvider(this._inputController);
 
+  void setControllerMapping(
+      Map<ControllerButton, void Function()> controllerMapping) {
+    _inputController.controller0.buttonsMapping = controllerMapping;
+    _inputController.mapBasicControllers();
+
+    addToMementoStack();
+  }
+
+  void popLastKeyboardBindig() {
+    applyFromMementoStack();
+  }
+
   @override
-  void addToMementoStack() => mementoStack
-      .add(Map<ControllerButton, Function>.from(controller0Binding));
+  void addToMementoStack() =>
+      mementoStack.add(Map<ControllerButton, Function>.from(
+          _inputController.controller0.buttonsMapping!));
 
   @override
   void applyFromMementoStack() {
-    var valueToApply = mementoStack.removeLast();
-    controller0Binding = valueToApply;
+    Map<ControllerButton, Function>? valueToApply = mementoStack.removeLast();
+    if (mementoStack.isEmpty) valueToApply = null;
+
+    _inputController.controller0.buttonsMapping = valueToApply;
   }
 
   @override

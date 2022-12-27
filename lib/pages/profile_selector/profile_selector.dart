@@ -51,12 +51,12 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.escape),
               ControllerButton.B_BUTTON),
-          action: (context) => Navigator.pop(context)),
+          action: () => Navigator.pop(context)),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.arrowRight),
               ControllerButton.DPAD_RIGHT),
-          action: (_) => profileSliderController.nextPage(
+          action: () => profileSliderController.nextPage(
               curve: profileChangeAnimationCurve,
               duration: profileChangeAnimationTime),
           show: false),
@@ -64,7 +64,7 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.arrowLeft),
               ControllerButton.DPAD_LEFT),
-          action: (_) => profileSliderController.previousPage(
+          action: () => profileSliderController.previousPage(
               curve: profileChangeAnimationCurve,
               duration: profileChangeAnimationTime),
           show: false)

@@ -48,7 +48,7 @@ class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
             controllerKeyboardPair: ControllerKeyboardPair(
                 const SingleActivator(LogicalKeyboardKey.escape),
                 ControllerButton.B_BUTTON),
-            action: (context) => Navigator.pop(context))
+            action: () => Navigator.pop(context))
       ];
 
   void getProfileInfo(BuildContext context) {

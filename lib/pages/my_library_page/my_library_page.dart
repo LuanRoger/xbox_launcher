@@ -50,7 +50,7 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.escape),
               ControllerButton.B_BUTTON),
-          action: (context) => Navigator.pop(context),
+          action: () => Navigator.pop(context),
         ),
       );
       if (focusedElementValue is GameModel) {
@@ -59,7 +59,7 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.f1),
               ControllerButton.BACK),
-          action: (context) => ContextMenu("Options", contextItems: [
+          action: () => ContextMenu("Options", contextItems: [
             ContextMenuItem("Add to a group",
                 icon: FluentIcons.add,
                 onPressed: () => ContextMenuAddGroup(focusedElementValue.name,
@@ -100,7 +100,7 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
             controllerKeyboardPair: ControllerKeyboardPair(
                 const SingleActivator(LogicalKeyboardKey.escape),
                 ControllerButton.B_BUTTON),
-            action: (context) => Navigator.pop(context)),
+            action: () => Navigator.pop(context)),
       ];
 
   @override

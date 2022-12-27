@@ -20,27 +20,18 @@ class KeyboardControllerActionManipulator {
     Map<ControllerButton, void Function()> controllerMapping = {};
     for (var action in shortcutsOptions
         .map((shortcutOption) => shortcutOption.rawShortcut)) {
-      keyboarMapping[action.key.keyboardkey] = () => action.value(context);
-      controllerMapping[action.key.controllerButton] =
-          () => action.value(context);
+      keyboarMapping[action.key.keyboardkey] = () => action.value();
+      controllerMapping[action.key.controllerButton] = () => action.value();
     }
 
     keyboardProvider.setKeyboardBinding(keyboarMapping,
         notifyChanges: notifyChanges);
-    controllerProvider.controller0Binding = controllerMapping;
-  }
-
-  static void saveAllCurrentAtMemento(BuildContext context) {
-    Provider.of<KeyboardActionProvider>(context, listen: false)
-        .addToMementoStack();
-    Provider.of<ControllerActionProvider>(context, listen: false)
-        .addToMementoStack();
+    controllerProvider.setControllerMapping(controllerMapping);
   }
 
   static void applyMementoInAll(BuildContext context) {
-    Provider.of<KeyboardActionProvider>(context, listen: false)
-        .applyFromMementoStack();
+    Provider.of<KeyboardActionProvider>(context, listen: false).popLastBindig();
     Provider.of<ControllerActionProvider>(context, listen: false)
-        .applyFromMementoStack();
+        .popLastKeyboardBindig();
   }
 }

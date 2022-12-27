@@ -45,7 +45,7 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
             controllerKeyboardPair: ControllerKeyboardPair(
                 const SingleActivator(LogicalKeyboardKey.escape),
                 ControllerButton.B_BUTTON),
-            action: (context) => Navigator.pop(context))
+            action: () => Navigator.pop(context))
       ];
 
   bool _isProfileNameValid() => profileNameController.text.isNotEmpty;

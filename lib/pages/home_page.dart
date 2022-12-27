@@ -1,6 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/models/shortcut_models/shortcut_info.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
@@ -10,17 +9,14 @@ import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/wellcoming_message.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/system_banner_button.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_info.dart';
-import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/app_tiles_row.dart';
-import 'package:xbox_launcher/shared/widgets/tiles/tile_row.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
-import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 
 class HomePage extends XboxPageStateless {
   HomePage({Key? key}) : super(key: key);
 
   @override
-  List<ShortcutOption>? defineMapping(BuildContext context) => null;
+  List<ShortcutOption>? defineMapping(BuildContext context) => [];
 
   @override
   Widget virtualBuild(BuildContext context) {
@@ -62,11 +58,11 @@ class HomePage extends XboxPageStateless {
                         return value.lastApps.isEmpty
                             ? const WellcomingMessage()
                             : AppsTileRow(
-                              tiles: value.lastApps,
-                              customGenerateOption: TileGeneratorOption(
-                                  context: context,
-                                  focusScope: elementFocusScope),
-                            );
+                                tiles: value.lastApps,
+                                customGenerateOption: TileGeneratorOption(
+                                    context: context,
+                                    focusScope: elementFocusScope),
+                              );
                       },
                     ),
                     const SizedBox(height: 30),
