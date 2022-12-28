@@ -1,27 +1,51 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:provider/provider.dart';
-import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
+import 'package:xbox_launcher/controllers/controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/mapping_definition.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_info.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
-import 'package:xbox_launcher/providers/keyboard_action_provider.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/widgets/focus/element_focus_scope.dart';
 import 'package:xbox_launcher/shared/widgets/focus/focable_element.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page_builder.dart';
 import 'package:xbox_launcher/shared/widgets/shortcuts/shortcut_viewer_support.dart';
 
-abstract class XboxPageStateless extends StatelessWidget
+abstract class XboxPage extends StatefulWidget {
+  const XboxPage({Key? key}) : super(key: key);
+}
+
+abstract class XboxPageState<T extends XboxPage> extends State<T>
     with ShortcutViewerSupport
     implements MappingDefinition, XboxPageBuilder {
   ElementFocusScope elementFocusScope = ElementFocusScope();
 
-  XboxPageStateless({
-    Key? key,
-  }) : super(key: key) {
+  XboxPageState() {
     elementFocusScope.onElementFocus = onElementFocus;
+  }
+
+  List<ShortcutInfo>? cachedShortcutsInfo;
+  Map<ShortcutActivator, void Function()> get shortcutsBindings {
+    if (cachedShortcutsInfo == null) return {};
+
+    List<ShortcutOption> shortcutsOption =
+        cachedShortcutsInfo!.whereType<ShortcutOption>().toList();
+    return Map.fromEntries(shortcutsOption.map((e) => e.rawShortcutCallback));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    cachedShortcutsInfo = defineMapping(context);
+    if (cachedShortcutsInfo != null)
+      updateShortcuts(cachedShortcutsInfo!, notifyChanges: false);
+  }
+
+  @override
+  void deactivate() {
+    ControllerActionManipulator.applyMementoInAll(context);
+    super.deactivate();
   }
 
   Widget virtualBuild(BuildContext context);
@@ -29,12 +53,14 @@ abstract class XboxPageStateless extends StatelessWidget
     /*Virtual: Not required*/
   }
 
-  void updateShortcuts(BuildContext context, List<ShortcutInfo> shortcuts,
+  void updateShortcuts(List<ShortcutInfo> shortcuts,
       {bool notifyChanges = true}) {
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+    ControllerActionManipulator.mapControllerActions(
         context, shortcuts.whereType<ShortcutOption>().toList(),
         notifyChanges: notifyChanges);
     updateShortcutsViewer(shortcuts);
+
+    cachedShortcutsInfo = List.from(shortcuts);
   }
 
   @override
@@ -50,14 +76,7 @@ abstract class XboxPageStateless extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    List<ShortcutInfo>? mapping = defineMapping(context);
-
-    if (mapping != null)
-      updateShortcuts(context, mapping, notifyChanges: false);
-
     return CallbackShortcuts(
-        bindings: Provider.of<KeyboardActionProvider>(context, listen: false)
-            .keyboardBinding,
-        child: genPageChild(context));
+        bindings: shortcutsBindings, child: genPageChild(context));
   }
 }
