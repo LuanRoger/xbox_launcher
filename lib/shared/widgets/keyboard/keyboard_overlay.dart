@@ -2,7 +2,7 @@
 import 'package:fluent_ui/fluent_ui.dart' hide Overlay;
 import 'package:flutter/services.dart' hide KeyboardKey;
 import 'package:provider/provider.dart';
-import 'package:xbox_launcher/controllers/keyboard_controller_action_manipulator.dart';
+import 'package:xbox_launcher/controllers/controller_action_manipulator.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/mapping_definition.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
@@ -86,57 +86,55 @@ class KeyboardOverlay implements MappingDefinition {
 
   void _cancel(BuildContext context) {
     controller.text = _initialStringMemento!;
-    KeyboardControllerActionManipulator.applyMementoInAll(context);
+    ControllerActionManipulator.applyMementoInAll(context);
     Navigator.pop(context);
   }
 
   void _finish(BuildContext context) {
     onFinish?.call(false);
-    KeyboardControllerActionManipulator.applyMementoInAll(context);
+    ControllerActionManipulator.applyMementoInAll(context);
     Navigator.pop(context);
   }
   //#endregion
 
   @override
   List<ShortcutOption>? defineMapping(BuildContext context) {
-    KeyboardControllerActionManipulator.saveAllCurrentAtMemento(context);
-
     return [
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.tab),
               ControllerButton.LEFT_SHOULDER),
-          action: (_) => _switchKeyboardLayout()),
+          action: () => _switchKeyboardLayout()),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.capsLock),
               ControllerButton.LEFT_THUMB),
-          action: (_) => _switchLayoutToCaps()),
+          action: () => _switchLayoutToCaps()),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.insert),
               ControllerButton.RIGHT_THUMB),
-          action: (_) => _switchKeyboardLocker()),
+          action: () => _switchKeyboardLocker()),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.backspace),
               ControllerButton.X_BUTTON),
-          action: (_) => _backspace()),
+          action: () => _backspace()),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.space),
               ControllerButton.Y_BUTTON),
-          action: (_) => _space()),
+          action: () => _space()),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.escape),
               ControllerButton.BACK),
-          action: (_) => _cancel(context)),
+          action: () => _cancel(context)),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.enter),
               ControllerButton.START),
-          action: (_) => _finish(context))
+          action: () => _finish(context))
     ];
   }
 
@@ -147,7 +145,7 @@ class KeyboardOverlay implements MappingDefinition {
 
     _changeKeyboardLayout(KeyboardLayout.ALPHABET);
     _initialStringMemento = String.fromCharCodes(controller.text.codeUnits);
-    KeyboardControllerActionManipulator.mapKeyboardControllerActions(
+    ControllerActionManipulator.mapControllerActions(
         context, defineMapping(context)!.whereType<ShortcutOption>().toList());
 
     showGeneralDialog(

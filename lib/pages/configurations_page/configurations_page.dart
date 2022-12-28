@@ -6,11 +6,11 @@ import 'package:xbox_launcher/pages/configurations_page/sections/about_configura
 import 'package:xbox_launcher/pages/configurations_page/sections/profile_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/cloud_gaming_configuration_section.dart';
 import 'package:xbox_launcher/pages/configurations_page/sections/general_configurations_section.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_bar.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
-class ConfigurationsPage extends XboxPageStateful {
+class ConfigurationsPage extends XboxPage {
   const ConfigurationsPage({Key? key}) : super(key: key);
 
   @override

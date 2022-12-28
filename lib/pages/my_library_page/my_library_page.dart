@@ -19,11 +19,11 @@ import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_a
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_item.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/focus/focable_element.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_bar.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
-class MyLibraryPage extends XboxPageStateful {
+class MyLibraryPage extends XboxPage {
   const MyLibraryPage({Key? key}) : super(key: key);
 
   @override

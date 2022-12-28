@@ -4,10 +4,10 @@ import 'package:xbox_launcher/models/app_models/game_model.dart';
 import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 import 'package:xbox_launcher/utils/string_formatter.dart';
 
-class GamePage extends XboxPageStateful {
+class GamePage extends XboxPage {
   final GameModel gameModel;
   final String server;
   final bool autoLogin;
