@@ -10,10 +10,10 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
 import 'package:xbox_launcher/shared/widgets/focus/element_focus_node.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
-class ProfileSelector extends XboxPageStateful {
+class ProfileSelector extends XboxPage {
   final String? title;
   final void Function(BuildContext, ProfileModel) onProfileSelect;
 

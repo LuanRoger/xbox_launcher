@@ -10,7 +10,7 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class VideoConfigurationPage extends ConfigurationMenu {
-  VideoConfigurationPage({Key? key})
+  const VideoConfigurationPage({Key? key})
       : super(
           "General",
           "Video",
