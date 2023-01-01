@@ -12,11 +12,12 @@ class ControllerActionProvider
   ControllerActionProvider(this._inputController);
 
   void setControllerMapping(
-      Map<ControllerButton, void Function()> controllerMapping) {
+      Map<ControllerButton, void Function()> controllerMapping,
+      {bool putIntoMemento = true}) {
     _inputController.controller0.buttonsMapping = controllerMapping;
     _inputController.mapBasicControllers();
 
-    addToMementoStack();
+    if (putIntoMemento) addToMementoStack();
   }
 
   void popLastKeyboardBindig() {
@@ -31,7 +32,6 @@ class ControllerActionProvider
   @override
   void applyFromMementoStack() {
     Map<ControllerButton, Function>? valueToApply = mementoStack.removeLast();
-    if (mementoStack.isEmpty) valueToApply = null;
 
     _inputController.controller0.buttonsMapping = valueToApply;
   }

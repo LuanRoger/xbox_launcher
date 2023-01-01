@@ -5,9 +5,8 @@ import 'package:xbox_launcher/providers/controller_action_provider.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class ControllerActionManipulator {
-  static void mapControllerActions(
-      BuildContext context, List<ShortcutOption> shortcutsOptions,
-      {bool notifyChanges = true}) {
+  static void mapControllerActions(BuildContext context,
+      List<ShortcutOption> shortcutsOptions, bool putIntoMemento) {
     if (shortcutsOptions.isEmpty) return;
 
     var controllerProvider =
@@ -19,7 +18,7 @@ class ControllerActionManipulator {
       controllerMapping[action.key.controllerButton] = () => action.value();
     }
 
-    controllerProvider.setControllerMapping(controllerMapping);
+    controllerProvider.setControllerMapping(controllerMapping, putIntoMemento: putIntoMemento);
   }
 
   static void applyMementoInAll(BuildContext context) {

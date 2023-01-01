@@ -38,8 +38,7 @@ abstract class XboxPageState<T extends XboxPage> extends State<T>
     super.initState();
 
     cachedShortcutsInfo = defineMapping(context);
-    if (cachedShortcutsInfo != null)
-      updateShortcuts(cachedShortcutsInfo!, notifyChanges: false);
+    if (cachedShortcutsInfo != null) _addPageShortcuts(cachedShortcutsInfo!);
   }
 
   @override
@@ -53,11 +52,17 @@ abstract class XboxPageState<T extends XboxPage> extends State<T>
     /*Virtual: Not required*/
   }
 
-  void updateShortcuts(List<ShortcutInfo> shortcuts,
-      {bool notifyChanges = true}) {
+  void updateShortcuts(List<ShortcutInfo> shortcuts) {
     ControllerActionManipulator.mapControllerActions(
-        context, shortcuts.whereType<ShortcutOption>().toList(),
-        notifyChanges: notifyChanges);
+        context, shortcuts.whereType<ShortcutOption>().toList(), false);
+    updateShortcutsViewer(shortcuts);
+
+    cachedShortcutsInfo = List.from(shortcuts);
+  }
+
+  void _addPageShortcuts(List<ShortcutInfo> shortcuts) {
+    ControllerActionManipulator.mapControllerActions(
+        context, shortcuts.whereType<ShortcutOption>().toList(), true);
     updateShortcutsViewer(shortcuts);
 
     cachedShortcutsInfo = List.from(shortcuts);
