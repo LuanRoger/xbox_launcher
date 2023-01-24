@@ -19,11 +19,11 @@ import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_a
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_item.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/focus/focable_element.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_bar.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
-class MyLibraryPage extends XboxPageStateful {
+class MyLibraryPage extends XboxPage {
   const MyLibraryPage({Key? key}) : super(key: key);
 
   @override
@@ -50,7 +50,7 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.escape),
               ControllerButton.B_BUTTON),
-          action: (context) => Navigator.pop(context),
+          action: () => Navigator.pop(context),
         ),
       );
       if (focusedElementValue is GameModel) {
@@ -59,7 +59,7 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.f1),
               ControllerButton.BACK),
-          action: (context) => ContextMenu("Options", contextItems: [
+          action: () => ContextMenu("Options", contextItems: [
             ContextMenuItem("Add to a group",
                 icon: FluentIcons.add,
                 onPressed: () => ContextMenuAddGroup(focusedElementValue.name,
@@ -100,7 +100,7 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
             controllerKeyboardPair: ControllerKeyboardPair(
                 const SingleActivator(LogicalKeyboardKey.escape),
                 ControllerButton.B_BUTTON),
-            action: (context) => Navigator.pop(context)),
+            action: () => Navigator.pop(context)),
       ];
 
   @override

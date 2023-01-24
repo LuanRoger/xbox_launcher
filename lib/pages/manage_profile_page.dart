@@ -12,11 +12,11 @@ import 'package:xbox_launcher/shared/widgets/alert_bar/alert_bar_overlay.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/keyboard/keyboard_button.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/profile_avatar_button.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
-class ManageProfilePage extends XboxPageStateful {
+class ManageProfilePage extends XboxPage {
   const ManageProfilePage({Key? key}) : super(key: key);
 
   @override
@@ -48,7 +48,7 @@ class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
             controllerKeyboardPair: ControllerKeyboardPair(
                 const SingleActivator(LogicalKeyboardKey.escape),
                 ControllerButton.B_BUTTON),
-            action: (context) => Navigator.pop(context))
+            action: () => Navigator.pop(context))
       ];
 
   void getProfileInfo(BuildContext context) {

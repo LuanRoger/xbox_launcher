@@ -10,10 +10,10 @@ import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
 import 'package:xbox_launcher/shared/widgets/focus/element_focus_node.dart';
-import 'package:xbox_launcher/shared/widgets/models/xbox_page_stateful.dart';
+import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
-class ProfileSelector extends XboxPageStateful {
+class ProfileSelector extends XboxPage {
   final String? title;
   final void Function(BuildContext, ProfileModel) onProfileSelect;
 
@@ -51,12 +51,12 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.escape),
               ControllerButton.B_BUTTON),
-          action: (context) => Navigator.pop(context)),
+          action: () => Navigator.pop(context)),
       ShortcutOption("",
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.arrowRight),
               ControllerButton.DPAD_RIGHT),
-          action: (_) => profileSliderController.nextPage(
+          action: () => profileSliderController.nextPage(
               curve: profileChangeAnimationCurve,
               duration: profileChangeAnimationTime),
           show: false),
@@ -64,7 +64,7 @@ class _ProfileSelectorState extends XboxPageState<ProfileSelector> {
           controllerKeyboardPair: ControllerKeyboardPair(
               const SingleActivator(LogicalKeyboardKey.arrowLeft),
               ControllerButton.DPAD_LEFT),
-          action: (_) => profileSliderController.previousPage(
+          action: () => profileSliderController.previousPage(
               curve: profileChangeAnimationCurve,
               duration: profileChangeAnimationTime),
           show: false)

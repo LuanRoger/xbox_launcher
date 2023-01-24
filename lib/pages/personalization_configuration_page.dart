@@ -11,13 +11,11 @@ import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/button_grid.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/menu_dialog_overlay.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/models/system_button.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/button_tile.dart';
-import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class PersonalizationConfigurationPage extends ConfigurationMenu {
-  PersonalizationConfigurationPage({Key? key})
+  const PersonalizationConfigurationPage({Key? key})
       : super("General", "Personalization", key: key);
 
   @override
@@ -26,7 +24,7 @@ class PersonalizationConfigurationPage extends ConfigurationMenu {
             controllerKeyboardPair: ControllerKeyboardPair(
                 const SingleActivator(LogicalKeyboardKey.escape),
                 ControllerButton.B_BUTTON),
-            action: (context) => Navigator.pop(context))
+            action: () => Navigator.pop(context))
       ];
 
   void setCustomImage(BuildContext context) async {
