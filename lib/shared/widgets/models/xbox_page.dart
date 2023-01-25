@@ -18,6 +18,7 @@ abstract class XboxPage extends StatefulWidget {
 abstract class XboxPageState<T extends XboxPage> extends State<T>
     with ShortcutViewerSupport
     implements MappingDefinition, XboxPageBuilder {
+  //TODO: Dispose all focus node when is not needed
   ElementFocusScope elementFocusScope = ElementFocusScope();
 
   XboxPageState() {
