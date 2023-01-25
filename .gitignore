@@ -48,9 +48,12 @@ app.*.map.json
 # Python
 __pycache__/
 
-#Project releated
+# Editors
+.vscode/
+
+# Project releated
 apps_historic.json
 profiles_data.json
 
-#Certificates
+# Certificates
 *.pfx
