@@ -22,8 +22,8 @@ class _ConfigurationsPageState extends XboxPageState<ConfigurationsPage> {
 
   @override
   void initState() {
-    selectedTab = 0;
     super.initState();
+    selectedTab = 0;
   }
 
   @override
