@@ -14,9 +14,7 @@ import 'package:xbox_launcher/shared/enums/sort_options.dart';
 import 'package:xbox_launcher/shared/widgets/navigations/navigation_section_stateless.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/xcloud_file_unavailable_message.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/apps_tile_grid.dart';
-import 'package:xbox_launcher/shared/widgets/tiles/tile_grid.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
-import 'package:xbox_launcher/shared/widgets/utils/generators/widget_gen.dart';
 import 'package:xbox_launcher/utils/loaders/xcloud_json_db_loader.dart';
 
 class MyGamesSection extends NavigationSectionStateless {
@@ -27,9 +25,6 @@ class MyGamesSection extends NavigationSectionStateless {
   List<GameModel>? gamesSearchResult;
   String? gameGenreFilter;
   SortOptions? currentSortOption;
-
-  //Cached lists
-  List<GameModel>? _cachedReleaseDataGameSort;
 
   TextEditingController searchTextController = TextEditingController();
   late ChipsRow chipsRow;
@@ -103,21 +98,17 @@ class MyGamesSection extends NavigationSectionStateless {
         gamesList.sort((game1, game2) => game1.name.compareTo(game2.name));
         break;
       case SortOptions.RELEASE_DATE:
-        if (_cachedReleaseDataGameSort != null) {
-          gamesList = _cachedReleaseDataGameSort!;
-        }
         gamesList.sort((game1, game2) {
           List<String> releaseDate1 = game1.releaseDate.split('/');
           DateTime game1ReleaseDate = DateTime.utc(int.parse(releaseDate1[2]),
               int.parse(releaseDate1[1]), int.parse(releaseDate1[0]));
 
-          List<String> releaseDate2 = game1.releaseDate.split('/');
+          List<String> releaseDate2 = game2.releaseDate.split('/');
           DateTime game2ReleaseDate = DateTime.utc(int.parse(releaseDate2[2]),
               int.parse(releaseDate2[1]), int.parse(releaseDate2[0]));
 
-          return game2ReleaseDate.compareTo(game1ReleaseDate);
+          return game1ReleaseDate.compareTo(game2ReleaseDate);
         });
-        _cachedReleaseDataGameSort = List.from(gamesList);
         break;
     }
 
@@ -188,7 +179,7 @@ class MyGamesSection extends NavigationSectionStateless {
                                       ListBox(
                                         [
                                           ComboBoxItem(
-                                            child: const Text("Sort: A to Z"),
+                                            child: const Text("A-Z"),
                                             value: SortOptions.ATOZ.index,
                                           ),
                                           ComboBoxItem(

@@ -9,16 +9,16 @@ dependencies:
   flutter:
     sdk: flutter
 
-  fluent_ui: ^4.1.2
+  fluent_ui: ^4.2.0
   webview_windows: ^0.2.2
   provider: ^6.0.5
   xinput_gamepad: ^1.2.3
   virtual_keyboard:
     git: https://github.com/LuanRoger/virtual_keyboard
   clock: ^1.1.1
-  window_manager: ^0.2.8
+  window_manager: ^0.3.0
   shared_preferences: ^2.0.15
-  file_picker: ^5.2.4
+  file_picker: ^5.2.5
   sprintf: ^7.0.0
   carousel_slider: ^4.2.1
   path_provider: ^2.0.11

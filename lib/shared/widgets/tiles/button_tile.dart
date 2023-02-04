@@ -83,12 +83,6 @@ class _ButtonTileState extends TileWidgetState<ButtonTile> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    _focusNode.dispose();
-  }
-
-  @override
   Widget virtualBuild(BuildContext context) {
     return Button(
       focusNode: _focusNode,

@@ -12,11 +12,15 @@ class VolumeInfoViwer extends StatelessWidget {
 
   String get formatedBytes =>
       DiskSizeFormatter.formatBytes(diskInfo.sizeRemaining, 1);
-  double get percentageRemaining =>
-      (diskInfo.sizeRemaining * 100) / diskInfo.size;
+  double get percentageRemaining {
+    final freeSpace = diskInfo.size - diskInfo.sizeRemaining;
+    return (freeSpace / diskInfo.size) * 100;
+  }
 
   @override
   Widget build(BuildContext context) {
+    final percentageRemainingCache = percentageRemaining;
+
     return SizedBox(
       width: 250,
       child: Padding(
@@ -46,7 +50,7 @@ class VolumeInfoViwer extends StatelessWidget {
                     height: 100,
                     width: 100,
                     child: ProgressRing(
-                      value: percentageRemaining,
+                      value: percentageRemainingCache,
                       activeColor:
                           Provider.of<ProfileProvider>(context, listen: false)
                               .accentColor,
@@ -56,7 +60,7 @@ class VolumeInfoViwer extends StatelessWidget {
                   ),
                   Center(
                       child: Text(
-                    percentageRemaining.toStringAsFixed(1) + "%",
+                    percentageRemainingCache.toStringAsFixed(1) + "%",
                     style: AppTextStyle.VOLUME_PERCENTAGE,
                   ))
                 ],

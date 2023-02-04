@@ -18,4 +18,10 @@ class ElementFocusNode extends FocusNode {
     _currentScope.onElementFocus
         ?.call(_focableElement, _focableElement.elementValue);
   }
+
+  @override
+    void dispose() {
+      super.dispose();
+      
+    }
 }

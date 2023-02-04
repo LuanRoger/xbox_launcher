@@ -38,7 +38,13 @@ abstract class XboxPageState<T extends XboxPage> extends State<T>
     super.initState();
 
     cachedShortcutsInfo = defineMapping(context);
-    if (cachedShortcutsInfo != null) _addPageShortcuts(cachedShortcutsInfo!);
+    _addPageShortcuts(cachedShortcutsInfo ?? List.empty());
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    elementFocusScope.dispose();
   }
 
   @override
