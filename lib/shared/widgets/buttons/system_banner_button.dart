@@ -8,17 +8,15 @@ class SystemBannerButton extends SystemButton {
   final IconData? icon;
   final ImageProvider? backgroundImage;
 
-  SystemBannerButton(this.text,
-      {Key? key,
-      required this.onClick,
-      this.icon,
-      this.backgroundImage,
-      double? height = 140,
-      double? width = 240})
-      : super(
-            key: key,
-            width: width,
-            height: height,
+  SystemBannerButton(
+    this.text, {
+    super.key,
+    required this.onClick,
+    this.icon,
+    this.backgroundImage,
+    super.width = 240,
+    super.height = 140,
+  }) : super(
             content: Builder(builder: ((BuildContext context) {
               if (icon != null) {
                 return Column(

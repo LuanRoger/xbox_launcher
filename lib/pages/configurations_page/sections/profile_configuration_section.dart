@@ -15,8 +15,8 @@ class ProfileConfigurationSection extends NavigationSectionStateless {
 
   Future _removeProfileFlow(ProfileModel toRemove, BuildContext context) {
     return SystemDialog(
-        title: "Do you want to remove ${toRemove.name}",
-        content:
+        textTitle: "Do you want to remove ${toRemove.name}",
+        textContent:
             "You will lost all the profile info (Configurations, customizations, historic and more...).\n"
             "This action can't be undo.",
         actions: [
@@ -29,8 +29,8 @@ class ProfileConfigurationSection extends NavigationSectionStateless {
 
               if (!result) {
                 await SystemDialog(
-                  title: "A error occurs",
-                  content: "You can't delete a profile that is being used.",
+                  textTitle: "A error occurs",
+                  textContent: "You can't delete a profile that is being used.",
                   actions: [
                     TextButton(
                       title: "OK",

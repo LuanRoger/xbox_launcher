@@ -52,8 +52,8 @@ class _AddProfilePageState extends XboxPageState<AddProfilePage> {
   Future changeToNewProfileDialog(
       BuildContext context, ProfileModel newProfile) async {
     await SystemDialog(
-        title: "Change to new profile?",
-        content:
+        textTitle: "Change to new profile?",
+        textContent:
             "Do you want to change to the profile ${profileNameController.text} now?",
         actions: [
           TextButton(

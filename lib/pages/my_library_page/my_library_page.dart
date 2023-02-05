@@ -17,6 +17,7 @@ import 'package:xbox_launcher/shared/widgets/buttons/text_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_add_group.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_item.dart';
+import 'package:xbox_launcher/shared/widgets/dialogs/external_site_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/focus/focable_element.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
@@ -67,22 +68,9 @@ class _MyGamesPageState extends XboxPageState<MyLibraryPage> {
                     .show(context)),
             ContextMenuItem("See on Microsoft Store",
                 icon: FluentIcons.store_logo16,
-                onPressed: () async => await SystemDialog(
-                      title: "Access a external site.",
-                      content: "Do you want to go to a external site?",
-                      actions: [
-                        TextButton(
-                            title: "Confirm",
-                            onPressed: () async {
-                              await launchUrl(
-                                  Uri.parse(focusedElementValue.storeUrl));
-                              Navigator.pop(context);
-                            }),
-                        TextButton(
-                            title: "Cancel",
-                            onPressed: () => Navigator.pop(context))
-                      ],
-                    ).show(context)),
+                onPressed: () async =>
+                    ExternalSiteDialog(Uri.parse(focusedElementValue.storeUrl))
+                        .show(context)),
           ]).show(context),
         ));
       }
