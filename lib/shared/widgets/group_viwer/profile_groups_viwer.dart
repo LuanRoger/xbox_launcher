@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
+import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/focus/element_focus_scope.dart';
 import 'package:xbox_launcher/shared/widgets/group_viwer/group_viwer.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
@@ -12,6 +13,8 @@ class ProfileGroupsViewer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TileSize tileSize = context.read<ProfileProvider>().myLibraryTileSize;
+
     return Expanded(
       flex: 20,
       child: Consumer<ProfileProvider>(
@@ -22,9 +25,9 @@ class ProfileGroupsViewer extends StatelessWidget {
                   child: GroupViwer(
                     group,
                     tileGeneratorOption: TileGeneratorOption(
-                      focusScope: elementFocusScope,
-                      context: context,
-                    ),
+                        focusScope: elementFocusScope,
+                        context: context,
+                        tilesSize: tileSize),
                   )))
               .toList(),
         ),

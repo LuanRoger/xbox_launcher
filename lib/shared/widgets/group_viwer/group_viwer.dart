@@ -1,5 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart' hide TextButton;
+import 'package:provider/provider.dart';
 import 'package:xbox_launcher/models/apps_group.dart';
+import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/text_outlined_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_group.dart';

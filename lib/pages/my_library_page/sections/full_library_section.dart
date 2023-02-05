@@ -96,7 +96,9 @@ class FullLibrarySection extends NavigationSectionStateless {
                         mainAxisSpacing: 10,
                         crossAxisSpacing: 10,
                         customGenerationOption: TileGeneratorOption(
-                            focusScope: currentScope, context: context),
+                            focusScope: currentScope,
+                            context: context,
+                            tilesSize: tileSize),
                         scrollDirection: Axis.vertical,
                       );
                   }

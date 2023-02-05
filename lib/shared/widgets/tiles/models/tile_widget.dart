@@ -15,16 +15,16 @@ abstract class TileWidget extends StatefulWidget {
       this.onPressed}) {
     switch (tileSize) {
       case TileSize.SMALL:
-        width = 100;
-        height = 100;
+        width = 130;
+        height = 130;
         break;
       case TileSize.MEDIUM:
-        width = 150;
-        height = 150;
+        width = 180;
+        height = 180;
         break;
       case TileSize.BIG:
-        width = 300;
-        height = 300;
+        width = 250;
+        height = 250;
         break;
       case TileSize.LENGHTY:
         width = 200;
