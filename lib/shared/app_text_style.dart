@@ -26,7 +26,7 @@ class AppTextStyle {
       TextStyle(fontSize: 26);
 
   static const SYSTEM_TILE = TextStyle(fontSize: 18);
-  static const SYSTEM_BUTTON_TEXT = TextStyle(fontSize: 15);
+  static const SYSTEM_BUTTON_TEXT = TextStyle(fontSize: 17);
 
   static const CLOCK_TEXT = TextStyle(fontSize: 18);
   static const CLOCK_TEXT_BIG =

@@ -4,6 +4,7 @@ class AppConsts {
   static const APP_WINDOW_TITLE = "Xbox Launcher";
 
   static const XCLOUD_SUPPORTED_SERVERS = ["en-US", "pt-BR"];
+  static const XCLOUD_PLAIN_URL = "https://www.xbox.com/play";
   static const XCLOUD_PLAY_BASE_URL = "https://www.xbox.com/%s/play";
   static const DEFAULT_USERNAME = "Default";
 
