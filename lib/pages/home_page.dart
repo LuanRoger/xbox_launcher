@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xbox_launcher/controllers/system_app_controller.dart';
+import 'package:xbox_launcher/models/controller_keyboard_pair.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
@@ -12,7 +16,11 @@ import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_gradient_button.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/models/system_icon_button.dart';
+import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu.dart';
+import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_item.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/external_site_dialog.dart';
+import 'package:xbox_launcher/shared/widgets/dialogs/menu_dialog_overlay.dart';
+import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/infos_provider/clock_time.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/wellcoming_message.dart';
@@ -21,6 +29,7 @@ import 'package:xbox_launcher/shared/widgets/tiles/app_tiles_row.dart';
 import 'package:xbox_launcher/shared/widgets/utils/commands/models/command_invoker.dart';
 import 'package:xbox_launcher/shared/widgets/utils/commands/open_app_command.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
+import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class HomePage extends XboxPage {
   const HomePage({Key? key}) : super(key: key);
@@ -30,8 +39,22 @@ class HomePage extends XboxPage {
 }
 
 class _HomePageState extends XboxPageState<HomePage> {
+  Future _showMenu(BuildContext context) async {
+    await ContextMenu("System", contextItems: [
+      ContextMenuItem("Exit",
+          icon: FluentIcons.sign_out_24_regular, onPressed: () => exit(0))
+    ]).show(context);
+  }
+
   @override
-  List<ShortcutOption>? defineMapping(BuildContext context) => null;
+  List<ShortcutOption>? defineMapping(BuildContext context) => [
+        ShortcutOption("Options",
+            controllerKeyboardPair: ControllerKeyboardPair(
+                const SingleActivator(LogicalKeyboardKey.f1),
+                ControllerButton.BACK),
+            action: () async => await _showMenu(context),
+            show: false)
+      ];
 
   @override
   Widget virtualBuild(BuildContext context) {
