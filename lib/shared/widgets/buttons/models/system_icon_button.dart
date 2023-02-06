@@ -2,10 +2,10 @@
 
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
-import 'package:xbox_launcher/shared/widgets/buttons/models/system_button_base.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/models/system_button.dart';
 import 'package:xbox_launcher/shared/widgets/focus/element_focus_node.dart';
 
-abstract class SystemButton extends Button implements SystemButtonBase {
+class SystemIconButton extends IconButton implements SystemButton {
   @override
   Widget? content;
   @override
@@ -17,21 +17,19 @@ abstract class SystemButton extends Button implements SystemButtonBase {
   @override
   ElementFocusNode? focusNode;
 
-  SystemButton(
+  SystemIconButton(
       {super.key,
-      required this.content,
-      super.onPressed,
-      this.width = 170.0,
-      this.height = 70.0,
-      ButtonStyle? style,
-      this.focusNode})
+      required super.icon,
+      required super.onPressed,
+      this.elementValue,
+      this.focusNode,
+      ButtonStyle? style})
       : super(
           focusNode: focusNode,
           style: style ??
               ButtonStyle(
                   backgroundColor: ButtonState.all(AppColors.ELEMENT_BG)),
-          child: SizedBox(height: height, width: width, child: content),
         ) {
-    focusNode?.setFocucableElement(this);
-  }
+          focusNode?.setFocucableElement(this);
+        }
 }

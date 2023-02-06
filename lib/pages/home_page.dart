@@ -1,20 +1,25 @@
 import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:provider/provider.dart';
+import 'package:xbox_launcher/controllers/system_app_controller.dart';
 import 'package:xbox_launcher/models/shortcut_models/shortcut_option.dart';
 import 'package:xbox_launcher/providers/profile_provider.dart';
 import 'package:xbox_launcher/routes/app_routes.dart';
 import 'package:xbox_launcher/shared/app_colors.dart';
 import 'package:xbox_launcher/shared/app_consts.dart';
+import 'package:xbox_launcher/shared/app_text_style.dart';
 import 'package:xbox_launcher/shared/enums/tile_size.dart';
 import 'package:xbox_launcher/shared/widgets/background.dart';
 import 'package:xbox_launcher/shared/widgets/buttons/icon_text_gradient_button.dart';
+import 'package:xbox_launcher/shared/widgets/buttons/models/system_icon_button.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/external_site_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/infos_provider/clock_time.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/wellcoming_message.dart';
 import 'package:xbox_launcher/shared/widgets/profile_avatar/profile_info.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/app_tiles_row.dart';
+import 'package:xbox_launcher/shared/widgets/utils/commands/models/command_invoker.dart';
+import 'package:xbox_launcher/shared/widgets/utils/commands/open_app_command.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 
 class HomePage extends XboxPage {
@@ -39,29 +44,47 @@ class _HomePageState extends XboxPageState<HomePage> {
             height: double.infinity,
             child: Background()),
         Padding(
-          padding: const EdgeInsets.only(left: 80, top: 50, right: 80),
+          padding: const EdgeInsets.only(left: 70, top: 50, right: 70),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Flexible(
-                flex: 1,
+                flex: 0,
                 child: Row(
                   children: [
-                    const Flexible(child: ProfileInfo()),
+                    const Expanded(child: ProfileInfo()),
                     Flexible(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: const [
-                          Flexible(flex: 0, child: ClockTimer()),
+                        children: [
+                          Flexible(
+                            flex: 10,
+                            child: SystemIconButton(
+                              icon: const Icon(
+                                FluentIcons.settings_28_regular,
+                                size: 20,
+                              ),
+                              onPressed: () {
+                                CommandInvoker command = CommandInvoker(
+                                    OpenAppCommand(
+                                        SystemAppController.getByName(
+                                            "Configurations"),
+                                        context: context));
+                                command.execute();
+                              },
+                            ),
+                          ),
+                          const Spacer(),
+                          const Flexible(flex: 10, child: ClockTimer()),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
               const Spacer(),
               Expanded(
-                flex: 0,
+                flex: 5,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -69,12 +92,21 @@ class _HomePageState extends XboxPageState<HomePage> {
                       builder: (_, value, __) {
                         return value.lastApps.isEmpty
                             ? const WellcomingMessage()
-                            : AppsTileRow(
-                                tiles: value.lastApps,
-                                customGenerateOption: TileGeneratorOption(
-                                    tilesSize: TileSize.MEDIUM,
-                                    context: context,
-                                    focusScope: elementFocusScope),
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    "Jump back in",
+                                    style: AppTextStyle.APPS_GAMES_ROW_TITLE,
+                                  ),
+                                  AppsTileRow(
+                                    tiles: value.lastApps,
+                                    customGenerateOption: TileGeneratorOption(
+                                        tilesSize: TileSize.MEDIUM,
+                                        context: context,
+                                        focusScope: elementFocusScope),
+                                  ),
+                                ],
                               );
                       },
                     ),

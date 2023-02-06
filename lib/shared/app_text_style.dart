@@ -12,6 +12,8 @@ class AppTextStyle {
       TextStyle(fontWeight: FontWeight.bold, fontSize: 46);
   static const TextStyle PLACEHOLDER_SUBMESSAGE_TEXT = TextStyle(fontSize: 24);
 
+  static const TextStyle APPS_GAMES_ROW_TITLE = TextStyle(fontSize: 24);
+
   static const TextStyle CONFIGURATION_TITLE =
       TextStyle(fontWeight: FontWeight.w500, fontSize: 30);
   static const TextStyle ABOUT_SECTION_TITLE_CONFIGURATION =

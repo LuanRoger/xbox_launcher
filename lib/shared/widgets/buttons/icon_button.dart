@@ -5,9 +5,15 @@ class IconButton extends SystemButton {
   IconButton(
       {super.key,
       required IconData icon,
+      double? iconSize,
       required super.onPressed,
       super.width,
       super.height,
-      super.focusNode})
-      : super(content: Icon(icon));
+      super.focusNode,
+      super.style})
+      : super(
+            content: Icon(
+          icon,
+          size: iconSize,
+        ));
 }
