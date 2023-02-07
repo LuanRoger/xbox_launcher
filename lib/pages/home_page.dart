@@ -19,8 +19,6 @@ import 'package:xbox_launcher/shared/widgets/buttons/models/system_icon_button.d
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/context_menu/context_menu_item.dart';
 import 'package:xbox_launcher/shared/widgets/dialogs/external_site_dialog.dart';
-import 'package:xbox_launcher/shared/widgets/dialogs/menu_dialog_overlay.dart';
-import 'package:xbox_launcher/shared/widgets/dialogs/system_dialog.dart';
 import 'package:xbox_launcher/shared/widgets/infos_provider/clock_time.dart';
 import 'package:xbox_launcher/shared/widgets/models/xbox_page.dart';
 import 'package:xbox_launcher/shared/widgets/placeholder_messages/wellcoming_message.dart';
@@ -32,7 +30,7 @@ import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_genera
 import 'package:xinput_gamepad/xinput_gamepad.dart';
 
 class HomePage extends XboxPage {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key, stackMappingAtMemento: false);
 
   @override
   State<StatefulWidget> createState() => _HomePageState();

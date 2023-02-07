@@ -7,8 +7,6 @@ import 'package:xinput_gamepad/xinput_gamepad.dart';
 class ControllerActionManipulator {
   static void mapControllerActions(BuildContext context,
       List<ShortcutOption> shortcutsOptions, bool putIntoMemento) {
-    if (shortcutsOptions.isEmpty) return;
-
     var controllerProvider =
         Provider.of<ControllerActionProvider>(context, listen: false);
 

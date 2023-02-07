@@ -12,7 +12,10 @@ import 'package:xbox_launcher/shared/widgets/models/xbox_page_builder.dart';
 import 'package:xbox_launcher/shared/widgets/shortcuts/shortcut_viewer_support.dart';
 
 abstract class XboxPage extends StatefulWidget {
-  const XboxPage({Key? key}) : super(key: key);
+  final bool stackMappingAtMemento;
+
+  const XboxPage({Key? key, this.stackMappingAtMemento = true})
+      : super(key: key);
 }
 
 abstract class XboxPageState<T extends XboxPage> extends State<T>
@@ -69,7 +72,9 @@ abstract class XboxPageState<T extends XboxPage> extends State<T>
 
   void _addPageShortcuts(List<ShortcutInfo> shortcuts) {
     ControllerActionManipulator.mapControllerActions(
-        context, shortcuts.whereType<ShortcutOption>().toList(), true);
+        context,
+        shortcuts.whereType<ShortcutOption>().toList(),
+        widget.stackMappingAtMemento);
     updateShortcutsViewer(shortcuts);
 
     _cachedShortcutsInfo = List.from(shortcuts);

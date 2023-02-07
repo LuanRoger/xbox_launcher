@@ -31,7 +31,7 @@ class AppsHistoric {
       lastApps.removeWhere((app) => app.name == appModel.name);
 
   void _updateList() {
-    if (lastApps.length <= 7) return;
+    if (lastApps.length <= 6) return;
 
     lastApps.removeAt(lastApps.length - 1);
   }
