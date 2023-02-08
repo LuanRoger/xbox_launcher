@@ -63,8 +63,8 @@ class _ManageProfilePageState extends XboxPageState<ManageProfilePage> {
     bool exit = false;
 
     await SystemDialog(
-        title: "Confirm changes?",
-        content: "Do you want to confirm those changes?",
+        textTitle: "Confirm changes?",
+        textContent: "Do you want to confirm those changes?",
         actions: [
           TextButton(
             title: "Yes",

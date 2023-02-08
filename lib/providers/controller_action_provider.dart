@@ -14,10 +14,10 @@ class ControllerActionProvider
   void setControllerMapping(
       Map<ControllerButton, void Function()> controllerMapping,
       {bool putIntoMemento = true}) {
+    if (putIntoMemento) addToMementoStack();
+    
     _inputController.controller0.buttonsMapping = controllerMapping;
     _inputController.mapBasicControllers();
-
-    if (putIntoMemento) addToMementoStack();
   }
 
   void popLastKeyboardBindig() {

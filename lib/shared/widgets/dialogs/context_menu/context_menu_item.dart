@@ -18,7 +18,7 @@ class ContextMenuItem extends StatelessWidget {
             backgroundColor: ButtonState.all(Colors.transparent),
             shadowColor: ButtonState.all(Colors.transparent)),
         child: Row(children: [
-          Icon(icon),
+          Icon(icon, size: 20),
           const SizedBox(width: 10),
           Text(
             text,

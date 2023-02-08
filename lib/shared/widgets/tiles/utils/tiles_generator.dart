@@ -9,27 +9,28 @@ import 'package:xbox_launcher/shared/widgets/tiles/models/tile_widget.dart';
 import 'package:xbox_launcher/shared/widgets/tiles/system_app_tile.dart';
 import 'package:xbox_launcher/shared/widgets/utils/generators/models/tile_generator_option.dart';
 
-abstract class TileGenerator {
-  List<TileWidget> generateByModel(List<AppModel> appModels, TileSize tilesSize,
-      TileGeneratorOption option) {
+mixin TileGenerator {
+  List<TileWidget> generateByModel(
+      List<AppModel> appModels, TileGeneratorOption option) {
     List<TileWidget> tiles = List.empty(growable: true);
 
     for (AppModel model in appModels) {
       TileWidget tile;
       ElementFocusNode? focusNode = option.focusScope?.createFocusNode();
+      TileSize tileSize = option.tilesSize;
 
       switch (model.appType) {
         case AppType.GAME:
           tile = GameButtonTile(
             model as GameModel,
-            tileSize: tilesSize,
+            tileSize: tileSize,
             focusNode: focusNode,
           );
           break;
         case AppType.SYSTEM_APP:
           tile = SystemAppButtonTile(
             model as SystemAppModel,
-            tileSize: tilesSize,
+            tileSize: tileSize,
             context: option.context,
             focusNode: focusNode,
           );

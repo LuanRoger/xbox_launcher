@@ -111,6 +111,24 @@
         "storeUrl": "https://www.xbox.com/games/store/astroneer/9NBLGGH43KZB"
     },
     {
+        "gameTitle": "Age of Empires II: Definitive Edition",
+        "gamePublisher": "Xbox Game Studios",
+        "gameDeveloper": "World's Edge | Forgotten Empires | Tantalus | Wicked Witch",
+        "gameGenres": [
+            "Estrat\u00e9gia"
+        ],
+        "releaseDate": "31/01/2023",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": true
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/age-of-empires-ii-definitive-edition/9N2Z748SPMTM",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.64988.13678235101671609.6ca6b3d7-f538-4bc0-aeb7-42f19e88b13b.ab42ecb3-c743-415d-ab25-89b6ed4d8060?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.40318.13678235101671609.c350aa6a-23e2-407c-94fd-5050e9bedb6f.377c8a2b-4257-4414-b95a-7df4a2596cf1?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/age-of-empires-ii-definitive-edition/9N2Z748SPMTM"
+    },
+    {
         "gameTitle": "Amnesia: Collection",
         "gamePublisher": "Frictional Games",
         "gameDeveloper": "Frictional Games",
@@ -331,7 +349,7 @@
         "storeUrl": "https://www.xbox.com/games/store/banjo-tooie/BX27S00SKW1V"
     },
     {
-        "gameTitle": "Batman\u2122: Arkham Knight",
+        "gameTitle": "",
         "gamePublisher": "Warner Bros. Games",
         "gameDeveloper": "Rocksteady Studios",
         "gameGenres": [
@@ -626,25 +644,6 @@
         "storeUrl": "https://www.xbox.com/games/store/chained-echoes/9N1WWRPJ12FK"
     },
     {
-        "gameTitle": "Chinatown Detective Agency",
-        "gamePublisher": "Humble Games",
-        "gameDeveloper": "General Interactive Co.",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura",
-            "Desafios"
-        ],
-        "releaseDate": "07/04/2022",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": true
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/chinatown-detective-agency/9NV2VTVG0L31",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.32647.14407039492580836.0ee1fbde-13a0-4676-975c-913f27fd0ac6.5402bc40-0e5f-434f-8cc2-a738028aac3c?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.42184.14407039492580836.0ee1fbde-13a0-4676-975c-913f27fd0ac6.0b6393da-0bb6-4e42-bf18-548d6f7a15cb?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/chinatown-detective-agency/9NV2VTVG0L31"
-    },
-    {
         "gameTitle": "Chivalry 2",
         "gamePublisher": "Tripwire Interactive LLC",
         "gameDeveloper": "Torn Banner Studios",
@@ -701,6 +700,25 @@
         "storeUrl": "https://www.xbox.com/games/store/cities-skylines---xbox-one-edition/C4GH8N6ZXG5L"
     },
     {
+        "gameTitle": "Chinatown Detective Agency",
+        "gamePublisher": "Humble Games",
+        "gameDeveloper": "General Interactive Co.",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "Desafios"
+        ],
+        "releaseDate": "07/04/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": true
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/chinatown-detective-agency/9NV2VTVG0L31",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.32647.14407039492580836.0ee1fbde-13a0-4676-975c-913f27fd0ac6.5402bc40-0e5f-434f-8cc2-a738028aac3c?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.42184.14407039492580836.0ee1fbde-13a0-4676-975c-913f27fd0ac6.0b6393da-0bb6-4e42-bf18-548d6f7a15cb?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/chinatown-detective-agency/9NV2VTVG0L31"
+    },
+    {
         "gameTitle": "Citizen Sleeper",
         "gamePublisher": "Fellow Traveller",
         "gameDeveloper": "Jump Over the Age",
@@ -724,8 +742,8 @@
         "gamePublisher": "tinyBuild",
         "gameDeveloper": "Landfall Games",
         "gameGenres": [
-            "A\u00e7\u00e3o e aventura",
-            "Plataforma"
+            "Simula\u00e7\u00e3o",
+            "A\u00e7\u00e3o e aventura"
         ],
         "releaseDate": "27/10/2016",
         "extraGameProperties": {
@@ -1215,22 +1233,23 @@
         "storeUrl": "https://www.xbox.com/games/store/danganronpa-v3-killing-harmony-anniversary-edition/9PMM6V93MRKW"
     },
     {
-        "gameTitle": "Danganronpa: Trigger Happy Havoc Anniversary Edition",
-        "gamePublisher": "Spike Chunsoft",
-        "gameDeveloper": "Spike Chunsoft",
+        "gameTitle": "Darkest Dungeon\u00ae",
+        "gamePublisher": "Red Hook Studios Inc.",
+        "gameDeveloper": "Red Hook Studios Inc.",
         "gameGenres": [
-            "A\u00e7\u00e3o e aventura"
+            "A\u00e7\u00e3o e aventura",
+            "RPG"
         ],
-        "releaseDate": "17/01/2022",
+        "releaseDate": "27/02/2018",
         "extraGameProperties": {
             "isInGamePass": true,
             "controllerSupport": true,
             "touchControllerSupport": true
         },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/danganronpa-trigger-happy-havoc-anniversary-editio/9N07T7TGP6JG",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.15823.13926025773515961.65bfebc1-45c3-4c37-966f-35fa549dd9ce.6a2914c5-b1d3-4fa0-a102-91fa7ffb6445?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.64573.13926025773515961.65bfebc1-45c3-4c37-966f-35fa549dd9ce.f60569b4-8d5f-4885-8e8c-a6a7e3a259e8?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/danganronpa-trigger-happy-havoc-anniversary-editio/9N07T7TGP6JG"
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/darkest-dungeon/BXKVN6G9C5WJ",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.30784.63131787694667297.e786edde-5064-499d-9660-f3d7c293ceaa.0c73bcb1-f4b6-40b0-95c4-4f5cceca9266?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.54771.63131787694667297.e786edde-5064-499d-9660-f3d7c293ceaa.fc6bab12-c6bc-451d-b5f9-5e128e481294?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/darkest-dungeon/BXKVN6G9C5WJ"
     },
     {
         "gameTitle": "DayZ",
@@ -1308,7 +1327,7 @@
         "storeUrl": "https://www.xbox.com/games/store/dead-by-daylight/C0N22P73QZ60"
     },
     {
-        "gameTitle": "Death's Door [Xbox]",
+        "gameTitle": "Death's Door",
         "gamePublisher": "Devolver Digital",
         "gameDeveloper": "Acid Nerve",
         "gameGenres": [
@@ -1320,10 +1339,10 @@
             "controllerSupport": true,
             "touchControllerSupport": true
         },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/death's-door-%5Bxbox%5D/9NDZ7NXFF622",
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/death's-door/9NDZ7NXFF622",
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.46691.13605204887272793.456e749a-524b-4372-bb98-1e7f5fac0947.55c39ef5-1120-4c74-a37d-79ee51e2e5cb?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.50661.13605204887272793.456e749a-524b-4372-bb98-1e7f5fac0947.7d789bd8-b026-4a71-90a6-8907f81bec8f?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/death's-door-[xbox]/9NDZ7NXFF622"
+        "storeUrl": "https://www.xbox.com/games/store/death's-door/9NDZ7NXFF622"
     },
     {
         "gameTitle": "Deep Rock Galactic",
@@ -1528,25 +1547,6 @@
         "storeUrl": "https://www.xbox.com/games/store/disneyland-adventures/9N6Z8DQXSQWH"
     },
     {
-        "gameTitle": "Donut County",
-        "gamePublisher": "Annapurna Interactive",
-        "gameDeveloper": "Ben Esposito",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura",
-            "Fam\u00edlia e crian\u00e7as"
-        ],
-        "releaseDate": "17/12/2018",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": true
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/donut-county/9N6V2181GHLM",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.60906.14011542784181932.80ac6320-df7b-4be6-9355-e9083a5d2063.06135ea0-0572-4ed3-b5a2-e0a158e3144d?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.29308.14011542784181932.80ac6320-df7b-4be6-9355-e9083a5d2063.7453474c-587b-4024-ad6d-a785d30d7fc4?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/donut-county/9N6V2181GHLM"
-    },
-    {
         "gameTitle": "Dragon Age: Origins",
         "gamePublisher": "Electronic Arts",
         "gameDeveloper": "BioWare",
@@ -1656,25 +1656,6 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.9020.13694306682751994.5bc2fdaa-7629-4489-9dcb-d5aacee2da36.ef9b1a83-12c4-429e-87b9-6fed1ad5f431?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.29866.13694306682751994.5bc2fdaa-7629-4489-9dcb-d5aacee2da36.e9703b5f-50a3-4e55-84b3-5dece2758fce?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/eiyuden-chronicle-rising/9NMD6VV08WGF"
-    },
-    {
-        "gameTitle": "Embr",
-        "gamePublisher": "Curve Games",
-        "gameDeveloper": "Muse Games",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura",
-            "Outros"
-        ],
-        "releaseDate": "22/09/2021",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": false
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/embr/9P9XS9D0LBPV",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.10405.14134157626658703.ad01f8b0-d5c5-49de-b137-27e100034590.7e8ae4c0-4206-430c-90d0-8db4c8edb68f?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.17698.14134157626658703.ad01f8b0-d5c5-49de-b137-27e100034590.8f3f9e8f-6f4b-4852-a61d-d99afbdee520?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/embr/9P9XS9D0LBPV"
     },
     {
         "gameTitle": "Empire of Sin",
@@ -1990,25 +1971,6 @@
         "storeUrl": "https://www.xbox.com/games/store/farming-simulator-22/9P6SRW1HVW9K"
     },
     {
-        "gameTitle": "Floppy Knights",
-        "gamePublisher": "Rose City Games, wiip",
-        "gameDeveloper": "Rose City Games",
-        "gameGenres": [
-            "Cartas e tabuleiro",
-            "Estrat\u00e9gia"
-        ],
-        "releaseDate": "23/05/2022",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": true
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/floppy-knights/9NLM4TTHCWSH",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.30829.13705007807700068.f8418398-1ad9-4e90-bf4e-8ce6aabbfbfa.df128ff9-1246-46b2-bbed-8e4c98445275?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.15574.13705007807700068.f8418398-1ad9-4e90-bf4e-8ce6aabbfbfa.edecefb3-678b-4d2d-8269-b2db60216c37?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/floppy-knights/9NLM4TTHCWSH"
-    },
-    {
         "gameTitle": "Forager",
         "gamePublisher": "Humble Games",
         "gameDeveloper": "HopFrog",
@@ -2120,6 +2082,25 @@
         "storeUrl": "https://www.xbox.com/games/store/fuga-melodies-of-steel/9NLX3GWW0HF1"
     },
     {
+        "gameTitle": "Floppy Knights",
+        "gamePublisher": "Rose City Games, wiip",
+        "gameDeveloper": "Rose City Games",
+        "gameGenres": [
+            "Cartas e tabuleiro",
+            "Estrat\u00e9gia"
+        ],
+        "releaseDate": "23/05/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": true
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/floppy-knights/9NLM4TTHCWSH",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.30846.13705007807700068.2da9547f-257c-4c51-bfac-71a5ec0030fc.2c9f4623-2efb-43b9-b1bb-eabaacb149d4?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.15574.13705007807700068.f8418398-1ad9-4e90-bf4e-8ce6aabbfbfa.edecefb3-678b-4d2d-8269-b2db60216c37?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/floppy-knights/9NLM4TTHCWSH"
+    },
+    {
         "gameTitle": "Fuzion Frenzy\u00ae",
         "gamePublisher": "Microsoft",
         "gameDeveloper": "Blitz Games, Ltd.",
@@ -2136,6 +2117,24 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.29460.65553901453292980.5f73bae7-0b93-4345-bf12-87df77ec6f05.2e554579-0c20-4b04-89a5-e6cbce60d4a0?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.6987.65553901453292980.5f73bae7-0b93-4345-bf12-87df77ec6f05.67f3135c-8a07-43e3-9a1f-461408bddaf9?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/fuzion-frenzy/C2P985H1H42H"
+    },
+    {
+        "gameTitle": "GRID Legends",
+        "gamePublisher": "Electronic Arts",
+        "gameDeveloper": "Codemasters",
+        "gameGenres": [
+            "Corrida e voo"
+        ],
+        "releaseDate": "24/02/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/grid-legends/9NCT9L7NFHX7",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.37650.13561500935514596.eddcbba6-93d0-42cc-93d4-0f33eaa8a4e8.4e5cf9ec-9275-420b-8fcf-7d14d91addff?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.54058.13561500935514596.eddcbba6-93d0-42cc-93d4-0f33eaa8a4e8.ae0f9313-2ef2-4582-92ff-bbe9aa35d3bb?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/grid-legends/9NCT9L7NFHX7"
     },
     {
         "gameTitle": "Gang Beasts",
@@ -2376,6 +2375,25 @@
         "storeUrl": "https://www.xbox.com/games/store/goat-simulator/BV0NM309K1TL"
     },
     {
+        "gameTitle": "GoldenEye 007",
+        "gamePublisher": "Rare Ltd",
+        "gameDeveloper": "Code Mystics",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "Cl\u00e1ssicos"
+        ],
+        "releaseDate": "26/01/2023",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": true
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/goldeneye-007/9N6639H7VGH4",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.34932.14024294433653017.40ef41ab-6f85-4460-bdee-079089b18040.8e21b7ce-1e5b-4d90-b99e-01c2330b4db5?w=%i&format=jpg",
+        "gameImageUrl": "https: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%iB",
+        "storeUrl": "https://www.xbox.com/games/store/goldeneye-007/9N6639H7VGH4"
+    },
+    {
         "gameTitle": "Golf With Your Friends",
         "gamePublisher": "Team17",
         "gameDeveloper": "Blacklight Interactive and Team17",
@@ -2393,25 +2411,6 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.6387.13908316754263937.a2613d65-5012-428e-8936-df4b3295d7bd.7d2ab0ab-de55-4ed7-99d5-6b77de424f11?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.489.13908316754263937.a2613d65-5012-428e-8936-df4b3295d7bd.5fe96ab4-000b-44eb-a706-d506daa5d44b?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/golf-with-your-friends/9N14G09PWG74"
-    },
-    {
-        "gameTitle": "Gorogoa",
-        "gamePublisher": "Annapurna Interactive",
-        "gameDeveloper": "Buried Signal, LLC",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura",
-            "Desafios"
-        ],
-        "releaseDate": "21/05/2018",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": false
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/gorogoa/C41M2F4NWB2S",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.11042.66945940929342019.3c8e01a6-6e60-4733-ada9-8cdf420e19fd.10801ac2-a270-44eb-ad4c-6956c2499b23?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.5340.66945940929342019.3c8e01a6-6e60-4733-ada9-8cdf420e19fd.f5345cf2-78bc-4344-a751-68e3a4359030?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/gorogoa/C41M2F4NWB2S"
     },
     {
         "gameTitle": "Grounded",
@@ -2471,7 +2470,7 @@
         "storeUrl": "https://www.xbox.com/games/store/gungrave-g.o.r.e/9P87CLMPXSN6"
     },
     {
-        "gameTitle": "HITMAN Trilogy",
+        "gameTitle": "HITMAN World of Assassination",
         "gamePublisher": "IO Interactive A/S",
         "gameDeveloper": "IO Interactive A/S",
         "gameGenres": [
@@ -2483,10 +2482,28 @@
             "controllerSupport": true,
             "touchControllerSupport": true
         },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/hitman-trilogy/9NN82NH949D5",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.10042.14144194933273826.3ced5741-3e78-4437-9d89-92e9ac9b74fc.0f724e5e-5cff-424d-9920-a7b0de11eec6?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.8424.14144194933273826.3ced5741-3e78-4437-9d89-92e9ac9b74fc.731d758a-5b00-4082-887f-693b179a41b2?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/hitman-trilogy/9NN82NH949D5"
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/hitman-world-of-assassination/9NN82NH949D5",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.40462.13747708785346246.26b7a239-7aa3-4075-aceb-3fe6324cd11b.f9c8a755-68ee-4e26-a6fb-6ee2420656c0?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.24317.13747708785346246.26b7a239-7aa3-4075-aceb-3fe6324cd11b.66f73e49-163f-443e-bd7c-0d3fcdb6f16a?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/hitman-world-of-assassination/9NN82NH949D5"
+    },
+    {
+        "gameTitle": "HOT WHEELS UNLEASHED\u2122 - Game Of The Year Edition - Xbox Series X|S",
+        "gamePublisher": "Milestone S.r.l.",
+        "gameDeveloper": "Milestone S.r.l.",
+        "gameGenres": [
+            "Fam\u00edlia e crian\u00e7as"
+        ],
+        "releaseDate": "29/09/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/hot-wheels-unleashed---game-of-the-year-edition---/9NGZ7PN3W8DX",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.25618.13640605011846363.0807bb70-e276-48a2-8383-75f2d046cd51.7a7eacd8-1f96-41f4-ba58-8531eed7d607?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.23421.13640605011846363.0807bb70-e276-48a2-8383-75f2d046cd51.c34d4552-d559-406d-a934-2484fc517a8f?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/hot-wheels-unleashed---game-of-the-year-edition---/9NGZ7PN3W8DX"
     },
     {
         "gameTitle": "Halo 5: Guardians",
@@ -2655,6 +2672,24 @@
         "storeUrl": "https://www.xbox.com/games/store/hello-neighbor-2/9N961B11FJ4W"
     },
     {
+        "gameTitle": "Hi-Fi RUSH",
+        "gamePublisher": "Bethesda Softworks",
+        "gameDeveloper": "Tango Gameworks",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura"
+        ],
+        "releaseDate": "25/01/2023",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/hi-fi-rush/9NFTC552K3GJ",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.58202.13592675470908447.6e791256-60f5-4e25-8fe9-d669aea7abc9.50c6d03c-4145-481e-b746-a30f79bf7dd2?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.30897.13592675470908447.6e791256-60f5-4e25-8fe9-d669aea7abc9.99e43e06-93a2-4d55-9ee7-417ff4df77fc?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/hi-fi-rush/9NFTC552K3GJ"
+    },
+    {
         "gameTitle": "High On Life",
         "gamePublisher": "Squanch Games, Inc.",
         "gameDeveloper": "Squanch Games, Inc.",
@@ -2725,8 +2760,8 @@
             "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/human-fall-flat/BSMZH25V6V46",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.36512.69811231537758929.8d40cea0-047e-48e5-89c1-01dd6268bc1f.74d99451-6cd4-48c0-8abf-75d91ab2fad4?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.25220.69811231537758929.8d40cea0-047e-48e5-89c1-01dd6268bc1f.11d1a979-c3bd-4094-8358-d4d5a5e74660?h=%i&format=jpg",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.2026.69811231537758929.2b55e08d-fae2-4f8c-ad6f-42014f3888b5.400cfff7-c5bf-496c-95dd-8e25af8ce22b?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.54083.69811231537758929.2b55e08d-fae2-4f8c-ad6f-42014f3888b5.b8b73330-d29a-4b55-a7cc-a3e204e01694?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/human-fall-flat/BSMZH25V6V46"
     },
     {
@@ -2747,24 +2782,6 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.26010.65290118777571754.27f1da0f-d581-4307-9bec-41016a2e5567.7b9d8bfe-920c-447d-a3f0-fa336b8d077f?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.20524.65290118777571754.6267d8c2-383e-428a-9ec3-ab8b52cdb946.d9d8d3fc-3054-4fa7-9262-3d2d19c5bad9?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/inside/C17GQF31D617"
-    },
-    {
-        "gameTitle": "Immortal Realms: Vampire Wars",
-        "gamePublisher": "Kalypso Media",
-        "gameDeveloper": "Palindrome Interactive",
-        "gameGenres": [
-            "Estrat\u00e9gia"
-        ],
-        "releaseDate": "27/08/2020",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": false
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/immortal-realms-vampire-wars/9P4Q17HQ2WKW",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.32448.14584218626935250.46a9c0b9-f228-4521-a159-9133d5fe93a6.f787427a-eed6-4778-93cd-01e7a182d406?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.49275.14584218626935250.ba95fb18-2711-4235-b9e0-551e8ad946b7.a8b8641c-46cc-4baa-accc-668eb992eff4?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/immortal-realms-vampire-wars/9P4Q17HQ2WKW"
     },
     {
         "gameTitle": "Immortality",
@@ -2840,6 +2857,24 @@
         "storeUrl": "https://www.xbox.com/games/store/injustice-2/BPKVH4C4XV4N"
     },
     {
+        "gameTitle": "Inkulinati (Game Preview)",
+        "gamePublisher": "Daedalic Entertainment",
+        "gameDeveloper": "Yaza Games",
+        "gameGenres": [
+            "Estrat\u00e9gia"
+        ],
+        "releaseDate": "31/12/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/inkulinati-game-preview/9P5D8B393ZZ4",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.9705.14571252009478417.26bd2413-8bd8-4320-bf6d-19e2e0cfaed4.bee7a755-1bec-4362-a8d0-666facdf56b1?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.1208.13587470145765181.4b4bde28-545a-4c6f-98de-872092843767.156a5d9f-c9a7-4bbb-baa5-8d13516dd259?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/inkulinati-game-preview/9P5D8B393ZZ4"
+    },
+    {
         "gameTitle": "Insurgency: Sandstorm",
         "gamePublisher": "Focus Entertainment",
         "gameDeveloper": "New World Interactive",
@@ -2875,6 +2910,24 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.4452.14488339386131194.84ca8b8a-582e-4d34-904e-8f1e60f71000.1164a903-9308-49c2-a477-3b887cffb341?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.40253.14488339386131194.84ca8b8a-582e-4d34-904e-8f1e60f71000.c3aaab37-0ce8-464b-85c1-4f42a74d9972?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/it-takes-two---vers%C3%A3o-digital/9NXVC0482QS5"
+    },
+    {
+        "gameTitle": "JoJo's Bizarre Adventure: All-Star Battle R",
+        "gamePublisher": "Bandai Namco Entertainment America Inc.",
+        "gameDeveloper": "CyberConnect2 Co., Ltd.",
+        "gameGenres": [
+            "Luta"
+        ],
+        "releaseDate": "01/09/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/jojo's-bizarre-adventure-all-star-battle-r/9P4811KBD5R9",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.28841.14593718710691656.80a2a131-a8cc-43cc-b6da-b0d5958123e1.eb578e61-6958-4d9d-b65b-bd238608a7cf?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.46696.14593718710691656.80a2a131-a8cc-43cc-b6da-b0d5958123e1.7024810e-369c-41e0-a5c9-38c8e8dc781e?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/jojo's-bizarre-adventure-all-star-battle-r/9P4811KBD5R9"
     },
     {
         "gameTitle": "Joy Ride Turbo",
@@ -3359,6 +3412,25 @@
         "storeUrl": "https://www.xbox.com/games/store/medieval-dynasty/9PDDP6ML6XHF"
     },
     {
+        "gameTitle": "Metal: Hellsinger (Xbox One)",
+        "gamePublisher": "Funcom",
+        "gameDeveloper": "The Outsiders",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "M\u00fasica"
+        ],
+        "releaseDate": "08/12/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/metal-hellsinger-xbox-one/9MT9Q2MBBZ0X",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.941.14211614393053975.a4ffed37-2d8b-4964-b012-03eb22bf47cc.6077b8e8-7907-409a-81b2-dd04488234ca?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.57354.14211614393053975.a4ffed37-2d8b-4964-b012-03eb22bf47cc.d3b3eebb-84f8-4ed6-9ad4-510a47f020c1?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/metal-hellsinger-xbox-one/9MT9Q2MBBZ0X"
+    },
+    {
         "gameTitle": "Metal: Hellsinger",
         "gamePublisher": "Funcom",
         "gameDeveloper": "The Outsiders",
@@ -3468,6 +3540,25 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.62830.66522486697599341.54595999-7800-48a6-8255-bf581c71e0dd.fdab5a16-85bd-4fa0-9c88-8ec2f16ced89?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.33334.66522486697599341.54595999-7800-48a6-8255-bf581c71e0dd.bec4e523-bef6-4b11-adb9-ae8bedd217fd?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/mirror's-edge-catalyst/C48LBRJJCP2L"
+    },
+    {
+        "gameTitle": "Monster Hunter Rise",
+        "gamePublisher": "CAPCOM CO., LTD.",
+        "gameDeveloper": "CAPCOM CO., LTD.",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "RPG"
+        ],
+        "releaseDate": "20/01/2023",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": true
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/monster-hunter-rise/9N1VP8WDQK4D",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.20430.13964127228191263.1e380cc1-7db3-433f-a0fb-1cfb65b83ff5.656026c4-5178-4926-ba85-728dd0bb5500?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.27089.13964127228191263.1e380cc1-7db3-433f-a0fb-1cfb65b83ff5.a0b1ff8b-11dd-4925-9769-ca23743243e1?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/monster-hunter-rise/9N1VP8WDQK4D"
     },
     {
         "gameTitle": "Monster Sanctuary",
@@ -3580,6 +3671,25 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.63277.70804610839547354.8da93c46-fd13-4b16-8ebe-e8e02c53d93e.9d395244-d5c3-4d17-a83d-2ff95537c0f6?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.31077.70804610839547354.8da93c46-fd13-4b16-8ebe-e8e02c53d93e.032a1c73-7961-4acf-a82a-89d2f3ccdd1f?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/mortal-kombat-11/BTC0L0BW6LWC"
+    },
+    {
+        "gameTitle": "Mortal Shell: Enhanced Edition",
+        "gamePublisher": "Playstack",
+        "gameDeveloper": "Cold Symmetry",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "Outros"
+        ],
+        "releaseDate": "18/08/2020",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/mortal-shell-enhanced-edition/9PC2BJDXR2LK",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.60033.14112185653659482.b5e15e3a-13c2-47bd-9e60-7709b165611f.727ea54e-9116-49fb-9def-e303eda19df8?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.48998.14112185653659482.b5e15e3a-13c2-47bd-9e60-7709b165611f.1a8e8ab6-788c-41d0-8d25-cedfa921075d?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/mortal-shell-enhanced-edition/9PC2BJDXR2LK"
     },
     {
         "gameTitle": "MotoGP\u212222",
@@ -3839,25 +3949,6 @@
         "storeUrl": "https://www.xbox.com/games/store/no-man's-sky/BQVQTL3PCH05"
     },
     {
-        "gameTitle": "Nobody Saves the World",
-        "gamePublisher": "Drinkbox Studios",
-        "gameDeveloper": "Drinkbox Studios",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura",
-            "RPG"
-        ],
-        "releaseDate": "18/01/2022",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": true
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/nobody-saves-the-world/9NFZ65KKJ10X",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.53413.13585830814774327.d6e142bb-27e2-4109-8139-edac768eca10.bd597240-e065-42b4-a809-b42e4a7a9815?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.10184.13585830814774327.d6e142bb-27e2-4109-8139-edac768eca10.4233d247-29c3-40cb-8464-f762cb01cbef?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/nobody-saves-the-world/9NFZ65KKJ10X"
-    },
-    {
         "gameTitle": "Nuclear Throne",
         "gamePublisher": "Vlambeer",
         "gameDeveloper": "Vlambeer",
@@ -4005,25 +4096,6 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.37519.14047496556148589.9fda5cef-7995-4dbb-a626-66d2ab3feb4f.c81b9aaa-f139-44ac-b9ca-0aa0dd0cbffb?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.40411.14047496556148589.9fda5cef-7995-4dbb-a626-66d2ab3feb4f.d87f046c-667d-4ce7-98bc-eba2b535dc94?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/ori-and-the-will-of-the-wisps/9N8CD0XZKLP4"
-    },
-    {
-        "gameTitle": "Outer Wilds",
-        "gamePublisher": "Annapurna Interactive",
-        "gameDeveloper": "Mobius Digital",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura",
-            "Corrida e voo"
-        ],
-        "releaseDate": "29/05/2019",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": false
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/outer-wilds/C596FKDKMQN7",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.38686.67120997535715720.38c3e502-0019-4560-826e-634bbaf5cb4b.26a27298-66b5-489a-83dc-b1741a12905f?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.22579.67120997535715720.38c3e502-0019-4560-826e-634bbaf5cb4b.d08b8fa2-f53a-46ef-a7b9-486040abe414?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/outer-wilds/C596FKDKMQN7"
     },
     {
         "gameTitle": "Overcooked! 2",
@@ -4192,6 +4264,42 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.21399.63613604984995316.d403620a-54b7-4a68-9850-e3bfda4c2552.9ba8a8e5-8c96-45b2-83cf-8eeef411eb81?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.35337.63613604984995316.d403620a-54b7-4a68-9850-e3bfda4c2552.bf1ef84f-cdda-4a06-9c9a-20c253d5bc91?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/perfect-dark-zero/BZF7N4FQWHNR"
+    },
+    {
+        "gameTitle": "Persona 3 Portable",
+        "gamePublisher": "SEGA",
+        "gameDeveloper": "ATLUS",
+        "gameGenres": [
+            "RPG"
+        ],
+        "releaseDate": "19/01/2023",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": true
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/persona-3-portable/9NJWL0XVLP7T",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.51651.13672969377617960.8b9caabb-4abd-4de7-8a2e-96f8a9f13b21.109587a1-9649-4a03-a61a-549c7f728a40?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.7336.13672969377617960.8b9caabb-4abd-4de7-8a2e-96f8a9f13b21.a61bb3dc-2ef7-4a27-a2b0-113468eff75c?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/persona-3-portable/9NJWL0XVLP7T"
+    },
+    {
+        "gameTitle": "Persona 4 Golden",
+        "gamePublisher": "SEGA",
+        "gameDeveloper": "ATLUS",
+        "gameGenres": [
+            "RPG"
+        ],
+        "releaseDate": "19/01/2023",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": true
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/persona-4-golden/9PK4B09SMN5C",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.42913.14274331993185118.d1429e04-9d9f-4a4f-bb4c-5514229e3a28.f62fb150-366d-4165-8b2b-5c3568a11fcb?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.38640.14274331993185118.d1429e04-9d9f-4a4f-bb4c-5514229e3a28.2717bbea-f3c4-43eb-a904-814bae2416ec?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/persona-4-golden/9PK4B09SMN5C"
     },
     {
         "gameTitle": "Persona 5 Royal",
@@ -4489,25 +4597,6 @@
         "storeUrl": "https://www.xbox.com/games/store/psychonauts-2/9NBR2VXT87SJ"
     },
     {
-        "gameTitle": "Pupperazzi",
-        "gamePublisher": "Kitfox Games",
-        "gameDeveloper": "Sundae Month",
-        "gameGenres": [
-            "Fam\u00edlia e crian\u00e7as",
-            "Outros"
-        ],
-        "releaseDate": "20/01/2022",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": true
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/pupperazzi/9P34LH5ZWBVG",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.9496.14545000756331709.fe0b8e3c-108f-4f54-a7d0-a2b1eded6bbe.eabd1905-e86b-417c-8694-e08cb97d72b2?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.63128.14545000756331709.fe0b8e3c-108f-4f54-a7d0-a2b1eded6bbe.55668df5-9844-4fa3-81df-ff8b50c38c48?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/pupperazzi/9P34LH5ZWBVG"
-    },
-    {
         "gameTitle": "Quake",
         "gamePublisher": "Bethesda Softworks",
         "gameDeveloper": "id Software, Nightdive Studios, MachineGames",
@@ -4677,6 +4766,24 @@
         "storeUrl": "https://www.xbox.com/games/store/road-96/9NVBKDF85W8T"
     },
     {
+        "gameTitle": "Roboquest (Pr\u00e9via do Jogo)",
+        "gamePublisher": "RyseUp Studios",
+        "gameDeveloper": "RyseUp Studios",
+        "gameGenres": [
+            "Jogos de tiros"
+        ],
+        "releaseDate": "22/02/2022",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/roboquest-game-preview/9P47S7NJGWZL",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.43699.14593591481307987.6a5ad7b7-09c6-447d-a851-a84356750e7a.792f4513-68a8-47da-85c0-d57d762b802d?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.32616.14593591481307987.f2aafb29-4097-4f39-a11d-0992719320ae.76e72938-73be-4b2e-8562-601610fae93f?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/roboquest-pr%C3%A9via-do-jogo/9P47S7NJGWZL"
+    },
+    {
         "gameTitle": "Rubber Bandits",
         "gamePublisher": "Flashbulb",
         "gameDeveloper": "Flashbulb",
@@ -4712,25 +4819,6 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.54193.14538559069860396.375a4717-d4e1-4c14-b278-f4787b52d21a.8ccfcf77-d0bc-4895-a1e6-f70806a4a045?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.5896.14538559069860396.1d93e2fd-2dab-4371-9ba3-622feb19d443.794b050e-1acc-4b57-a61d-eb1954b202d2?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/rush-a-disney-%E2%80%A2-pixar-adventure/9P3PL76N0KWZ"
-    },
-    {
-        "gameTitle": "SCARLET NEXUS",
-        "gamePublisher": "BANDAI NAMCO Entertainment America Inc.",
-        "gameDeveloper": "BANDAI NAMCO Studios Inc.",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura",
-            "RPG"
-        ],
-        "releaseDate": "24/06/2021",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": true
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/scarlet-nexus/9N9RMHTJX41P",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.11684.13531489140319204.2e417a21-11c1-4902-a4f1-8ac2c24c42b2.db8694a7-65f4-4932-ad63-c240816b2f95?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.24095.13531489140319204.2e417a21-11c1-4902-a4f1-8ac2c24c42b2.330b5343-f5a6-4d41-b88a-e550457cdee0?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/scarlet-nexus/9N9RMHTJX41P"
     },
     {
         "gameTitle": "SIGNALIS",
@@ -4858,24 +4946,6 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.21319.14554784103656548.6c0bfca6-ceff-4368-9bde-2fe50f344136.c8d6c767-18a9-49cd-b9ca-4cc9a3a336e5?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.16127.14554784103656548.5229b523-ba31-4e1e-8b9b-af4211062227.7176a52d-9b92-4c1b-b756-af25abfa99c5?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/sea-of-thieves/9P2N57MC619K"
-    },
-    {
-        "gameTitle": "Secret Neighbor",
-        "gamePublisher": "tinyBuild",
-        "gameDeveloper": "Hologryph",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura"
-        ],
-        "releaseDate": "23/10/2019",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": false
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/secret-neighbor/9P7GBPGT90L3",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.39065.14605254180386304.0cf6e445-2a31-405b-8616-b2d4517f1441.c0674226-b4a5-4a29-a44a-7ff28f193f49?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.47680.14605254180386304.0cf6e445-2a31-405b-8616-b2d4517f1441.815fb757-30f4-40e4-823a-1fa4c63e4059?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/secret-neighbor/9P7GBPGT90L3"
     },
     {
         "gameTitle": "Serious Sam 4",
@@ -5256,6 +5326,25 @@
         "storeUrl": "https://www.xbox.com/games/store/stellaris-console-edition/BWL72GR7Z7GK"
     },
     {
+        "gameTitle": "Stranded Deep",
+        "gamePublisher": "Beam Team Publishing",
+        "gameDeveloper": "Beam Team Games",
+        "gameGenres": [
+            "A\u00e7\u00e3o e aventura",
+            "Simula\u00e7\u00e3o"
+        ],
+        "releaseDate": "21/04/2020",
+        "extraGameProperties": {
+            "isInGamePass": true,
+            "controllerSupport": true,
+            "touchControllerSupport": false
+        },
+        "xcloudUrl": "https://www.xbox.com/%s/play/games/stranded-deep/9NXNST9MKMK1",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.58938.14492282578644852.2c395a59-5b12-49c0-9847-4edec0f9a60a.3c129ef1-c259-47ca-a7ea-dbb48eadf7d0?w=%i&format=jpg",
+        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.2945.14492282578644852.2c395a59-5b12-49c0-9847-4edec0f9a60a.732f6fc6-f2e0-4f0e-a6ae-653061046b35?h=%i&format=jpg",
+        "storeUrl": "https://www.xbox.com/games/store/stranded-deep/9NXNST9MKMK1"
+    },
+    {
         "gameTitle": "Super Mega Baseball 3",
         "gamePublisher": "Electronic Arts",
         "gameDeveloper": "Metalhead Software Inc.",
@@ -5386,24 +5475,6 @@
         "storeUrl": "https://www.xbox.com/games/store/tell-me-why-cap%C3%ADtulo-1-3/9NF83PRZK6K3"
     },
     {
-        "gameTitle": "Telling Lies",
-        "gamePublisher": "Annapurna Interactive",
-        "gameDeveloper": "Sam Barlow",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura"
-        ],
-        "releaseDate": "28/04/2020",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": true
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/telling-lies/9NLHWTCWLKGX",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.9486.13711287244755811.601b477c-0175-48da-8585-ae8d926ee15d.6d1bc680-0946-4ac2-a288-84ab77630eed?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.53430.13711287244755811.601b477c-0175-48da-8585-ae8d926ee15d.b6c23b53-a203-4b86-a4ce-897bad0b5e35?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/telling-lies/9NLHWTCWLKGX"
-    },
-    {
         "gameTitle": "Terraria",
         "gamePublisher": "505 Games",
         "gameDeveloper": "DR Studios",
@@ -5421,25 +5492,6 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.57835.70406876433810089.4beffaca-3fee-4154-a21f-ecd9b3bedbb3.c2203645-e73c-4760-bdbe-f1bcf32a0a05?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.15385.70406876433810089.4beffaca-3fee-4154-a21f-ecd9b3bedbb3.14eef101-5fe5-4892-bc4f-c290d9d50d7c?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/terraria/BTNPS60N3114"
-    },
-    {
-        "gameTitle": "The Anacrusis (Pr\u00e9via do Jogo)",
-        "gamePublisher": "Stray Bombay Company",
-        "gameDeveloper": "Stray Bombay Company",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura",
-            "Jogos de tiros"
-        ],
-        "releaseDate": "31/12/2799",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": false
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/the-anacrusis-game-preview/9P9S593SLMV7",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.51812.14132627781219400.b75eb479-8d85-476a-9b12-d9044cad7c6e.6e935896-30f8-4e35-8a8c-c807747adc55?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.51176.14132627781219400.e2eafad1-9336-41a2-a8bc-d64f901c1136.89ce799a-9fb2-46ae-afb2-1647846e6252?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/the-anacrusis-pr%C3%A9via-do-jogo/9P9S593SLMV7"
     },
     {
         "gameTitle": "The Ascent",
@@ -5679,7 +5731,7 @@
             "touchControllerSupport": false
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/the-legend-of-tianding/9NCBTKXHFF8K",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.29135.13571267565839258.64c6f711-671b-4bb1-8aea-935b6dc1ede0.0684f522-a7ac-4dda-ab1f-6d915a976967?w=%i&format=jpg",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.44503.13571267565839258.c0d80fb3-d2ca-4cf0-ae2e-4389a8873939.412533d1-3bf2-4cd4-8422-23dbb52a2d63?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.4979.13571267565839258.64c6f711-671b-4bb1-8aea-935b6dc1ede0.be3dcf69-1420-4846-9904-52f005327e1c?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/the-legend-of-tianding/9NCBTKXHFF8K"
     },
@@ -5720,25 +5772,6 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.41558.71127714305215144.dfbe21c8-4e10-4861-b737-47393066d41d.a5829bf5-54b9-4e0f-b7a3-3772539dd491?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.60817.71127714305215144.dfbe21c8-4e10-4861-b737-47393066d41d.cc6b6839-fb14-421b-814c-898b8e58a716?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/the-outer-worlds/BVTKN6CQ8W5F"
-    },
-    {
-        "gameTitle": "The Pedestrian",
-        "gamePublisher": "Skookum Arts",
-        "gameDeveloper": "Skookum Arts",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura",
-            "Plataforma"
-        ],
-        "releaseDate": "03/01/2022",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": true
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/the-pedestrian/9NTX07HR22TG",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.18714.14405641539368739.40cb973b-02de-48e6-af90-2792c037b42e.c3d93b01-fabd-4445-8d65-9c741af2fe80?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.3542.14405641539368739.40cb973b-02de-48e6-af90-2792c037b42e.d535cfae-b8c0-405c-b347-ba0f40b3a182?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/the-pedestrian/9NTX07HR22TG"
     },
     {
         "gameTitle": "The Riftbreaker",
@@ -5900,7 +5933,7 @@
             "touchControllerSupport": true
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/tinykin/9NLLP82XVSKH",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.41283.13705408154411770.7cc771bf-fa30-454c-bfd5-e554674c2e74.79981d13-6d87-4215-8e1d-be83b443ed89?w=%i&format=jpg",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.37048.13705408154411770.2b22153d-5a9e-4527-9b1e-67532d3e2ef4.9df18666-d722-4c42-a70d-2063adef9bca?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.15256.13705408154411770.7cc771bf-fa30-454c-bfd5-e554674c2e74.ae4b9c15-0c98-4d2b-b049-b20992dc99f9?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/tinykin/9NLLP82XVSKH"
     },
@@ -6092,25 +6125,6 @@
         "storeUrl": "https://www.xbox.com/games/store/trek-to-yomi/9MTCRVZQN3GV"
     },
     {
-        "gameTitle": "Tropico 6",
-        "gamePublisher": "Kalypso Media",
-        "gameDeveloper": "Limbic Entertainment",
-        "gameGenres": [
-            "Simula\u00e7\u00e3o",
-            "Estrat\u00e9gia"
-        ],
-        "releaseDate": "26/09/2019",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": true
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/tropico-6/C4KBHNHRPLN6",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.55829.66702598861173481.ab28a26d-e732-407f-b1fc-11b3cc0e41c0.04387f94-cdc6-4402-a538-4c0f0cb4049f?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.40705.66702598861173481.ab28a26d-e732-407f-b1fc-11b3cc0e41c0.b11d7c8c-dc21-40d5-92e3-cf5c6186dc9b?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/tropico-6/C4KBHNHRPLN6"
-    },
-    {
         "gameTitle": "Turbo Golf Racing (Game Preview)",
         "gamePublisher": "Secret Mode",
         "gameDeveloper": "Hugecalf Studios",
@@ -6163,7 +6177,7 @@
             "touchControllerSupport": true
         },
         "xcloudUrl": "https://www.xbox.com/%s/play/games/two-point-campus/9PCW1SMN9RGG",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.11253.14161945646118465.9d38b01a-1bf4-467b-8a2e-4833b374988e.1495baa8-c740-42db-a01a-765159e9c94d?w=%i&format=jpg",
+        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.46969.14161945646118465.4c1e1eb1-a1ec-49c5-b06d-8386c15bcbf3.6b016067-8e4a-4985-b34e-1704a4fed711?w=%i&format=jpg",
         "gameImageUrl": "https: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%iB",
         "storeUrl": "https://www.xbox.com/games/store/two-point-campus/9PCW1SMN9RGG"
     },
@@ -6369,24 +6383,6 @@
         "storeUrl": "https://www.xbox.com/games/store/watch-dogs2/BSXLFN5QQZSC"
     },
     {
-        "gameTitle": "We Happy Few",
-        "gamePublisher": "Gearbox Publishing",
-        "gameDeveloper": "Compulsion Games Inc",
-        "gameGenres": [
-            "A\u00e7\u00e3o e aventura"
-        ],
-        "releaseDate": "09/08/2018",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": false
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/we-happy-few/BPR2TBS2KMQJ",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.40710.68143759676978415.617fe4d2-4978-4b4d-9e04-cba4cf86d432.4820a8ef-b0f3-4fcd-ab0a-6a76014c0c3c?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.40691.68143759676978415.617fe4d2-4978-4b4d-9e04-cba4cf86d432.2ed3053f-3072-44f6-86d2-37c6c2f45087?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/we-happy-few/BPR2TBS2KMQJ"
-    },
-    {
         "gameTitle": "Weird West",
         "gamePublisher": "Devolver Digital",
         "gameDeveloper": "WolfEye Studios",
@@ -6404,25 +6400,6 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.6486.14464239229931947.92218744-a2d3-4d4d-b2e8-a96385319eb0.24828d5c-9647-4f3e-8dde-acd52b333355?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.51072.14464239229931947.92218744-a2d3-4d4d-b2e8-a96385319eb0.9c407874-ff5f-496a-b32a-2fa8abb8aa37?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/weird-west/9P0B86JN5X28"
-    },
-    {
-        "gameTitle": "Windjammers 2",
-        "gamePublisher": "Dotemu",
-        "gameDeveloper": "Dotemu",
-        "gameGenres": [
-            "Outros",
-            "Esportes"
-        ],
-        "releaseDate": "20/01/2022",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": true
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/windjammers-2/9N232RBCFR2G",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.23620.13960214545711625.430c5652-1978-4e19-92b1-8e901cdd420c.3dffa413-653f-4895-9baf-693821a21ac5?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.61598.13960214545711625.430c5652-1978-4e19-92b1-8e901cdd420c.0f182277-d985-4e95-9d77-f006eebd634e?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/windjammers-2/9N232RBCFR2G"
     },
     {
         "gameTitle": "Wolfenstein: The New Order",
@@ -6498,24 +6475,6 @@
         "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.2334.66681981221768345.76a0e962-989c-428d-a0d4-5b11187fa034.220af923-7124-4d46-98f3-78cc10b9492b?w=%i&format=jpg",
         "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.3811.66681981221768345.76a0e962-989c-428d-a0d4-5b11187fa034.52e87a8b-c27a-44c8-91fb-28098b23466e?h=%i&format=jpg",
         "storeUrl": "https://www.xbox.com/games/store/wolfenstein-ii-the-new-colossus/C4LLMHFQ1BXQ"
-    },
-    {
-        "gameTitle": "Worms W.M.D",
-        "gamePublisher": "Team17 Digital Ltd",
-        "gameDeveloper": "Team17 Digital Ltd",
-        "gameGenres": [
-            "Estrat\u00e9gia"
-        ],
-        "releaseDate": "22/08/2016",
-        "extraGameProperties": {
-            "isInGamePass": true,
-            "controllerSupport": true,
-            "touchControllerSupport": false
-        },
-        "xcloudUrl": "https://www.xbox.com/%s/play/games/worms-w.m.d/C4BZ7X545J1T",
-        "tileGameImageUrl": "https://store-images.s-microsoft.com/image/apps.41175.66550732470485128.fb64d8d0-8d1a-4592-beb7-c3634d551b35.69e1f605-b5b2-4401-a2f4-223edb7879e9?w=%i&format=jpg",
-        "gameImageUrl": "https://store-images.s-microsoft.com/image/apps.44251.66550732470485128.fb64d8d0-8d1a-4592-beb7-c3634d551b35.de506352-7473-4e66-abc3-99f2c7a7cb2e?h=%i&format=jpg",
-        "storeUrl": "https://www.xbox.com/games/store/worms-w.m.d/C4BZ7X545J1T"
     },
     {
         "gameTitle": "Wreckfest",

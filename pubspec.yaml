@@ -1,6 +1,6 @@
 name: xbox_launcher
 description: XCloud with the Xbox Series S/X's interface.
-version: 0.0.3
+version: 0.0.4
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
@@ -9,7 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  fluent_ui: ^4.2.0
+  fluent_ui: 4.1.5
   webview_windows: ^0.2.2
   provider: ^6.0.5
   xinput_gamepad: ^1.2.3
@@ -27,19 +27,20 @@ dependencies:
     path: ./internals/sys_info_getter/
   url_launcher: ^6.1.7
   path: ^1.8.2
+  fluentui_system_icons: ^1.1.190
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^1.0.0
-  msix: ^3.7.0
+  msix: 3.7.0
 
 msix_config:
   display_name: Xbox Launcher
   publisher_display_name: Luan Roger
   identity_name: luanroger.xboxlauncher
-  msix_version: 0.0.3.0
+  msix_version: 0.0.4.0
   capabilities: internetClient
   enable_at_startup: false
   output_name: xbox_launcher

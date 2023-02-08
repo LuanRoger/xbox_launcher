@@ -206,7 +206,8 @@ class MyGamesSection extends NavigationSectionStateless {
                                     crossAxisSpacing: 10,
                                     customGenerationOption: TileGeneratorOption(
                                         focusScope: currentScope,
-                                        context: context),
+                                        context: context,
+                                        tilesSize: tileSize),
                                     scrollDirection: Axis.vertical,
                                   ),
                                 )

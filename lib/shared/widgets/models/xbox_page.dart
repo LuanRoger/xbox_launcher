@@ -12,7 +12,10 @@ import 'package:xbox_launcher/shared/widgets/models/xbox_page_builder.dart';
 import 'package:xbox_launcher/shared/widgets/shortcuts/shortcut_viewer_support.dart';
 
 abstract class XboxPage extends StatefulWidget {
-  const XboxPage({Key? key}) : super(key: key);
+  final bool stackMappingAtMemento;
+
+  const XboxPage({Key? key, this.stackMappingAtMemento = true})
+      : super(key: key);
 }
 
 abstract class XboxPageState<T extends XboxPage> extends State<T>
@@ -24,12 +27,12 @@ abstract class XboxPageState<T extends XboxPage> extends State<T>
     elementFocusScope.onElementFocus = onElementFocus;
   }
 
-  List<ShortcutInfo>? cachedShortcutsInfo;
+  List<ShortcutInfo>? _cachedShortcutsInfo;
   Map<ShortcutActivator, void Function()> get shortcutsBindings {
-    if (cachedShortcutsInfo == null) return {};
+    if (_cachedShortcutsInfo == null) return {};
 
     List<ShortcutOption> shortcutsOption =
-        cachedShortcutsInfo!.whereType<ShortcutOption>().toList();
+        _cachedShortcutsInfo!.whereType<ShortcutOption>().toList();
     return Map.fromEntries(shortcutsOption.map((e) => e.rawShortcutCallback));
   }
 
@@ -37,8 +40,8 @@ abstract class XboxPageState<T extends XboxPage> extends State<T>
   void initState() {
     super.initState();
 
-    cachedShortcutsInfo = defineMapping(context);
-    _addPageShortcuts(cachedShortcutsInfo ?? List.empty());
+    _cachedShortcutsInfo = defineMapping(context);
+    _addPageShortcuts(_cachedShortcutsInfo ?? List.empty());
   }
 
   @override
@@ -63,15 +66,18 @@ abstract class XboxPageState<T extends XboxPage> extends State<T>
         context, shortcuts.whereType<ShortcutOption>().toList(), false);
     updateShortcutsViewer(shortcuts);
 
-    cachedShortcutsInfo = List.from(shortcuts);
+    _cachedShortcutsInfo = List.from(shortcuts);
+    setState(() {});
   }
 
   void _addPageShortcuts(List<ShortcutInfo> shortcuts) {
     ControllerActionManipulator.mapControllerActions(
-        context, shortcuts.whereType<ShortcutOption>().toList(), true);
+        context,
+        shortcuts.whereType<ShortcutOption>().toList(),
+        widget.stackMappingAtMemento);
     updateShortcutsViewer(shortcuts);
 
-    cachedShortcutsInfo = List.from(shortcuts);
+    _cachedShortcutsInfo = List.from(shortcuts);
   }
 
   @override

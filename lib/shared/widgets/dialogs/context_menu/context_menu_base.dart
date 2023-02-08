@@ -9,28 +9,26 @@ abstract class ContextMenuBase {
   ContextMenuBase(this.title, {this.contextItems});
 
   Widget dialogContentBuilder(BuildContext context);
-  Widget buildContextItemsList(BuildContext context) => Expanded(
-        child: ListView.separated(
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (_, index) => contextItems![index],
-            itemCount: contextItems!.length,
-            separatorBuilder: (_, __) => const SizedBox(
-                  height: 8.0,
-                )),
-      );
+  Widget buildContextItemsList(BuildContext context) => ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (_, index) => contextItems![index],
+      itemCount: contextItems!.length,
+      shrinkWrap: true,
+      separatorBuilder: (_, __) => const SizedBox(
+            height: 8.0,
+          ));
 
   Future show(BuildContext context) async {
     final size = MediaQuery.of(context).size;
 
     await showDialog(
         context: context,
-        builder: (_) => Dialog(
+        builder: (context) => Dialog(
               backgroundColor: Colors.transparent,
               alignment: Alignment.center,
               child: Container(
                 width: size.width * 0.2,
-                padding:
-                    const EdgeInsets.only(top: 20.0, left: 1.0, right: 1.0),
+                padding: const EdgeInsets.all(7.0),
                 decoration: BoxDecoration(
                     color: AppColors.ELEMENT_BG,
                     borderRadius: BorderRadius.circular(10.0)),

@@ -6,12 +6,11 @@ import 'package:xbox_launcher/shared/widgets/focus/element_focus_node.dart';
 
 class SystemOutlinedButton extends OutlinedButton implements SystemButtonBase {
   @override
-  Widget content;
+  Widget? content;
   @override
   double? height;
   @override
   double? width;
-
   @override
   Object? elementValue;
   @override

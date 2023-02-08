@@ -12,18 +12,16 @@ class ContextMenu extends ContextMenuBase {
           mainAxisSize: MainAxisSize.min,
           children: [
             Flexible(
-                child: Container(
-              margin: const EdgeInsets.only(left: 15.0, right: 15.0),
-              child: Text(
-                title,
-                style: AppTextStyle.CONTEXT_MENU_TITLE,
-                overflow: TextOverflow.fade,
-                maxLines: 1,
-              ),
-            )),
-            const SizedBox(
-              height: 10.0,
+              flex: 0,
+              child: Container(
+                  margin: const EdgeInsets.all(15),
+                  child: Text(
+                    title,
+                    style: AppTextStyle.CONTEXT_MENU_TITLE,
+                    overflow: TextOverflow.fade,
+                    maxLines: 1,
+                  )),
             ),
-            buildContextItemsList(context)
+            Flexible(child: buildContextItemsList(context))
           ]);
 }

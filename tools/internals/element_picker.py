@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from .models.xcloud_game import *
 from .models.game_properties import *
-from .xcloud_elements_consts import SUPPORTED_INPUTS_CONTAINER, GAME_INFO_BOX_XPATH, GAME_SUBTITLE_ELEMENT, GAME_TITLE_H1_ELEMENT, GAME_PROPERTIES_CONTAINER, STORE_BUTTON_ELEMENT
+from .xcloud_elements_consts import GAMES_GRID_ELEMENT, SUPPORTED_INPUTS_CONTAINER, GAME_INFO_BOX_XPATH, GAME_SUBTITLE_ELEMENT, GAME_TITLE_H1_ELEMENT, GAME_PROPERTIES_CONTAINER, STORE_BUTTON_ELEMENT
 from .webdriver_utils import *
 from .utils.url_formater import *
 
@@ -16,8 +16,13 @@ def getTileGameImageUrl(gamePicture) -> str:
     image_src = image_src_set[1][:-2].strip()
     return image_src
 
-def getGamesInGrid(grid) -> Any:
-    return grid.find_elements(by=By.TAG_NAME, value="a")
+def getGamesInGrid(driver) -> Any:
+    games_grid = driver.find_element(by=By.CLASS_NAME, value=GAMES_GRID_ELEMENT)
+    return games_grid.find_elements(by=By.TAG_NAME, value="a")
+def getGridLenght(driver) -> int:
+    return len(getGamesInGrid(driver))
+def getGameByIndex(driver, index: int) -> Any:
+    return getGamesInGrid(driver)[index]
 
 def getGamesInfoInNewTab(driver, game_url: str) -> XcloudGame:
     open_new_tab(driver)
